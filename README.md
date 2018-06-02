@@ -1,4 +1,4 @@
-# Codebase for the tutorials on my [blog](http://rieckpil.de/blog) 
+# Codebase for the tutorials on my [blog](https://rieckpil.de/#/blog) 
 
 ## HOWTO's:
 
