@@ -1,0 +1,1 @@
+# #HOWTO: Write Spring Boot integration tests with a 'real' database
