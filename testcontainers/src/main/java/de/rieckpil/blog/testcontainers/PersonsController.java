@@ -22,6 +22,7 @@ public class PersonsController {
 
     @GetMapping("/{id}")
     public Person getPersonById(@PathVariable("id") Long id) {
+
         return personRepository.findById(id).orElseThrow(() -> new NoPersonFoundException("Person with id:" + id +
                 " not found"));
     }

@@ -1,16 +1,18 @@
 package de.rieckpil.blog.testcontainers;
 
-import org.junit.BeforeClass;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.util.TestPropertyValues;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.context.ApplicationContextInitializer;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
 import org.testcontainers.containers.PostgreSQLContainer;
 
 import static org.junit.Assert.assertEquals;
@@ -18,7 +20,7 @@ import static org.junit.Assert.assertFalse;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@Transactional
+@ContextConfiguration(initializers = DeletePersonIntegrationTest.Initializer.class)
 public class DeletePersonIntegrationTest {
 
     @ClassRule
@@ -33,14 +35,17 @@ public class DeletePersonIntegrationTest {
 
     public TestRestTemplate testRestTemplate = new TestRestTemplate();
 
-    @BeforeClass
-    public static void beforeClass() {
+    public static class Initializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 
-        System.out.println(postgreSQLContainer.getJdbcUrl());
-        System.setProperty("spring.datasource.url", postgreSQLContainer.getJdbcUrl());
-        System.setProperty("spring.datasource.password", postgreSQLContainer.getPassword());
-        System.setProperty("spring.datasource.username", postgreSQLContainer.getUsername());
-
+        @Override
+        public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
+            TestPropertyValues values = TestPropertyValues.of(
+                    "spring.datasource.url=" + postgreSQLContainer.getJdbcUrl(),
+                    "spring.datasource.password=" + postgreSQLContainer.getPassword(),
+                    "spring.datasource.username=" + postgreSQLContainer.getUsername()
+            );
+            values.applyTo(configurableApplicationContext);
+        }
     }
 
     @Test
