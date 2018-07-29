@@ -8,3 +8,7 @@
 * Lazy Loading of JPA attributes with Hibernate([Blog](https://rieckpil.de/how-to-lazy-loading-of-jpa-attributes-with-hibernate/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/lazy-loading-of-jpa-attributes-with-hibernate))
 * Deploy a Spring Boot Uber-Jar application within Open Liberty ([Blog](https://rieckpil.de/howto-run-spring-boot-uber-jar-application-within-open-liberty/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-with-open-liberty/))
 * Send E-Mails with SendGrid and Spring Boot ([Blog](https://rieckpil.de/howto-send-e-mails-with-sendgrid-and-spring-boot/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/send-emails-with-sendgrid-and-spring-boot))
+
+## WHATIS?:
+
+* JavaServer Faces. An introduction to JSF 2.3 ([Blog](https://rieckpil.de/whatis-java-server-faces-an-introduction-to-jsf-2-3/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/hello-world-jsf-2.3))

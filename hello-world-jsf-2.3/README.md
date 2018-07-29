@@ -1,4 +1,4 @@
-# Codebase for the blog post [#HOWTO: ](https://rieckpil.de/)
+# Codebase for the blog post [#WHATIS? JavaServer Faces. An introduction to JSF 2.3](https://rieckpil.de/whatis-java-server-faces-an-introduction-to-jsf-2-3/)
 
 Steps to run this project:
 
