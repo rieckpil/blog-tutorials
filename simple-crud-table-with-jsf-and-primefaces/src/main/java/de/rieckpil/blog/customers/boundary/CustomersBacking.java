@@ -5,11 +5,11 @@ import de.rieckpil.blog.customers.entity.Customer;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Past;
+import java.time.LocalDate;
 import java.util.List;
 
 @Named
@@ -17,6 +17,18 @@ import java.util.List;
 public class CustomersBacking {
 
     private List<Customer> customers;
+
+    @NotEmpty
+    private String firstName;
+
+    @NotEmpty
+    private String lastName;
+
+    @NotEmpty
+    private String email;
+
+    @Past
+    private LocalDate dayOfBirth;
 
     @Inject
     private CustomerManager customerManager;
@@ -26,27 +38,54 @@ public class CustomersBacking {
         this.customers = customerManager.loadAllCustomers();
     }
 
-    public List<Customer> getCustomers() {
-        return customers;
-    }
-
     public void delete(Customer customer) {
         System.out.println("Delete customer with ID: " + customer.getId());
         customerManager.delete(customer);
         customers.remove(customer);
     }
 
-    public void delete() {
-        System.out.println("Deleting everything");
+    public void add() {
+        customerManager.addNewCustomer(firstName, lastName, email, dayOfBirth);
+        this.customers = customerManager.loadAllCustomers();
     }
 
-    public void buttonAction(ActionEvent actionEvent) {
-        addMessage("Welcome to Primefaces!!");
+    public List<Customer> getCustomers() {
+        return customers;
     }
 
-    public void addMessage(String summary) {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, null);
-        FacesContext.getCurrentInstance().addMessage(null, message);
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public LocalDate getDayOfBirth() {
+        return dayOfBirth;
+    }
+
+    public void setDayOfBirth(LocalDate dayOfBirth) {
+        this.dayOfBirth = dayOfBirth;
+    }
 }
