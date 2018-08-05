@@ -40,7 +40,6 @@ public class CustomerManager {
         newCustomer.setCustomerId(UUID.randomUUID().toString().substring(0, 8));
 
         this.entityManager.persist(newCustomer);
-
     }
 
     public void update(List<Customer> customers) {

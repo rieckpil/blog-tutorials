@@ -43,9 +43,8 @@ public class CustomersBacking {
     }
 
     public void update() {
-      customerManager.update(customers);
+        customerManager.update(customers);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Update successful"));
-
     }
 
     public List<Customer> getCustomers() {
