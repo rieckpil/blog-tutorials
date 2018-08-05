@@ -42,4 +42,8 @@ public class CustomerManager {
         this.entityManager.persist(newCustomer);
 
     }
+
+    public void update(List<Customer> customers) {
+        customers.forEach(entityManager::merge);
+    }
 }

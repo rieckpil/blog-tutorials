@@ -5,6 +5,8 @@ import de.rieckpil.blog.customers.entity.Customer;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.validation.constraints.NotEmpty;
@@ -38,6 +40,12 @@ public class CustomersBacking {
         customerManager.addNewCustomer(customer);
         this.customers = customerManager.loadAllCustomers();
         this.customer = new Customer();
+    }
+
+    public void update() {
+      customerManager.update(customers);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Update successful"));
+
     }
 
     public List<Customer> getCustomers() {

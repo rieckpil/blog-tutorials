@@ -15,6 +15,13 @@
                 text-align: center;
             }
 
+            input[type="text"] {
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing:border-box;
+                -moz-box-sizing: border-box;
+            }
+
         </h:outputStylesheet>
     </h:head>
     <h:body>
@@ -24,25 +31,29 @@
                 <div class="ui-g-2"></div>
                 <div class="ui-g-8">
                     <h:form id="customers">
+                         <p:growl id="growl" sticky="true" />
+
                         <p:dataTable id="customerList" var="customer" value="#{customersBacking.customers}">
                             <p:column headerText="Id">
                                 <h:outputText value="#{customer.id}"/>
                             </p:column>
 
                             <p:column headerText="First name">
-                                <h:outputText value="#{customer.firstName}"/>
+                                <p:inputText id="firstNameInput" value="#{customer.firstName}"/>
                             </p:column>
 
                             <p:column headerText="Last name">
-                                <h:outputText value="#{customer.lastName}"/>
+                                <p:inputText id="lastNameInput" value="#{customer.lastName}"/>
                             </p:column>
 
                             <p:column headerText="Email">
-                                <h:outputText value="#{customer.email}"/>
+                                <p:inputText id="emailInput" value="#{customer.email}"/>
                             </p:column>
 
                             <p:column headerText="Day of birth">
-                                <h:outputText value="#{customer.dayOfBirth}"/>
+                                <h:outputText value="#{customer.dayOfBirth}">
+                                    <f:convertDateTime type="localDate" pattern="dd.MM.yyyy"/>
+                                </h:outputText>
                             </p:column>
 
                             <p:column headerText="Customer ID">
@@ -56,6 +67,11 @@
                                 </p:commandButton>
                             </p:column>
                         </p:dataTable>
+                        <br/>
+                        <p:commandButton style="float: right" id="save" value="Save" tyleClass="ui-priority-primary"
+                                         action="#{customersBacking.update}" icon="ui-icon-disk" update="growl">
+                            <f:ajax execute="@form" render="@form"/>
+                        </p:commandButton>
                     </h:form>
                 </div>
                 <div class="ui-g-2">
@@ -85,10 +101,11 @@
                             <p:message for="email"/>
 
                             <p:outputLabel for="dayOfBirth" value="Day of birth"/>
-                            <p:inputText id="dayOfBirth"
-                                         value="#{customersBacking.customer.dayOfBirth}">
-                                <f:convertDateTime type="localDate" pattern="dd-MM-yyyy"/>
-                            </p:inputText>
+                            <p:calendar id="dayOfBirth"
+                                        value="#{customersBacking.customer.dayOfBirth}" pattern="dd.MM.yyyy"
+                                        mask="true">
+                                <f:convertDateTime type="localDate" pattern="dd.MM.yyyy"/>
+                            </p:calendar>
                             <p:message for="dayOfBirth"/>
 
                             <p:commandButton update="@form :customers:customerList" value="Add"
