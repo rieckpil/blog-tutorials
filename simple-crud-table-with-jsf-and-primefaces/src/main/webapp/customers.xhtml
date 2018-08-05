@@ -15,10 +15,6 @@
                 text-align: center;
             }
 
-            input {
-                display: block;
-            }
-
         </h:outputStylesheet>
     </h:head>
     <h:body>
@@ -71,33 +67,34 @@
                 </div>
                 <div class="ui-g-8">
                     <h:form id="add">
+                        <h:panelGrid columns="3" cellpadding="5" style="margin: 0 auto;">
+                            <p:outputLabel for="firstName" value="First name"/>
+                            <p:inputText id="firstName" value="#{customersBacking.customer.firstName}"/>
+                            <p:message for="firstName"/>
 
-                        <h:outputLabel for="firstName" value="First name"/>
-                        <h:inputText id="firstName" value="#{customersBacking.firstName}"/>
-                        <h:message for="firstName"/>
+                            <p:outputLabel for="lastName" value="Last name"/>
+                            <p:inputText id="lastName"
+                                         value="#{customersBacking.customer.lastName}">
+                            </p:inputText>
+                            <p:message for="lastName"/>
 
-                        <h:outputLabel for="lastName" value="Last name"/>
-                        <h:inputText id="lastName"
-                                         value="#{customersBacking.lastName}">
-                        </h:inputText>
-                        <h:message for="lastName"/>
+                            <p:outputLabel for="email" value="E-Mail"/>
+                            <p:inputText id="email"
+                                         value="#{customersBacking.customer.email}">
+                            </p:inputText>
+                            <p:message for="email"/>
 
-                        <h:outputLabel for="email" value="E-Mail"/>
-                        <h:inputText id="email"
-                                     value="#{customersBacking.email}">
-                        </h:inputText>
-                        <h:message for="email"/>
+                            <p:outputLabel for="dayOfBirth" value="Day of birth"/>
+                            <p:inputText id="dayOfBirth"
+                                         value="#{customersBacking.customer.dayOfBirth}">
+                                <f:convertDateTime type="localDate" pattern="dd-MM-yyyy"/>
+                            </p:inputText>
+                            <p:message for="dayOfBirth"/>
 
-                        <h:outputLabel for="dayOfBirth" value="Day of birth"/>
-                        <h:inputText id="dayOfBirth"
-                                     value="#{customersBacking.dayOfBirth}">
-                            <f:convertDateTime type="localDate" pattern="dd-MM-yyyy"/>
-                        </h:inputText>
-                        <h:message for="dayOfBirth"/>
-
-                        <p:commandButton update="@form :customers:customerList" value="Add"
-                                         action="#{customersBacking.add}">
-                        </p:commandButton>
+                            <p:commandButton update="@form :customers:customerList" value="Add"
+                                             action="#{customersBacking.add}">
+                            </p:commandButton>
+                        </h:panelGrid>
                     </h:form>
                 </div>
                 <div class="ui-g-2">

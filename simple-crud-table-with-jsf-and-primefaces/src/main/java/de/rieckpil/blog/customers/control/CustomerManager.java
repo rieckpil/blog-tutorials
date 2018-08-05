@@ -30,16 +30,16 @@ public class CustomerManager {
         }
     }
 
-    public void addNewCustomer(String firstName, String lastName, String email, LocalDate dayOfBirth) {
+    public void addNewCustomer(Customer customer) {
 
-        Customer customer = new Customer();
-        customer.setDayOfBirth(dayOfBirth);
-        customer.setEmail(email);
-        customer.setFirstName(firstName);
-        customer.setLastName(lastName);
-        customer.setCustomerId(UUID.randomUUID().toString().substring(0, 8));
+        Customer newCustomer = new Customer();
+        newCustomer.setDayOfBirth(customer.getDayOfBirth());
+        newCustomer.setEmail(customer.getEmail());
+        newCustomer.setFirstName(customer.getFirstName());
+        newCustomer.setLastName(customer.getLastName());
+        newCustomer.setCustomerId(UUID.randomUUID().toString().substring(0, 8));
 
-        this.entityManager.persist(customer);
+        this.entityManager.persist(newCustomer);
 
     }
 }

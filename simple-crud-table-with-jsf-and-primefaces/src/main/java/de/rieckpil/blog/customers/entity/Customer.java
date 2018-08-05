@@ -1,6 +1,9 @@
 package de.rieckpil.blog.customers.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Past;
 import java.time.LocalDate;
 
 @Entity
@@ -11,15 +14,19 @@ public class Customer {
     private Long id;
 
     @Column(nullable = false)
+    @NotEmpty
     private String firstName;
 
     @Column(nullable = false)
+    @NotEmpty
     private String lastName;
 
     @Column(nullable = false)
+    @NotEmpty
+    @Email
     private String email;
 
-    @Column(nullable = false)
+    @Past
     private LocalDate dayOfBirth;
 
     @Column(nullable = false)

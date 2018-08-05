@@ -18,17 +18,7 @@ public class CustomersBacking {
 
     private List<Customer> customers;
 
-    @NotEmpty
-    private String firstName;
-
-    @NotEmpty
-    private String lastName;
-
-    @NotEmpty
-    private String email;
-
-    @Past
-    private LocalDate dayOfBirth;
+    private Customer customer = new Customer();
 
     @Inject
     private CustomerManager customerManager;
@@ -45,8 +35,9 @@ public class CustomersBacking {
     }
 
     public void add() {
-        customerManager.addNewCustomer(firstName, lastName, email, dayOfBirth);
+        customerManager.addNewCustomer(customer);
         this.customers = customerManager.loadAllCustomers();
+        this.customer = new Customer();
     }
 
     public List<Customer> getCustomers() {
@@ -57,35 +48,19 @@ public class CustomersBacking {
         this.customers = customers;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public String getLastName() {
-        return lastName;
+    public CustomerManager getCustomerManager() {
+        return customerManager;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public LocalDate getDayOfBirth() {
-        return dayOfBirth;
-    }
-
-    public void setDayOfBirth(LocalDate dayOfBirth) {
-        this.dayOfBirth = dayOfBirth;
+    public void setCustomerManager(CustomerManager customerManager) {
+        this.customerManager = customerManager;
     }
 }
