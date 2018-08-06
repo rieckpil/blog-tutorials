@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.validation.constraints.NotEmpty;
@@ -15,7 +16,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Named
-@RequestScoped
+@ViewScoped
 public class CustomersBacking {
 
     private List<Customer> customers;
@@ -31,7 +32,6 @@ public class CustomersBacking {
     }
 
     public void delete(Customer customer) {
-        System.out.println("Delete customer with ID: " + customer.getId());
         customerManager.delete(customer);
         customers.remove(customer);
     }
