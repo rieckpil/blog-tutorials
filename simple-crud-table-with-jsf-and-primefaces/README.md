@@ -1,4 +1,4 @@
-# Codebase for the blog post [#HOWTO: Simple CRUD table with JSF and PrimeFaces]()
+# Codebase for the blog post [#HOWTO: Simple CRUD table with JSF and PrimeFaces](https://rieckpil.de/howto-simple-crud-table-with-jsf-2-3-and-primefaces/)
 
 Steps to run this project:
 
