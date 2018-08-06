@@ -12,12 +12,13 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Past;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
 @Named
 @ViewScoped
-public class CustomersBacking {
+public class CustomersBacking implements Serializable {
 
     private List<Customer> customers;
 

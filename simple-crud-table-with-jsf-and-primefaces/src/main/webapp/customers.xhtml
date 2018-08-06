@@ -61,7 +61,7 @@
 
                             <p:column>
                                 <p:commandButton update="customerList" value="Delete" icon="ui-icon-closethick"
-                                                 actionListener="#{customersBacking.delete(customer)}"
+                                                 action="#{customersBacking.delete(customer)}"
                                                  styleClass="ui-priority-primary">
                                 </p:commandButton>
                             </p:column>
@@ -118,5 +118,49 @@
             </div>
         </p:outputPanel>
     </h:body>
+    <h:form id="customers">
+        <p:growl id="growl" sticky="true" />
+
+        <p:dataTable id="customerList" var="customer" value="#{customersBacking.customers}">
+            <p:column headerText="Id">
+                <h:outputText value="#{customer.id}"/>
+            </p:column>
+
+            <p:column headerText="First name">
+                <p:inputText id="firstNameInput" value="#{customer.firstName}"/>
+            </p:column>
+
+            <p:column headerText="Last name">
+                <p:inputText id="lastNameInput" value="#{customer.lastName}"/>
+            </p:column>
+
+            <p:column headerText="Email">
+                <p:inputText id="emailInput" value="#{customer.email}"/>
+            </p:column>
+
+            <p:column headerText="Day of birth">
+                <h:outputText value="#{customer.dayOfBirth}">
+                    <f:convertDateTime type="localDate" pattern="dd.MM.yyyy"/>
+                </h:outputText>
+            </p:column>
+
+            <p:column headerText="Customer ID">
+                <h:outputText value="#{customer.customerId}"/>
+            </p:column>
+
+            <p:column>
+                <p:commandButton update="customerList" value="Delete" icon="ui-icon-closethick"
+                                 action="#{customersBacking.delete(customer)}"
+                                 styleClass="ui-priority-primary">
+                </p:commandButton>
+            </p:column>
+        </p:dataTable>
+        <br/>
+        <p:commandButton style="float: right" id="save" value="Save" tyleClass="ui-priority-primary"
+                         action="#{customersBacking.update}" icon="ui-icon-disk" update="growl">
+            <f:ajax execute="@form" render="@form"/>
+        </p:commandButton>
+    </h:form>
 </f:view>
 </html>
+
