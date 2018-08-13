@@ -17,6 +17,14 @@
         <failOnMissingWebXml>false</failOnMissingWebXml>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>prime-repo</id>
+            <name>Prime Repo</name>
+            <url>http://repository.primefaces.org</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>javax</groupId>
@@ -28,7 +36,11 @@
             <artifactId>primefaces</artifactId>
             <version>6.2</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>all-themes</artifactId>
+            <version>1.0.10</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+<f:view>
+    <h:head></h:head>
+    <h:body>
+        <p:outputLabel>Welcome to the application!</p:outputLabel>
+
+        <c:if test="#{not empty request.userPrincipal}">
+            <p>Logged-in as #{request.userPrincipal.name}</p>
+        </c:if>
+
+        <h:form>
+            <p:commandButton value="Logout" action="#{logoutBacking.submit}"/>
+        </h:form>
+    </h:body>
+</f:view>
+</html>
