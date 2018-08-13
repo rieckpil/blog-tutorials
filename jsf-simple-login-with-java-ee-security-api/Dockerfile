@@ -1,2 +1,2 @@
 FROM payara/server-full
-COPY target/*.war $DEPLOY_DIR/ROOT.war
+COPY target/*.war $DEPLOY_DIR
