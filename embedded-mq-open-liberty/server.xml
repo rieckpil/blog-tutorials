@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="new server">
+
+    <featureManager>
+        <feature>javaee-8.0</feature>
+    </featureManager>
+
+    <quickStartSecurity userName="admin" userPassword="adminpwd" />
+
+    <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" />
+
+    <applicationManager autoExpand="true" />
+
+    <applicationMonitor updateTrigger="mbean" />
+
+    <dataSource id="DefaultDataSource">
+        <jdbcDriver libraryRef="MyJDBCLib" />
+        <properties.derby.embedded databaseName="myDB" createDatabase="create" />
+        <containerAuthData user="user1" password="{xor}Oz0vKDtu" />
+    </dataSource>
+
+    <library id="MyJDBCLib">
+        <file name="${server.config.dir}/derby.jar" />
+    </library>
+
+</server>
+
