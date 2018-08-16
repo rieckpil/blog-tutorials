@@ -10,7 +10,6 @@ import java.time.Instant;
 
 public class JmsMessageSender {
 
-
     @Resource(mappedName = "jms/JmsFactory")
     private ConnectionFactory jmsFactory;
 
@@ -19,29 +18,25 @@ public class JmsMessageSender {
 
     public void send() {
 
-        CustomMessage msg = new CustomMessage("Hello World!", "Duke", Instant.now().getEpochSecond());
-
-        Jsonb jsonb = JsonbBuilder.create();
-        String pingJson = jsonb.toJson(msg);
-
         TextMessage message;
+
         try (Connection connection = jmsFactory.createConnection();
              Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
              MessageProducer producer = session.createProducer(jmsQueue)) {
 
-            JsonObject data = Json.createObjectBuilder().add("name", "Duke").add("age", 22).add("timestamp",
-                    Instant.now().getEpochSecond()).build();
-
-            String jsonString = data.toString();
-
             message = session.createTextMessage();
-            message.setText(jsonString + "-" + pingJson);
-            System.out.println("Message sent to queue: " + jsonString);
-            System.out.println(producer.getDestination());
-            producer.send(jmsQueue, message);
+            message.setText("Hello World!");
+            producer.send(message);
 
         } catch (JMSException e) {
             e.printStackTrace();
         }
+    }
+
+    private String createCustomMessage() {
+        CustomMessage msg = new CustomMessage("Hello World!", "Duke", Instant.now().getEpochSecond());
+        Jsonb jsonb = JsonbBuilder.create();
+        String jsonString = jsonb.toJson(msg).toString();
+        return jsonString;
     }
 }
