@@ -41,7 +41,6 @@ public class JmsMessageReader implements MessageListener {
             System.out.print("Got new message on queue: " + jobj);
             System.out.println("\n");
 
-
         } catch (JMSException e) {
             System.err.println(e.getMessage());
         }

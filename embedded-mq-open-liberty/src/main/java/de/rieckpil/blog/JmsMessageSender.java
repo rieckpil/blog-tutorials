@@ -1,19 +1,19 @@
 package de.rieckpil.blog;
 
 import javax.annotation.Resource;
+import javax.ejb.Stateless;
 import javax.jms.*;
-import javax.json.Json;
-import javax.json.JsonObject;
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
 import java.time.Instant;
 
+@Stateless
 public class JmsMessageSender {
 
-    @Resource(mappedName = "jms/JmsFactory")
+    @Resource(lookup = "jms/JmsFactory")
     private ConnectionFactory jmsFactory;
 
-    @Resource(mappedName = "jms/JmsQueue")
+    @Resource(lookup = "jms/JmsQueue")
     private Queue jmsQueue;
 
     public void send() {
@@ -24,6 +24,7 @@ public class JmsMessageSender {
              Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
              MessageProducer producer = session.createProducer(jmsQueue)) {
 
+            System.out.println("Sending a new message1");
             message = session.createTextMessage();
             message.setText("Hello World!");
             producer.send(message);
