@@ -24,7 +24,7 @@ public class JmsMessageSender {
              Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
              MessageProducer producer = session.createProducer(jmsQueue)) {
 
-            System.out.println("Sending a new message1");
+            System.out.println("Sending a new message");
             message = session.createTextMessage();
             message.setText("Hello World!");
             producer.send(message);
