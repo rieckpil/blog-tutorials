@@ -1,35 +1,38 @@
 package de.rieckpil.blog;
 
-import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 import javax.json.Json;
-import javax.json.JsonObject;
-import javax.json.JsonReader;
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
-import java.io.StringReader;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
-@MessageDriven(activationConfig = {
-        @ActivationConfigProperty(propertyName = "destination",
-                propertyValue = "jms/JmsQueue"),
-        @ActivationConfigProperty(propertyName = "destinationType",
-                propertyValue = "javax.jms.Queue")
-})
+@MessageDriven
 public class JmsMessageReader implements MessageListener {
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Override
     public void onMessage(Message message) {
 
         TextMessage textMessage = (TextMessage) message;
+
         try {
-            System.out.println("Message arrived: " + textMessage.getText());
+            String incomingText = textMessage.getText();
+            System.out.println("-- a new message arrived: " + incomingText);
+
+            Jsonb jsonb = JsonbBuilder.create();
+
+            CustomMessage parsedMessage = jsonb.fromJson(incomingText, CustomMessage.class);
+            entityManager.persist(parsedMessage);
+
         } catch (JMSException e) {
             System.err.println(e.getMessage());
         }
-
     }
 }

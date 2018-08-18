@@ -26,7 +26,7 @@ public class JmsMessageSender {
 
             System.out.println("Sending a new message");
             message = session.createTextMessage();
-            message.setText("Hello World!");
+            message.setText(createCustomMessage());
             producer.send(message);
 
         } catch (JMSException e) {
@@ -37,7 +37,6 @@ public class JmsMessageSender {
     private String createCustomMessage() {
         CustomMessage msg = new CustomMessage("Hello World!", "Duke", Instant.now().getEpochSecond());
         Jsonb jsonb = JsonbBuilder.create();
-        String jsonString = jsonb.toJson(msg).toString();
-        return jsonString;
+        return jsonb.toJson(msg);
     }
 }

@@ -6,22 +6,36 @@
     </featureManager>
 
     <quickStartSecurity userName="admin" userPassword="adminpwd" />
-
     <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" />
-
     <applicationManager autoExpand="true" />
-
     <applicationMonitor updateTrigger="mbean" />
 
+    <messagingEngine>
+        <queue id="QUEUE1" />
+    </messagingEngine>
+
+    <jmsQueueConnectionFactory jndiName="jms/JmsFactory">
+        <properties.wasJms remoteServerAddress="localhost:7276:BootStrapBasicMessaging" />
+    </jmsQueueConnectionFactory>
+
+    <jmsQueue id="simpleJmsQueue" jndiName="jms/JmsQueue">
+        <properties.wasJms queueName="QUEUE1" />
+    </jmsQueue>
+
+    <jmsActivationSpec id="embedded-messaging-engine-open-liberty/JmsMessageReader">
+        <properties.wasJms
+                destinationRef="simpleJmsQueue"
+                destinationType="javax.jms.Queue"
+                remoteServerAddress="localhost:7276:BootstrapBasicMessaging"/>
+    </jmsActivationSpec>
+
     <dataSource id="DefaultDataSource">
-        <jdbcDriver libraryRef="MyJDBCLib" />
-        <properties.derby.embedded databaseName="myDB" createDatabase="create" />
-        <containerAuthData user="user1" password="{xor}Oz0vKDtu" />
+        <jdbcDriver libraryRef="DERBY_JDBC_LIB" />
+        <properties.derby.embedded databaseName="test" createDatabase="create" />
     </dataSource>
 
-    <library id="MyJDBCLib">
+    <library id="DERBY_JDBC_LIB">
         <file name="${server.config.dir}/derby.jar" />
     </library>
-
 </server>
 

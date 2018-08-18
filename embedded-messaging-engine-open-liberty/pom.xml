@@ -27,7 +27,7 @@
     </dependencies>
 
     <build>
-        <finalName>embedded-mq-open-liberty</finalName>
+        <finalName>embedded-messaging-engine-open-liberty</finalName>
     </build>
 
 </project>
