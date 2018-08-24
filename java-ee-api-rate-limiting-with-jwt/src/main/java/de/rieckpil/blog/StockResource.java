@@ -11,6 +11,7 @@ public class StockResource {
 
     @GET
     public Response getAllStocks() {
+        System.out.println("Stock prices requested");
         JsonObject json = Json.createObjectBuilder().add("name", "SHA").add("price", 15.03).build();
         return Response.ok(json.toString()).build();
     }
