@@ -18,8 +18,8 @@ public class RateLimitingFilter implements ContainerRequestFilter {
     @PersistenceContext
     EntityManager entityManager;
 
-    @Override
     @Transactional
+    @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
         SecurityContext securityContext = requestContext.getSecurityContext();
         String username = securityContext.getUserPrincipal().getName();
@@ -27,11 +27,11 @@ public class RateLimitingFilter implements ContainerRequestFilter {
         User user = entityManager.createQuery("SELECT u FROM User u WHERE u.username=:username", User.class).setParameter(
                 "username", username).getSingleResult();
 
-        if (user.getAmountOfApiCalls() == user.getMaxApiCallsPerMinute()) {
+        if (user.getAmountOfApiCalls() >= user.getMaxApiCallsPerMinute()) {
             requestContext.abortWith(Response.status(Response.Status.TOO_MANY_REQUESTS).build());
         }
 
-        user.setAmountOfApiCalls(user.getMaxApiCallsPerMinute() + 1);
+        user.setAmountOfApiCalls(user.getAmountOfApiCalls() + 1);
 
         System.out.println(user);
     }
