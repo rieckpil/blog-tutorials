@@ -21,6 +21,7 @@ public class RateLimitingFilter implements ContainerRequestFilter {
     @Transactional
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
+
         SecurityContext securityContext = requestContext.getSecurityContext();
         String username = securityContext.getUserPrincipal().getName();
 
@@ -32,7 +33,6 @@ public class RateLimitingFilter implements ContainerRequestFilter {
         }
 
         user.setAmountOfApiCalls(user.getAmountOfApiCalls() + 1);
-
         System.out.println(user);
     }
 }
