@@ -11,7 +11,7 @@
 * Simple CRUD table with JSF and PrimeFaces ([Blog](https://rieckpil.de/howto-simple-crud-table-with-jsf-2-3-and-primefaces/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/simple-crud-table-with-jsf-and-primefaces))
 * Simple JSF 2.3 Login with Java EE 8 Security API ([Blog](https://rieckpil.de/howto-simple-form-based-authentication-for-jsf-2-3-with-java-ee-8-security-api/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/jsf-simple-login-with-java-ee-security-api))
 *  Simple JMS application with the embedded messaging engine in Open Liberty([Blog](https://rieckpil.de/howto-simple-jms-application-with-the-embedded-messaging-engine-in-open-liberty/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/embedded-messaging-engine-open-liberty))
-
+* JAX-RS user-based API rate-limiting with JSR-375 ([Blog](https://rieckpil.de/howto-jax-rs-user-based-rate-limiting-with-jsr-375/), [Sources]())
 ## WHATIS?:
 
 * JavaServer Faces. An introduction to JSF 2.3 ([Blog](https://rieckpil.de/whatis-java-server-faces-an-introduction-to-jsf-2-3/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/hello-world-jsf-2.3))

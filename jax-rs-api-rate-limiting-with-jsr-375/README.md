@@ -1,9 +1,9 @@
-# Codebase for the blog post []()
+# Codebase for the blog post [#HOWTO: JAX-RS user-based API rate-limiting with JSR-375](https://rieckpil.de/howto-jax-rs-user-based-rate-limiting-with-jsr-375/)
 
 Steps to run this project:
 
 1. Clone this Git repository
-2. Navigate to the folder `java-ee-api-rate-limiting-with-jsr-375`
+2. Navigate to the folder `jax-rs-api-rate-limiting-with-jsr-375`
 3. Build the application with `mvn clean package`
 4. Start you Docker deamon
 5. Build the docker image with `docker build -t api-rate-limiting .`
