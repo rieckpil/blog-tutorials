@@ -1,22 +1,38 @@
 package de.rieckpil.blog;
 
+import de.rieckpil.blog.entity.User;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.ext.Provider;
 import java.io.IOException;
-import java.security.Principal;
 
 @Provider
 public class RateLimitingFilter implements ContainerRequestFilter {
 
+    @PersistenceContext
+    EntityManager entityManager;
 
     @Override
+    @Transactional
     public void filter(ContainerRequestContext requestContext) throws IOException {
-        System.out.println("Filtering request!!");
-
         SecurityContext securityContext = requestContext.getSecurityContext();
-        Principal principal = securityContext.getUserPrincipal();
+        String username = securityContext.getUserPrincipal().getName();
 
+        User user = entityManager.createQuery("SELECT u FROM User u WHERE u.username=:username", User.class).setParameter(
+                "username", username).getSingleResult();
+
+        if (user.getAmountOfApiCalls() == user.getMaxApiCallsPerMinute()) {
+            requestContext.abortWith(Response.status(Response.Status.TOO_MANY_REQUESTS).build());
+        }
+
+        user.setAmountOfApiCalls(user.getMaxApiCallsPerMinute() + 1);
+
+        System.out.println(user);
     }
 }
