@@ -1,4 +1,4 @@
-package de.rieckpil.blog.security;
+package de.rieckpil.blog;
 
 import javax.annotation.security.DeclareRoles;
 import javax.enterprise.context.ApplicationScoped;

@@ -1,4 +1,4 @@
-package de.rieckpil.blog.security;
+package de.rieckpil.blog;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -21,9 +21,6 @@ public class DatabaseSetup {
 
     @PostConstruct
     public void initDefaultUser() {
-
-        executeUpdate("DELETE FROM user");
-        executeUpdate("DELETE FROM user_roles");
 
         executeUpdate("INSERT INTO user (id, username, password, amountOfApiCalls, maxApiCallsPerMinute) VALUES " +
                 "(1, 'rieckpil', '" + this.pbkdf2PasswordHash.generate("HelloWorld".toCharArray()) + "', 0, 10)");
