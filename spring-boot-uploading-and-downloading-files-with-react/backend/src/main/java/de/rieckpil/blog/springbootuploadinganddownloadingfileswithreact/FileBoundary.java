@@ -35,7 +35,7 @@ public class FileBoundary {
         } else if (amountOfFiles == 1) {
             randomPrimaryKey = 1L;
         } else {
-            randomPrimaryKey = ThreadLocalRandom.current().nextLong(1, amountOfFiles);
+            randomPrimaryKey = ThreadLocalRandom.current().nextLong(1, amountOfFiles + 1);
         }
 
         FileEntity fileEntity = fileEntityRepository.findById(randomPrimaryKey).get();
