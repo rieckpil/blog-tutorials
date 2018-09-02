@@ -7,6 +7,6 @@ services:
     links: 
       - backend
   backend:
-    image: backend
+    build: backend
     ports: 
       - "8080:8080"
