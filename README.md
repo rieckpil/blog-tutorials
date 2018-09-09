@@ -13,7 +13,7 @@
 *  Simple JMS application with the embedded messaging engine in Open Liberty ([Blog](https://rieckpil.de/howto-simple-jms-application-with-the-embedded-messaging-engine-in-open-liberty/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/embedded-messaging-engine-open-liberty))
 * JAX-RS user-based API rate-limiting with JSR-375 ([Blog](https://rieckpil.de/howto-jax-rs-user-based-rate-limiting-with-jsr-375/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/jax-rs-api-rate-limiting-with-jsr-375))
 * Up- and download files with React and Spring Boot ([Blog](https://rieckpil.de/howto-up-and-download-files-with-react-and-spring-boot/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-uploading-and-downloading-files-with-react))
-* Generate PDFs from Word templates with Docx4j and Java EE 8([Blog](https://rieckpil.de/howto-generate-pdfs-from-word-templates-with-docx4j-and-java-ee-8/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-uploading-and-downloading-files-with-react))
+* Generate PDFs from Word templates with Docx4j and Java EE 8([Blog](https://rieckpil.de/howto-generate-pdfs-from-word-templates-with-docx4j-and-java-ee-8/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/generate-pdfs-from-word-templates-java-ee-8))
 ## WHATIS?:
 
 * JavaServer Faces. An introduction to JSF 2.3 ([Blog](https://rieckpil.de/whatis-java-server-faces-an-introduction-to-jsf-2-3/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/hello-world-jsf-2.3))
