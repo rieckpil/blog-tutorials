@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.rieckpil.blog</groupId>
-    <artifactId>pdf-word-generation</artifactId>
+    <artifactId>word-from-template-generation</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
@@ -24,10 +24,24 @@
             <version>8.0</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.docx4j</groupId>
+            <artifactId>docx4j</artifactId>
+            <version>6.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.googlecode.jaxb-namespaceprefixmapper-interfaces</groupId>
+            <artifactId>JAXBNamespacePrefixMapper</artifactId>
+            <version>2.2.4</version>
+            <scope>runtime</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
-        <finalName>pdf-word-generation</finalName>
+        <finalName>ROOT</finalName>
     </build>
 
 </project>
