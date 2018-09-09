@@ -1,4 +1,4 @@
-# Codebase for the blog post [#HOWTO: Generate PDFs from Word templates with Docx4j and Java EE 8](https://rieckpil.de/howto-generate-pdfs-from-word-templates-with-docx4j-and-java-ee-8/)
+# Codebase for the blog post [#HOWTO: Generate documents from Word templates with Docx4j on Wildfly 14](https://rieckpil.de/howto-generate-documents-from-word-templates-with-docx4j-on-wildfly-14/)
 
 Steps to run this project:
 
