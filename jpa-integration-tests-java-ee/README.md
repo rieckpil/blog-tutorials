@@ -1,4 +1,4 @@
-# Codebase for the blog post []()
+# Codebase for the blog post [#HOWTO: JPA integrations tests with Java EE](https://rieckpil.de/howto-jpa-integrations-tests-with-java-ee/)
 
 Steps to run this project:
 
