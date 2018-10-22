@@ -6,6 +6,9 @@ import org.junit.Test;
 import java.time.LocalDate;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 public class CustomerIntegrationTest {
 
     @Rule
@@ -14,13 +17,16 @@ public class CustomerIntegrationTest {
     @Test
     public void testSavingNewCustomer() {
         this.provider.begin();
-        Customer sampleCustomer = new Customer("John", "Duke", LocalDate.of(2000, 12, 12));
-        this.provider.em().persist(sampleCustomer);
+        this.provider.em().persist(new Customer("John", "Duke", LocalDate.of(2000, 12, 12)));
+        this.provider.em().persist(new Customer("Foo", "Bar", LocalDate.of(2000, 12, 12)));
+        this.provider.em().persist(new Customer("Paul", "One", LocalDate.of(2000, 12, 12)));
 
         List<Customer> resultList = this.provider.em().createQuery("SELECT c FROM Customer c", Customer.class).getResultList();
 
-        for (Customer c : resultList) {
-            System.out.println("c = " + c);
+        assertEquals(3, resultList.size());
+
+        for (Customer resultCustomer : resultList) {
+            assertNotNull(resultCustomer.getId());
         }
 
         this.provider.commit();

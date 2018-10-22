@@ -7,7 +7,7 @@
         <class>sample.Customer</class>
         <properties>
             <property name="javax.persistence.jdbc.url"
-                      value="jdbc:h2:mem:test:sample;DB_CLOSE_ON_EXIT=FALSE;MODE=PostgreSQL;" />
+                      value="jdbc:h2:mem:test:sample;DB_CLOSE_ON_EXIT=FALSE;" />
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create" />
             <property name="eclipselink.logging.level" value="FINE"/>
