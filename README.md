@@ -14,6 +14,8 @@
 * JAX-RS user-based API rate-limiting with JSR-375 ([Blog](https://rieckpil.de/howto-jax-rs-user-based-rate-limiting-with-jsr-375/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/jax-rs-api-rate-limiting-with-jsr-375))
 * Up- and download files with React and Spring Boot ([Blog](https://rieckpil.de/howto-up-and-download-files-with-react-and-spring-boot/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-uploading-and-downloading-files-with-react))
 * Generate documents from Word templates with Docx4j on Wildfly 14([Blog](https://rieckpil.de/howto-generate-documents-from-word-templates-with-docx4j-on-wildfly-14/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/generate-documents-from-word-templates-with-docx4j-on-wildfly14))
+* Write JPA integration tests with Java EE([Blog](https://rieckpil.de/howto-jpa-integration-tests-with-java-ee/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/jpa-integration-tests-java-ee))
+
 ## WHATIS?:
 
 * JavaServer Faces. An introduction to JSF 2.3 ([Blog](https://rieckpil.de/whatis-java-server-faces-an-introduction-to-jsf-2-3/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/hello-world-jsf-2.3))
