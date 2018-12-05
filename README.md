@@ -20,3 +20,7 @@
 ## WHATIS?:
 
 * JavaServer Faces. An introduction to JSF 2.3 ([Blog](https://rieckpil.de/whatis-java-server-faces-an-introduction-to-jsf-2-3/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/hello-world-jsf-2.3))
+
+## REVIEW:
+
+* What’s new in Spring Boot 2.1 ([Blog](https://rieckpil.de/review-whats-new-in-spring-boot-2-1/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/whats-new-in-spring-boot-2.1))
