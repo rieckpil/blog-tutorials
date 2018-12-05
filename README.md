@@ -15,6 +15,7 @@
 * Up- and download files with React and Spring Boot ([Blog](https://rieckpil.de/howto-up-and-download-files-with-react-and-spring-boot/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-uploading-and-downloading-files-with-react))
 * Generate documents from Word templates with Docx4j on Wildfly 14([Blog](https://rieckpil.de/howto-generate-documents-from-word-templates-with-docx4j-on-wildfly-14/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/generate-documents-from-word-templates-with-docx4j-on-wildfly14))
 * Write JPA integration tests with Java EE([Blog](https://rieckpil.de/howto-jpa-integration-tests-with-java-ee/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/jpa-integration-tests-java-ee))
+* Dynamic SQL Querying & Pagination with Querydsl and Spring Data JPA([Blog](https://rieckpil.de/howto-dynamic-sql-querying-pagination-with-querydsl-and-spring-data-jpa), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/dynamic-sql-querying-with-pagination))
 
 ## WHATIS?:
 
