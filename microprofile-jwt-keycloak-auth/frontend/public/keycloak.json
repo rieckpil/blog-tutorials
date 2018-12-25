@@ -1,0 +1,8 @@
+{
+    "realm": "MicroProfile",
+    "auth-server-url": "http://localhost:8888/auth",
+    "ssl-required": "external",
+    "resource": "react-webapp",
+    "public-client": true,
+    "confidential-port": 0
+  }
