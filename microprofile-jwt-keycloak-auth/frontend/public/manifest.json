@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "JWT with Keycloak",
+  "name": "MicroProfile JWT with Keycloak",
   "icons": [
     {
       "src": "favicon.ico",
