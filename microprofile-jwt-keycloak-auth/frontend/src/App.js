@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Button, Container, Header, Icon, Message, Grid } from 'semantic-ui-react';
 import Keycloak from 'keycloak-js';
 
-class App extends Component {
+class App extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = { keycloak: null, authenticated: false };
   }
 
-  login = () => {
+  componentDidMount = () => {
     const keycloak = Keycloak({
       realm: "MicroProfile",
       url: "http://localhost:8888/auth",
@@ -21,12 +21,6 @@ class App extends Component {
     }).error(err => {
       console.log(err);
     });
-  }
-
-  logout = () => {
-    if (this.state.authenticated) {
-      this.state.keycloak.logout();
-    }
   }
 
   decodeJWT = (token) => {
@@ -43,7 +37,7 @@ class App extends Component {
         <Header as='h2' icon textAlign='center'>
           <Icon name='user secret' />
           MicroProfile JWT with Keycloak
-         <Header.Subheader>Simple protoype with React + Keycloak and MicroProfile/Jakarta EE</Header.Subheader>
+         <Header.Subheader>Simple protoype with React, Keycloak and MicroProfile/Jakarta EE</Header.Subheader>
         </Header>
         <Grid centered columns={2}>
           <Grid.Column>
@@ -58,15 +52,8 @@ class App extends Component {
                 negative
                 icon='times'
                 header='You are currently not logged in'
-                content='Use the login button to authenticate with Keycloak.'
+                content='Wait until you get redirected to Keycloak.'
               />}
-          </Grid.Column>
-        </Grid>
-
-        <Grid centered columns={2}>
-          <Grid.Column textAlign='center'>
-            <Button onClick={this.login} positive disabled={this.state.authenticated}>Login</Button>
-            <Button onClick={this.logout} negative disabled={!this.state.authenticated}>Logout</Button>
           </Grid.Column>
         </Grid>
 
