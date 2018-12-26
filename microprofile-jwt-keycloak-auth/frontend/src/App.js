@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Container, Header, Icon, Message, Grid } from 'semantic-ui-react';
 import Keycloak from 'keycloak-js';
+import axios from 'axios';
 
 class App extends React.Component {
 
@@ -10,11 +11,7 @@ class App extends React.Component {
   }
 
   componentDidMount = () => {
-    const keycloak = Keycloak({
-      realm: "MicroProfile",
-      url: "http://localhost:8181/auth",
-      clientId: "react-webapp"
-    });
+    const keycloak = Keycloak("/keycloak.json");
 
     keycloak.init({ onLoad: 'login-required' }).success(authenticated => {
       this.setState({ keycloak: keycloak, authenticated: authenticated });
@@ -27,6 +24,11 @@ class App extends React.Component {
     var base64Url = token.split('.')[1];
     var base64 = base64Url.replace('-', '+').replace('_', '/');
     return JSON.stringify(JSON.parse(window.atob(base64)), null, 4);
+  }
+
+  fetchBackendData = () => {
+    axios.get('http://localhost:8080/microprofile-jwt-keycloak-auth/resources/secure', { headers: {'Authorization':' Bearer ' + this.state.keycloak.token}})
+    .then(res => console.log(res));
   }
 
   render() {
@@ -62,7 +64,7 @@ class App extends React.Component {
             <Header as='h2'>
               Access MicroProfile REST API
             </Header>
-            <Button onClick={this.accessRestApi}>Access REST</Button>
+            <Button onClick={this.fetchBackendData} disabled={!this.state.authenticated}>Access REST</Button>
 
           </Grid.Column>
         </Grid>

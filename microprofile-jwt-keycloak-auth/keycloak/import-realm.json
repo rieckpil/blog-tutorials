@@ -352,17 +352,17 @@
       {
         "id": "b0616ed7-baa4-4365-8d87-a81623de48d0",
         "clientId": "react-webapp",
-        "rootUrl": "localhost:3000",
-        "adminUrl": "localhost:3000",
+        "rootUrl": "http://localhost:3000",
+        "adminUrl": "http://localhost:3000",
         "surrogateAuthRequired": false,
         "enabled": true,
         "clientAuthenticatorType": "client-secret",
         "secret": "**********",
         "redirectUris": [
-          "*"
+          "http://localhost:3000/*"
         ],
         "webOrigins": [
-          "*"
+          "http://localhost:3000"
         ],
         "notBefore": 0,
         "bearerOnly": false,
