@@ -23,14 +23,11 @@ public class VerySecureResource {
 	@GET
 	public Response message() {
 
-		for (String claimName : callerPrincipal.getClaimNames()) {
-			System.out.println(claimName + "=" + callerPrincipal.getClaim(claimName));
-		}
-
 		System.out.println(callerPrincipal.getIssuer());
 		System.out.println(callerPrincipal.getRawToken());
+		System.out.println(callerPrincipal.getTokenID());
 
-		return Response.ok(callerPrincipal.getName() + "is allowed to read message: " + message).build();
+		return Response.ok(callerPrincipal.getName() + " is allowed to read message: " + message).build();
 	}
 
 }
