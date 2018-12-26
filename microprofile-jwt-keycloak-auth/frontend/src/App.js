@@ -12,7 +12,7 @@ class App extends React.Component {
   componentDidMount = () => {
     const keycloak = Keycloak({
       realm: "MicroProfile",
-      url: "http://localhost:8888/auth",
+      url: "http://localhost:8181/auth",
       clientId: "react-webapp"
     });
 
