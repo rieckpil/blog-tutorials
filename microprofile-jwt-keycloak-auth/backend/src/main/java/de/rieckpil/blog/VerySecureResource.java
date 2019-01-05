@@ -1,5 +1,6 @@
 package de.rieckpil.blog;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -21,6 +22,7 @@ public class VerySecureResource {
 	private JsonWebToken callerPrincipal;
 
 	@GET
+	@RolesAllowed("/USER")
 	public Response message() {
 
 		System.out.println(callerPrincipal.getIssuer());
