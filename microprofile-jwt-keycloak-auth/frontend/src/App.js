@@ -7,7 +7,7 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { keycloak: null, authenticated: false };
+    this.state = { keycloak: null, authenticated: false, backendData: null };
   }
 
   componentDidMount = () => {
@@ -27,8 +27,8 @@ class App extends React.Component {
   }
 
   fetchBackendData = () => {
-    axios.get('http://localhost:8080/microprofile-jwt-keycloak-auth/resources/secure', { headers: {'Authorization':' Bearer ' + this.state.keycloak.token}})
-    .then(res => console.log(res));
+    axios.get('http://localhost:8080/microprofile-jwt-keycloak-auth/resources/secure', { headers: { 'Authorization': ' Bearer ' + this.state.keycloak.token } })
+      .then(res => this.setState({ backendData: res.data }));
   }
 
   render() {
@@ -64,8 +64,10 @@ class App extends React.Component {
             <Header as='h2'>
               Access MicroProfile REST API
             </Header>
-            <Button onClick={this.fetchBackendData} disabled={!this.state.authenticated}>Access REST</Button>
-
+            <Button onClick={this.fetchBackendData} disabled={!this.state.authenticated}>Access REST API</Button>
+            <Message>
+             <pre>{this.state.backendData}</pre>
+            </Message>
           </Grid.Column>
         </Grid>
 
