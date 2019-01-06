@@ -1,4 +1,4 @@
-FROM jboss/keycloak:4.8.0.Final
+FROM jboss/keycloak:4.8.2.Final
 
 COPY import-realm.json /opt/jboss/keycloak/
 
