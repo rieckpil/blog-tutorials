@@ -16,7 +16,7 @@ class App extends React.Component {
     keycloak.init({ onLoad: 'login-required' }).success(authenticated => {
       this.setState({ keycloak: keycloak, authenticated: authenticated });
     }).error(err => {
-      console.log(err);
+      alert(err);
     });
   }
 
