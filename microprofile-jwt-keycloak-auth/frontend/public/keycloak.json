@@ -4,7 +4,5 @@
     "ssl-required": "external",
     "resource": "react-webapp",
     "public-client": true,
-    "verify-token-audience": true,
-    "use-resource-role-mappings": true,
     "confidential-port": 0
-}
+  }
