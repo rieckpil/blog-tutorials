@@ -18,6 +18,8 @@
 * Write JPA integration tests with Java EE ([Blog](https://rieckpil.de/howto-jpa-integration-tests-with-java-ee/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/jpa-integration-tests-java-ee))
 * Dynamic SQL Querying & Pagination with Querydsl and Spring Data JPA
 ([Blog](https://rieckpil.de/howto-dynamic-sql-querying-pagination-with-querydsl-and-spring-data-jpa), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/dynamic-sql-querying-with-pagination))
+* MicroProfile JWT Authentication with Keycloak and React
+([Blog](https://rieckpil.de/howto-microprofile-jwt-authentication-with-keycloak-and-react/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/microprofile-jwt-keycloak-auth))
 
 ## WHATIS?:
 
