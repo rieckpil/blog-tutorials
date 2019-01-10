@@ -22,7 +22,7 @@ public class VerySecureResource {
 	private JsonWebToken callerPrincipal;
 
 	@GET
-	@RolesAllowed("/USER")
+	@RolesAllowed("USER")
 	public Response message() {
 
 		System.out.println(callerPrincipal.getIssuer());
@@ -31,5 +31,4 @@ public class VerySecureResource {
 
 		return Response.ok(callerPrincipal.getName() + " is allowed to read message: " + message).build();
 	}
-
 }

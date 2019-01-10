@@ -8,7 +8,7 @@ import org.eclipse.microprofile.auth.LoginConfig;
 
 @LoginConfig(authMethod = "MP-JWT")
 @ApplicationPath("resources")
-@DeclareRoles({"/USER"})
+@DeclareRoles({"USER", "ADMIN"})
 public class JAXRSConfiguration extends Application {
 
 }

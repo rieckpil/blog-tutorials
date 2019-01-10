@@ -27,7 +27,7 @@ class App extends React.Component {
   }
 
   fetchBackendData = () => {
-    axios.get('http://localhost:8080/microprofile-jwt-keycloak-auth/resources/secure', { headers: { 'Authorization': ' Bearer ' + this.state.keycloak.token } })
+    axios.get('http://localhost:8080/resources/secure', { headers: { 'Authorization': ' Bearer ' + this.state.keycloak.token } })
       .then(res => this.setState({ backendData: res.data }));
   }
 
