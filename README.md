@@ -20,6 +20,8 @@
 ([Blog](https://rieckpil.de/howto-dynamic-sql-querying-pagination-with-querydsl-and-spring-data-jpa), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/dynamic-sql-querying-with-pagination))
 * MicroProfile JWT Authentication with Keycloak and React
 ([Blog](https://rieckpil.de/howto-microprofile-jwt-authentication-with-keycloak-and-react/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/microprofile-jwt-keycloak-auth))
+* Simple database documentation with SchemaSpy
+([Blog](https://rieckpil.de/howto-simple-database-documentation-with-schemaspy/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/simple-database-documentation-with-schema-spy))
 
 ## WHATIS?:
 
