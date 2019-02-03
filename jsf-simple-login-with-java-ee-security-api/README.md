@@ -11,3 +11,15 @@ Steps to run this project:
 7. Wait until the Payara server launched successfully and visit `http://localhost:8080/jsf-simple-login`
 8. Try to authenticate with on of the two users (mail: `admin@mail.com` password: `ADMIN1234` or mail: `user@mail.com` 
 password: `USER1234`)
+
+## Hint for running this example on WildFly 14+
+
+You need the following `jboss-web.xml` in `src/main/webapp/WEB-INF`
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-web version="8.0" xmlns="http://www.jboss.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jboss.com/xml/ns/javaee http://www.jboss.org/schema/jbossas/jboss-web_8_0.xsd">
+  <context-root/>
+  <security-domain>jaspitest</security-domain>
+</jboss-web>
+```
