@@ -3,6 +3,7 @@ package de.rieckpil.blog;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.StoredProcedureQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -30,8 +31,10 @@ public class Postgres11StoredProceduresHibernateApplication implements CommandLi
 			System.out.println(employee);
 		}
 
-		this.em.createNamedStoredProcedureQuery("raiseWage").setParameter("operating_years", 20)
-				.setParameter("raise", 1000).execute();
+		StoredProcedureQuery storedProcedureQuery = this.em.createNamedStoredProcedureQuery("raiseWage");
+		storedProcedureQuery.setParameter("operating_years", 20);
+		storedProcedureQuery.setParameter("raise", 1000);
+		storedProcedureQuery.execute();
 
 		employees = this.em.createQuery("SELECT e FROM Employee e", Employee.class).getResultList();
 
