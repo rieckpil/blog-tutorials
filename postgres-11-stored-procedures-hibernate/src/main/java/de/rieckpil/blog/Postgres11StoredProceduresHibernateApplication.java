@@ -1,9 +1,10 @@
 package de.rieckpil.blog;
 
+import java.sql.CallableStatement;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.StoredProcedureQuery;
+import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -17,6 +18,9 @@ public class Postgres11StoredProceduresHibernateApplication implements CommandLi
 	@Autowired
 	private EntityManager em;
 
+	@Autowired
+	private DataSource dataSource;
+
 	public static void main(String[] args) {
 		SpringApplication.run(Postgres11StoredProceduresHibernateApplication.class, args);
 	}
@@ -25,18 +29,18 @@ public class Postgres11StoredProceduresHibernateApplication implements CommandLi
 	@Transactional
 	public void run(String... args) throws Exception {
 
+//		StoredProcedureQuery storedProcedureQuery = this.em.createNamedStoredProcedureQuery("raiseWage");
+//		storedProcedureQuery.setParameter("operating_years", 20);
+//		storedProcedureQuery.setParameter("raise", 1000);
+//		storedProcedureQuery.execute();
+
+		CallableStatement prepareCall = dataSource.getConnection()
+				.prepareCall("{call p_raise_wage_employee_older_than(?,?)}");
+		prepareCall.setInt(1, 20);
+		prepareCall.setInt(2, 100);
+		prepareCall.executeUpdate();
+
 		List<Employee> employees = this.em.createQuery("SELECT e FROM Employee e", Employee.class).getResultList();
-
-		for (Employee employee : employees) {
-			System.out.println(employee);
-		}
-
-		StoredProcedureQuery storedProcedureQuery = this.em.createNamedStoredProcedureQuery("raiseWage");
-		storedProcedureQuery.setParameter("operating_years", 20);
-		storedProcedureQuery.setParameter("raise", 1000);
-		storedProcedureQuery.execute();
-
-		employees = this.em.createQuery("SELECT e FROM Employee e", Employee.class).getResultList();
 
 		for (Employee employee : employees) {
 			System.out.println(employee);
