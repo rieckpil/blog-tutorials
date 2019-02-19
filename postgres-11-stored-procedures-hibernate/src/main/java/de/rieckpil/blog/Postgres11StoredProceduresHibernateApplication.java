@@ -1,6 +1,7 @@
 package de.rieckpil.blog;
 
 import java.sql.CallableStatement;
+import java.sql.Statement;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -33,6 +34,9 @@ public class Postgres11StoredProceduresHibernateApplication implements CommandLi
 //		storedProcedureQuery.setParameter("operating_years", 20);
 //		storedProcedureQuery.setParameter("raise", 1000);
 //		storedProcedureQuery.execute();
+
+		Statement st = dataSource.getConnection().createStatement();
+		st.executeQuery("CALL p_raise_wage_employee_older_than(?,?)");
 
 		CallableStatement prepareCall = dataSource.getConnection()
 				.prepareCall("{call p_raise_wage_employee_older_than(?,?)}");
