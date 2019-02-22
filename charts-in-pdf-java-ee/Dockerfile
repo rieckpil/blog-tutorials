@@ -1,2 +1,3 @@
-FROM payara/server-full:latest
-COPY target/charts-in-pdf-java-ee.war $DEPLOY_DIR
+FROM open-liberty:kernel
+COPY server.xml /config/
+COPY target/charts-in-pdf-java-ee.war /config/dropins/
