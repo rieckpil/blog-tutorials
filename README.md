@@ -26,6 +26,8 @@
 ([Blog](https://rieckpil.de/howto-pdf-preview-with-react/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/pdf-preview-react))
 * Simple load-testing with Apache Benchmark
 ([Blog](https://rieckpil.de/howto-simple-load-testing-with-apache-benchmark/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/load-testing-your-application))
+* Generate PDFs (Apache PDFBox) including Charts (XChart) with Java EE
+([Blog](https://rieckpil.de/howto-generate-pdfs-apache-pdfbox-including-charts-xchart-with-java-ee/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/charts-in-pdf-java-ee))
 
 ## WHATIS?:
 
