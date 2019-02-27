@@ -1,0 +1,4 @@
+/Users/user/payara/glassfish/domains/domain1/autodeploy 
+/Users/user/openliberty/usr/servers/defaultServer/dropins
+/Users/user/tomee/webapps
+/Users/user/wildfly/standalone/deployments
