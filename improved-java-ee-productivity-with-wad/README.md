@@ -2,9 +2,11 @@
 
 Steps to run this project:
 
-1. Make sure you have a Java EE 8 compliant application server installed on your machine
-2. Start the application server of your choice
-3. Create or copy the `.wadrc` to your home directory (e.g. ``/Users/duke/` for Mac or `C:/Users/duke` on Windows or `/home/duke/` for Linux) and specify your deployment folders separated by a column in this file like:
+1. Clone this Git repository
+2. Navigate to the folder `improved-java-ee-productivity-with-wad`
+3. Make sure you have a Java EE 8 compliant application server installed on your machine
+4. Start the application server of your choice
+5. Create or copy the `.wadrc` to your home directory (e.g. ``/Users/duke/` for Mac or `C:/Users/duke` on Windows or `/home/duke/` for Linux) and specify your deployment folders separated by a column in this file like:
 
 ```
 C:\Development\Server\Payara\payara-5.183\glassfish\domains\domain1\autodeploy
@@ -13,7 +15,7 @@ C:\Development\Server\Wildfly\wildfly-16.0.0\standalone\deployments
 C:\Development\Server\TomEE\apache-tomee-plume-8.0.0-M2\webapps
 ```
 
-4. Run `java -jar wad.jar` and wait until the `.war` file is built and copied to your folders:
+6. Run `java -jar wad.jar` and wait until the `.war` file is built and copied to your folders:
 
 ```
 $ java -jar wad.jar
@@ -37,4 +39,4 @@ copied in 9 ms
 
 ```
 
-5. Make changes to the Java EE project and see how I get immediately built and deployed
+7. Make changes to the Java EE project and see how I get immediately built and deployed
