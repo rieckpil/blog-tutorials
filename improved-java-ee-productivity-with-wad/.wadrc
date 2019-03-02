@@ -1,4 +1,4 @@
-/Users/user/payara/glassfish/domains/domain1/autodeploy 
-/Users/user/openliberty/usr/servers/defaultServer/dropins
-/Users/user/tomee/webapps
-/Users/user/wildfly/standalone/deployments
+C:\Development\Server\Payara\payara-5.183\glassfish\domains\domain1\autodeploy
+C:\Development\Server\OpenLiberty\openliberty-19.0.0.1\usr\servers\defaultServer\dropins
+C:\Development\Server\Wildfly\wildfly-16.0.0\standalone\deployments
+C:\Development\Server\TomEE\apache-tomee-plume-8.0.0-M2\webapps
