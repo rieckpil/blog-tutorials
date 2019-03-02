@@ -6,7 +6,7 @@ Steps to run this project:
 2. Navigate to the folder `improved-java-ee-productivity-with-wad`
 3. Make sure you have a Java EE 8 compliant application server installed on your machine
 4. Start the application server of your choice
-5. Create or copy the `.wadrc` to your home directory (e.g. ``/Users/duke/` for Mac or `C:/Users/duke` on Windows or `/home/duke/` for Linux) and specify your deployment folders separated by a column in this file like:
+5. Create or copy the `.wadrc` to your home directory (e.g. `/Users/duke/` for Mac or `C:/Users/duke` on Windows or `/home/duke/` for Linux) and specify your deployment folders separated by a column in this file like:
 
 ```
 C:\Development\Server\Payara\payara-5.183\glassfish\domains\domain1\autodeploy
