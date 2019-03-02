@@ -39,4 +39,4 @@ copied in 9 ms
 
 ```
 
-7. Make changes to the Java EE project and see how I get immediately built and deployed
+7. Make changes to the Java EE project and see how it immediately gets built and deployed
