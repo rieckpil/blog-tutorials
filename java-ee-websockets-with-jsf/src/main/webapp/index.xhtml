@@ -1,15 +1,34 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui" 
-	xmlns:o="http://omnifaces.org/ui"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions">
+<f:view contentType="text/html">
+	<h:head>
+		<title>Java EE 8 Websockets with JSF</title>
+		<script type="text/javascript">
+			 function socketListener(message, channel, event) {                      
+			  	console.log("Msg incoming");
+			 }
+		</script>
+	</h:head>
 
-<h:head>
-	<title>Hello World JSF 2.3</title>
-</h:head>
-
-<h:body>
-	<h3 style="text-align: center">#{sampleBean.message}</h3>
-</h:body>
+	<h:body>
+		<p:outputPanel>
+			<h3 style="text-align: center">Stock Monitor</h3>
+			<div class="ui-g">
+				<div class="ui-g-2"></div>
+				<div class="ui-g-8">
+					<h:form>
+						<h:commandButton value="Stocks"
+							action="#{stockMonitorBean.getStocks()}">
+							<f:ajax />
+						</h:commandButton>
+					</h:form>
+					<f:websocket channel="stocksChannel" onmessage="socketListener" />
+				</div>
+			</div>
+		</p:outputPanel>
+	</h:body>
+</f:view>
 </html>
