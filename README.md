@@ -28,7 +28,7 @@
 ([Blog](https://rieckpil.de/howto-simple-load-testing-with-apache-benchmark/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/load-testing-your-application))
 * Generate PDFs (Apache PDFBox) including Charts (XChart) with Java EE
 ([Blog](https://rieckpil.de/howto-generate-pdfs-apache-pdfbox-including-charts-xchart-with-java-ee/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/charts-in-pdf-java-ee))
-* #HOWTO: Writing PostgreSQL functions with Java using PL/Java
+* Writing PostgreSQL functions with Java using PL/Java
 ([Blog](https://rieckpil.de/howto-writing-postgresql-functions-with-java-using-pl-java/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/running-java-within-postgres))
 
 ## WHATIS?:
