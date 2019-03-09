@@ -3,5 +3,5 @@ CREATE EXTENSION pljava;
 GRANT USAGE ON LANGUAGE java TO postgres;
 ALTER DATABASE postgres SET pljava.libjvm_location FROM CURRENT;
 
-SELECT sqlj.install_jar( 'file:///tmp/simple-java-function/target/simple-java-function.jar','PGRIECKPIL', false );
-SELECT sqlj.set_classpath( 'public', 'PGRIECKPIL' );
+SELECT sqlj.install_jar( 'file:///tmp/simple-java-function/target/simple-java-function.jar','jfunctions', true );
+SELECT sqlj.set_classpath( 'public', 'jfunctions' );

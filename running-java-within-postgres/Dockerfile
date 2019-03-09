@@ -27,6 +27,7 @@ RUN cd /tmp && \
     java -jar pljava-packaging/target/pljava-pg9.6-amd64-Linux-gpp.jar
 
 COPY INIT_JAVA_EXTENSION.sql /docker-entrypoint-initdb.d
+COPY INIT_SAMPLE_DATA.sql /docker-entrypoint-initdb.d
 
 COPY simple-java-function /tmp/simple-java-function
 

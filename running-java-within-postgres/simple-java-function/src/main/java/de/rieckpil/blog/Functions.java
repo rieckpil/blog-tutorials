@@ -1,20 +1,30 @@
 package de.rieckpil.blog;
 
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Logger;
+
+import org.postgresql.pljava.annotation.Function;
 
 public class Functions {
 
-	public static Iterator<String> splitTagString(String tagString, String delimiter) {
-		Logger logger = Logger.getAnonymousLogger();
+	@Function
+	public static String greet(String personName) {
+		return "Hello World, " + personName + " !";
+	}
+
+	@Function(name = "split_string_by_delimiter", comment = "Splitting a given string by a delimiter. If no delimiter is specified, '>' is used as the default delimiter")
+	public static Iterator<String> splitStringByDelimiter(String tagString, String delimiter) {
 
 		if (delimiter == null || delimiter.isEmpty()) {
 			delimiter = ">";
 		}
-
-		logger.info("Splitting tag string [" + tagString + "] with [" + delimiter + "]");
 
 		List<String> tags = new ArrayList<String>();
 
@@ -23,5 +33,31 @@ public class Functions {
 		}
 
 		return tags.iterator();
+	}
+
+	@Function(name = "get_oldest_person", comment = "Get the oldest person in database")
+	public static String getOldestPerson() throws SQLException {
+
+		ResultSet resultSet = DriverManager //
+				.getConnection("jdbc:default:connection") //
+				.createStatement() //
+				.executeQuery("SELECT * FROM persons");
+
+		List<Person> personList = new ArrayList<>();
+
+		while (resultSet.next()) {
+			Person person = new Person();
+			person.setId(resultSet.getLong("id"));
+			person.setFirstName(resultSet.getString("first_name"));
+			person.setLastName(resultSet.getString("last_name"));
+			person.setDayOfBirth(resultSet.getDate("day_of_birth").toLocalDate());
+			personList.add(person);
+		}
+
+		Collections.sort(personList);
+		Person oldestPerson = personList.get(0);
+
+		return String.format("The oldest person is %s, %s with %s years!", oldestPerson.getFirstName(),
+				oldestPerson.getLastName(), Period.between(oldestPerson.getDayOfBirth(), LocalDate.now()).getYears());
 	}
 }

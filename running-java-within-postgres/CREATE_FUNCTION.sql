@@ -1,5 +1,3 @@
-CREATE OR REPLACE FUNCTION f_j_split_tag_to_string( text, text )
-RETURNS SETOF text 
-AS 'de.rieckpil.blog.Functions.splitTagString' LANGUAGE java;
-
-SELECT f_j_split_tag_to_string( 'holidays - 2018 - sicily - tom > 1', '-' );
+SELECT greet('Philip');
+SELECT split_string_by_delimiter('holidays - 2018 - sicily - tom > 1', '-' );
+\df

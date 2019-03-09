@@ -16,7 +16,41 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 
+	<dependencies>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>pljava-api</artifactId>
+			<version>1.5.2</version>
+		</dependency>
+	</dependencies>
+
 	<build>
 		<finalName>simple-java-function</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>
+								true
+							</addDefaultImplementationEntries>
+						</manifest>
+						<manifestSections>
+							<manifestSection>
+								<name>pljava.ddr</name>
+								<manifestEntries>
+									<SQLJDeploymentDescriptor>
+										true
+									</SQLJDeploymentDescriptor>
+								</manifestEntries>
+							</manifestSection>
+						</manifestSections>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 </project>
