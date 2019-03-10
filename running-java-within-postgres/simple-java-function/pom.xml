@@ -17,6 +17,11 @@
 	</properties>
 
 	<dependencies>
+		<!-- HINT: This package is not available at Maven Central! You'll get it 
+			while building PL/Java installed in your local .m2 folder. If you just need 
+			this .jar on your development machine and don't want to fully build PL/Java, 
+			just navigate in the pljava-api folder of the cloned repository and run mvn 
+			install -->
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>pljava-api</artifactId>

@@ -26,4 +26,4 @@ SELECT get_oldest_person();
 ```
 
 
-**PLEASE NOTE**: This is just a quick example to show you what's possible with `PL/Java`. For a use in production make sure you read the [documentation](https://tada.github.io/pljava/) for potential security adjustments.
+**PLEASE NOTE**: This is just a quick example to show you what's possible with `PL/Java`. For use in production make sure you read the [documentation](https://tada.github.io/pljava/) for potential security adjustments.
