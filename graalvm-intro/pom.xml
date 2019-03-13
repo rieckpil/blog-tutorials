@@ -14,7 +14,16 @@
 		<failOnMissingWebXml>false</failOnMissingWebXml>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<graalvm.version>1.0.0-rc13</graalvm.version>
 	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.graalvm.sdk</groupId>
+			<artifactId>graal-sdk</artifactId>
+			<version>${graalvm.version}</version>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<finalName>graalvm-intro</finalName>
