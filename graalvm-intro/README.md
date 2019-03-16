@@ -1,4 +1,4 @@
-# Codebase for the blog post [#HOWTO: GraalVM](https://rieckpil.de/whatis-graalvm/)
+# Codebase for the blog post [#WHATIS? GraalVM](https://rieckpil.de/whatis-graalvm/)
 
 Steps to run this project:
 
