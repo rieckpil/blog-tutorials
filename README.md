@@ -34,6 +34,7 @@
 ## WHATIS?:
 
 * JavaServer Faces. An introduction to JSF 2.3 ([Blog](https://rieckpil.de/whatis-java-server-faces-an-introduction-to-jsf-2-3/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/hello-world-jsf-2.3))
+* GraalVM ([Blog](https://rieckpil.de/whatis-graalvm/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/graalvm-intro))
 
 ## REVIEW:
 
