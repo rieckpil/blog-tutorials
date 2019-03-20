@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="new server">
+
+	<!-- Enable features -->
+	<featureManager>
+		<feature>javaee-8.0</feature>
+		<feature>microProfile-2.0</feature>
+		<feature>localConnector-1.0</feature>
+	</featureManager>
+
+	<!-- To access this server from a remote client add a host attribute to 
+		the following element, e.g. host="*" -->
+	<httpEndpoint id="defaultHttpEndpoint" httpPort="9080"
+		httpsPort="9443" />
+
+	<!-- Automatically expand WAR files and EAR files -->
+	<applicationManager autoExpand="true" />
+
+	<dataSource id="DefaultDataSource">
+		<jdbcDriver libraryRef="DERBY_JDBC_LIB" />
+		<properties.derby.embedded
+			databaseName="test" createDatabase="create" />
+	</dataSource>
+
+	<dataSource id="postgres" jndiName="jdbc/postgres"
+		type="javax.sql.DataSource">
+		<jdbcDriver
+			javax.sql.DataSource="org.postgresql.ds.PGPoolingDataSource"
+			libraryRef="POSTGRES_JDBC_LIB" />
+		<properties databaseName="postgres" serverName="localhost"
+			password="postgres" portNumber="5432" user="postgres" />
+	</dataSource>
+
+	<library id="DERBY_JDBC_LIB">
+		<file
+			name="C:\Users\Philip\Downloads\db-derby-10.14.2.0-bin\db-derby-10.14.2.0-bin\lib\derby.jar" />
+	</library>
+
+	<library id="POSTGRES_JDBC_LIB">
+		<file
+			name="C:\Users\Philip\.m2\repository\org\postgresql\postgresql\42.2.5\postgresql-42.2.5.jar" />
+	</library>
+</server>
