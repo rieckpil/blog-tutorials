@@ -25,6 +25,7 @@ public class SampleResource {
 	private EntityManager em;
 
 	@Resource(lookup = "jdbc/postgres")
+	// @Resource(lookup = "java:jboss/datasources/postgres") for WildFly
 	private DataSource dataSource;
 
 	@GET
