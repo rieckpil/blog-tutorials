@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import javax.annotation.Resource;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.sql.DataSource;
@@ -12,19 +11,16 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 
-import org.eclipse.microprofile.config.inject.ConfigProperty;
-
 @Path("sample")
 public class SampleResource {
 
-	@Inject
-	@ConfigProperty(name = "message")
-	private String message;
+	private String message = "Hello World!";
 
 	@PersistenceContext
 	private EntityManager em;
 
 	@Resource(lookup = "jdbc/postgres")
+	// @Resource(name = "jdbc/postgres") for Tomee
 	// @Resource(lookup = "java:jboss/datasources/postgres") for WildFly
 	private DataSource dataSource;
 
