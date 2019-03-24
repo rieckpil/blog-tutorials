@@ -40,3 +40,8 @@
 
 * What’s new in Spring Boot 2.1 ([Blog](https://rieckpil.de/review-whats-new-in-spring-boot-2-1/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/whats-new-in-spring-boot-2.1))
 * Improved Java/Jakarta EE productivity with Adam Bien’s WAD (Watch and Deploy) ([Blog](https://rieckpil.de/review-improved-java-jakarta-ee-productivity-with-adam-biens-wad-watch-and-deploy/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/improved-java-ee-productivity-with-wad))
+
+
+## OTHER:
+
+* Java/Jakarta EE application servers ([Blog](https://rieckpil.de/cheatsheet-java-jakarta-ee-application-servers/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/application-server-cheatsheet))
