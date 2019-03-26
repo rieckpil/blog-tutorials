@@ -44,4 +44,4 @@
 
 ## OTHER:
 
-* Java/Jakarta EE application servers ([Blog](https://rieckpil.de/cheatsheet-java-jakarta-ee-application-servers/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/application-server-cheatsheet))
+* #CHEATSHEET: Java/Jakarta EE application servers ([Blog](https://rieckpil.de/cheatsheet-java-jakarta-ee-application-servers/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/application-server-cheatsheet))
