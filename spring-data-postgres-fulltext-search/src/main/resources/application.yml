@@ -2,4 +2,4 @@ spring:
   datasource:
     username: postgres
     password: postgres
-    url: jdbc:postgresql://localhost:5432/postgres
+    url: jdbc:postgresql://localhost:5432/postgres  jpa:    hibernate:      ddl-auto: validate
