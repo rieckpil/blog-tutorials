@@ -4,4 +4,4 @@ spring:
     password: postgres
     url: jdbc:postgresql://localhost:5432/postgres  jpa:    hibernate:      ddl-auto: validate
     properties:      hibernate: 
-        dialect: de.rieckpil.blog.ExtendedPostgreSQLDialect
+        dialect: de.rieckpil.blog.ExtendedPostgreSQLDialect    show-sql: true

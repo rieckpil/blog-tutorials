@@ -26,16 +26,16 @@ public class PostgreSQLFTSFunction implements SQLFunction {
 		return false;
 	}
 
-	@SuppressWarnings("rawtypes")
 	@Override
 	public String render(Type type, List args, SessionFactoryImplementor factory) throws QueryException {
 
-		if (args == null || args.size() != 2) {
+		if (args == null || args.size() != 3) {
 			throw new IllegalArgumentException("The function must be passed 2 arguments");
 		}
 
-		String field = (String) args.get(0);
-		String searchString = (String) args.get(1);
-		return field + " @@ to_tsquery(" + searchString + ")";
+		String language = (String) args.get(0);
+		String field = (String) args.get(1);
+		String searchString = (String) args.get(2);
+		return field + " @@ to_tsquery('" + language + "', " + searchString + ")";
 	}
 }

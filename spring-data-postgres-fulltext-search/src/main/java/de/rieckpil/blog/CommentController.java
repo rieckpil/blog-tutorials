@@ -23,7 +23,7 @@ public class CommentController {
 	@GetMapping
 	public List<Comment> getCommentsContainingText(@RequestParam("q") String queryText) {
 
-		List<Comment> list = em.createQuery("SELECT c FROM Comment c where fts(c.commentText, :commentText) = true", Comment.class)
+		List<Comment> list = em.createQuery("SELECT c FROM Comment c where fts(english, c.commentText, :commentText) = true", Comment.class)
 				.setParameter("commentText", queryText).getResultList();
 
 		return list;
