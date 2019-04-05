@@ -1,0 +1,7 @@
+CREATE TABLE book (
+	id BIGSERIAL PRIMARY KEY,
+	name VARCHAR(255) NOT NULL,
+	publisher VARCHAR(255) NOT NULL,
+	pages INT4 NOT NULL,
+	published_at TIMESTAMP NOT NULL
+);
