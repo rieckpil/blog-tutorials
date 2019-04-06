@@ -38,5 +38,4 @@ public class V003__UPDATE_REVIEWS extends BaseJavaMigration {
 			}
 		}
 	}
-
 }
