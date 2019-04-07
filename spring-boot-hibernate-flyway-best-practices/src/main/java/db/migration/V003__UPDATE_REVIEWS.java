@@ -11,7 +11,7 @@ public class V003__UPDATE_REVIEWS extends BaseJavaMigration {
 
 	@Override
 	public Integer getChecksum() {
-		// implement this for use in production
+		// implement this if needed to detect changes
 		return super.getChecksum();
 	}
 
