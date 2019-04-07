@@ -30,7 +30,7 @@
 ([Blog](https://rieckpil.de/howto-generate-pdfs-apache-pdfbox-including-charts-xchart-with-java-ee/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/charts-in-pdf-java-ee))
 * Writing PostgreSQL functions with Java using PL/Java
 ([Blog](https://rieckpil.de/howto-writing-postgresql-functions-with-java-using-pl-java/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/running-java-within-postgres))
-* Best Practices Flyway and Hibernate with Spring Boot ([Blog](https://rieckpil.de/howto-best-practices-flyway-and-hibernate-with-spring-boot), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-hibernate-flyway-best-practices))
+* Best Practices Flyway and Hibernate with Spring Boot ([Blog](https://rieckpil.de/howto-best-practices-for-flyway-and-hibernate-with-spring-boot/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-hibernate-flyway-best-practices))
 
 ## WHATIS?:
 

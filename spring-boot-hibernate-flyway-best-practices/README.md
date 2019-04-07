@@ -1,4 +1,4 @@
-# Codebase for the blog post [#HOWTO: Best Practices Flyway and Hibernate with Spring Boot](https://rieckpil.de/howto-best-practices-flyway-and-hibernate-with-spring-boot)
+# Codebase for the blog post [#HOWTO: Best Practices Flyway and Hibernate with Spring Boot](https://rieckpil.de/howto-best-practices-for-flyway-and-hibernate-with-spring-boot/)
 
 Steps to run this project:
 
