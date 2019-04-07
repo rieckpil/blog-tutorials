@@ -7,7 +7,7 @@ import java.sql.Statement;
 import org.flywaydb.core.api.migration.BaseJavaMigration;
 import org.flywaydb.core.api.migration.Context;
 
-public class V003__UPDATE_REVIEWS extends BaseJavaMigration {
+public class V004__UPDATE_REVIEWS extends BaseJavaMigration {
 
 	@Override
 	public Integer getChecksum() {
