@@ -46,7 +46,7 @@ public class FileUploadResource {
 		FileUpload randomFile = em.find(FileUpload.class, randomPrimaryKey);
 
 		return Response.ok(randomFile.getData(), MediaType.APPLICATION_OCTET_STREAM)
-				.header("Content-Disposition", "attachment; filename=\"" + randomFile.getFileName() + "\"").build();
+				.header("Content-Disposition", "attachment; filename=" + randomFile.getFileName()).build();
 	}
 
 	@POST
