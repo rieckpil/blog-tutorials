@@ -33,8 +33,6 @@ public class FileUploadResource {
 		Long amountOfFiles = em.createQuery("SELECT COUNT(f) FROM FileUpload f", Long.class).getSingleResult();
 		Long randomPrimaryKey;
 
-		System.out.println(amountOfFiles);
-
 		if (amountOfFiles == null || amountOfFiles == 0) {
 			return Response.ok().build();
 		} else if (amountOfFiles == 1) {
