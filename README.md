@@ -31,6 +31,7 @@
 * Writing PostgreSQL functions with Java using PL/Java
 ([Blog](https://rieckpil.de/howto-writing-postgresql-functions-with-java-using-pl-java/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/running-java-within-postgres))
 * Best Practices Flyway and Hibernate with Spring Boot ([Blog](https://rieckpil.de/howto-best-practices-for-flyway-and-hibernate-with-spring-boot/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-hibernate-flyway-best-practices))
+* Up- and downloading files with Java EE and Web Components ([Blog](https://rieckpil.de/howto-up-and-download-files-with-java-ee-and-web-components/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/java-ee-uploading-and-downloading-files-with-web-components))
 
 ## WHATIS?:
 
