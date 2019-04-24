@@ -1,0 +1,2 @@
+create-jms-resource --restype javax.jms.Queue --property Name=STOCKS jms/stocks
+deploy /opt/payara/deployments/messaging-with-jms-using-payara.war
