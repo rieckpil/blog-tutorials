@@ -33,6 +33,7 @@
 * Best Practices Flyway and Hibernate with Spring Boot ([Blog](https://rieckpil.de/howto-best-practices-for-flyway-and-hibernate-with-spring-boot/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-hibernate-flyway-best-practices))
 * Up- and downloading files with Java EE and Web Components ([Blog](https://rieckpil.de/howto-up-and-download-files-with-java-ee-and-web-components/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/java-ee-uploading-and-downloading-files-with-web-components))
 * RESTEasy (WildFly) file up- and downloading ([Blog](https://rieckpil.de/howto-resteasy-wildfly-jax-rs-2-1-file-up-and-downloading/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/rest-easy-file-uploading-and-downloading))
+* Messaging with JMS using Payara with embedded OpenMQ broker ([Blog](https://rieckpil.de/howto-messaging-with-jms-using-payara-with-embedded-openmq-broker/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/messaging-with-jms-using-payara))
 
 ## WHATIS?:
 
