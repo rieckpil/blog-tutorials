@@ -4,17 +4,17 @@ public class Customer {
 
 	private String firstName;
 	private String lastName;
-	private String userId;
-	private int age;
+	private String customerId;
+	private Long billedRevenue;
 
 	public Customer() {
 	}
 
-	public Customer(String firstName, String lastName, String userId, int age) {
+	public Customer(String firstName, String lastName, String customerId, Long billedRevenue) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.userId = userId;
-		this.age = age;
+		this.customerId = customerId;
+		this.billedRevenue = billedRevenue;
 	}
 
 	public String getFirstName() {
@@ -33,20 +33,20 @@ public class Customer {
 		this.lastName = lastName;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getCustomerId() {
+		return customerId;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
 	}
 
-	public int getAge() {
-		return age;
+	public Long getBilledRevenue() {
+		return billedRevenue;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
+	public void setBilledRevenue(Long billedRevenue) {
+		this.billedRevenue = billedRevenue;
 	}
 
 }
