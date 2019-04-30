@@ -1,16 +1,16 @@
-package de.rieckpil.blog;
+package de.rieckpil.blog.boundary;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.github.javafaker.Faker;
+import de.rieckpil.blog.control.CustomerService;
+import de.rieckpil.blog.entity.Customer;
 
 @Named
 @ViewScoped
@@ -22,17 +22,12 @@ public class CustomerListBean implements Serializable {
 	private List<Customer> filteredCustomerList;
 	private List<Customer> selectedCustomerList;
 
+	@Inject
+	private CustomerService customerService;
+
 	@PostConstruct
 	public void init() {
-
-		customers = new ArrayList<>();
-
-		for (int i = 0; i < 100; i++) {
-			Faker faker = new Faker();
-			customers.add(new Customer(faker.name().firstName(), faker.name().lastName(), faker.idNumber().valid(),
-					ThreadLocalRandom.current().nextLong(1_000_000)));
-		}
-
+		customers = customerService.getCustomers();
 	}
 
 	public String getTotalRevenue() {
@@ -46,11 +41,13 @@ public class CustomerListBean implements Serializable {
 
 	public void deleteCustomers() {
 		for (Customer customer : selectedCustomerList) {
-			this.customers.remove(customer);
+			this.customerService.deleteCustomer(customer);
 
 			if (filteredCustomerList != null) {
 				this.filteredCustomerList.remove(customer);
 			}
+
+			this.customers = customerService.getCustomers();
 		}
 	}
 
@@ -77,5 +74,4 @@ public class CustomerListBean implements Serializable {
 	public void setSelectedCustomerList(List<Customer> selectedCustomerList) {
 		this.selectedCustomerList = selectedCustomerList;
 	}
-
 }

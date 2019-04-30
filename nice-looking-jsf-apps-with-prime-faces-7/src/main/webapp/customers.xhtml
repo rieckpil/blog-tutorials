@@ -43,10 +43,13 @@
 
 <h:body>
 	<p:outputPanel>
+		<ui:insert name="header">
+			<ui:include src="/WEB-INF/common/header.xhtml" />
+		</ui:insert>
 		<div class="ui-g">
 			<div class="ui-g-2"></div>
 			<div class="ui-g-8">
-				<h3 style="text-align: center">Customers</h3>
+				<h1 style="text-align: center">Customers</h1>
 				<h:form id="customerListForm">
 					<p:dataTable widgetVar="customerList" id="customerList"
 						value="#{customerListBean.customers}" var="customer"
@@ -110,8 +113,8 @@
 					<p:contextMenu for="customerList">
 						<p:menuitem value="View selected" update="multiCustomerDetail"
 							icon="pi pi-search" oncomplete="PF('multiCustomerDialog').show()" />
-						<p:menuitem value="Delete selected" update="customerList" icon="pi pi-times"
-							action="#{customerListBean.deleteCustomers}" />
+						<p:menuitem value="Delete selected" update="customerList"
+							icon="pi pi-times" action="#{customerListBean.deleteCustomers}" />
 					</p:contextMenu>
 
 					<p:dialog header="Selected Customers"
@@ -133,6 +136,9 @@
 			</div>
 			<div class="ui-g-2" />
 		</div>
+		<ui:insert name="footer">
+			<ui:include src="/WEB-INF/common/footer.xhtml" />
+		</ui:insert>
 	</p:outputPanel>
 </h:body>
 </html>

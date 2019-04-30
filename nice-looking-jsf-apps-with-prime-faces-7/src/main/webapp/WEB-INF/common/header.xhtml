@@ -1,0 +1,77 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
+<body>
+	<ui:composition>
+		<h:form>
+			<p:growl id="messages" />
+
+			<p:menubar>
+				<p:menuitem value="Home" icon="pi pi-home" url="/index.xhtml">
+				</p:menuitem>
+
+				<p:menuitem value="Customers" icon="pi pi-users"
+					url="/customers.xhtml">
+				</p:menuitem>
+
+				<p:menuitem value="Create Order" icon="pi pi-shopping-cart"
+					url="/createOrder.xhtml">
+				</p:menuitem>
+
+				<p:menuitem value="Visit my blog" icon="pi pi-external-link"
+					url="https://rieckpil.de">
+				</p:menuitem>
+
+				<p:menuitem value="(right side are just dummy buttons)">
+				</p:menuitem>
+				<p:submenu label="File" icon="pi pi-file">
+					<p:submenu label="New" icon="pi pi-briefcase">
+						<p:menuitem value="Project" url="#" />
+						<p:menuitem value="Other" url="#" />
+					</p:submenu>
+					<p:menuitem value="Open" url="#" />
+					<p:separator />
+					<p:menuitem value="Quit" url="#" />
+				</p:submenu>
+
+				<p:submenu label="Edit" icon="pi pi-pencil">
+					<p:menuitem value="Undo" url="#" icon="pi pi-angle-double-left" />
+					<p:menuitem value="Redo" url="#" icon="pi pi-angle-double-right" />
+				</p:submenu>
+
+				<p:submenu label="Help" icon="pi pi-question">
+					<p:menuitem value="Contents" url="#" />
+					<p:submenu label="Search" icon="pi pi-search">
+						<p:submenu label="Text">
+							<p:menuitem value="Workspace" url="#" />
+						</p:submenu>
+						<p:menuitem value="File" url="#" />
+					</p:submenu>
+				</p:submenu>
+
+				<p:submenu label="Actions" icon="pi pi-cog">
+					<p:submenu label="Ajax" icon="pi pi-refresh">
+						<p:menuitem value="Save" icon="pi pi-save" update="messages" />
+						<p:menuitem value="Update" icon="pi pi-refresh" update="messages" />
+					</p:submenu>
+					<p:submenu label="Non-Ajax" icon="pi pi-clone">
+						<p:menuitem value="Delete" icon="pi pi-times" update="messages"
+							ajax="false" />
+					</p:submenu>
+				</p:submenu>
+
+				<p:menuitem value="Quit" url="http://www.primefaces.org"
+					icon="pi pi-times" />
+
+				<f:facet name="options">
+					<p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search" />
+					<p:commandButton type="button" value="Logout" icon="pi pi-home" />
+				</f:facet>
+			</p:menubar>
+		</h:form>
+	</ui:composition>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
+
+<h:head>
+	<title>PrimeFaces 7.0</title>
+</h:head>
+<h:body>
+	<p:outputPanel>
+		<ui:insert name="header">
+			<ui:include src="/WEB-INF/common/header.xhtml" />
+		</ui:insert>
+		<div class="ui-g">
+			<div class="ui-g-2"></div>
+			<div class="ui-g-8">
+				<h1 style="text-align: center">Create a new order</h1>
+				<p:panel id="order" header="Enter order data" style="margin-bottom:20px">
+					<h:panelGrid columns="1" cellpadding="10">
+						<h:form>
+							<p:growl id="msgs" showDetail="true" sticky="true" />
+
+							<h:panelGrid columns="2" cellpadding="5">
+								<p:outputLabel for="customer" value="Customer:" />
+								<p:selectOneMenu id="customer"
+									value="#{orderCreationBean.selectedCustomer}"
+									converter="customerConverter" effect="fade" var="customer"
+									style="width:172px" filter="true" filterMatchMode="startsWith">
+									<f:selectItems value="#{orderCreationBean.availableCustomers}"
+										var="customer" itemLabel="#{customer.customerId}"
+										itemValue="#{customer}" />
+									<p:column>
+										<h:outputText value="#{customer.customerId}" />
+									</p:column>
+									<p:column>
+										<h:outputText value="#{customer.firstName}" />
+									</p:column>
+									<p:column>
+										<h:outputText value="#{customer.lastName}" />
+									</p:column>
+								</p:selectOneMenu>
+
+								<p:outputLabel for="product" value="Product:" />
+								<p:selectOneButton id="product"
+									value="#{orderCreationBean.selectedProduct}" required="true">
+									<f:selectItem itemLabel="Laptop" itemValue="Laptop" />
+									<f:selectItem itemLabel="Mac" itemValue="Mac" />
+									<f:selectItem itemLabel="Workstation" itemValue="Workstation" />
+								</p:selectOneButton>
+
+								<p:outputLabel for="taxId" value="Tax Id:" />
+								<p:inputMask id="taxId" value="#{orderCreationBean.taxId}"
+									required="true" mask="99-9999999" />
+
+								<p:outputLabel for="amount" value="Amount:" />
+								<h:panelGrid columns="1" style="margin-bottom: 10px">
+									<p:inputText id="amount" value="#{orderCreationBean.amount}"
+										required="true" />
+									<p:slider for="amount" />
+								</h:panelGrid>
+
+								<p:outputLabel for="delivery" value="Express delivery?" />
+								<p:toggleSwitch id="delivery"
+									value="#{orderCreationBean.expressDelivery}" />
+
+								<p:outputLabel for="orderDate" value="Order date:" />
+								<p:datePicker id="orderDate"
+									value="#{orderCreationBean.orderDate}" showIcon="true"
+									required="true" />
+							</h:panelGrid>
+
+							<p:commandButton value="Reset" type="reset" />
+							<p:commandButton value="Create order"
+								action="#{orderCreationBean.createOder}" icon="pi pi-check"
+								update="@form" />
+						</h:form>
+					</h:panelGrid>
+				</p:panel>
+			</div>
+			<div class="ui-g-2" />
+		</div>
+		<ui:insert name="footer">
+			<ui:include src="/WEB-INF/common/footer.xhtml" />
+		</ui:insert>
+	</p:outputPanel>
+</h:body>
+</html>
