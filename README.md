@@ -34,6 +34,7 @@
 * Up- and downloading files with Java EE and Web Components ([Blog](https://rieckpil.de/howto-up-and-download-files-with-java-ee-and-web-components/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/java-ee-uploading-and-downloading-files-with-web-components))
 * RESTEasy (WildFly) file up- and downloading ([Blog](https://rieckpil.de/howto-resteasy-wildfly-jax-rs-2-1-file-up-and-downloading/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/rest-easy-file-uploading-and-downloading))
 * Messaging with JMS using Payara with embedded OpenMQ broker ([Blog](https://rieckpil.de/howto-messaging-with-jms-using-payara-with-embedded-openmq-broker/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/messaging-with-jms-using-payara))
+* Nice-looking JSF 2.3 apps with PrimeFaces 7.0 ([Blog](https://rieckpil.de/howto-create-nice-looking-jsf-2-3-applications-with-primefaces-7-0), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/nice-looking-jsf-apps-with-prime-faces-7))
 
 ## WHATIS?:
 

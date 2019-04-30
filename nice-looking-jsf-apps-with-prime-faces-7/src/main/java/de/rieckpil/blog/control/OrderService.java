@@ -20,9 +20,8 @@ public class OrderService {
 		this.orders = createDefaultOrder();
 	}
 
-	@Schedule(minute = "*/30", persistent = false)
+	@Schedule(hour = "*", minute = "*/10", persistent = false)
 	public void resetCustomers() {
-		System.out.println("resetting orders");
 		this.orders = createDefaultOrder();
 	}
 
