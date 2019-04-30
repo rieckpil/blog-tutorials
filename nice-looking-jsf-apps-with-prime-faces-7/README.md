@@ -6,4 +6,4 @@ Steps to run this project:
 2. Navigate to the folder `nice-looking-jsf-apps-with-prime-faces-7`
 3. Run `buildAndRun.bat` for Windows and `./buildAndRun.sh` for Mac/Linux (if needed, add missing rights to execute with: `chmod +x buildAndRun.sh`)
 4. Wait until Payara is up and running and visit http://localhost:8080/index.xhtml in your browser and try it!
-5. (Optional) Visit https://jsf-demo.riecks.io to try it first without local deployment
+5. (Optional) Visit https://jsf-demo.riecks.io/index.xhtml to try it first without local deployment
