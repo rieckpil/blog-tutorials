@@ -36,7 +36,7 @@
 * Messaging with JMS using Payara with embedded OpenMQ broker ([Blog](https://rieckpil.de/howto-messaging-with-jms-using-payara-with-embedded-openmq-broker/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/messaging-with-jms-using-payara))
 * Nice-looking JSF 2.3 apps with PrimeFaces 7.0 ([Blog](https://rieckpil.de/howto-create-nice-looking-jsf-2-3-applications-with-primefaces-7-0), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/nice-looking-jsf-apps-with-prime-faces-7))
 * Java Benchmarking with JMH (Java Microbenchmark Harness) ([Blog](https://rieckpil.de/howto-java-benchmarking-with-jmh-java-microbenchmark-harness/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/java-benchmarking-with-jmh))
-* Remote Debug Spring Boot applications (IntelliJ IDEA + Eclipse) ([Blog](https://rieckpil.de/howto-remote-debug-spring-boot-applications-intellij-idea-eclipse/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/remote-debugging-spring-boot-appliction))
+* Remote Debug Spring Boot applications (IntelliJ IDEA + Eclipse) ([Blog](https://rieckpil.de/howto-remote-debug-spring-boot-applications-intellij-idea-eclipse/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/remote-debugging-spring-boot-application))
 
 ## WHATIS?:
 
