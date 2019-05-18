@@ -1,16 +1,104 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
-	xmlns:of="http://omnifaces.org/functions">
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	  xmlns:p="http://primefaces.org/ui" >
 
 <h:head>
-	<title>Hello World JSF 2.3</title>
+	<title>JSF 2.3 mit PrimeFaces 7.0</title>
 </h:head>
 
 <h:body>
-	<p:outputPanel style="display:block">
-		<h3 style="text-align: center">#{sampleBean.message}</h3>
+	<p:outputPanel>
+		<div class="ui-g">
+			<div class="ui-g-2"></div>
+			<div class="ui-g-8">
+				<h:form id="customerListForm">
+					<p:dataTable widgetVar="customerList" id="customerList"
+								 value="#{customerListBean.customers}" var="customer"
+								 filteredValue="#{customerListBean.filteredCustomerList}"
+								 rowKey="#{customer.customerId}"
+								 selection="#{customerListBean.selectedCustomerList}"
+								 resizableColumns="true" rows="10" paginator="true"
+								 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+								 rowsPerPageTemplate="5,10,15">>
+
+						<f:facet name="header">
+							<p:outputPanel>
+								<h:outputText value="Search all fields: " />
+								<p:inputText id="globalFilter"
+											 onkeyup="PF('customerList').filter()" style="width:150px"
+											 placeholder="Enter keyword" />
+							</p:outputPanel>
+						</f:facet>
+
+						<p:column selectionMode="multiple"
+								  style="width:16px;text-align:center" />
+
+						<p:column filterBy="#{customer.customerId}"
+								  headerText="Customer ID" filterMatchMode="contains">
+							<h:outputText value="#{customer.customerId}" />
+						</p:column>
+
+						<p:column filterBy="#{customer.firstName}" headerText="First Name"
+								  filterMatchMode="contains">
+							<h:outputText value="#{customer.firstName}" />
+						</p:column>
+
+						<p:column filterBy="#{customer.lastName}" headerText="Last Name"
+								  filterMatchMode="contains">
+							<h:outputText value="#{customer.lastName}" />
+						</p:column>
+
+						<p:column headerText="Billed Revenue"
+								  sortBy="#{customer.billedRevenue}">
+							<h:outputText value="#{customer.billedRevenue}">
+								<f:convertNumber type="currency" currencySymbol="$" />
+							</h:outputText>
+						</p:column>
+
+						<p:columnGroup type="footer">
+							<p:row>
+								<p:column colspan="4" style="text-align:right"
+										  footerText="Total Revenue" />
+								<p:column footerText="#{customerListBean.totalRevenue} $" />
+							</p:row>
+						</p:columnGroup>
+
+						<f:facet name="footer">
+							<p:commandButton process="customerList"
+											 update=":customerListForm:multiCustomerDetail"
+											 icon="pi pi-search" value="View"
+											 oncomplete="PF('multiCustomerDialog').show()" />
+						</f:facet>
+					</p:dataTable>
+
+					<p:contextMenu for="customerList">
+						<p:menuitem value="View selected" update="multiCustomerDetail"
+									icon="pi pi-search" oncomplete="PF('multiCustomerDialog').show()" />
+						<p:menuitem value="Delete selected" update="customerList"
+									icon="pi pi-times" action="#{customerListBean.deleteCustomers}" />
+					</p:contextMenu>
+
+					<p:dialog header="Selected Customers"
+							  widgetVar="multiCustomerDialog" modal="true" showEffect="fade"
+							  hideEffect="fade" resizable="true" width="450">
+						<p:outputPanel id="multiCustomerDetail" style="text-align:center;">
+							<ui:repeat value="#{customerListBean.selectedCustomerList}"
+									   var="customer">
+								<h:outputText
+										value="#{customer.customerId} - #{customer.firstName} - #{customer.lastName}"
+										style="display:block" />
+								<h:outputText value="#{customer.billedRevenue}">
+									<f:convertNumber type="currency" currencySymbol="$" />
+								</h:outputText>
+							</ui:repeat>
+						</p:outputPanel>
+					</p:dialog>
+				</h:form>
+			</div>
+			<div class="ui-g-2" />
+		</div>
 	</p:outputPanel>
 </h:body>
 </html>
