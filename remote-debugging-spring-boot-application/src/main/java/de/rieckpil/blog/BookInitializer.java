@@ -18,7 +18,6 @@ public class BookInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         log.info("Initializing books ...");
-
         Faker faker = new Faker();
 
         for(int i = 0; i < 42; i++) {
@@ -30,7 +29,6 @@ public class BookInitializer implements CommandLineRunner {
 
             bookRepository.save(book);
         }
-
         log.info("... finished initialization");
     }
 }
