@@ -1,0 +1,2 @@
+create-javamail-resource --mailhost smtp --mailuser duke --fromaddress duke\@java\.ee mail/localsmtp
+deploy /opt/payara/deployments/java-ee-sending-mails.war

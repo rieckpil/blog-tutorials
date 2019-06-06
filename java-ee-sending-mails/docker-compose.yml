@@ -1,0 +1,14 @@
+version: '3'
+services:
+  app:
+    build: ./
+    ports:
+      - "8080:8080"
+      - "4848:4848"
+    links:
+      - smtp
+  smtp:
+    image: namshi/smtp
+    ports:
+      - "25:25"
+
