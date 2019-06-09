@@ -1,0 +1,6 @@
+# Connecting to the SMTP server within the Docker Compose environment
+create-javamail-resource --mailhost smtp --mailuser duke --fromaddress duke@java.ee mail/localsmtp
+
+# For a connecting to e.g. Gmail's SMTP you have to specify further parameters (check e.g. https://medium.com/@swhp/sending-email-with-payara-and-gmail-56b0b5d56882)
+
+deploy /opt/payara/deployments/java-ee-sending-mails.war

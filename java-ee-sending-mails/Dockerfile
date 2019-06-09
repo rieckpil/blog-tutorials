@@ -1,3 +1,4 @@
-FROM payara/server-full:latest
-COPY post-boot-commands.asadmin $CONFIG_DIR
+FROM payara/server-full:5.192
+COPY create-mail-session.asadmin $CONFIG_DIR
 COPY target/java-ee-sending-mails.war $DEPLOY_DIR
+ENV POSTBOOT_COMMANDS $CONFIG_DIR/create-mail-session.asadmin
