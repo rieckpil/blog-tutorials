@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="new server">
+    <featureManager>
+        <feature>springBoot-2.0</feature>
+        <feature>servlet-4.0</feature>
+        <feature>websocket-1.1</feature>
+    </featureManager>
+    <httpEndpoint id="defaultHttpEndpoint"
+                  httpPort="9080"
+                  httpsPort="9443" />
+    <applicationManager autoExpand="true"/>
+    <springBootApplication location="spring-boot-with-open-liberty.jar"/>
+</server>
