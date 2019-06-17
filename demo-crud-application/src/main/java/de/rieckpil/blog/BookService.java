@@ -24,4 +24,18 @@ public class BookService {
         return book.getId();
     }
 
+    public List<Book> getAllBooks() {
+        return bookRepository.findAll();
+    }
+
+    public Book getBookById(Long id) {
+        Optional<Book> requestedBook = bookRepository.findById(id);
+
+        if(requestedBook.isEmpty()){
+            throw new BookNotFoundException(String.format("Book with id: '%s' not found", id));
+        }
+
+        return requestedBook.get();
+    }
+
 }

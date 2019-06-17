@@ -62,4 +62,59 @@ public class BookControllerTest {
 
     }
 
+    @Test
+    public void allBooksEndpointShouldReturnTwoBooks() throws Exception {
+
+        when(bookService.getAllBooks()).thenReturn(List.of(
+                createBook(1L, "Java 11", "Duke", "1337"),
+                createBook(2L, "Java EE 8", "Duke", "1338")));
+
+        this.mockMvc
+                .perform(get("/api/books"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$", hasSize(2)))
+                .andExpect(jsonPath("$[0].title", is("Java 11")))
+                .andExpect(jsonPath("$[0].author", is("Duke")))
+                .andExpect(jsonPath("$[0].isbn", is("1337")))
+                .andExpect(jsonPath("$[0].id", is(1)));
+
+    }
+
+    @Test
+    public void getBookWithIdOneShouldReturnABook() throws Exception {
+
+        when(bookService.getBookById(1L)).thenReturn(createBook(1L, "Java 11", "Duke", "1337"));
+
+        this.mockMvc
+                .perform(get("/api/books/1"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.title", is("Java 11")))
+                .andExpect(jsonPath("$.author", is("Duke")))
+                .andExpect(jsonPath("$.isbn", is("1337")))
+                .andExpect(jsonPath("$.id", is(1)));
+
+    }
+
+    @Test
+    public void getBookWithUnknownIdShouldReturn404() throws Exception {
+
+        when(bookService.getBookById(1L)).thenThrow(new BookNotFoundException("Book with id '1' not found"));
+
+        this.mockMvc
+                .perform(get("/api/books/1"))
+                .andExpect(status().isNotFound());
+
+    }
+
+    private Book createBook(Long id, String title, String author, String isbn) {
+        Book book = new Book();
+        book.setAuthor(author);
+        book.setIsbn(isbn);
+        book.setTitle(title);
+        book.setId(id);
+        return book;
+    }
+
 }
