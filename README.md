@@ -39,6 +39,7 @@
 * Remote Debug Spring Boot applications (IntelliJ IDEA + Eclipse) ([Blog](https://rieckpil.de/howto-remote-debug-spring-boot-applications-intellij-idea-eclipse/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/remote-debugging-spring-boot-application))
 * Consumer-Driven Contracts with Spring Cloud Contract ([Blog](https://rieckpil.de/howto-consumer-driven-contracts-with-spring-cloud-contract/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/consumer-driven-contracts-with-spring-cloud-contract))
 * Send emails with Java EE using Payara ([Blog](https://rieckpil.de/howto-send-emails-with-java-ee-using-payara), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/java-ee-sending-mails))
+* Use Spring’s WebClient for RESTful communication ([Blog](https://rieckpil.de/howto-use-springs-webclient-for-restful-communication/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-web-client-demo))
 
 ## WHATIS?:
 
