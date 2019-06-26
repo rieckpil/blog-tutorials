@@ -31,11 +31,28 @@ public class BookService {
     public Book getBookById(Long id) {
         Optional<Book> requestedBook = bookRepository.findById(id);
 
-        if(requestedBook.isEmpty()){
+        if (requestedBook.isEmpty()) {
             throw new BookNotFoundException(String.format("Book with id: '%s' not found", id));
         }
 
         return requestedBook.get();
     }
 
+    @Transactional
+    public Book updateBook(Long id, BookRequest bookToUpdateRequest) {
+
+        Optional<Book> bookFromDatabase = bookRepository.findById(id);
+
+        if (bookFromDatabase.isEmpty()) {
+            throw new BookNotFoundException(String.format("Book with id: '%s' not found", id));
+        }
+
+        Book bookToUpdate = bookFromDatabase.get();
+
+        bookToUpdate.setAuthor(bookToUpdateRequest.getAuthor());
+        bookToUpdate.setIsbn(bookToUpdateRequest.getIsbn());
+        bookToUpdate.setTitle(bookToUpdateRequest.getTitle());
+
+        return bookToUpdate;
+    }
 }
