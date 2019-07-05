@@ -14,8 +14,10 @@ spec:
     spec:
       containers:
         - name: java-ee-kubernetes
-          image: localhost:5000/java-ee-kubernetes:1
+          image: localhost:5000/java-ee-kubernetes
           imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
           readinessProbe:
             httpGet:
               path: /health
@@ -30,11 +32,12 @@ kind: Service
 apiVersion: v1
 metadata:
   name: java-ee-kubernetes
-  labels:
-    app: java-ee-kubernetes
 spec:
+  type: NodePort
   ports:
     - port: 8080
+      targetPort: 8080
       protocol: TCP
-      nodePort: 31234
-  type: LoadBalancer
+      nodePort: 31000
+  selector:
+    app: java-ee-kubernetes

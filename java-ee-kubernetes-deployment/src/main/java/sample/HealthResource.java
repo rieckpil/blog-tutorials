@@ -14,6 +14,7 @@ public class HealthResource implements HealthCheck {
     public HealthCheckResponse call() {
         return HealthCheckResponse
                 .builder()
+                .name("java-ee")
                 .up()
                 .build();
     }
