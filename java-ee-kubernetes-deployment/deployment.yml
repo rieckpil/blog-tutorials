@@ -1,0 +1,40 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: java-ee-kubernetes
+spec:
+  replicas: 2
+  selector: 
+    matchLabels:
+      app: java-ee-kubernetes
+  template:
+    metadata:
+      labels:
+        app: java-ee-kubernetes
+    spec:
+      containers:
+        - name: java-ee-kubernetes
+          image: localhost:5000/java-ee-kubernetes:1
+          imagePullPolicy: Always
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+      restartPolicy: Always
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: java-ee-kubernetes
+  labels:
+    app: java-ee-kubernetes
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      nodePort: 31234
+  type: LoadBalancer
