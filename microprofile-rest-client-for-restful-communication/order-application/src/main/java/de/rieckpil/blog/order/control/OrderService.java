@@ -34,7 +34,8 @@ public class OrderService {
         order.setOrderId(nextOrderId);
         this.orderDatabase.put(nextOrderId, order);
 
-        this.userManagementApplicationClient.createUser(order.getUserId());
+        this.userManagementApplicationClient
+                .createUser(Json.createObjectBuilder().add("userId", order.getUserId()).build());
 
         return order.getOrderId();
     }
@@ -45,7 +46,9 @@ public class OrderService {
         JsonObject user = this.userManagementApplicationClient.getUserById(UUID.randomUUID().toString(), requestedOrder.getUserId());
 
         return Json
-                .createObjectBuilder(requestedOrder.toJson()).add("username", user.getString("username", "Default user"))
+                .createObjectBuilder(
+                        requestedOrder.toJson())
+                            .add("username", user.getString("username", "Default user"))
                 .build();
 
     }
