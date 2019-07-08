@@ -41,6 +41,7 @@
 * Send emails with Java EE using Payara ([Blog](https://rieckpil.de/howto-send-emails-with-java-ee-using-payara), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/java-ee-sending-mails))
 * Use Spring’s WebClient for RESTful communication ([Blog](https://rieckpil.de/howto-use-springs-webclient-for-restful-communication/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-web-client-demo))
 * Deploy Java EE applications to Kubernetes ([Blog](https://rieckpil.de/howto-deploy-java-ee-applications-to-kubernetes), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/java-ee-kubernetes-deployment))
+* MicroProfile Rest Client for RESTful communication ([Blog](https://rieckpil.de/howto-microprofile-rest-client-for-restful-communication/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/microprofile-rest-client-for-restful-communication))
 
 ## WHATIS?:
 

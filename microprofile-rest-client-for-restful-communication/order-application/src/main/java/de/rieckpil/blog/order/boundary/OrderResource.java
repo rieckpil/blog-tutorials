@@ -1,9 +1,8 @@
 package de.rieckpil.blog.order.boundary;
 
-import de.rieckpil.blog.order.entity.Order;
 import de.rieckpil.blog.order.control.OrderService;
+import de.rieckpil.blog.order.entity.Order;
 
-import javax.annotation.security.PermitAll;
 import javax.inject.Inject;
 import javax.json.JsonObject;
 import javax.ws.rs.*;
