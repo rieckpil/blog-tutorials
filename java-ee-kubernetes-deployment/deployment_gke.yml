@@ -4,7 +4,7 @@ metadata:
   name: java-ee-kubernetes
 spec:
   replicas: 2
-  selector: 
+  selector:
     matchLabels:
       app: java-ee-kubernetes
   template:
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: java-ee-kubernetes
-          image: localhost:5000/java-ee-kubernetes
+          image: eu.gcr.io/java-ee-2-cloud/java-ee-kubernetes:1
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -35,11 +35,10 @@ apiVersion: v1
 metadata:
   name: java-ee-kubernetes
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
-    - port: 8080
+    - port: 80
       targetPort: 8080
       protocol: TCP
-      nodePort: 31000
   selector:
     app: java-ee-kubernetes
