@@ -13,25 +13,6 @@
 			<version>8.0</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.eclipse.microprofile</groupId>
-			<artifactId>microprofile</artifactId>
-			<version>2.0.1</version>
-			<type>pom</type>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<version>2.23.0</version>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
 	<build>
 		<finalName>intercept-methods-with-cdi-interceptors</finalName>

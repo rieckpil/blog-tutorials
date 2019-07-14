@@ -43,6 +43,7 @@
 * Deploy Java EE applications to Kubernetes ([Blog](https://rieckpil.de/howto-deploy-java-ee-applications-to-kubernetes), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/java-ee-kubernetes-deployment))
 * MicroProfile Rest Client for RESTful communication ([Blog](https://rieckpil.de/howto-microprofile-rest-client-for-restful-communication/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/microprofile-rest-client-for-restful-communication))
 * Deploy a React application to Kuberntes ([Blog](https://dev.to/rieckpil/deploy-a-react-application-to-kubernetes-in-5-easy-steps-516j), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/react-app-kubernetes))
+* Intercept method calls using CDI interceptors ([Blog](https://rieckpil.de/howto-intercept-method-calls-using-cdi-interceptors/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/intercept-methods-with-cdi-interceptors))
 
 ## WHATIS?:
 
