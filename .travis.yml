@@ -4,6 +4,7 @@ before_script:
 - wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
 - chmod +x buildJdk8Projects.sh
 - chmod +x buildJdk11Projects.sh
+- chmod +x install-jdk.sh
 
 jdk:
   - openjdk8
@@ -23,6 +24,6 @@ jobs:
 cache:
   directories:
   - $HOME/.m2
-  
+
 notifications:
   email: false
