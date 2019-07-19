@@ -6,18 +6,16 @@ before_script:
 - chmod +x buildJdk11Projects.sh
 - chmod +x install-jdk.sh
 
+jdk:
+  - openjdk8
 jobs:
   include:
     - stage: ☕ 8
-      jdk:
-        - openjdk8
       script:
         - ./buildJdk8Projects.sh
     - stage: ☕ 11
-      jdk:
-        - openjdk8
       script:
-        - ./buildJdk11Projects.sh
+        - echo $JAVA_HOME
 
 cache:
   directories:
