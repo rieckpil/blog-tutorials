@@ -1,0 +1,10 @@
+language: java
+dist: trusty
+jdk:
+- openjdk11
+script: "mvn -B -f demo-crud-application package"
+cache:
+  directories:
+  - $HOME/.m2
+notifications:
+  email: false
