@@ -6,19 +6,17 @@ before_script:
 - chmod +x buildJdk11Projects.sh
 - chmod +x install-jdk.sh
 
-jdk:
-  - openjdk8
-
 jobs:
   include:
     - stage: ☕ 8
+      jdk:
+        - openjdk8
       script:
-        - jdk_switcher use openjdk8
         - ./buildJdk8Projects.sh
     - stage: ☕ 11
+      jdk:
+        - openjdk8
       script:
-        - export JAVA_HOME=$HOME/openjdk11
-        - $TRAVIS_BUILD_DIR/install-jdk.sh -F 11  -W $JAVA_HOME
         - ./buildJdk11Projects.sh
 
 cache:
