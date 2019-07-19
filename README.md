@@ -1,6 +1,8 @@
-# Codebase for the tutorials on my [blog](https://rieckpil.de/#/blog) 
+# Codebase for the tutorials on my [blog](https://rieckpil.de/#/blog)
 
-## HOWTO's:
+[![Build Status](https://travis-ci.com/rieckpil/blog-tutorials.svg?branch=master)](https://travis-ci.com/rieckpil/blog-tutorials)
+
+## HOWTO's
 
 * Expose git information with Spring Boot’s Actuator ([Blog](https://rieckpil.de/howto-expose-git-information-with-spring-boots-actuator/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/expose-git-information-actuator))
 * Write Spring Boot integration tests with a real database ([Blog](https://rieckpil.de/howto-write-spring-boot-integration-tests-with-a-real-database/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/testcontainers))
@@ -45,17 +47,17 @@
 * Deploy a React application to Kuberntes ([Blog](https://dev.to/rieckpil/deploy-a-react-application-to-kubernetes-in-5-easy-steps-516j), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/react-app-kubernetes))
 * Intercept method calls using CDI interceptors ([Blog](https://rieckpil.de/howto-intercept-method-calls-using-cdi-interceptors/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/intercept-methods-with-cdi-interceptors))
 
-## WHATIS?:
+## WHATIS?
 
 * JavaServer Faces. An introduction to JSF 2.3 ([Blog](https://rieckpil.de/whatis-java-server-faces-an-introduction-to-jsf-2-3/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/hello-world-jsf-2.3))
 * GraalVM ([Blog](https://rieckpil.de/whatis-graalvm/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/graalvm-intro))
 
-## REVIEW:
+## REVIEW
 
 * What’s new in Spring Boot 2.1 ([Blog](https://rieckpil.de/review-whats-new-in-spring-boot-2-1/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/whats-new-in-spring-boot-2.1))
 * Improved Java/Jakarta EE productivity with Adam Bien’s WAD (Watch and Deploy) ([Blog](https://rieckpil.de/review-improved-java-jakarta-ee-productivity-with-adam-biens-wad-watch-and-deploy/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/improved-java-ee-productivity-with-wad))
 * 5 Java 9 Features you might not know yet ([Blog](https://rieckpil.de/review-5-java-9-features-you-might-not-know-yet/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/five-java-9-features))
 
-## OTHER:
+## OTHER
 
 * #CHEATSHEET: Java/Jakarta EE application servers ([Blog](https://rieckpil.de/cheatsheet-java-jakarta-ee-application-servers/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/application-server-cheatsheet))
