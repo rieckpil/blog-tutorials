@@ -26,7 +26,7 @@ public class RandomDataEndpoint {
 
         for (int i = 0; i < 10; i++) {
             persons.add(objectMapper.createObjectNode()
-                    .put("firstName" , faker.name().firstName())
+                    .put("firstName", faker.name().firstName())
                     .put("lastName", faker.name().lastName())
                     .put("title", faker.name().title())
                     .put("suffix", faker.name().suffix())
@@ -46,7 +46,7 @@ public class RandomDataEndpoint {
 
         for (int i = 0; i < 10; i++) {
             books.add(objectMapper.createObjectNode()
-                    .put("author" , faker.book().author())
+                    .put("author", faker.book().author())
                     .put("genre", faker.book().genre())
                     .put("publisher", faker.book().publisher())
                     .put("title", faker.book().title()));
@@ -63,7 +63,7 @@ public class RandomDataEndpoint {
 
         for (int i = 0; i < 10; i++) {
             foods.add(objectMapper.createObjectNode()
-                    .put("ingredients" , faker.food().ingredient())
+                    .put("ingredients", faker.food().ingredient())
                     .put("spices", faker.food().spice())
                     .put("measurements", faker.food().measurement()));
         }
