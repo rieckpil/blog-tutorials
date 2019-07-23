@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: spring-boot-gke
-          image: eu.gcr.io/lfd259-239312/spring-boot-gke:latest
+          image: eu.gcr.io/spring-boot-app-247617/spring-boot-gke:latest
           imagePullPolicy: Always
           readinessProbe:
             httpGet:
