@@ -47,6 +47,7 @@
 * Deploy a React application to Kuberntes ([Blog](https://dev.to/rieckpil/deploy-a-react-application-to-kubernetes-in-5-easy-steps-516j), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/react-app-kubernetes))
 * Intercept method calls using CDI interceptors ([Blog](https://rieckpil.de/howto-intercept-method-calls-using-cdi-interceptors/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/intercept-methods-with-cdi-interceptors))
 * Generate random data in Java using Java Faker ([Blog](https://rieckpil.de/howto-generate-random-data-in-java-using-java-faker/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/random-data-in-java-using-java-faker))
+* Write Java EE applications with Kotlin ([Blog](https://rieckpil.de/howto-write-java-ee-applications-with-kotlin/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/java-ee-kotlin))
 
 ## WHATIS?
 

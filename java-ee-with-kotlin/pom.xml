@@ -51,6 +51,19 @@
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
                 <version>${kotlin.version}</version>
+                <configuration>
+                    <compilerPlugins>
+                        <plugin>jpa</plugin>
+                    </compilerPlugins>
+                    <jvmTarget>11</jvmTarget>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jetbrains.kotlin</groupId>
+                        <artifactId>kotlin-maven-noarg</artifactId>
+                        <version>${kotlin.version}</version>
+                    </dependency>
+                </dependencies>
                 <executions>
                     <execution>
                         <id>compile</id>
@@ -67,9 +80,6 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <jvmTarget>11</jvmTarget>
-                </configuration>
             </plugin>
         </plugins>
     </build>
