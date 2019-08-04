@@ -1,4 +1,0 @@
-<!DOCTYPE payara-web-app PUBLIC "-//Payara.fish//DTD Payara Server 4 Servlet 3.0//EN" "https://raw.githubusercontent.com/payara/Payara-Server-Documentation/master/schemas/payara-web-app_4.dtd">
-<payara-web-app>
-	<context-root>/</context-root>
-</payara-web-app>
