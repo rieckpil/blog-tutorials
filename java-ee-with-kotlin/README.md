@@ -6,7 +6,7 @@ Steps to run this project:
 2. Navigate to the folder `java-ee-kotlin`
 3. Start your Docker daemon
 4. Execute `buildAndRun.bat` (for Windows) and `buildAndRun.sh` (for Linux/Mac)
-5. Wait until Open Liberty is read to access request: `docker logs -f java-ee-with-kotlin`
+5. Wait until Open Liberty is read to access requests: `docker logs -f java-ee-with-kotlin`
 6. Hit the following endpoints with (HTTP GET):
 
 ```bash
