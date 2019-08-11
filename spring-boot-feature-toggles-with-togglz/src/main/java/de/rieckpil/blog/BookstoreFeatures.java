@@ -11,6 +11,5 @@ public enum BookstoreFeatures implements Feature {
     EXTENDED_INFORMATION,
 
     @Label("Enable public prices endpoint for books")
-    PUBLIC_PRICES,
-
+    PUBLIC_PRICES
 }
