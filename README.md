@@ -48,7 +48,7 @@
 * Intercept method calls using CDI interceptors ([Blog](https://rieckpil.de/howto-intercept-method-calls-using-cdi-interceptors/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/intercept-methods-with-cdi-interceptors))
 * Generate random data in Java using Java Faker ([Blog](https://rieckpil.de/howto-generate-random-data-in-java-using-java-faker/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/random-data-in-java-using-java-faker))
 * Write Java EE applications with Kotlin ([Blog](https://rieckpil.de/howto-write-java-ee-applications-with-kotlin/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/java-ee-with-kotlin))
-* Feature Toggles for Spring Boot applications with Togglz ([Blog](https://rieckpil.de/howto-feature-toggles-for-spring-boot-applications-with-togglz/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-feature-toggles-with-togglz)
+* Feature Toggles for Spring Boot applications with Togglz ([Blog](https://rieckpil.de/howto-feature-toggles-for-spring-boot-applications-with-togglz/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-feature-toggles-with-togglz))
 
 ## WHATIS?
 
