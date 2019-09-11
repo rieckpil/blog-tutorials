@@ -1,6 +1,8 @@
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 
+.gradle
+
 .apt_generated
 .classpath
 .factorypath
