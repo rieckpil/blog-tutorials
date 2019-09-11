@@ -49,7 +49,7 @@
 * Generate random data in Java using Java Faker ([Blog](https://rieckpil.de/howto-generate-random-data-in-java-using-java-faker/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/random-data-in-java-using-java-faker))
 * Write Java EE applications with Kotlin ([Blog](https://rieckpil.de/howto-write-java-ee-applications-with-kotlin/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/java-ee-with-kotlin))
 * Feature Toggles for Spring Boot applications with Togglz ([Blog](https://rieckpil.de/howto-feature-toggles-for-spring-boot-applications-with-togglz/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-feature-toggles-with-togglz))
-* Bootstrap your first Jakarta EE 8 application]([Blog](https://rieckpil.de/howto-bootstrap-your-first-jakarta-ee-8-application/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/bootstrap-jakarta-ee-8-application))
+* Bootstrap your first Jakarta EE 8 application ([Blog](https://rieckpil.de/howto-bootstrap-your-first-jakarta-ee-8-application/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/bootstrap-jakarta-ee-8-application))
 
 ## WHATIS?
 
