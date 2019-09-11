@@ -1,0 +1,20 @@
+apply plugin: 'war'
+
+group = 'de.rieckpil.blog'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+    providedCompile 'jakarta.platform:jakarta.jakartaee-api:8.0.0'
+}
+
+compileJava {
+    targetCompatibility = '11'
+    sourceCompatibility = '11'
+}
+
+war{
+    archiveName 'bootstrap-jakarta-ee-8-application.war'
+}
