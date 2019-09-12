@@ -55,6 +55,15 @@
 
 * JavaServer Faces. An introduction to JSF 2.3 ([Blog](https://rieckpil.de/whatis-java-server-faces-an-introduction-to-jsf-2-3/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/hello-world-jsf-2.3))
 * GraalVM ([Blog](https://rieckpil.de/whatis-graalvm/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/graalvm-intro))
+* MicroProfile Config ([Blog](https://rieckpil.de/whatis-eclipse-microprofile-config/), [Sources](https://github.com/rieckpil/getting-started-with-eclipse-microprofile/tree/master/microprofile-config))
+* MicroProfile Fault Tolerance ([Blog](https://rieckpil.de/whatis-eclipse-microprofile-fault-tolerance/), [Sources](https://github.com/rieckpil/getting-started-with-eclipse-microprofile/tree/master/microprofile-fault-tolerance))
+* MicroProfile Metrics ([Blog](https://rieckpil.de/whatis-eclipse-microprofile-metrics/), [Sources](https://github.com/rieckpil/getting-started-with-eclipse-microprofile/tree/master/microprofile-metrics))
+* MicroProfile JWT Auth ([Blog](https://rieckpil.de/whatis-eclipse-microprofile-jwt-auth/), [Sources](https://github.com/rieckpil/getting-started-with-eclipse-microprofile/tree/master/microprofile-jwt-auth))
+* MicroProfile Rest Client [Blog](https://rieckpil.de/whatis-eclipse-microprofile-rest-client/), [Sources](https://github.com/rieckpil/getting-started-with-eclipse-microprofile/tree/master/microprofile-rest-client)
+* MicroProfile OpenAPI ([Blog](https://rieckpil.de/whatis-eclipse-microprofile-openapi/), [Sources](https://github.com/rieckpil/getting-started-with-eclipse-microprofile/tree/master/microprofile-open-api))
+* MicroProfile OpenTracing ([Blog](https://rieckpil.de/whatis-eclipse-microprofile-opentracing/), [Sources](https://github.com/rieckpil/getting-started-with-eclipse-microprofile/tree/master/microprofile-open-tracing))
+* MicroProfile Health ([Blog](https://rieckpil.de/whatis-eclipse-microprofile-health/), [Sources](https://github.com/rieckpil/getting-started-with-eclipse-microprofile/tree/master/microprofile-health))
+
 
 ## REVIEW
 
