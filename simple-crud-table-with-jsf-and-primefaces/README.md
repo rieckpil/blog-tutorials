@@ -8,4 +8,4 @@ Steps to run this project:
 4. Start you Docker deamon
 5. Build the Docker image with `docker build -t crud-table-jsf-primefaces .`
 6. Start the Docker container with`docker run -p 8080:8080 crud-table-jsf-primefaces`
-7. Wait until the Payara server launched successfully and visit `http://localhost:8080/crud-table-jsf-primefaces`
+7. Wait until the Payara server launched successfully and visit `http://localhost:8080/`

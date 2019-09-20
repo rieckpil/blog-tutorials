@@ -4,16 +4,12 @@ import de.rieckpil.blog.customers.control.CustomerManager;
 import de.rieckpil.blog.customers.entity.Customer;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Past;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.List;
 
 @Named
