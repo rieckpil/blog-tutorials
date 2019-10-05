@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="new server">
+
+    <featureManager>
+        <feature>javaee-8.0</feature>
+        <feature>microProfile-3.0</feature>
+    </featureManager>
+
+    <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443"/>
+
+    <quickStartSecurity userName="duke" userPassword="dukeduke"/>
+
+    <dataSource id="DefaultDataSource" jndiName="jdbc/postgresql">
+        <jdbcDriver libraryRef="postgresql-library"/>
+        <properties.postgresql serverName="book-store"
+                               portNumber="5432"
+                               databaseName="postgres"
+                               user="postgres"
+                               password="postgres"/>
+    </dataSource>
+
+    <library id="postgresql-library">
+        <fileset dir="/opt/ol/wlp/lib"/>
+    </library>
+</server>
