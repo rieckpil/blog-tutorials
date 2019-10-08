@@ -1,6 +1,10 @@
 version: '3.6'
 services:
-  book-application:
+  book-client-application:
+    build: frontend/
+    ports:
+      - "8080:80"
+  book-server-application:
     build: .
     ports:
       - "9080:9080"
