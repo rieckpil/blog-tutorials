@@ -50,6 +50,7 @@
 * Write Java EE applications with Kotlin ([Blog](https://rieckpil.de/howto-write-java-ee-applications-with-kotlin/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/java-ee-with-kotlin))
 * Feature Toggles for Spring Boot applications with Togglz ([Blog](https://rieckpil.de/howto-feature-toggles-for-spring-boot-applications-with-togglz/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-feature-toggles-with-togglz))
 * Bootstrap your first Jakarta EE 8 application ([Blog](https://rieckpil.de/howto-bootstrap-your-first-jakarta-ee-8-application/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/bootstrap-jakarta-ee-8-application))
+* Jakarta EE and MicroProfile applications with React and PostgreSQL ([Blog](https://rieckpil.de/jakarta-ee-and-microprofile-applications-with-react-and-postgresql), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/guide-to-jakarta-ee-with-react-and-postgresql))
 
 ## WHATIS?
 
@@ -63,6 +64,10 @@
 * MicroProfile OpenAPI ([Blog](https://rieckpil.de/whatis-eclipse-microprofile-openapi/), [Sources](https://github.com/rieckpil/getting-started-with-eclipse-microprofile/tree/master/microprofile-open-api))
 * MicroProfile OpenTracing ([Blog](https://rieckpil.de/whatis-eclipse-microprofile-opentracing/), [Sources](https://github.com/rieckpil/getting-started-with-eclipse-microprofile/tree/master/microprofile-open-tracing))
 * MicroProfile Health ([Blog](https://rieckpil.de/whatis-eclipse-microprofile-health/), [Sources](https://github.com/rieckpil/getting-started-with-eclipse-microprofile/tree/master/microprofile-health))
+* Contexts and Dependency Injection (CDI) ([Blog](https://rieckpil.de/whatis-contexts-and-dependency-injection-cdi/), [Sources](https://github.com/rieckpil/getting-started-with-eclipse-microprofile/tree/master/cdi))
+* Jakarta RESTful Web Services (JAX-RS) ([Blog](https://rieckpil.de/whatis-jakarta-restful-web-services-jax-rs/), [Sources](https://github.com/rieckpil/getting-started-with-eclipse-microprofile/tree/master/jax-rs))
+* JSON Binding (JSON-B) ([Blog](https://rieckpil.de/whatis-json-binding-json-b/), [Sources](https://github.com/rieckpil/getting-started-with-eclipse-microprofile/tree/master/json-b))
+* JSON Processing (JSON-P) ([Blog](https://rieckpil.de/whatis-json-processing-json-p/), [Sources](https://github.com/rieckpil/getting-started-with-eclipse-microprofile/tree/master/json-p))
 
 
 ## REVIEW
