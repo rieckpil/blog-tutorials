@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.com/rieckpil/blog-tutorials.svg?branch=master)](https://travis-ci.com/rieckpil/blog-tutorials)
 
+If you find an issue or bug within the provided code examples, feel free to open an [issue](https://github.com/rieckpil/blog-tutorials/issues) and I will take a look.
+
 ## HOWTO's
 
 * Expose git information with Spring Boot’s Actuator ([Blog](https://rieckpil.de/howto-expose-git-information-with-spring-boots-actuator/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/expose-git-information-actuator))
