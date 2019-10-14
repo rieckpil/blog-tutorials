@@ -2,7 +2,8 @@
 <server description="new server">
 
     <featureManager>
-        <feature>microProfile-3.1</feature>
+        <feature>mpHealth-2.1</feature>
+        <feature>mpMetrics-2.1</feature>
     </featureManager>
 
     <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443"/>
