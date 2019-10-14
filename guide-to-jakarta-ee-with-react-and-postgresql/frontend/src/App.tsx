@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import {BookTable} from "./BookTable";
-import {Container, Dimmer, Header, Loader, Message, Image} from "semantic-ui-react";
+import {Container, Header, Message} from "semantic-ui-react";
 
 export interface Book {
     id: number
@@ -26,12 +26,7 @@ const App: React.FC = () => {
     let content;
 
     if (!data) {
-        content = (
-            <Dimmer active inverted>
-                <Loader>Loading</Loader>
-                <Image src='/short-paragraph.png'/>
-            </Dimmer>
-        );
+        content = <Message>Loading</Message>;
     } else if (data instanceof Error) {
         content = <Message negative>An error occurred while fetching the data</Message>;
     } else {
