@@ -75,9 +75,11 @@ If you find an issue or bug within the provided code examples, feel free to open
 ## REVIEW
 
 * What’s new in Spring Boot 2.1 ([Blog](https://rieckpil.de/review-whats-new-in-spring-boot-2-1/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/whats-new-in-spring-boot-2.1))
+* What's new in Spring Boot 2.2 ([Blog](https://rieckpil.de/review-whats-new-in-spring-boot-2-2/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/whats-new-in-spring-boot-2.2.))
+* What's new in MicroProfile 3.1([Blog](https://rieckpil.de/review-whats-new-in-microprofile-3-1/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/whats-new-in-microprofile-3.1))
 * Improved Java/Jakarta EE productivity with Adam Bien’s WAD (Watch and Deploy) ([Blog](https://rieckpil.de/review-improved-java-jakarta-ee-productivity-with-adam-biens-wad-watch-and-deploy/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/improved-java-ee-productivity-with-wad))
 * 5 Java 9 Features you might not know yet ([Blog](https://rieckpil.de/review-5-java-9-features-you-might-not-know-yet/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/five-java-9-features))
-* What's new in MicroProfile 3.1([Blog](https://rieckpil.de/review-whats-new-in-microprofile-3-1/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/whats-new-in-microprofile-3.1))
+
 
 ## OTHER
 
