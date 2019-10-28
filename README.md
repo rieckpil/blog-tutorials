@@ -53,6 +53,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 * Feature Toggles for Spring Boot applications with Togglz ([Blog](https://rieckpil.de/howto-feature-toggles-for-spring-boot-applications-with-togglz/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-feature-toggles-with-togglz))
 * Bootstrap your first Jakarta EE 8 application ([Blog](https://rieckpil.de/howto-bootstrap-your-first-jakarta-ee-8-application/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/bootstrap-jakarta-ee-8-application))
 * Jakarta EE and MicroProfile applications with React and PostgreSQL ([Blog](https://rieckpil.de/jakarta-ee-and-microprofile-applications-with-react-and-postgresql), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/guide-to-jakarta-ee-with-react-and-postgresql))
+* Create your own Maven Archetype in 5 simple steps ([Blog](https://rieckpil.de/create-your-own-maven-archetype-in-5-simple-steps/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/custom-maven-archetype))
 
 ## WHATIS?
 
