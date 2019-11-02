@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.2.xsd">
+    <!-- example to suppress a false  warning
+    <suppress>
+        <notes><![CDATA[
+         Suppress all dependencies for CVE-2018-1258 (https://pivotal.io/security/cve-2018-1258)
+        ]]></notes>
+        <cve>CVE-2018-1258</cve>
+    </suppress>
+     -->
+</suppressions>
