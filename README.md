@@ -80,6 +80,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 * What's new in MicroProfile 3.1 ([Blog](https://rieckpil.de/review-whats-new-in-microprofile-3-1/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/whats-new-in-microprofile-3.1))
 * Improved Java/Jakarta EE productivity with Adam Bien’s WAD (Watch and Deploy) ([Blog](https://rieckpil.de/review-improved-java-jakarta-ee-productivity-with-adam-biens-wad-watch-and-deploy/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/improved-java-ee-productivity-with-wad))
 * 5 Java 9 Features you might not know yet ([Blog](https://rieckpil.de/review-5-java-9-features-you-might-not-know-yet/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/five-java-9-features))
+* Top 3 Maven Plugins to ensure Quality and Security for your project ([Blog](https://rieckpil.de/top-3-maven-plugins-to-ensure-quality-and-security-for-your-project/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/maven-plugins-to-ensure-quality))
 
 
 ## OTHER
