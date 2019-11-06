@@ -11,7 +11,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 public class SecurityConfiguration {
 
     @Bean
-    SecurityWebFilterChain configure(ServerHttpSecurity http) throws Exception {
+    SecurityWebFilterChain configure(ServerHttpSecurity http) {
         return http
                 .authorizeExchange(exchanges ->
                         exchanges.anyExchange().authenticated()

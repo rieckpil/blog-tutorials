@@ -56,4 +56,5 @@ public class GitHubController {
                 .flatMapMany(Flux::fromIterable)
                 .map(jsonNode -> jsonNode.get("full_name").asText());
     }
+
 }

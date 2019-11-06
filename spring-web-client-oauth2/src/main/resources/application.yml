@@ -7,4 +7,3 @@ spring:
             client-id: replace-me
             client-secret: replace-me
             scope: read:user,public_repo
-            provider: github
