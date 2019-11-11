@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"></meta>
+    <title>Jakarta EE WebSockets</title>
+</head>
+<body>
+<div>
+    <input type="text" id="ws_message">
+    <input type="submit" value="Send message" onclick="send()"/>
+</div>
+<div id="messages"></div>
+<script language="javascript" type="text/javascript">
+    var webSocket = new WebSocket('ws://localhost:9080/stocks');
+    webSocket.onerror = function (event) {
+        onError(event)
+    };
+    webSocket.onopen = function (event) {
+        onOpen(event)
+    };
+    webSocket.onmessage = function (event) {
+        onMessage(event)
+    };
+
+    function onMessage(event) {
+        document.getElementById('messages').innerHTML += '<br />' + event.data;
+    }
+
+    function onOpen(event) {
+        document.getElementById('messages').innerHTML = 'Connection established';
+    }
+
+    function onError(event) {
+        alert('An error occurred:' + event.data);
+    }
+
+    function send() {
+        var txt = document.getElementById('ws_message').value;
+        webSocket.send(txt);
+        return false;
+    }
+</script>
+</body>
+</html>
+
