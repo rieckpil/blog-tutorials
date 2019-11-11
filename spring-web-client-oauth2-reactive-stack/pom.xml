@@ -10,9 +10,9 @@
     </parent>
 
     <groupId>de.rieckpil.blog</groupId>
-    <artifactId>spring-web-client-oauth2</artifactId>
+    <artifactId>spring-web-client-oauth2-reactive-stack</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-web-client-oauth2</name>
+    <name>spring-web-client-oauth2-reactive-stack</name>
 
     <properties>
         <java.version>11</java.version>
