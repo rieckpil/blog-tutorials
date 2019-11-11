@@ -1,0 +1,9 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: replaceme
+            client-secret: replaceme
+            scope: read:user,public_repo
