@@ -71,6 +71,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 * Jakarta RESTful Web Services (JAX-RS) ([Blog](https://rieckpil.de/whatis-jakarta-restful-web-services-jax-rs/), [Sources](https://github.com/rieckpil/getting-started-with-eclipse-microprofile/tree/master/jax-rs))
 * JSON Binding (JSON-B) ([Blog](https://rieckpil.de/whatis-json-binding-json-b/), [Sources](https://github.com/rieckpil/getting-started-with-eclipse-microprofile/tree/master/json-b))
 * JSON Processing (JSON-P) ([Blog](https://rieckpil.de/whatis-json-processing-json-p/), [Sources](https://github.com/rieckpil/getting-started-with-eclipse-microprofile/tree/master/json-p))
+* Spring WebClient OAuth2 Integration using GitHub as an example ([Blog](https://rieckpil.de/spring-webclient-oauth2-integration-using-github-as-an-example/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-web-client-oauth2-reactive-stack))
 
 
 ## REVIEW
