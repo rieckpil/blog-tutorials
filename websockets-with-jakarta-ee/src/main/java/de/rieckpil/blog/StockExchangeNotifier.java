@@ -10,6 +10,8 @@ import javax.websocket.DeploymentException;
 import javax.websocket.Session;
 import javax.websocket.WebSocketContainer;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.concurrent.ThreadLocalRandom;
@@ -32,15 +34,11 @@ public class StockExchangeNotifier {
 
     @Schedule(second = "*/5", minute = "*", hour = "*", persistent = false)
     public void sendNewStockExchangeInformation() {
-        try {
-            JsonObject stockInformation = Json.createObjectBuilder()
-                    .add("stock", "DUKE")
-                    .add("price", ThreadLocalRandom.current().nextDouble(250.00))
-                    .build();
+        JsonObject stockInformation = Json.createObjectBuilder()
+                .add("stock", "DKE-42")
+                .add("price", new BigDecimal(ThreadLocalRandom.current().nextDouble(250.00)).setScale(2, RoundingMode.DOWN))
+                .build();
 
-            session.getBasicRemote().sendText(stockInformation.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        StockExchangeEndpoint.broadcastMessage(stockInformation);
     }
 }
