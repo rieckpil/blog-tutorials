@@ -54,8 +54,9 @@ If you find an issue or bug within the provided code examples, feel free to open
 * Bootstrap your first Jakarta EE 8 application ([Blog](https://rieckpil.de/howto-bootstrap-your-first-jakarta-ee-8-application/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/bootstrap-jakarta-ee-8-application))
 * Jakarta EE and MicroProfile applications with React and PostgreSQL ([Blog](https://rieckpil.de/jakarta-ee-and-microprofile-applications-with-react-and-postgresql), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/guide-to-jakarta-ee-with-react-and-postgresql))
 * Create your own Maven Archetype in 5 simple steps ([Blog](https://rieckpil.de/create-your-own-maven-archetype-in-5-simple-steps/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/custom-maven-archetype))
-* Spring WebClient OAuth2 Integration using GitHub as an example ([Blog](https://rieckpil.de/spring-webclient-oauth2-integration-using-github-as-an-example/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-web-client-oauth2-reactive-stack))
+* Spring WebClient OAuth2 Integration for Spring WebFlux ([Blog](https://rieckpil.de/spring-webclient-oauth2-integration-using-github-as-an-example/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-web-client-oauth2-reactive-stack))
 * Create real-time applications with Jakarta EE WebSocket ([Blog](https://rieckpil.de/create-real-time-applications-with-jakarta-ee-websocket/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/websockets-with-jakarta-ee))
+* Spring WebClient OAuth2 Integration for Spring Web (Servlet) ([Blog](https://rieckpil.de/spring-webclient-oauth2-integration-for-spring-web-servlet/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-web-client-oauth2-servlet-stack))
 
 ## WHATIS?
 

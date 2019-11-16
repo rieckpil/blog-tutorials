@@ -1,4 +1,4 @@
-# Codebase for the blog post [#HOWTO: Spring WebClient OAuth2 Integration using GitHub as an example](https://rieckpil.de/spring-webclient-oauth2-integration-using-github-as-an-example/)
+# Codebase for the blog post [#HOWTO: Spring WebClient OAuth2 Integration for Spring WebFlux](https://rieckpil.de/spring-webclient-oauth2-integration-using-github-as-an-example/)
 
 Steps to run this project:
 
