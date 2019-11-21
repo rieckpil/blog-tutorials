@@ -11,6 +11,7 @@ public class SampleApplicationConfig implements SharedContainerConfiguration {
     @Container
     public static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>()
             .withNetworkAliases("mypostgres")
+            .withExposedPorts(5432)
             .withUsername("duke")
             .withPassword("duke42")
             .withDatabaseName("users");

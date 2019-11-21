@@ -1,15 +1,14 @@
 package de.rieckpil.blog;
 
-import org.eclipse.microprofile.config.inject.ConfigProperty;
-import org.eclipse.microprofile.rest.client.inject.RestClient;
-
 import javax.inject.Inject;
 import javax.json.Json;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 @Path("sample")
 @Produces(MediaType.TEXT_PLAIN)
@@ -25,15 +24,15 @@ public class SampleResource {
 
     @GET
     @Path("/message")
-    public Response getMessage() {
-        return Response.ok(message).build();
+    public String getMessage() {
+        return message;
     }
 
     @GET
     @Path("/quotes")
-    public Response getQuotes() {
+    public String getQuotes() {
         var quoteOfTheDayPointer = Json.createPointer("/contents/quotes/0/quote");
         var quoteOfTheDay = quoteOfTheDayPointer.getValue(quoteRestClient.getQuoteOfTheDay()).toString();
-        return Response.ok(quoteOfTheDay).build();
+        return quoteOfTheDay;
     }
 }
