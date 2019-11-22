@@ -22,8 +22,7 @@ public class SampleApplicationConfig implements SharedContainerConfiguration {
             .withEnv("POSTGRES_PASSWORD", "duke42")
             .withEnv("message", "Hello World from MicroShed Testing")
             .withAppContextRoot("/")
-            .withReadinessPath("/resources/sample")
-            //.withReadinessPath("/health/ready") reports readiness too early
+            .withReadinessPath("/resources/sample/message")
             .dependsOn(postgres);
 
     @Override
@@ -31,5 +30,4 @@ public class SampleApplicationConfig implements SharedContainerConfiguration {
         postgres.start();
         app.start();
     }
-
 }

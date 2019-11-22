@@ -2,12 +2,12 @@ package de.rieckpil.blog;
 
 import javax.json.JsonObject;
 import javax.persistence.*;
-import java.util.concurrent.ThreadLocalRandom;
 
 @Entity
 public class Person {
 
     @Id
+    @GeneratedValue
     private Long id;
 
     @Column(nullable = false)
@@ -20,7 +20,6 @@ public class Person {
     }
 
     public Person(JsonObject jsonObject) {
-        this.id = ThreadLocalRandom.current().nextLong();
         this.firstName = jsonObject.getString("firstName", "not provided");
         this.lastName = jsonObject.getString("lastName", "not provided");
     }

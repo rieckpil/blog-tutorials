@@ -41,6 +41,7 @@ public class PersonResource {
 
     @POST
     public Response createNewPerson(@Context UriInfo uriInfo, @RequestBody JsonObject jsonObject) {
+
         var personToStore = new Person(jsonObject);
         entityManager.persist(personToStore);
 

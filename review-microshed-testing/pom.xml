@@ -18,7 +18,7 @@
         <microprofile.version>3.0</microprofile.version>
         <mockito-core.version>3.1.0</mockito-core.version>
         <junit-jupiter.version>5.5.0</junit-jupiter.version>
-        <microshed-testing-testcontainers.version>0.5</microshed-testing-testcontainers.version>
+        <microshed-testing.version>0.5</microshed-testing.version>
     </properties>
 
     <dependencies>
@@ -38,7 +38,13 @@
         <dependency>
             <groupId>org.microshed</groupId>
             <artifactId>microshed-testing-testcontainers</artifactId>
-            <version>${microshed-testing-testcontainers.version}</version>
+            <version>${microshed-testing.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -63,18 +69,6 @@
             <groupId>com.fasterxml.jackson.jaxrs</groupId>
             <artifactId>jackson-jaxrs-json-provider</artifactId>
             <version>2.10.1</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito-core.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
