@@ -57,6 +57,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 * Spring WebClient OAuth2 Integration for Spring WebFlux ([Blog](https://rieckpil.de/spring-webclient-oauth2-integration-using-github-as-an-example/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-web-client-oauth2-reactive-stack))
 * Create real-time applications with Jakarta EE WebSocket ([Blog](https://rieckpil.de/create-real-time-applications-with-jakarta-ee-websocket/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/websockets-with-jakarta-ee))
 * Spring WebClient OAuth2 Integration for Spring Web (Servlet) ([Blog](https://rieckpil.de/spring-webclient-oauth2-integration-for-spring-web-servlet/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-web-client-oauth2-servlet-stack))
+* Jakarta EE integration tests with MicroShed Testing ([Blog](https://rieckpil.de/jakarta-ee-integration-tests-with-microshed-testing/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/review-microshed-testing))
 
 ## WHATIS?
 
