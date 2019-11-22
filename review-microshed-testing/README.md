@@ -1,4 +1,4 @@
-clean# Codebase for the blog post [#HOWTO: Jakarta EE integration tests with MicroShed Testing](https://rieckpil.de/jakarta-ee-integration-tests-with-microshed-testing/)
+# Codebase for the blog post [#HOWTO: Jakarta EE integration tests with MicroShed Testing](https://rieckpil.de/jakarta-ee-integration-tests-with-microshed-testing/)
 
 Steps to run this project:
 
