@@ -58,6 +58,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 * Create real-time applications with Jakarta EE WebSocket ([Blog](https://rieckpil.de/create-real-time-applications-with-jakarta-ee-websocket/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/websockets-with-jakarta-ee))
 * Spring WebClient OAuth2 Integration for Spring Web (Servlet) ([Blog](https://rieckpil.de/spring-webclient-oauth2-integration-for-spring-web-servlet/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-web-client-oauth2-servlet-stack))
 * Jakarta EE integration tests with MicroShed Testing ([Blog](https://rieckpil.de/jakarta-ee-integration-tests-with-microshed-testing/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/review-microshed-testing))
+* Spring Boot Integration Tests with WireMock and JUnit 5 ([Blog](https://rieckpil.de/spring-boot-integration-tests-with-wiremock-and-junit-5/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-integration-tests-wiremock))
 
 ## WHATIS?
 
