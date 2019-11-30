@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="rieckpil">
+
+    <featureManager>
+        <feature>cdi-2.0</feature>
+        <feature>jpa-2.2</feature>
+        <feature>jaxrs-2.1</feature>
+        <feature>mpConfig-1.3</feature>
+        <feature>mpHealth-2.0</feature>
+        <feature>mpRestClient-1.3</feature>
+    </featureManager>
+
+    <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443"/>
+
+    <!-- ${databaseName} is configured in the pom.xml -->
+    <dataSource id="DefaultDataSource" jndiName="jdbc/h2">
+        <jdbcDriver libraryRef="h2-library"/>
+        <properties URL="jdbc:h2:mem:${databaseName}"/>
+    </dataSource>
+
+    <library id="h2-library">
+        <file name="${server.config.dir}/h2.jar"/>
+    </library>
+</server>
