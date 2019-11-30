@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.rieckpil.blog</groupId>
-    <artifactId>open-maven-plugin-review</artifactId>
+    <artifactId>open-liberty-maven-plugin-review</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
@@ -17,10 +17,6 @@
         <jakarta.jakartaee-api.version>8.0.0</jakarta.jakartaee-api.version>
         <microprofile.version>3.2</microprofile.version>
         <junit-jupiter.version>5.5.0</junit-jupiter.version>
-        <!-- Configuration for Open Liberty -->
-        <liberty.jvm.minHeap>-Xms512m</liberty.jvm.minHeap>
-        <liberty.env.MY_MESSAGE>Hello World from Maven pom.xml!</liberty.env.MY_MESSAGE>
-        <liberty.var.databaseName>jakarta</liberty.var.databaseName>
     </properties>
 
     <dependencies>
