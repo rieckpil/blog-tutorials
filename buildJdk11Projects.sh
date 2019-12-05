@@ -5,7 +5,8 @@ declare -a arr=("whats-new-in-spring-boot-2.1"
  "random-data-in-java-using-java-faker"
  "java-ee-with-kotlin"
  "spring-boot-feature-toggles-with-togglz"
- "spring-boot-integration-tests-wiremock")
+ "spring-boot-integration-tests-wiremock"
+ "spring-boot-with-maven")
 
 for project in "${arr[@]}"
 do

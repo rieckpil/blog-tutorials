@@ -59,6 +59,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 * Spring WebClient OAuth2 Integration for Spring Web (Servlet) ([Blog](https://rieckpil.de/spring-webclient-oauth2-integration-for-spring-web-servlet/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-web-client-oauth2-servlet-stack))
 * Jakarta EE integration tests with MicroShed Testing ([Blog](https://rieckpil.de/jakarta-ee-integration-tests-with-microshed-testing/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/review-microshed-testing))
 * Spring Boot Integration Tests with WireMock and JUnit 5 ([Blog](https://rieckpil.de/spring-boot-integration-tests-with-wiremock-and-junit-5/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-integration-tests-wiremock))
+* Create Spring Boot applications with Maven and Kotlin ([Blog](https://rieckpil.de/create-spring-boot-applications-with-maven-and-kotlin/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-with-maven))
 
 ## WHATIS?
 
