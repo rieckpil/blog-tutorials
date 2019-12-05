@@ -7,6 +7,6 @@ import org.springframework.boot.test.context.SpringBootTest
 class SpringBootWithKotlinApplicationTest {
 
   @Test
-  fun contextLoads() {
+  fun `Spring context should load`() {
   }
 }

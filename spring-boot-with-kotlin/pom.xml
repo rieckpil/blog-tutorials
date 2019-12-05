@@ -8,6 +8,7 @@
     <version>2.2.1.RELEASE</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
+
   <groupId>de.rieckpil.blog</groupId>
   <artifactId>spring-boot-with-kotlin</artifactId>
   <version>0.0.1-SNAPSHOT</version>
@@ -83,6 +84,7 @@
           <args>
             <arg>-Xjsr305=strict</arg>
           </args>
+          <jvmTarget>${java.version}</jvmTarget>
           <compilerPlugins>
             <plugin>spring</plugin>
             <plugin>jpa</plugin>
@@ -114,26 +116,11 @@
         <executions>
           <execution>
             <id>ktlint</id>
-            <phase>verify</phase>
+            <phase>validate</phase>
             <configuration>
               <target name="ktlint">
                 <java taskname="ktlint" dir="${basedir}" fork="true" failonerror="true"
                       classname="com.pinterest.ktlint.Main" classpathref="maven.plugin.classpath">
-                  <arg value="src/**/*.kt"/>
-                </java>
-              </target>
-            </configuration>
-            <goals>
-              <goal>run</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>ktlint-format</id>
-            <configuration>
-              <target name="ktlint">
-                <java taskname="ktlint" dir="${basedir}" fork="true" failonerror="true"
-                      classname="com.pinterest.ktlint.Main" classpathref="maven.plugin.classpath">
-                  <arg value="-F"/>
                   <arg value="src/**/*.kt"/>
                 </java>
               </target>
