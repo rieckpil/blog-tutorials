@@ -1,6 +1,6 @@
 /target/
 !.mvn/wrapper/maven-wrapper.jar
-/src/main/webapp/app
+src/main/webapp/app/
 
 .apt_generated
 .classpath
