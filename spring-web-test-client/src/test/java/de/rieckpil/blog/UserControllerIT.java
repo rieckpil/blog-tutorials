@@ -48,39 +48,39 @@ class UserControllerIT {
       .isEqualTo(NOT_ACCEPTABLE);
   }
 
-  @Test
-  public void shouldCreateNewUser() {
+@Test
+public void shouldCreateNewUser() {
 
-    var newUser = new User(10L, "test", Set.of("testing", "webtestclient"));
+  var newUser = new User(10L, "test", Set.of("testing", "webtestclient"));
 
-    var userCreationResponse = this.webTestClient
-      .post()
-      .uri("/api/users")
-      .body(Mono.just(newUser), User.class)
-      .header(CONTENT_TYPE, APPLICATION_JSON_VALUE)
-      .header(ACCEPT, APPLICATION_JSON_VALUE)
-      .exchange()
-      .expectStatus()
-      .isEqualTo(CREATED)
-      .returnResult(Void.class);
+  var userCreationResponse = this.webTestClient
+    .post()
+    .uri("/api/users")
+    .body(Mono.just(newUser), User.class)
+    .header(CONTENT_TYPE, APPLICATION_JSON_VALUE)
+    .header(ACCEPT, APPLICATION_JSON_VALUE)
+    .exchange()
+    .expectStatus()
+    .isEqualTo(CREATED)
+    .returnResult(Void.class);
 
-    var locationUrlOfNewUser = userCreationResponse.getResponseHeaders().get(LOCATION).get(0);
+  var locationUrlOfNewUser = userCreationResponse.getResponseHeaders().get(LOCATION).get(0);
 
-    this.webTestClient
-      .get()
-      .uri(locationUrlOfNewUser)
-      .header(ACCEPT, APPLICATION_JSON_VALUE)
-      .exchange()
-      .expectStatus()
-      .isEqualTo(OK)
-      .expectBody(User.class)
-      .isEqualTo(newUser);
+  this.webTestClient
+    .get()
+    .uri(locationUrlOfNewUser)
+    .header(ACCEPT, APPLICATION_JSON_VALUE)
+    .exchange()
+    .expectStatus()
+    .isEqualTo(OK)
+    .expectBody(User.class)
+    .isEqualTo(newUser);
 
-    this.webTestClient
-      .delete()
-      .uri("/api/users/{id}", newUser.getId())
-      .exchange();
-  }
+  this.webTestClient
+    .delete()
+    .uri("/api/users/{id}", newUser.getId())
+    .exchange();
+}
 
   @Test
   public void shouldReturnNotFoundForUnknownUserId() {
