@@ -39,4 +39,8 @@ public class UserService {
     this.userList.add(user);
     return Optional.of(user);
   }
+
+  public void deleteUserById(Long id) {
+    this.userList.removeIf(user -> user.getId() == id);
+  }
 }

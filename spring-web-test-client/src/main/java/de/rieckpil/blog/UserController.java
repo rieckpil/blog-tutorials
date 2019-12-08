@@ -11,7 +11,7 @@ import java.util.List;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
-@RequestMapping(value = "/api/users", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/users", produces = APPLICATION_JSON_VALUE)
 public class UserController {
 
   private final UserService userService;
@@ -32,7 +32,7 @@ public class UserController {
       .orElseThrow(() -> new UserNotFoundException(String.format("User with id [%s] not found", id)));
   }
 
-  @PostMapping
+  @PostMapping(consumes = APPLICATION_JSON_VALUE)
   public ResponseEntity<Void> createNewUser(@RequestBody @Validated User user, UriComponentsBuilder uriComponentsBuilder) {
     User addedUser = this.userService.addNewUser(user)
       .orElseThrow(() -> new UserAlreadyExistsException(
@@ -42,6 +42,11 @@ public class UserController {
       uriComponentsBuilder.path("/api/users/{id}").buildAndExpand(addedUser.getId());
 
     return ResponseEntity.created(uriComponents.toUri()).build();
+  }
+
+  @DeleteMapping("/{id}")
+  public void deleteUser(@PathVariable("id") Long id) {
+    this.userService.deleteUserById(id);
   }
 }
 
