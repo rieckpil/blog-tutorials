@@ -52,28 +52,6 @@
     <finalName>jakarta-ee-react-file-handling</finalName>
     <plugins>
       <plugin>
-        <artifactId>maven-resources-plugin</artifactId>
-        <version>3.1.0</version>
-        <executions>
-          <execution>
-            <id>copy-resources</id>
-            <phase>prepare-package</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${basedir}/src/main/webapp/app</outputDirectory>
-              <resources>
-                <resource>
-                  <directory>frontend/build</directory>
-                  <filtering>false</filtering>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
         <groupId>com.github.eirslett</groupId>
         <artifactId>frontend-maven-plugin</artifactId>
         <version>1.8.0</version>
@@ -123,7 +101,7 @@
           </execution>
         </executions>
         <configuration>
-          <workingDirectory>frontend</workingDirectory>
+          <workingDirectory>src/main/frontend</workingDirectory>
           <nodeVersion>v12.13.1</nodeVersion>
         </configuration>
       </plugin>
@@ -139,6 +117,17 @@
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.22.2</version>
+      </plugin>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.2.3</version>
+        <configuration>
+          <webResources>
+            <resource>
+              <directory>${project.basedir}/src/main/frontend/build</directory>
+            </resource>
+          </webResources>
+        </configuration>
       </plugin>
     </plugins>
   </build>
