@@ -59,8 +59,7 @@ const App: React.FC = () => {
             message: 'Error occurred while downloading file',
             color: 'red'
           }))
-      }
-      }/>
+      }}/>
   </Container>;
 };
 
