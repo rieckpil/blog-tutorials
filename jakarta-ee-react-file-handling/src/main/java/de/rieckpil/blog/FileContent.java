@@ -2,15 +2,15 @@ package de.rieckpil.blog;
 
 public class FileContent {
 
-  private byte[] content;
   private String fileName;
+  private byte[] content;
 
   public FileContent() {
   }
 
-  public FileContent(byte[] content, String fileName) {
-    this.content = content;
+  public FileContent(String fileName, byte[] content) {
     this.fileName = fileName;
+    this.content = content;
   }
 
   public byte[] getContent() {
