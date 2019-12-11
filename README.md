@@ -61,6 +61,8 @@ If you find an issue or bug within the provided code examples, feel free to open
 * Spring Boot Integration Tests with WireMock and JUnit 5 ([Blog](https://rieckpil.de/spring-boot-integration-tests-with-wiremock-and-junit-5/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-integration-tests-wiremock))
 * Create Spring Boot applications with Maven and Kotlin ([Blog](https://rieckpil.de/create-spring-boot-applications-with-maven-and-kotlin/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-with-maven))
 * Spring WebTestClient for efficient testing of your REST API ([Blog](https://rieckpil.de/spring-webtestclient-for-efficient-testing-of-your-rest-api/), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-web-test-client))
+* Jakarta EE & React file up- and download using Java 11 and TypeScript ([Blog](https://rieckpil.de/jakarta-ee-react-file-up-and-download-using-java-11-and-typescript), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/jakarta-ee-react-file-handling))
+
 
 ## WHATIS?
 
