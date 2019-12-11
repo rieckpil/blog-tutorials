@@ -1,12 +1,13 @@
 language: java
 
 before_script:
+- wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
 - chmod +x buildJdk8Projects.sh
 - chmod +x buildJdk11Projects.sh
+- chmod +x install-jdk.sh
 
 jdk:
   - openjdk8
-  - openjdk11
 jobs:
   include:
     - stage: ☕ 8
@@ -14,8 +15,9 @@ jobs:
         - ./buildJdk8Projects.sh
     - stage: ☕ 11
       script:
+        - echo $JAVA_HOME
         - jdk_switcher use openjdk11
-        - ./buildJdk11Projects.sh
+        - echo $JAVA_HOME
 
 cache:
   directories:
