@@ -16,6 +16,9 @@ jobs:
     - stage: ☕ 11
       script:
         - echo $JAVA_HOME
+        - export JAVA_HOME=$HOME/openjdk11
+        - $TRAVIS_BUILD_DIR/install-jdk.sh --install openjdk11 --target $JAVA_HOME
+        - ./buildJdk11Projects.sh
 
 cache:
   directories:
