@@ -18,8 +18,8 @@
         <microprofile.version>3.0</microprofile.version>
         <mockito-core.version>3.1.0</mockito-core.version>
         <junit-jupiter.version>5.5.0</junit-jupiter.version>
-        <microshed-testing.version>0.5</microshed-testing.version>
-        <testcontainers.version>1.12.3</testcontainers.version>
+        <microshed-testing.version>0.6.1.1</microshed-testing.version>
+        <testcontainers.version>1.12.4</testcontainers.version>
     </properties>
 
     <dependencies>
