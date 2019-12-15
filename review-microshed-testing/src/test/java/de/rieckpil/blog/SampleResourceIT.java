@@ -7,11 +7,11 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockserver.model.HttpRequest.request;
 import static org.mockserver.model.HttpResponse.response;
 
-import javax.inject.Inject;
 import javax.json.Json;
 
 import org.junit.jupiter.api.Test;
 import org.microshed.testing.SharedContainerConfig;
+import org.microshed.testing.jaxrs.RESTClient;
 import org.microshed.testing.jupiter.MicroShedTest;
 import org.mockserver.client.MockServerClient;
 
@@ -19,7 +19,7 @@ import org.mockserver.client.MockServerClient;
 @SharedContainerConfig(SampleApplicationConfig.class)
 public class SampleResourceIT {
     
-    @Inject
+    @RESTClient
     public static SampleResource sampleEndpoint;
     
     @Test

@@ -4,23 +4,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.io.StringReader;
-import java.net.MalformedURLException;
-
-import javax.inject.Inject;
-import javax.json.Json;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.junit.jupiter.api.Test;
 import org.microshed.testing.SharedContainerConfig;
+import org.microshed.testing.jaxrs.RESTClient;
 import org.microshed.testing.jupiter.MicroShedTest;
 
 @MicroShedTest
 @SharedContainerConfig(SampleApplicationConfig.class)
 public class PersonResourceIT {
     
-    @Inject
+    @RESTClient
     public static PersonResource personsEndpoint;
     
     @Test

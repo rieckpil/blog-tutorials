@@ -1,7 +1,7 @@
 package de.rieckpil.blog;
 
 import org.microshed.testing.SharedContainerConfiguration;
-import org.microshed.testing.testcontainers.MicroProfileApplication;
+import org.microshed.testing.testcontainers.ApplicationContainer;
 import org.testcontainers.containers.MockServerContainer;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
@@ -21,7 +21,7 @@ public class SampleApplicationConfig implements SharedContainerConfiguration {
             .withNetworkAliases("mockserver");
 
     @Container
-    public static MicroProfileApplication app = new MicroProfileApplication()
+    public static ApplicationContainer app = new ApplicationContainer()
             .withEnv("POSTGRES_HOSTNAME", "mypostgres")
             .withEnv("POSTGRES_PORT", "5432")
             .withEnv("POSTGRES_USERNAME", "duke")
@@ -29,13 +29,6 @@ public class SampleApplicationConfig implements SharedContainerConfiguration {
             .withEnv("message", "Hello World from MicroShed Testing")
             .withAppContextRoot("/")
             .withReadinessPath("/resources/sample/message")
-            .withMpRestClient(QuoteRestClient.class, "http://mockserver:" + MockServerContainer.PORT)
-            .dependsOn(mockServer, mockServer);
+            .withMpRestClient(QuoteRestClient.class, "http://mockserver:" + MockServerContainer.PORT);
 
-    @Override
-    public void startContainers() {
-        postgres.start();
-        mockServer.start();
-        app.start();
-    }
 }
