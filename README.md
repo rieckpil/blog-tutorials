@@ -1,6 +1,6 @@
 # Codebase for the tutorials on my [blog](https://rieckpil.de/#/blog)
 
-[![Build Status](https://travis-ci.com/rieckpil/blog-tutorials.svg?branch=master)](https://travis-ci.com/rieckpil/blog-tutorials)
+![](https://github.com/rieckpil/blog-tutorials/workflows/Build%20Java/badge.svg)
 
 If you find an issue or bug within the provided code examples, feel free to open an [issue](https://github.com/rieckpil/blog-tutorials/issues) and I will take a look.
 

@@ -1,4 +1,4 @@
-name: Java CI
+name: Build Java
 
 on: [push, pull_request]
 
