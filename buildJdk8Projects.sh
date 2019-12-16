@@ -2,7 +2,7 @@
 declare -a arr=("rest-easy-file-uploading-and-downloading" 
  "charts-in-pdf-java-ee"
  "dynamic-sql-querying-with-pagination"
- "generate-documents-form-word-templates-with-docx4j-on-wildfly"
+ "generate-documents-from-word-templates-with-docx4j-on-wildfly14"
  "graalvm-intro"
  "hello-world-jsf-2.3"
  "improved-java-ee-productivity-with-wad"
@@ -16,5 +16,8 @@ declare -a arr=("rest-easy-file-uploading-and-downloading"
 
 for project in "${arr[@]}"
 do
-   mvn -B -f $project/pom.xml package
+  mvn -B -f $project/pom.xml verify
+  if [[ "$?" -ne 0 ]] ; then
+    echo "Failed to build project: $project"; exit $rc
+  fi
 done
