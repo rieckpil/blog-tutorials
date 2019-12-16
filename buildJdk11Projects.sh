@@ -1,4 +1,8 @@
 #!/bin/bash
+
+set -e
+set -o pipefail
+
 declare -a arr=("whats-new-in-spring-boot-2.1" 
  "bootstrap-jakarta-ee-8-application"
  "custom-maven-archetype"
@@ -14,8 +18,11 @@ declare -a arr=("whats-new-in-spring-boot-2.1"
  "spring-boot-integration-tests-wiremock"
  "telegram-bot-notifications-with-java"
  "websockets-with-jakarta-ee"
+ "open-liberty-maven-plugin-review"
  "jakarta-ee-react-file-handling"
+ "remote-debugging-spring-boot-application"
  "review-microshed-testing"
+ "maven-plugins-to-ensure-quality"
  "spring-web-client-demo"
  "spring-web-client-oauth2-reactive-stack"
  "spring-web-client-oauth2-servlet-stack"
