@@ -1,6 +1,7 @@
 #!/bin/bash
 declare -a arr=("rest-easy-file-uploading-and-downloading" 
  "spring-boot-with-open-liberty"
+ "testcontainers"
  "send-emails-with-sendgrid-and-spring-boot")
 
 for project in "${arr[@]}"
