@@ -36,7 +36,4 @@ declare -a arr=("whats-new-in-spring-boot-2.1"
 for project in "${arr[@]}"
 do
   mvn -B -f $project/pom.xml verify
-  if [[ "$?" -ne 0 ]] ; then
-    echo "Failed to build project: $project"; exit $rc
-  fi
 done
