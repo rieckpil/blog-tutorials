@@ -1,6 +1,6 @@
 # Codebase for the tutorials on my [blog](https://rieckpil.de/#/blog)
 
-![](https://github.com/rieckpil/blog-tutorials/workflows/Build%20Java/badge.svg)
+[![](https://github.com/rieckpil/blog-tutorials/workflows/Build%20Java/badge.svg)](https://github.com/rieckpil/blog-tutorials/actions)
 
 If you find an issue or bug within the provided code examples, feel free to open an [issue](https://github.com/rieckpil/blog-tutorials/issues) and I will take a look.
 
