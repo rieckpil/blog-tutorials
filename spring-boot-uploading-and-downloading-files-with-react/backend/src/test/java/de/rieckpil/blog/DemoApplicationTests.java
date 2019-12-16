@@ -1,4 +1,4 @@
-package de.rieckpil.learning.springbootuploadinganddownloadingfileswithreact;
+package de.rieckpil.blog;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
