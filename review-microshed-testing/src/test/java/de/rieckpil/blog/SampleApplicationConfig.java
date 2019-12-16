@@ -28,7 +28,7 @@ public class SampleApplicationConfig implements SharedContainerConfiguration {
             .withEnv("POSTGRES_PASSWORD", "duke42")
             .withEnv("message", "Hello World from MicroShed Testing")
             .withAppContextRoot("/")
-            .withReadinessPath("/health/ready")
+            .withReadinessPath("/resources/sample/message")
             .withMpRestClient(QuoteRestClient.class, "http://mockserver:" + MockServerContainer.PORT);
 
 }
