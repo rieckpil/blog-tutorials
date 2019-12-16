@@ -38,7 +38,4 @@ declare -a arr=("rest-easy-file-uploading-and-downloading"
 for project in "${arr[@]}"
 do
   mvn -B -f $project/pom.xml verify
-  if [[ "$?" -ne 0 ]] ; then
-    echo "Failed to build project: $project"; exit $rc
-  fi
 done
