@@ -85,7 +85,7 @@
                 <version>5.2.2</version>
                 <configuration>
                     <suppressionFiles>
-                        <suppressionFile>owasp-suppressions.xml</suppressionFile>
+                        <suppressionFile>${project.basedir}/owasp-suppressions.xml</suppressionFile>
                     </suppressionFiles>
                     <failBuildOnCVSS>8</failBuildOnCVSS>
                     <assemblyAnalyzerEnabled>false</assemblyAnalyzerEnabled>
