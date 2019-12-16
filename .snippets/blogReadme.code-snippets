@@ -6,7 +6,7 @@
       "Steps to run this project:\n",
       "1. Clone this Git repository",
       "2. Navigate to the folder `$3`\n",
-      "* $1 ([Blog]($2), [Sources](https://github.com/rieckpil/blog-tutorials/tree/master/$3))"
+      "* [$1]($2) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/$3))"
     ],
     "description": "README.md for new blogpost"
   }
