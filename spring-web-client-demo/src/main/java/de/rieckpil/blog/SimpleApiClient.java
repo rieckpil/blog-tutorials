@@ -33,7 +33,7 @@ public class SimpleApiClient {
         return this.defaultWebClient
                 .post()
                 .uri("/todos")
-                .body(BodyInserters.fromObject("{ \"title\": \"foo\", \"body\": \"bar\", \"userId\": \"1\"}"))
+                .body(BodyInserters.fromValue("{ \"title\": \"foo\", \"body\": \"bar\", \"userId\": \"1\"}"))
                 .retrieve()
                 .bodyToMono(JsonNode.class)
                 .block();

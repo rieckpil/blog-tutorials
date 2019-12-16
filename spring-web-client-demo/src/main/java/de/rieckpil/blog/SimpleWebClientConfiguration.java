@@ -62,7 +62,7 @@ public class SimpleWebClientConfiguration {
 
     private ExchangeFilterFunction logResponse() {
         return ExchangeFilterFunction.ofResponseProcessor(clientResponse -> {
-            logger.info("Response: {} {}", clientResponse.statusCode(), clientResponse.cookies());
+            logger.info("Response: {}", clientResponse.statusCode());
             clientResponse.headers().asHttpHeaders()
                     .forEach((name, values) -> values.forEach(value -> logger.info("{}={}", name, value)));
             return Mono.just(clientResponse);
