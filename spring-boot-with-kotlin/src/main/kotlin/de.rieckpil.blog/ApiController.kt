@@ -16,7 +16,7 @@ class ApiController(
 
   @GetMapping(value = ["/todos"], produces = [MediaType.APPLICATION_JSON_VALUE])
   fun getAllTodos() = jsonPlaceHolderWebClient
-    -get()
+    .get()
     .uri("/todos")
     .retrieve()
     .bodyToMono(ArrayNode::class.java)
