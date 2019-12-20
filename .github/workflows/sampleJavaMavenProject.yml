@@ -44,6 +44,7 @@ jobs:
     needs: build 
     name: Build Docker container and deploy to Kubernetes
     steps:
+    - uses: actions/checkout@v1
     - name: Download Maven build artifact
       uses: actions/download-artifact@v1
       with:
