@@ -18,9 +18,9 @@ jobs:
       with:
         java-version: 11
     - name: Build and test project
-      run: mvn clean verfiy
+      run: mvn -f github-actions-java-maven/pom.xml clean verify
     - name: Build Docker container
-      run: docker build -t de.rieckpil.blog/github-actions-sample .
+      run: cd github-actions-java-maven && docker build -t de.rieckpil.blog/github-actions-sample .
     - name: Access secrets
       env: 
         SUPER_SECRET: ${{ secrets.SUPER_SECRET }}
