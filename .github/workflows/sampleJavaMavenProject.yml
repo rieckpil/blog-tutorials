@@ -53,7 +53,6 @@ jobs:
       run: |
         mkdir -p github-actions-java-maven/target
         mv artifact/github-actions-java-maven.jar github-actions-java-maven/target
-        ls github-actions-java-maven/target
         docker build -t de.rieckpil.blog/github-actions-sample github-actions-java-maven
     - name: Access secrets
       env: 
