@@ -53,7 +53,7 @@ jobs:
       run: |
       docker build \
         --build-arg JAR_FILE=github-actions-sample/*.jar \
-        -t de.rieckpil.blog/github-actions-sample github-actions-java-maven
+        -t de.rieckpil.blog/github-actions-sample github-actions-java-maven \
     - name: Access secrets
       env: 
         SUPER_SECRET: ${{ secrets.SUPER_SECRET }}
