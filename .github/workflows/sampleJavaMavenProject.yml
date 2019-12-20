@@ -52,7 +52,7 @@ jobs:
     - name: Build Docker container
       run: |
         docker build \
-          --build-arg JAR_FILE=github-actions-sample/*.jar \
+          --build-arg JAR_FILE=artifact/*.jar \
           -t de.rieckpil.blog/github-actions-sample github-actions-java-maven
     - name: Access secrets
       env: 
