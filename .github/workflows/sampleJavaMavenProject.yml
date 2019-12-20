@@ -3,6 +3,19 @@ name: Build sample Java Maven project
 on: [push, pull_request]
 
 jobs:
+  compile:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: [ 11, 12, 13 ]
+    name: Java ${{ matrix.java }} compile
+    steps:
+      - uses: actions/checkout@master
+      - name: Setup java
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java }}
+      - run: mvn clean compile
   build:
     runs-on: ubuntu-latest
     steps:
@@ -21,10 +34,14 @@ jobs:
       run: mvn -f github-actions-java-maven/pom.xml clean verify
     - name: Build Docker container
       run: cd github-actions-java-maven && docker build -t de.rieckpil.blog/github-actions-sample .
+  deploy: 
+    runs-on: ubuntu-latest   
+    steps:
+    - uses: actions/checkout@v1
     - name: Access secrets
       env: 
         SUPER_SECRET: ${{ secrets.SUPER_SECRET }}
-      run: echo $SUPER_SECRET
+      run: echo "Content of secret - $SUPER_SECRET"
     - name: Push Docker images
       run: echo "Pushing Docker image to Container Registry (e.g. ECR)"
     - name: Deploy application
