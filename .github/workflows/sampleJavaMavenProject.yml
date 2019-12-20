@@ -18,6 +18,7 @@ jobs:
       - run: mvn -f github-actions-java-maven/pom.xml clean compile
   build:
     runs-on: ubuntu-latest
+    needs: compile
     steps:
     - uses: actions/checkout@v1
     - uses: actions/cache@v1
@@ -32,12 +33,22 @@ jobs:
         java-version: 11
     - name: Build and test project
       run: mvn -f github-actions-java-maven/pom.xml clean verify
-    - name: Build Docker container
-      run: cd github-actions-java-maven && docker build -t de.rieckpil.blog/github-actions-sample .
+    - name: Upload Maven build artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: github-actions-sample
+        path: github-actions-java-maven/target/github-actions-java-maven.jar
   deploy: 
-    runs-on: ubuntu-latest   
+    runs-on: ubuntu-latest  
+    needs: build 
     steps:
     - uses: actions/checkout@v1
+    - name: Download Maven build artifact
+      uses: actions/download-artifact@v1
+      with:
+        name: github-actions-sample
+    - name: Build Docker container
+      run: cd github-actions-java-maven && docker build -t de.rieckpil.blog/github-actions-sample .
     - name: Access secrets
       env: 
         SUPER_SECRET: ${{ secrets.SUPER_SECRET }}
