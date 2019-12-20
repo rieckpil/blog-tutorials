@@ -44,16 +44,16 @@ jobs:
     needs: build 
     name: Build Docker container and deploy to Kubernetes
     steps:
-    - uses: actions/checkout@v1
     - name: Download Maven build artifact
       uses: actions/download-artifact@v1
       with:
         name: artifact
     - name: Build Docker container
       run: |
-        ls artifact
-        mvn -version
-        docker build --build-arg JAR_FILE=artifact/*.jar -t de.rieckpil.blog/github-actions-sample github-actions-java-maven
+        mkdir -p github-actions-java-maven/target
+        mv artifact/github-actions-java-maven.jar github-actions-java-maven/target
+        ls github-actions-java-maven/target
+        docker build -t de.rieckpil.blog/github-actions-sample github-actions-java-maven
     - name: Access secrets
       env: 
         SUPER_SECRET: ${{ secrets.SUPER_SECRET }}
