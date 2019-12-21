@@ -1,7 +1,5 @@
 name: Build Java
-
 on: [push, pull_request]
-
 jobs:
   build-jdk8:
     runs-on: ubuntu-latest
@@ -36,5 +34,7 @@ jobs:
       with:
         java-version: 11
     - name: Build JDK 11 projects
-      run: ./buildJdk11Projects.sh
+      run: |
+        ./buildJdk11Projects.sh
+        du -hcs -m ~/.m2/repository/*/* | sort -n
 
