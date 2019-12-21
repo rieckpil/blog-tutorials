@@ -5,9 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class GithubActionsJavaMavenApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(GithubActionsJavaMavenApplication.class, args);
-	}
-
+  public static void main(String[] args) {
+    SpringApplication.run(GithubActionsJavaMavenApplication.class, args);
+  }
 }

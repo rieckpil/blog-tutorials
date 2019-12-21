@@ -3,9 +3,9 @@ name: Build Java
 on: [push, pull_request]
 
 jobs:
-  build:
+  build-jdk8:
     runs-on: ubuntu-latest
-
+    name: Build Java 8 projects
     steps:
     - uses: actions/checkout@v1
     - uses: actions/cache@v1
@@ -20,9 +20,21 @@ jobs:
         java-version: 1.8
     - name: Build JDK 8 projects
       run: ./buildJdk8Projects.sh
+  build-jdk11:
+    runs-on: ubuntu-latest
+    name: Build Java 11 projects
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/cache@v1
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
     - name: Set up JDK 11
       uses: actions/setup-java@v1
       with:
         java-version: 11
     - name: Build JDK 11 projects
       run: ./buildJdk11Projects.sh
+
