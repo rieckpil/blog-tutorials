@@ -34,7 +34,5 @@ jobs:
       with:
         java-version: 11
     - name: Build JDK 11 projects
-      run: |
-        ./buildJdk11Projects.sh
-        du -hcs -m ~/.m2/repository/*/* | sort -n
+      run: ./buildJdk11Projects.sh
 
