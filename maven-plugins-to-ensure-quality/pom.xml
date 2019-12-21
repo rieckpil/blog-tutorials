@@ -79,6 +79,7 @@
                 </dependencies>
             </plugin>
 
+            <!-- enable to run OWASP checks 
             <plugin>
                 <groupId>org.owasp</groupId>
                 <artifactId>dependency-check-maven</artifactId>
@@ -98,7 +99,8 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> 
+            -->
         </plugins>
     </build>
 </project>
