@@ -1,9 +1,8 @@
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.await
 import kotlinx.coroutines.launch
+import kotlinx.html.*
 import kotlinx.html.dom.create
-import kotlinx.html.td
-import kotlinx.html.tr
 import org.w3c.dom.CanvasRenderingContext2D
 import org.w3c.dom.HTMLCanvasElement
 import kotlin.browser.document
@@ -17,8 +16,14 @@ fun main() {
     MainScope().launch {
       fetchUsers().forEach {
         var tr = document.create.tr {
-          td { +"${it.id}" }
-          td { +"${it.username}" }
+          th {
+            scope = ThScope.row
+            +"${it.id}"
+          }
+          td {
+            classes = setOf("text-center", "mark")
+            +"${it.username}"
+          }
           td { +"${it.name}" }
           td { +"${it.email}" }
           td { +"${it.website}" }
