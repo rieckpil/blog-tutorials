@@ -41,7 +41,7 @@
     </dependencies>
 
     <build>
-        <finalName>ROOT</finalName>
+        <finalName>word-generation</finalName>
     </build>
 
 </project>
