@@ -14,41 +14,41 @@ import org.springframework.web.reactive.function.BodyInserters;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class SimpleApiClientTest {
 
-    @Autowired
-    private WebTestClient webTestClient;
+  @Autowired
+  private WebTestClient webTestClient;
 
-    @Test
-    public void testGetTodosAPICall() {
-        this.webTestClient
-                .get()
-                .uri("https://jsonplaceholder.typicode.com/todos/1")
-                .accept(MediaType.APPLICATION_JSON)
-                .exchange()
-                .expectStatus().isOk()
-                .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
-                .expectBody()
-                .jsonPath("$.title").isNotEmpty()
-                .jsonPath("$.userId").isNotEmpty()
-                .jsonPath("$.completed").isNotEmpty();
-    }
+  @Test
+  public void testGetTodosAPICall() {
+    this.webTestClient
+      .get()
+      .uri("https://jsonplaceholder.typicode.com/todos/1")
+      .accept(MediaType.APPLICATION_JSON)
+      .exchange()
+      .expectStatus().isOk()
+      .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
+      .expectBody()
+      .jsonPath("$.title").isNotEmpty()
+      .jsonPath("$.userId").isNotEmpty()
+      .jsonPath("$.completed").isNotEmpty();
+  }
 
-    @Test
-    public void testPostNewTodoCall() {
-        this.webTestClient
-                .post()
-                .uri("https://jsonplaceholder.typicode.com/todos")
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .body(BodyInserters.fromObject("{ \"title\": \"foo\", \"body\": \"bar\", \"userId\": \"1\"}"))
-                .exchange()
-                .expectStatus().isCreated()
-                .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
-                .expectBody()
-                .jsonPath("$.title").isNotEmpty()
-                .jsonPath("$.body").isNotEmpty()
-                .jsonPath("$.userId").isNotEmpty()
-                .jsonPath("$.userId").isEqualTo("1")
-                .jsonPath("$.id").isNotEmpty();
-    }
+  @Test
+  public void testPostNewTodoCall() {
+    this.webTestClient
+      .post()
+      .uri("https://jsonplaceholder.typicode.com/todos")
+      .contentType(MediaType.APPLICATION_JSON)
+      .accept(MediaType.APPLICATION_JSON)
+      .body(BodyInserters.fromObject("{ \"title\": \"foo\", \"body\": \"bar\", \"userId\": \"1\"}"))
+      .exchange()
+      .expectStatus().isCreated()
+      .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
+      .expectBody()
+      .jsonPath("$.title").isNotEmpty()
+      .jsonPath("$.body").isNotEmpty()
+      .jsonPath("$.userId").isNotEmpty()
+      .jsonPath("$.userId").isEqualTo("1")
+      .jsonPath("$.id").isNotEmpty();
+  }
 
 }

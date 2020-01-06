@@ -8,16 +8,19 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SpringWebClientDemoApplication implements CommandLineRunner {
 
-    @Autowired
-    private SimpleApiClient simpleApiClient;
+  private final SimpleApiClient simpleApiClient;
 
-    public static void main(String[] args) {
-        SpringApplication.run(SpringWebClientDemoApplication.class, args);
-    }
+  public SpringWebClientDemoApplication(SimpleApiClient simpleApiClient) {
+    this.simpleApiClient = simpleApiClient;
+  }
 
-    @Override
-    public void run(String... args) throws Exception {
-        System.out.println(simpleApiClient.getTodoFromAPI());
-        System.out.println(simpleApiClient.postToTodoAPI());
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(SpringWebClientDemoApplication.class, args);
+  }
+
+  @Override
+  public void run(String... args) throws Exception {
+    System.out.println(simpleApiClient.getTodoFromAPI());
+    System.out.println(simpleApiClient.postToTodoAPI());
+  }
 }
