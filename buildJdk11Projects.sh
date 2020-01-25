@@ -31,7 +31,9 @@ declare -a arr=("whats-new-in-spring-boot-2.1"
  "whats-new-in-spring-boot-2.1"
  "whats-new-in-spring-boot-2.2"
  "spring-web-test-client"
- "github-actions-java-maven")
+ "github-actions-java-maven"
+ "spring-boot-selenium-integration-tests"
+ )
 
 for project in "${arr[@]}"
 do
