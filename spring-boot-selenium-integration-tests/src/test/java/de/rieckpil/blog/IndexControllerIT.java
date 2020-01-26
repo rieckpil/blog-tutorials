@@ -24,7 +24,7 @@ class IndexControllerIT {
 
   @Test
   public void shouldDisplayMessage() {
-    this.container.getWebDriver().get("http://" + container.getTestHostIpAddress() + ":" + port + "/index");
+    this.container.getWebDriver().get("http://host.docker.internal:" + port + "/index");
     WebElement messageElement = this.container.getWebDriver().findElementById("message");
     assertEquals("Integration Test with Selenium", messageElement.getText());
   }
