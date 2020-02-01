@@ -26,7 +26,11 @@ public class ScreenshotOnFailureExtension implements AfterEachCallback {
       try {
         Path path = Paths
           .get("target/selenium-screenshots")
-          .resolve(String.format("%s-%s-%s.png", LocalDateTime.now(), extensionContext.getRequiredTestClass().getName(), extensionContext.getRequiredTestMethod().getName()));
+          .resolve(String.format("%s-%s-%s.png",
+            LocalDateTime.now(),
+            extensionContext.getRequiredTestClass().getName(),
+            extensionContext.getRequiredTestMethod().getName()));
+
         Files.createDirectories(path.getParent());
         Files.write(path, screenshot);
       } catch (IOException e) {

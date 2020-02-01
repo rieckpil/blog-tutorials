@@ -3,6 +3,7 @@ package de.rieckpil.blog;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.testcontainers.containers.BrowserWebDriverContainer;
@@ -20,7 +21,8 @@ class IndexControllerIT {
   private int port;
 
   @Container
-  private BrowserWebDriverContainer container = new BrowserWebDriverContainer();
+  private BrowserWebDriverContainer container = new BrowserWebDriverContainer()
+    .withCapabilities(new ChromeOptions());
 
   @Test
   public void shouldDisplayMessage() {

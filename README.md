@@ -56,6 +56,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 * [Jakarta EE & React file up- and download using Java 11 and TypeScript](https://rieckpil.de/jakarta-ee-react-file-up-and-download-using-java-11-and-typescript) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/jakarta-ee-react-file-handling))
 * [GitHub Actions for Java - automate your Maven workflows](https://rieckpil.de/github-actions-for-java-automate-your-maven-workflows/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/github-actions-java-maven))
 * [Writing JavaScript code with Kotlin using Gradle](https://rieckpil.de/writing-javascript-code-with-kotlin-using-gradle/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/kotlin-javascript-transpiling-gradle))
+* [Spring Boot Functional Tests with Selenium and Testcontainers](https://rieckpil.de/spring-boot-functional-tests-with-selenium-and-testcontainers/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-selenium-integration-tests))
 
 ## WHATIS?
 
