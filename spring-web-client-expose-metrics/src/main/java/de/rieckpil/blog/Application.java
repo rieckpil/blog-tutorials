@@ -6,18 +6,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
 @SpringBootApplication
-public class SpringWebClientExposeMetricsApplication implements CommandLineRunner {
+public class Application implements CommandLineRunner {
 
   private final RandomQuoteClient randomQuoteClient;
   private final RandomUserClient randomUserClient;
 
-  public SpringWebClientExposeMetricsApplication(RandomQuoteClient randomQuoteClient, RandomUserClient randomUserClient) {
+  public Application(RandomQuoteClient randomQuoteClient, RandomUserClient randomUserClient) {
     this.randomQuoteClient = randomQuoteClient;
     this.randomUserClient = randomUserClient;
   }
 
   public static void main(String[] args) {
-    SpringApplication.run(SpringWebClientExposeMetricsApplication.class, args);
+    SpringApplication.run(Application.class, args);
   }
 
   @Override
