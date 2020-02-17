@@ -32,6 +32,7 @@ declare -a arr=("whats-new-in-spring-boot-2.1"
  "whats-new-in-spring-boot-2.2"
  "spring-web-test-client"
  "github-actions-java-maven"
+ "spring-web-client-expose-metrics"
  "spring-boot-selenium-integration-tests"
  )
 
