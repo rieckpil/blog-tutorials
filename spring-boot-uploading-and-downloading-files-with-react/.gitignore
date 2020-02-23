@@ -1,5 +1,8 @@
 /target/
 !.mvn/wrapper/maven-wrapper.jar
+/frontend/build
+/frontend/node
+/frontend/node_modules
 
 ### STS ###
 .apt_generated

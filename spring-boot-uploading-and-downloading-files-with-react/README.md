@@ -4,7 +4,6 @@ Steps to run this project:
 
 1. Clone this Git repository
 2. Navigate to the folder `spring-boot-uploading-and-downloading-files-with-react`
-3. Build the frontend and backend with `./buildAll.sh` or manually with (`mvn clean package` in the backend folder and `npm install && npm build` in the frontend folder)
-4. Launch your Docker deamon (you need `docker-compose` for this example)
-5. Start the infrastructure with `docker-compose up --build`
-6. Visit `http://localhost:80` and upload some files and then download them in a random way
+3. Make sure you use Java 11 `java -version`
+3. Start the application with `mvn spring-boot:run`
+4. Visit `http://localhost:8080` and upload some files and then download them in a random way
