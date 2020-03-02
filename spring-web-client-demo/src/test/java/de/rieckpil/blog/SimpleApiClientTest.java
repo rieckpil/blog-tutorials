@@ -39,7 +39,7 @@ class SimpleApiClientTest {
       .uri("https://jsonplaceholder.typicode.com/todos")
       .contentType(MediaType.APPLICATION_JSON)
       .accept(MediaType.APPLICATION_JSON)
-      .body(BodyInserters.fromObject("{ \"title\": \"foo\", \"body\": \"bar\", \"userId\": \"1\"}"))
+      .body(BodyInserters.fromValue("{ \"title\": \"foo\", \"body\": \"bar\", \"userId\": \"1\"}"))
       .exchange()
       .expectStatus().isCreated()
       .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
