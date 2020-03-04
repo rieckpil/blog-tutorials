@@ -8,7 +8,12 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class WebClientConfig {
 
   @Bean
-  public WebClient webClient(WebClient.Builder webClientBuilder) {
-    return webClientBuilder.build();
+  public WebClient stockApiClient(WebClient.Builder webClientBuilder) {
+    return webClientBuilder.baseUrl("https://stock.api").build();
+  }
+
+  @Bean
+  public WebClient randomApiClient(WebClient.Builder webClientBuilder) {
+    return webClientBuilder.baseUrl("https://random.api").build();
   }
 }

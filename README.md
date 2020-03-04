@@ -58,6 +58,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 * [Writing JavaScript code with Kotlin using Gradle](https://rieckpil.de/writing-javascript-code-with-kotlin-using-gradle/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/kotlin-javascript-transpiling-gradle))
 * [Spring Boot Functional Tests with Selenium and Testcontainers](https://rieckpil.de/spring-boot-functional-tests-with-selenium-and-testcontainers/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-selenium-integration-tests))
 * [Expose Metrics of Spring WebClient using Spring Boot Actuator](https://rieckpil.de/expose-metrics-of-spring-webclient-using-spring-boot-actuator) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-web-client-expose-metrics))
+* [Customize Spring WebClient with WebClientCustomizer](https://rieckpil.de/customize-spring-webclient-with-webclientcustomizer/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-web-client-customizing))
 
 ## WHATIS?
 
