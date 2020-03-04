@@ -12,15 +12,15 @@ public class RandomDataController {
 
   private final WebClient webClient;
 
-  public RandomDataController(WebClient webClient) {
-    this.webClient = webClient;
+  public RandomDataController(WebClient.Builder webClientBuilder) {
+    this.webClient = webClientBuilder.baseUrl("https://jsonplaceholder.typicode.com/").build();
   }
 
   @GetMapping
   public JsonNode getRandomData() {
     return webClient
       .get()
-      .uri("https://jsonplaceholder.typicode.com/todos")
+      .uri("/todos")
       .retrieve()
       .bodyToMono(JsonNode.class)
       .block();
