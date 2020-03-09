@@ -1,18 +1,17 @@
 package de.rieckpil.blog.pricing;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
-class PricingServiceTest {
+@ExtendWith(MockitoExtension.class)
+public class PricingServiceTest {
 
   @Mock
   private ProductVerifier mockedProductVerifier;
@@ -27,6 +26,5 @@ class PricingServiceTest {
     PricingService cut = new PricingService(mockedProductVerifier, mockedProductReporter);
 
     assertEquals(new BigDecimal("99.99"), cut.calculatePrice("AirPods"));
-    verify(mockedProductReporter).notify("AirPods");
   }
 }
