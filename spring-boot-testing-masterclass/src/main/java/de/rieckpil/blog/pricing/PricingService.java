@@ -1,7 +1,10 @@
 package de.rieckpil.blog.pricing;
 
+import org.springframework.stereotype.Service;
+
 import java.math.BigDecimal;
 
+@Service
 public class PricingService {
 
   private final ProductVerifier productVerifier;
