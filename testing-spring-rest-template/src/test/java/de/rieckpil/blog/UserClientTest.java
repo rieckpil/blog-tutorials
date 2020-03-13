@@ -71,7 +71,9 @@ class UserClientTest {
 
   @Test
   public void userClientThrowsExceptionWhenNoUserIsFound() {
-    this.mockRestServiceServer.expect(requestTo("/api/users/1")).andRespond(MockRestResponseCreators.withStatus(HttpStatus.NOT_FOUND));
+    this.mockRestServiceServer.expect(requestTo("/api/users/1"))
+      .andRespond(MockRestResponseCreators.withStatus(HttpStatus.NOT_FOUND));
+
     assertThrows(HttpClientErrorException.class, () -> userClient.getSingleUser(1L));
   }
 

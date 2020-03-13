@@ -15,7 +15,7 @@ import static org.springframework.test.web.client.match.MockRestRequestMatchers.
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
 @RestClientTest(ResourceClient.class)
-@AutoConfigureWebClient(registerRestTemplate=true)
+@AutoConfigureWebClient(registerRestTemplate = true)
 class ResourceClientTest {
 
   @Autowired
@@ -25,11 +25,13 @@ class ResourceClientTest {
   private MockRestServiceServer mockRestServiceServer;
 
   @BeforeEach
+  // @Before for JUnit 4
   public void setUp() {
     this.mockRestServiceServer.reset();
   }
 
   @AfterEach
+ // @After for JUnit 4
   public void tearDown() {
     this.mockRestServiceServer.verify();
   }
