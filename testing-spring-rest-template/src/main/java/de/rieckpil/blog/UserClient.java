@@ -14,7 +14,7 @@ public class UserClient {
   private final RestTemplate restTemplate;
 
   public UserClient(RestTemplateBuilder restTemplateBuilder) {
-    this.restTemplate = restTemplateBuilder.rootUri("https://reqres.in/").build();
+    this.restTemplate = restTemplateBuilder.rootUri("https://reqres.in").build();
   }
 
   public User getSingleUser(Long id) {

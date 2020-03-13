@@ -41,7 +41,9 @@ class UserClientTest {
       }
        """;
 
-    this.mockRestServiceServer.expect(requestTo("api/users/1")).andRespond(withSuccess(json, MediaType.APPLICATION_JSON));
+    this.mockRestServiceServer
+      .expect(requestTo("/api/users/1"))
+      .andRespond(withSuccess(json, MediaType.APPLICATION_JSON));
 
     User result = userClient.getSingleUser(1L);
 
@@ -55,7 +57,7 @@ class UserClientTest {
       .writeValueAsString(new User(new UserData(42L, "duke@java.org", "duke", "duke", "duke")));
 
     this.mockRestServiceServer
-      .expect(requestTo("api/users/42"))
+      .expect(requestTo("/api/users/42"))
       .andRespond(withSuccess(json, MediaType.APPLICATION_JSON));
 
     User result = userClient.getSingleUser(42L);
@@ -69,7 +71,7 @@ class UserClientTest {
 
   @Test
   public void userClientThrowsExceptionWhenNoUserIsFound() {
-    this.mockRestServiceServer.expect(requestTo("api/users/1")).andRespond(MockRestResponseCreators.withStatus(HttpStatus.NOT_FOUND));
+    this.mockRestServiceServer.expect(requestTo("/api/users/1")).andRespond(MockRestResponseCreators.withStatus(HttpStatus.NOT_FOUND));
     assertThrows(HttpClientErrorException.class, () -> userClient.getSingleUser(1L));
   }
 
