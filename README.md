@@ -59,6 +59,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 * [Spring Boot Functional Tests with Selenium and Testcontainers](https://rieckpil.de/spring-boot-functional-tests-with-selenium-and-testcontainers/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-selenium-integration-tests))
 * [Expose Metrics of Spring WebClient using Spring Boot Actuator](https://rieckpil.de/expose-metrics-of-spring-webclient-using-spring-boot-actuator) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-web-client-expose-metrics))
 * [Customize Spring WebClient with WebClientCustomizer](https://rieckpil.de/customize-spring-webclient-with-webclientcustomizer/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-web-client-customizing))
+* [Testing your Spring RestTemplate with @RestClientTest](https://rieckpil.de/testing-your-spring-resttemplate-with-restclienttest/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/testing-spring-rest-template))
 
 ## WHATIS?
 

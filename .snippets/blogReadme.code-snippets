@@ -2,7 +2,7 @@
   "Blog_README": {
     "prefix": "blogreadme",
     "body": [
-      "# Codebase for the blog post [#HOWTO: $1]($2)\n",
+      "# Codebase for the blog post [$1]($2)\n",
       "Steps to run this project:\n",
       "1. Clone this Git repository",
       "2. Navigate to the folder `$3`\n",
