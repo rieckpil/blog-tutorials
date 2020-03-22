@@ -1,10 +1,12 @@
 package de.rieckpil.blog;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.junit.jupiter.DisabledIf;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.BodyInserters;
@@ -18,6 +20,7 @@ class SimpleApiClientTest {
   private WebTestClient webTestClient;
 
   @Test
+  @Disabled
   public void testGetTodosAPICall() {
     this.webTestClient
       .get()
@@ -33,6 +36,7 @@ class SimpleApiClientTest {
   }
 
   @Test
+  @Disabled
   public void testPostNewTodoCall() {
     this.webTestClient
       .post()
