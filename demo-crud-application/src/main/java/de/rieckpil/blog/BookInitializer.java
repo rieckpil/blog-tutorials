@@ -12,27 +12,27 @@ import java.util.UUID;
 @Component
 public class BookInitializer implements CommandLineRunner {
 
-    @Autowired
-    private BookRepository bookRepository;
+  @Autowired
+  private BookRepository bookRepository;
 
-    @Override
-    public void run(String... args) throws Exception {
+  @Override
+  public void run(String... args) throws Exception {
 
-        Faker faker = new Faker();
+    Faker faker = new Faker();
 
-        log.info("Starting book initialization ...");
+    log.info("Starting book initialization ...");
 
-        for(int i = 0; i < 10; i++) {
+    for (int i = 0; i < 10; i++) {
 
-            Book book = new Book();
-            book.setTitle(faker.book().title());
-            book.setAuthor(faker.book().author());
-            book.setIsbn(UUID.randomUUID().toString());
+      Book book = new Book();
+      book.setTitle(faker.book().title());
+      book.setAuthor(faker.book().author());
+      book.setIsbn(UUID.randomUUID().toString());
 
-            bookRepository.save(book);
-        }
-
-        log.info("... finished book initialization");
-
+      bookRepository.save(book);
     }
+
+    log.info("... finished book initialization");
+
+  }
 }

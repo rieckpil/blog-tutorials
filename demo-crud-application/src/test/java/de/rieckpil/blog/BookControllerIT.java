@@ -19,31 +19,31 @@ import static org.hamcrest.Matchers.is;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class BookControllerIT {
 
-    @LocalServerPort
-    int randomServerPort;
+  @LocalServerPort
+  int randomServerPort;
 
-    private TestRestTemplate testRestTemplate;
+  private TestRestTemplate testRestTemplate;
 
-    @BeforeEach
-    public void setUp() {
-        this.testRestTemplate = new TestRestTemplate();
-    }
+  @BeforeEach
+  public void setUp() {
+    this.testRestTemplate = new TestRestTemplate();
+  }
 
-    @Test
-    public void deletingKnownEntityShouldReturn404AfterDeletion() {
-        long bookId = 1;
-        String baseUrl = "http://localhost:" + randomServerPort;
+  @Test
+  public void deletingKnownEntityShouldReturn404AfterDeletion() {
+    long bookId = 1;
+    String baseUrl = "http://localhost:" + randomServerPort;
 
-        ResponseEntity<JsonNode> firstResult = this.testRestTemplate
-                .getForEntity(baseUrl + "/api/books/" + bookId, JsonNode.class);
+    ResponseEntity<JsonNode> firstResult = this.testRestTemplate
+      .getForEntity(baseUrl + "/api/books/" + bookId, JsonNode.class);
 
-        assertThat(firstResult.getStatusCode(), is(HttpStatus.OK));
+    assertThat(firstResult.getStatusCode(), is(HttpStatus.OK));
 
-        this.testRestTemplate.delete(baseUrl + "/api/books/" + bookId);
+    this.testRestTemplate.delete(baseUrl + "/api/books/" + bookId);
 
-        ResponseEntity<JsonNode> secondResult = this.testRestTemplate
-                .getForEntity(baseUrl + "/api/books/" + bookId, JsonNode.class);
+    ResponseEntity<JsonNode> secondResult = this.testRestTemplate
+      .getForEntity(baseUrl + "/api/books/" + bookId, JsonNode.class);
 
-        assertThat(secondResult.getStatusCode(), is(HttpStatus.NOT_FOUND));
-    }
+    assertThat(secondResult.getStatusCode(), is(HttpStatus.NOT_FOUND));
+  }
 }
