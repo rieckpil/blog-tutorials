@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="new server">
+
+  <featureManager>
+    <feature>javaee-8.0</feature>
+    <feature>microProfile-3.2</feature>
+  </featureManager>
+
+  <mpMetrics authentication="false"/>
+
+  <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443"/>
+
+  <quickStartSecurity userName="duke" userPassword="duke"/>
+
+  <ssl id="defaultSSLConfig" trustDefaultCerts="true"/>
+</server>
