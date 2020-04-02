@@ -10,18 +10,18 @@ import org.springframework.web.reactive.function.client.WebClient;
 @RequestMapping("/api/todos")
 public class TodoController {
 
-    private final WebClient todoWebClient;
+  private final WebClient todoWebClient;
 
-    public TodoController(WebClient todoWebClient) {
-        this.todoWebClient = todoWebClient;
-    }
+  public TodoController(WebClient todoWebClient) {
+    this.todoWebClient = todoWebClient;
+  }
 
-    @GetMapping
-    public ArrayNode getAllTodos() {
-        return this.todoWebClient
-                .get()
-                .retrieve()
-                .bodyToMono(ArrayNode.class)
-                .block();
-    }
+  @GetMapping
+  public ArrayNode getAllTodos() {
+    return this.todoWebClient
+      .get()
+      .retrieve()
+      .bodyToMono(ArrayNode.class)
+      .block();
+  }
 }
