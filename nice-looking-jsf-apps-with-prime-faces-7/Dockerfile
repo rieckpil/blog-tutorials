@@ -1,4 +1,4 @@
-FROM payara/server-full:5.191
+FROM payara/server-full:5.201
 
 ENV JVM_ARGS="-Xmx512m -Xms256m"
 
