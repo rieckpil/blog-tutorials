@@ -10,10 +10,10 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/xml")
-public class XmlPayloadController {
+@RequestMapping("/mix")
+public class MixMediaTypeController {
 
-  @GetMapping(path = "/orders", produces = MediaType.APPLICATION_XML_VALUE)
+  @GetMapping(path = "/orders", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
   public List<Order> getOrders() {
     List<Order> orders = List.of(
       new Order("42L", Set.of("foreign", "books"), 1L, LocalDateTime.now()),
@@ -21,4 +21,5 @@ public class XmlPayloadController {
     );
     return orders;
   }
+
 }
