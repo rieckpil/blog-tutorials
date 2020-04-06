@@ -9,10 +9,10 @@
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
   <groupId>de.rieckpil.blog</groupId>
-  <artifactId>spring-web-mvc-webflux-cheat-sheet</artifactId>
+  <artifactId>spring-web-mvc-cheat-sheet</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>spring-web-mvc-webflux-cheat-sheet</name>
-  <description>Spring Web MVC and WebFlux Cheat Sheet</description>
+  <name>spring-web-mvc-cheat-sheet</name>
+  <description>Spring Web MVC Cheat Sheet</description>
 
   <properties>
     <java.version>11</java.version>
@@ -28,10 +28,6 @@
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-webflux</artifactId>
-    </dependency>
-    <dependency>
       <groupId>com.fasterxml.jackson.dataformat</groupId>
       <artifactId>jackson-dataformat-xml</artifactId>
     </dependency>
@@ -45,11 +41,6 @@
           <artifactId>junit-vintage-engine</artifactId>
         </exclusion>
       </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>io.projectreactor</groupId>
-      <artifactId>reactor-test</artifactId>
-      <scope>test</scope>
     </dependency>
   </dependencies>
 
