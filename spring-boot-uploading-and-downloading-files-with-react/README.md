@@ -6,4 +6,4 @@ Steps to run this project:
 2. Navigate to the folder `spring-boot-uploading-and-downloading-files-with-react`
 3. Make sure you use Java 11 `java -version`
 3. Start the application with `mvn spring-boot:run`
-4. Visit `http://localhost:8080` and upload some files and then download them in a random way
+4. Visit `http://localhost:8080` and upload some files and then download them randomly
