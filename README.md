@@ -4,6 +4,11 @@
 
 If you find an issue or bug within the provided code examples, feel free to open an [issue](https://github.com/rieckpil/blog-tutorials/issues) and I will take a look.
 
+## Cheat Sheets
+
+* [Java EE & Jakarta EE application servers Cheat Sheet](https://rieckpil.de/cheatsheet-java-jakarta-ee-application-servers/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/application-server-cheatsheet))
+* [Spring Web MVC Cheat Sheet](https://rieckpil.de/spring-web-mvc-cheat-sheet/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/))
+
 ## HOWTO's
 
 * [Expose git information with Spring Boot’s Actuator](https://rieckpil.de/howto-expose-git-information-with-spring-boots-actuator/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/expose-git-information-actuator))
@@ -88,8 +93,3 @@ If you find an issue or bug within the provided code examples, feel free to open
 * [5 Java 9 Features you might not know yet](https://rieckpil.de/review-5-java-9-features-you-might-not-know-yet/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/five-java-9-features))
 * [Top 3 Maven Plugins to ensure Quality and Security for your project](https://rieckpil.de/top-3-maven-plugins-to-ensure-quality-and-security-for-your-project/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/maven-plugins-to-ensure-quality))
 * [Joyful Open Liberty Developer Experience with Liberty Maven Plugin](https://rieckpil.de/joyful-open-liberty-developer-experience-with-liberty-maven-plugin/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/open-liberty-maven-plugin-review))
-
-
-## OTHER
-
-* [#CHEATSHEET: Java/Jakarta EE application servers](https://rieckpil.de/cheatsheet-java-jakarta-ee-application-servers/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/application-server-cheatsheet))
