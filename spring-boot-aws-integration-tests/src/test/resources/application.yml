@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: simple-application
+
+cloud:
+  aws:
+    stack:
+      auto: false
