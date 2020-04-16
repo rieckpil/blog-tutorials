@@ -10,7 +10,7 @@ cloud:
       auto: false
 
 sqs:
-  orderEventQueue: order-event-queue
+  orderEventQueue: order-event-test-queue
 
 s3:
-  orderEventBucket: order-event-bucket
+  orderEventBucket: order-event-test-bucket

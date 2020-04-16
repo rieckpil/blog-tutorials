@@ -1,6 +1,7 @@
 package de.rieckpil.blog;
 
 import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.AmazonS3Exception;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,8 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
-import static org.awaitility.Awaitility.await;
+import static org.awaitility.Awaitility.given;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.testcontainers.containers.localstack.LocalStackContainer.Service.S3;
 import static org.testcontainers.containers.localstack.LocalStackContainer.Service.SQS;
 
@@ -32,8 +34,8 @@ public class SimpleMessageListenerIT {
 
   @BeforeAll
   static void beforeAll() throws IOException, InterruptedException {
-    localStack.execInContainer("awslocal", "sqs", "create-queue", "--queue-name", "order-event-queue");
-    localStack.execInContainer("awslocal", "s3", "mb", "s3://order-event-bucket");
+    localStack.execInContainer("awslocal", "sqs", "create-queue", "--queue-name", QUEUE_NAME);
+    localStack.execInContainer("awslocal", "s3", "mb", "s3://" + BUCKET_NAME);
   }
 
   @Autowired
@@ -42,14 +44,21 @@ public class SimpleMessageListenerIT {
   @Autowired
   private QueueMessagingTemplate queueMessagingTemplate;
 
+  private static final String QUEUE_NAME = "order-event-test-queue";
+  private static final String BUCKET_NAME = "order-event-test-bucket";
+
   @Test
   public void testMessageShouldBeUploadedToS3OnceConsumed() {
     String orderId = UUID.randomUUID().toString();
     OrderEvent orderEvent = new OrderEvent(orderId, "MacBook", "42", LocalDateTime.now(), false);
 
-    queueMessagingTemplate.convertAndSend("order-event-queue", orderEvent);
+    queueMessagingTemplate.convertAndSend(QUEUE_NAME, orderEvent);
 
-    await().atMost(5, SECONDS).until(() -> amazonS3.getObject("order-event-bucket", orderId) != null);
+    given()
+      .ignoreException(AmazonS3Exception.class)
+      .await()
+      .atMost(5, SECONDS)
+      .untilAsserted(() -> assertNotNull(amazonS3.getObject(BUCKET_NAME, orderId)));
+
   }
-
 }
