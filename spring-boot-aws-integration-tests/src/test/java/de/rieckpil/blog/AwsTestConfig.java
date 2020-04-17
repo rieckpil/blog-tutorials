@@ -2,12 +2,9 @@ package de.rieckpil.blog;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import com.amazonaws.services.sqs.AmazonSQS;
 import com.amazonaws.services.sqs.AmazonSQSAsync;
 import com.amazonaws.services.sqs.AmazonSQSAsyncClientBuilder;
-import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
 import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.cloud.aws.messaging.core.QueueMessagingTemplate;
 import org.springframework.context.annotation.Bean;
 
 import static de.rieckpil.blog.SimpleMessageListenerIT.localStack;
@@ -32,10 +29,4 @@ public class AwsTestConfig {
       .withEndpointConfiguration(localStack.getEndpointConfiguration(SQS))
       .build();
   }
-
-  @Bean
-  public QueueMessagingTemplate queueMessagingTemplate(AmazonSQSAsync amazonSQSAsync) {
-    return new QueueMessagingTemplate(amazonSQSAsync);
-  }
-
 }
