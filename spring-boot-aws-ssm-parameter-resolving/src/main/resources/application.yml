@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: demo
+
+cloud:
+  aws:
+    region:
+      static: eu-central-1
+    stack:
+      auto: false
