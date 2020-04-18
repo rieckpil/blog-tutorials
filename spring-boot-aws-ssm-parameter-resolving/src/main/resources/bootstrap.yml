@@ -1,0 +1,6 @@
+#aws:
+#  paramstore:
+#    enabled: true
+#    name: other-app-name
+#    prefix: /myPrefix
+#    profile-separator: '-'
