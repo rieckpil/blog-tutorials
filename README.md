@@ -67,6 +67,9 @@ If you find an issue or bug within the provided code examples, feel free to open
 * [Testing your Spring RestTemplate with @RestClientTest](https://rieckpil.de/testing-your-spring-resttemplate-with-restclienttest/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/testing-spring-rest-template))
 * [Testing your JSON serialization with @JsonTest](https://rieckpil.de/testing-your-json-serialization-with-jsontest) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/testing-json-serialization-spring))
 * [Resolving Spring Boot properties using the AWS Parameter Store (SSM)](https://rieckpil.de/resolving-spring-boot-properties-using-the-aws-parameter-store-ssm/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-aws-ssm-parameter-resolving))
+* [Test Spring applications using AWS with Testcontainers and LocalStack](https://rieckpil.de/test-spring-applications-using-aws-with-testcontainers-and-localstack/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-aws-integration-tests))
+
+
 
 ## WHATIS?
 

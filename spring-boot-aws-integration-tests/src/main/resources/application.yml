@@ -1,13 +1,12 @@
-spring:
-  application:
-    name: simple-application
-
 cloud:
   aws:
     region:
       static: eu-central-1
     stack:
       auto: false
+#    credentials:
+#      accessKey: ABC
+#      secretKey: XYZ
 
 sqs:
   orderEventQueue: order-event-queue
