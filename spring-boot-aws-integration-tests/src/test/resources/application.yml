@@ -1,7 +1,3 @@
-spring:
-  application:
-    name: simple-application
-
 cloud:
   aws:
     region:
