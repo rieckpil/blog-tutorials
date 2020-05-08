@@ -1,0 +1,20 @@
+service: spring-cloud-function-aws
+
+provider:
+  name: aws
+  runtime: java11
+  region: eu-central-1
+  profile: serverless-admin
+
+package:
+  artifact: target/spring-cloud-function-aws-1.0.0-shaded.jar
+
+functions:
+  uppercase:
+    handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker::handleRequest
+    environment:
+      FUNCTION_NAME: uppercase
+  lowercase:
+    handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker::handleRequest
+    environment:
+      FUNCTION_NAME: lowercase
