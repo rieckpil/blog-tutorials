@@ -1,4 +1,4 @@
-# Codebase for the blog post [AWS Lambda with Serverless, Java and Maven - Thumbnail Generator](http://rieckpil.de/aws-lambda-with-serverless-java-and-maven-thumbnail-generator)
+# Codebase for the blog post [Java AWS Lambda with Serverless and Maven - Thumbnail Generator](http://rieckpil.de/aws-lambda-with-serverless-java-and-maven-thumbnail-generator)
 
 Steps to run this project:
 
