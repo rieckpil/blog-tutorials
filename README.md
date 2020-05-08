@@ -68,6 +68,8 @@ If you find an issue or bug within the provided code examples, feel free to open
 * [Testing your JSON serialization with @JsonTest](https://rieckpil.de/testing-your-json-serialization-with-jsontest) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/testing-json-serialization-spring))
 * [Resolving Spring Boot properties using the AWS Parameter Store (SSM)](https://rieckpil.de/resolving-spring-boot-properties-using-the-aws-parameter-store-ssm/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-aws-ssm-parameter-resolving))
 * [Test Spring applications using AWS with Testcontainers and LocalStack](https://rieckpil.de/test-spring-applications-using-aws-with-testcontainers-and-localstack/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-aws-integration-tests))
+* [AWS Lambda with Serverless, Java and Maven - Thumbnail Generator](http://rieckpil.de/aws-lambda-with-serverless-java-and-maven-thumbnail-generator) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/serverless-java-aws-examples/thumbnail-generator))
+
 
 
 
