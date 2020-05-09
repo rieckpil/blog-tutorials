@@ -11,10 +11,8 @@ package:
 
 functions:
   uppercase:
-    handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker::handleRequest
-    environment:
-      FUNCTION_NAME: uppercase
+    handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker
   lowercase:
-    handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker::handleRequest
+    handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker
     environment:
       FUNCTION_NAME: lowercase
