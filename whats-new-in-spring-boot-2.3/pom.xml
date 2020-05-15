@@ -62,7 +62,6 @@
           <image>
             <name>myregistry.com/rieckpil/${project.artifactId}</name>
             <env>
-              <JAVA_OPTS>$JAVA_OPTS --enable-preview</JAVA_OPTS>
               <BP_JVM_VERSION>14.0.1</BP_JVM_VERSION>
             </env>
           </image>
