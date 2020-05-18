@@ -59,6 +59,9 @@
           <jvmArguments>
             --enable-preview
           </jvmArguments>
+          <layers>
+            <enabled>true</enabled>
+          </layers>
           <image>
             <name>myregistry.com/rieckpil/${project.artifactId}</name>
             <env>
@@ -91,7 +94,8 @@
             --enable-preview
           </argLine>
         </configuration>
-      </plugin></plugins>
+      </plugin>
+    </plugins>
   </build>
 
 </project>
