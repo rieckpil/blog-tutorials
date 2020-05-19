@@ -12,7 +12,11 @@ package:
 functions:
   uppercase:
     handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker
+    environment:
+      SPRING_CLOUD_FUNCTION_DEFINITION: uppercaseFunction
+      FUNCTION_NAME: uppercaseFunction
   lowercase:
     handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker
     environment:
-      FUNCTION_NAME: lowercase
+      SPRING_CLOUD_FUNCTION_DEFINITION: lowercaseFunction
+      FUNCTION_NAME: lowercaseFunction
