@@ -5,13 +5,13 @@
         <feature>cdi-2.0</feature>
         <feature>jpa-2.2</feature>
         <feature>jaxrs-2.1</feature>
-        <feature>mpConfig-1.3</feature>
-        <feature>mpHealth-2.0</feature>
-        <feature>mpRestClient-1.3</feature>
+        <feature>mpConfig-1.4</feature>
+        <feature>mpHealth-2.2</feature>
+        <feature>mpRestClient-1.4</feature>
     </featureManager>
 
     <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443"/>
-    
+
     <dataSource id="DefaultDataSource">
         <jdbcDriver libraryRef="postgresql-library"/>
         <properties.postgresql serverName="${POSTGRES_HOSTNAME}"
