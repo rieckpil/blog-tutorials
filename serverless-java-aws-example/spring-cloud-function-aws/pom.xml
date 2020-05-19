@@ -22,6 +22,7 @@
     <spring-cloud-function.version>3.0.6.RELEASE</spring-cloud-function.version>
     <wrapper.version>1.0.17.RELEASE</wrapper.version>
     <json.version>20190722</json.version>
+    <aws-lambda-java-events.version>2.2.7</aws-lambda-java-events.version>
   </properties>
 
   <dependencies>
@@ -40,6 +41,12 @@
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-lambda-java-core</artifactId>
       <version>${aws-lambda-java-core.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.amazonaws</groupId>
+      <artifactId>aws-lambda-java-events</artifactId>
+      <version>${aws-lambda-java-events.version}</version>
     </dependency>
 
     <dependency>

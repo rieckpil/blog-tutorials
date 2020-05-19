@@ -11,12 +11,12 @@ package:
 
 functions:
   uppercase:
-    handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker
+    handler: org.springframework.cloud.function.adapter.aws.SpringBootApiGatewayRequestHandler
+    events:
+      - http:
+          path: persons
+          method: post
+          cors: true
     environment:
-      SPRING_CLOUD_FUNCTION_DEFINITION: uppercaseFunction
-      FUNCTION_NAME: uppercaseFunction
-  lowercase:
-    handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker
-    environment:
-      SPRING_CLOUD_FUNCTION_DEFINITION: lowercaseFunction
-      FUNCTION_NAME: lowercaseFunction
+      FUNCTION_NAME: processPerson
+
