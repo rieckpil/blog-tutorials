@@ -150,7 +150,7 @@ BOOT-INF/layers.idx
 
 Insights to `layers.idx`:
 ```
-jar xf BOOT-INF/layers.idx
+jar xf target/whats-new-in-spring-boot-2-3.jar BOOT-INF/layers.idx
 cat BOOT-INF/layers.idx
 - "dependencies":
   - "BOOT-INF/lib/"
