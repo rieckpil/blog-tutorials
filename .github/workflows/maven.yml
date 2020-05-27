@@ -1,4 +1,4 @@
-name: Main Workflow
+name: Build Maven Projects
 on: [push, pull_request]
 jobs:
   build-jdk8:
@@ -35,13 +35,4 @@ jobs:
           java-version: 11
       - name: Build JDK 11 projects
         run: ./buildJdk11Projects.sh
-  broken-link-check:
-    runs-on: ubuntu-latest
-    name: Check for broken links in README.md
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12.x
-      - run: npm install -g markdown-link-check
-      - run: markdown-link-check ./README.md
+
