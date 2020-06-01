@@ -15,7 +15,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 
 @Disabled
 @SpringBootTest(webEnvironment = RANDOM_PORT)
-class FunctionConfigurationTests {
+class ApplicationTests {
 
   @Autowired
   private TestRestTemplate rest;

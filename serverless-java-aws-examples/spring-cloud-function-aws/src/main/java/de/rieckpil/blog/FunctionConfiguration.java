@@ -1,35 +1,33 @@
 package de.rieckpil.blog;
 
+import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
+import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
+import com.amazonaws.services.lambda.runtime.events.S3Event;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.GenericMessage;
 
-import java.time.LocalDate;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
-@SpringBootApplication
+@Configuration
 public class FunctionConfiguration {
 
-  private final ObjectMapper objectMapper;
-
-  private static Log logger = LogFactory.getLog(FunctionConfiguration.class);
-
-  public FunctionConfiguration(ObjectMapper objectMapper) {
-    this.objectMapper = objectMapper;
-  }
-
-  public static void main(String[] args) {
-    ApplicationContext context = SpringApplication.run(FunctionConfiguration.class, args);
-  }
+  private static Log logger = LogFactory.getLog(Application.class);
 
   @Bean
-  public Function<String, String> uppercaseFunction() {
+  public Function<String, String> uppercase() {
     return value -> {
       logger.info("Processing uppercase: " + value);
       return value.toUpperCase();
@@ -37,11 +35,60 @@ public class FunctionConfiguration {
   }
 
   @Bean
-  public Function<Message<Person>, Message<Person>> processPerson() {
-    return value -> {
-      logger.info("Processing incoming request: " + value.getPayload());
-      logger.info("Processing incoming request: " + value.getHeaders());
-      return new GenericMessage<>(new Person("Duke", LocalDate.now()));
+  public Consumer<S3Event> processS3Event() {
+    return s3Event -> {
+      String bucket = s3Event.getRecords().get(0).getS3().getBucket().getName();
+      String key = s3Event.getRecords().get(0).getS3().getObject().getKey();
+
+      logger.info("Something was uploaded to S3: " + bucket + "/" + key);
+
+      // ... further processing of the S3Ev ent
     };
   }
+
+  @Bean
+  public Supplier<String> randomString() {
+    return () -> UUID.randomUUID().toString();
+  }
+
+  @Bean
+  public Function<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> processXmlOrder() {
+    return value -> {
+      try {
+        ObjectMapper objectMapper = new XmlMapper();
+        Order order = objectMapper.readValue(value.getBody(), Order.class);
+        logger.info("Successfully deserialized XML order: " + order);
+
+        // ... processing Order
+        order.setProcessed(true);
+
+        APIGatewayProxyResponseEvent responseEvent = new APIGatewayProxyResponseEvent();
+        responseEvent.setStatusCode(201);
+        responseEvent.setHeaders(Map.of("Content-Type", "application/xml"));
+        responseEvent.setBody(objectMapper.writeValueAsString(order));
+        return responseEvent;
+      } catch (IOException e) {
+        e.printStackTrace();
+        return new APIGatewayProxyResponseEvent().withStatusCode(500);
+      }
+    };
+  }
+
+  @Bean
+  public Function<Message<Person>, Message<Person>> processPerson() {
+    return value -> {
+      Person person = value.getPayload();
+      logger.info("Processing incoming person: " + person);
+
+      // ... storing Person in database
+      person.setId(UUID.randomUUID().toString());
+      logger.info("Successfully stored person in database with id: " + person.getId());
+
+      Map<String, Object> resultHeader = new HashMap();
+      resultHeader.put("statuscode", HttpStatus.CREATED.value());
+      resultHeader.put("X-Custom-Header", "Hello World from Spring Cloud Function AWS Adapter");
+      return new GenericMessage(person, resultHeader);
+    };
+  }
+
 }
