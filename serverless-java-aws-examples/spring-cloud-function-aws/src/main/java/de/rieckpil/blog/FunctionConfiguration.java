@@ -5,8 +5,8 @@ import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent
 import com.amazonaws.services.lambda.runtime.events.S3Event;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -24,12 +24,12 @@ import java.util.function.Supplier;
 @Configuration
 public class FunctionConfiguration {
 
-  private static Log logger = LogFactory.getLog(Application.class);
+  private static Logger logger = LoggerFactory.getLogger(Application.class);
 
   @Bean
   public Function<String, String> uppercase() {
     return value -> {
-      logger.info("Processing uppercase: " + value);
+      logger.info("Processing uppercase for String '{}'", value);
       return value.toUpperCase();
     };
   }
@@ -57,7 +57,7 @@ public class FunctionConfiguration {
       try {
         ObjectMapper objectMapper = new XmlMapper();
         Order order = objectMapper.readValue(value.getBody(), Order.class);
-        logger.info("Successfully deserialized XML order: " + order);
+        logger.info("Successfully deserialized XML order '{}'", order);
 
         // ... processing Order
         order.setProcessed(true);
@@ -78,11 +78,11 @@ public class FunctionConfiguration {
   public Function<Message<Person>, Message<Person>> processPerson() {
     return value -> {
       Person person = value.getPayload();
-      logger.info("Processing incoming person: " + person);
+      logger.info("Processing incoming person '{}'", person);
 
       // ... storing Person in database
       person.setId(UUID.randomUUID().toString());
-      logger.info("Successfully stored person in database with id: " + person.getId());
+      logger.info("Successfully stored person in database with id '{}'", person.getId());
 
       Map<String, Object> resultHeader = new HashMap();
       resultHeader.put("statuscode", HttpStatus.CREATED.value());
