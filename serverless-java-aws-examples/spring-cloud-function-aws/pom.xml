@@ -21,7 +21,6 @@
     <aws-lambda-java-core.version>1.2.1</aws-lambda-java-core.version>
     <spring-cloud-function.version>3.0.7.RELEASE</spring-cloud-function.version>
     <wrapper.version>1.0.17.RELEASE</wrapper.version>
-<!--    <json.version>20190722</json.version>-->
     <aws-lambda-java-events.version>2.2.7</aws-lambda-java-events.version>
     <aws-java-sdk-s3.version>1.11.792</aws-java-sdk-s3.version>
   </properties>
@@ -79,30 +78,30 @@
     </dependency>
   </dependencies>
 
-  <build>
-    <finalName>${project.artifactId}</finalName>
-    <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-        <dependencies>
-          <dependency>
-            <groupId>org.springframework.boot.experimental</groupId>
-            <artifactId>spring-boot-thin-layout</artifactId>
-            <version>${wrapper.version}</version>
-          </dependency>
-        </dependencies>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-        <configuration>
-          <createDependencyReducedPom>false</createDependencyReducedPom>
-          <shadedArtifactAttached>true</shadedArtifactAttached>
-          <shadedClassifierName>shaded</shadedClassifierName>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+<build>
+  <finalName>${project.artifactId}</finalName>
+  <plugins>
+    <plugin>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-maven-plugin</artifactId>
+      <dependencies>
+        <dependency>
+          <groupId>org.springframework.boot.experimental</groupId>
+          <artifactId>spring-boot-thin-layout</artifactId>
+          <version>${wrapper.version}</version>
+        </dependency>
+      </dependencies>
+    </plugin>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-shade-plugin</artifactId>
+      <configuration>
+        <createDependencyReducedPom>false</createDependencyReducedPom>
+        <shadedArtifactAttached>true</shadedArtifactAttached>
+        <shadedClassifierName>shaded</shadedClassifierName>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
 
 </project>

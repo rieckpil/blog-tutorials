@@ -35,6 +35,11 @@ public class FunctionConfiguration {
   }
 
   @Bean
+  public Supplier<String> randomString() {
+    return () -> UUID.randomUUID().toString();
+  }
+
+  @Bean
   public Consumer<S3Event> processS3Event() {
     return s3Event -> {
       String bucket = s3Event.getRecords().get(0).getS3().getBucket().getName();
@@ -46,33 +51,28 @@ public class FunctionConfiguration {
     };
   }
 
-  @Bean
-  public Supplier<String> randomString() {
-    return () -> UUID.randomUUID().toString();
-  }
+@Bean
+public Function<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> processXmlOrder() {
+  return value -> {
+    try {
+      ObjectMapper objectMapper = new XmlMapper();
+      Order order = objectMapper.readValue(value.getBody(), Order.class);
+      logger.info("Successfully deserialized XML order '{}'", order);
 
-  @Bean
-  public Function<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> processXmlOrder() {
-    return value -> {
-      try {
-        ObjectMapper objectMapper = new XmlMapper();
-        Order order = objectMapper.readValue(value.getBody(), Order.class);
-        logger.info("Successfully deserialized XML order '{}'", order);
+      // ... processing Order
+      order.setProcessed(true);
 
-        // ... processing Order
-        order.setProcessed(true);
-
-        APIGatewayProxyResponseEvent responseEvent = new APIGatewayProxyResponseEvent();
-        responseEvent.setStatusCode(201);
-        responseEvent.setHeaders(Map.of("Content-Type", "application/xml"));
-        responseEvent.setBody(objectMapper.writeValueAsString(order));
-        return responseEvent;
-      } catch (IOException e) {
-        e.printStackTrace();
-        return new APIGatewayProxyResponseEvent().withStatusCode(500);
-      }
-    };
-  }
+      APIGatewayProxyResponseEvent responseEvent = new APIGatewayProxyResponseEvent();
+      responseEvent.setStatusCode(201);
+      responseEvent.setHeaders(Map.of("Content-Type", "application/xml"));
+      responseEvent.setBody(objectMapper.writeValueAsString(order));
+      return responseEvent;
+    } catch (IOException e) {
+      e.printStackTrace();
+      return new APIGatewayProxyResponseEvent().withStatusCode(500);
+    }
+  };
+}
 
   @Bean
   public Function<Message<Person>, Message<Person>> processPerson() {

@@ -5,6 +5,7 @@ provider:
   runtime: java11
   region: eu-central-1
   profile: serverless-admin
+  memory: 1024
   timeout: 10
   iamRoleStatements:
     - Effect: 'Allow'
