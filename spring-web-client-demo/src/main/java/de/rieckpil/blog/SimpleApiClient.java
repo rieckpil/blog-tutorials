@@ -21,11 +21,11 @@ public class SimpleApiClient {
     return this.defaultWebClient.get().uri("/todos/1")
       .retrieve()
       .onStatus(HttpStatus::is4xxClientError, response -> {
-        System.out.println("4xx eror");
+        System.out.println("4xx error");
         return Mono.error(new RuntimeException("4xx"));
       })
       .onStatus(HttpStatus::is5xxServerError, response -> {
-        System.out.println("5xx eror");
+        System.out.println("5xx error");
         return Mono.error(new RuntimeException("5xx"));
       })
       .bodyToMono(JsonNode.class)
