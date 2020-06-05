@@ -1,0 +1,18 @@
+service: simple-aws-lambda
+
+provider:
+  name: aws
+  runtime: java11
+  profile: serverless-admin
+  region: eu-central-1
+  timeout: 10
+  memorySize: 1024
+
+package:
+  artifact: target/simple-aws-lambda.jar
+
+functions:
+  simpleLambda:
+    handler: de.rieckpil.blog.SimpleLambda
+    environment:
+      MESSAGE: Duke42
