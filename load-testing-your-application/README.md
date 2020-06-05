@@ -1,4 +1,4 @@
-# Codebase for the blog post [#HOWTO: Simple load-testing with Apache Benchmark](https://rieckpil.de/howto-simple-load-testing-with-apache-benchmark/)
+# Codebase for the blog post [Simple load-testing with Apache Benchmark](https://rieckpil.de/howto-simple-load-testing-with-apache-benchmark/)
 
 Steps to run this project:
 
