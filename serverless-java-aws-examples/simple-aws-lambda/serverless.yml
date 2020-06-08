@@ -7,6 +7,16 @@ provider:
   region: eu-central-1
   timeout: 10
   memorySize: 1024
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - 's3:*'
+      Resource:
+        - 'arn:aws:s3:::${self:custom.myBucket}/*'
+        - !Join ['', ['arn:aws:s3:::', !Ref ServerlessDeploymentBucket, '/*']]
+
+custom:
+  myBucket: rieckpil-custom-bucket
 
 package:
   artifact: target/simple-aws-lambda.jar
@@ -22,3 +32,11 @@ functions:
       - http:
           method: POST
           path: /simple
+  simpleEventTrigger:
+    handler: de.rieckpil.blog.SimpleEventHandler
+    events:
+      - s3:
+          bucket: ${self:custom.myBucket}
+          event: s3:ObjectCreated:*
+          rules:
+            - suffix: .png
