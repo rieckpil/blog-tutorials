@@ -5,12 +5,20 @@
 	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions">
 <h:head>
-	<title>PrimeFaces 7.0</title>
+	<title>JSF and PrimeFaces</title>
 	<h:outputStylesheet>
-        .jqplot-series-canvas {
-		  background: white;
+		.jqplot-series-canvas {
+			background: white;
 		}
-    </h:outputStylesheet>
+
+		.ui-datatable td {
+			font-size: 10px;
+		}
+
+		body .ui-datatable thead th .ui-column-title {
+			font-size: 10px;
+		}
+	</h:outputStylesheet>
 </h:head>
 
 <h:body>
@@ -21,8 +29,8 @@
 		<div class="ui-g">
 			<div class="ui-g-2"></div>
 			<div class="ui-g-8">
-				<h1 style="text-align: center">Nice-looking webapps with JSF
-					2.3 and PrimeFaces 7.0</h1>
+				<h1 style="text-align: center">Nice-looking applications with JSF
+					2.3 and PrimeFaces</h1>
 				<p:panel id="tryit" header="Try it" style="margin-bottom:20px">
 					<h:panelGrid columns="2" cellpadding="10">
 						<p:button outcome="customers" value="See all customers"
