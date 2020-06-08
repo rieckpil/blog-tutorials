@@ -16,3 +16,9 @@ functions:
     handler: de.rieckpil.blog.SimpleLambda
     environment:
       MESSAGE: Duke42
+  simpleHttp:
+    handler: de.rieckpil.blog.SimpleHttpHandler
+    events:
+      - http:
+          method: POST
+          path: /simple
