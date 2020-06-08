@@ -1,4 +1,4 @@
-# Codebase for the blog post [#HOWTO: Up- and download files with React and Spring Boot](https://rieckpil.de/howto-up-and-download-files-with-react-and-spring-boot/)
+# Codebase for the blog post [Up- and download files with React and Spring Boot](https://rieckpil.de/howto-up-and-download-files-with-react-and-spring-boot/)
 
 Steps to run this project:
 
