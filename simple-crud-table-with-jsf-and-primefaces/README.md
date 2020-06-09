@@ -1,11 +1,9 @@
-# Codebase for the blog post [#HOWTO: Simple CRUD table with JSF and PrimeFaces](https://rieckpil.de/howto-simple-crud-table-with-jsf-2-3-and-primefaces/)
+# Codebase for the blog post [Simple CRUD table with JSF and PrimeFaces](https://rieckpil.de/howto-simple-crud-table-with-jsf-2-3-and-primefaces/)
 
 Steps to run this project:
 
 1. Clone this Git repository
 2. Navigate to the folder `simple-crud-table-with-jsf-and-primefaces`
-3. Build the application with `mvn clean package`
-4. Start you Docker daemon
-5. Build the Docker image with `docker build -t crud-table-jsf-primefaces .`
-6. Start the Docker container with`docker run -p 8080:8080 crud-table-jsf-primefaces`
-7. Wait until the Payara server launched successfully and visit `http://localhost:8080/customers.xhtml`
+3. Start you Docker daemon
+4. Execute `./buildAndRun.sh` (Linux/Mac) or `buildAndRun.bat` (Windows) to build the project, Docker image and start a Docker container
+5. Wait until the Payara server launched successfully and visit `http://localhost:8080/customers.xhtml`
