@@ -42,6 +42,7 @@ declare -a arr=("whats-new-in-spring-boot-2.1"
  "spring-boot-aws-integration-tests"
  "serverless-java-aws-examples/thumbnail-generator"
  "serverless-java-aws-examples/spring-cloud-function-aws"
+ "spring-security-aws-cognito-thymeleaf"
 )
 
 for project in "${arr[@]}"

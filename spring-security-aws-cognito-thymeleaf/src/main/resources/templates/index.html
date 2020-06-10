@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>OAuth2 Login AWS Cognito</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <div>
+    <h1 class="title text-center" th:text="${message}"></h1>
+
+    <div sec:authorize="isAuthenticated()">
+      <p>Hello, <strong th:text="${#authentication.name}"></strong>!</p>
+      <p>Your authorities are: <strong th:each="authority : ${#authentication.authorities}"><span
+        th:text="${authority.authority} + ' '"></span></strong></p>
+    </div>
+
+    <div sec:authorize="hasRole('USER')" class="alert alert-primary" role="alert">
+      This section is only visible only for ROLE_USER.
+    </div>
+
+    <div sec:authorize="hasRole('ADMIN')" class="alert alert-primary" role="alert">
+      This section is only visible only for ROLE_ADMIN.
+    </div>
+
+    <div sec:authorize="isAuthenticated()" class="alert alert-primary" role="alert">
+      This section is only visible only to authenticated users.
+    </div>
+
+    <div th:if="${secretMessage}" class="alert alert-primary" role="alert">
+      The secret message is: <strong th:text="${secretMessage}"></strong>
+    </div>
+
+    <div sec:authorize="isAnonymous()">
+      <a class="btn btn-primary" th:href="@{/oauth2/authorization/cognito}" role="button">
+        Log in with Amazon Cognito
+      </a>
+    </div>
+
+    <div sec:authorize="isAuthenticated()">
+      <form method="post" th:action="@{/logout}">
+        <input type="submit" class="btn btn-danger" value="Logout"/>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>
