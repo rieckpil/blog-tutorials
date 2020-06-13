@@ -25,7 +25,8 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 public class DeletePersonIT {
 
   @Container
-  public static PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer().withPassword("inmemory")
+  public static PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer()
+    .withPassword("inmemory")
     .withUsername("inmemory");
 
   @Autowired
