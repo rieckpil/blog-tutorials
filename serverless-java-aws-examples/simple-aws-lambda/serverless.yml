@@ -44,3 +44,5 @@ functions:
     handler: de.rieckpil.blog.SimpleScheduledHandler
     events:
       - schedule: rate(1 minute)
+  fullControlLambda:
+    handler: de.rieckpil.blog.FullControlLambda
