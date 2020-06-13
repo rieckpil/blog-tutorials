@@ -28,9 +28,7 @@ declare -a arr=("rest-easy-file-uploading-and-downloading"
  "nice-looking-jsf-apps-with-prime-faces-7"
  "intercept-methods-with-cdi-interceptors"
  "simple-crud-table-with-jsf-and-primefaces"
- "testcontainers"
  "java-benchmarking-with-jmh"
- "expose-git-information-actuator"
  "avoid-repeating-attributes-in-jpa-entities"
  "send-emails-with-sendgrid-and-spring-boot")
 
