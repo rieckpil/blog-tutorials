@@ -6,7 +6,7 @@ spring:
           cognito:
             clientId: ${COGNITO_CLIENT_ID}
             clientSecret: ${COGNITO_CLIENT_SECRET}
-            scope: openid, email
+            scope: openid
             redirectUriTemplate: http://localhost:8080/login/oauth2/code/cognito
             clientName: spring-boot-backend
         provider:

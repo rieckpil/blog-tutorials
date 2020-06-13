@@ -10,9 +10,12 @@ public class IndexController {
 
   @GetMapping
   public String getIndexPage(Model model, Authentication authentication) {
-
     if (authentication != null && authentication.isAuthenticated()) {
-      model.addAttribute("secretMessage", "Lorem ipsum dolor sit amet");
+      if (authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
+        model.addAttribute("secretMessage", "Admin message is s3crEt");
+      } else {
+        model.addAttribute("secretMessage", "Lorem ipsum dolor sit amet");
+      }
     }
 
     model.addAttribute("message", "AWS Cognito with Spring Security");
