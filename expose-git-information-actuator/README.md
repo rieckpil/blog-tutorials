@@ -1,4 +1,4 @@
-# Codebase for the blog post [#HOWTO: Expose git information with Spring Boot’s Actuator](https://rieckpil.de/howto-expose-git-information-with-spring-boots-actuator/)
+# Codebase for the blog post [Expose git information with Spring Boot’s Actuator](https://rieckpil.de/howto-expose-git-information-with-spring-boots-actuator/)
 
 Steps to run this application:
 
