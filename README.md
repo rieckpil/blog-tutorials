@@ -70,7 +70,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 * [Test Spring applications using AWS with Testcontainers and LocalStack](https://rieckpil.de/test-spring-applications-using-aws-with-testcontainers-and-localstack/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-aws-integration-tests))
 * [Java AWS Lambda with Serverless and Maven - Thumbnail Generator](http://rieckpil.de/aws-lambda-with-serverless-java-and-maven-thumbnail-generator) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/serverless-java-aws-examples/thumbnail-generator))
 * [Java AWS Lambda with Spring Cloud Function](https://rieckpil.de/java-aws-lambda-with-spring-cloud-function/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/serverless-java-aws-examples/spring-cloud-function-aws))
-
+* [Thymeleaf OAuth2 Login with Spring Security and AWS Cognito](https://rieckpil.de/thymeleaf-oauth2-login-with-spring-security-and-aws-cognito/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-security-aws-cognito-thymeleaf))
 
 
 ## WHATIS?
