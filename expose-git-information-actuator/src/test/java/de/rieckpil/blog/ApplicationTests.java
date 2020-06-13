@@ -9,7 +9,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class ExposeGitInformationActuatorApplicationTests {
+public class ApplicationTests {
 
   @Autowired
   private WebTestClient webTestClient;
