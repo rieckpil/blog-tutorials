@@ -1,4 +1,4 @@
-package de.rieckpil.blog.testcontainers;
+package de.rieckpil.blog;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class NoPersonFoundException extends RuntimeException {
 
-    public NoPersonFoundException(String message) {
-        super(message);
-    }
+  public NoPersonFoundException(String message) {
+    super(message);
+  }
 }
