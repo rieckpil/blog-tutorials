@@ -1,4 +1,4 @@
-# Codebase for the blog post [#HOWTO: Spring Boot Integration Tests with WireMock and JUnit 5](https://rieckpil.de/spring-boot-integration-tests-with-wiremock-and-junit-5/)
+# Codebase for the blog post [Spring Boot Integration Tests with WireMock and JUnit 5](https://rieckpil.de/spring-boot-integration-tests-with-wiremock-and-junit-5/)
 
 Steps to run this project:
 
