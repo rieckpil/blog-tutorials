@@ -15,59 +15,59 @@ import java.util.Locale;
 @RequestMapping("/random")
 public class RandomDataEndpoint {
 
-    @Autowired
-    private ObjectMapper objectMapper;
+  @Autowired
+  private ObjectMapper objectMapper;
 
-    @GetMapping("/persons")
-    public JsonNode getRandomPersons() {
+  @GetMapping("/persons")
+  public JsonNode getRandomPersons() {
 
-        Faker faker = new Faker();
-        ArrayNode persons = objectMapper.createArrayNode();
+    Faker faker = new Faker();
+    ArrayNode persons = objectMapper.createArrayNode();
 
-        for (int i = 0; i < 10; i++) {
-            persons.add(objectMapper.createObjectNode()
-                    .put("firstName", faker.name().firstName())
-                    .put("lastName", faker.name().lastName())
-                    .put("title", faker.name().title())
-                    .put("suffix", faker.name().suffix())
-                    .put("address", faker.address().streetAddress())
-                    .put("city", faker.address().cityName())
-                    .put("country", faker.address().country()));
-        }
-
-        return persons;
+    for (int i = 0; i < 10; i++) {
+      persons.add(objectMapper.createObjectNode()
+        .put("firstName", faker.name().firstName())
+        .put("lastName", faker.name().lastName())
+        .put("title", faker.name().title())
+        .put("suffix", faker.name().suffix())
+        .put("address", faker.address().streetAddress())
+        .put("city", faker.address().cityName())
+        .put("country", faker.address().country()));
     }
 
-    @GetMapping("/books")
-    public JsonNode getRandomBook() {
+    return persons;
+  }
 
-        Faker faker = new Faker(new Locale("en-US"));
-        ArrayNode books = objectMapper.createArrayNode();
+  @GetMapping("/books")
+  public JsonNode getRandomBook() {
 
-        for (int i = 0; i < 10; i++) {
-            books.add(objectMapper.createObjectNode()
-                    .put("author", faker.book().author())
-                    .put("genre", faker.book().genre())
-                    .put("publisher", faker.book().publisher())
-                    .put("title", faker.book().title()));
-        }
+    Faker faker = new Faker(new Locale("en-US"));
+    ArrayNode books = objectMapper.createArrayNode();
 
-        return books;
+    for (int i = 0; i < 10; i++) {
+      books.add(objectMapper.createObjectNode()
+        .put("author", faker.book().author())
+        .put("genre", faker.book().genre())
+        .put("publisher", faker.book().publisher())
+        .put("title", faker.book().title()));
     }
 
-    @GetMapping("/foods")
-    public JsonNode getRandomFoods() {
+    return books;
+  }
 
-        Faker faker = new Faker(new Locale("de"));
-        ArrayNode foods = objectMapper.createArrayNode();
+  @GetMapping("/foods")
+  public JsonNode getRandomFoods() {
 
-        for (int i = 0; i < 10; i++) {
-            foods.add(objectMapper.createObjectNode()
-                    .put("ingredients", faker.food().ingredient())
-                    .put("spices", faker.food().spice())
-                    .put("measurements", faker.food().measurement()));
-        }
+    Faker faker = new Faker(new Locale("de"));
+    ArrayNode foods = objectMapper.createArrayNode();
 
-        return foods;
+    for (int i = 0; i < 10; i++) {
+      foods.add(objectMapper.createObjectNode()
+        .put("ingredients", faker.food().ingredient())
+        .put("spices", faker.food().spice())
+        .put("measurements", faker.food().measurement()));
     }
+
+    return foods;
+  }
 }

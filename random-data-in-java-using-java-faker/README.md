@@ -1,4 +1,4 @@
-# Codebase for the blog post [#HOWTO: Generate random data in Java using Java Faker](https://rieckpil.de/howto-generate-random-data-in-java-using-java-faker/)
+# Codebase for the blog post [Generate random data in Java using Java Faker](https://rieckpil.de/howto-generate-random-data-in-java-using-java-faker/)
 
 Steps to run this project:
 
