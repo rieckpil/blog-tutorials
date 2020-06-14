@@ -15,25 +15,25 @@ import java.util.Optional;
 @RequestMapping("/api/books")
 public class BookController {
 
-    @Autowired
-    private BookRepository bookRepository;
+  @Autowired
+  private BookRepository bookRepository;
 
-    @GetMapping
-    public List<Book> getAllBooks() {
-        log.info("Retrieving all available books");
-        List<Book> allAvailableBooks = bookRepository.findAll();
-        return allAvailableBooks;
+  @GetMapping
+  public List<Book> getAllBooks() {
+    log.info("Retrieving all available books");
+    List<Book> allAvailableBooks = bookRepository.findAll();
+    return allAvailableBooks;
+  }
+
+  @GetMapping("/{id}")
+  public Book getBookById(@PathVariable("id") Long id) {
+    log.info("Retrieving book with id: {}", id);
+    Optional<Book> book = bookRepository.findById(id);
+
+    if (book.isEmpty()) {
+      throw new BookNotFoundException("Can't find book with id: " + id);
     }
 
-    @GetMapping("/{id}")
-    public Book getBookById(@PathVariable("id") Long id) {
-        log.info("Retrieving book with id: {}", id);
-        Optional<Book> book = bookRepository.findById(id);
-
-        if (book.isEmpty()) {
-            throw new BookNotFoundException("Can't find book with id: " + id);
-        }
-
-        return book.get();
-    }
+    return book.get();
+  }
 }

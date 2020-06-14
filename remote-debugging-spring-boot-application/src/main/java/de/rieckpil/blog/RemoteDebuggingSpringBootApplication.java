@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class RemoteDebuggingSpringBootApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(RemoteDebuggingSpringBootApplication.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(RemoteDebuggingSpringBootApplication.class, args);
+  }
 
 }
