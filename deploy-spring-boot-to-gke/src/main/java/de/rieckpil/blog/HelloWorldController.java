@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/hello")
 public class HelloWorldController {
 
-    @Value("${message}")
-    private String message;
+  @Value("${message}")
+  private String message;
 
-    @GetMapping
-    public ResponseEntity<String> getMessage() {
-        return ResponseEntity.ok(message);
-    }
+  @GetMapping
+  public ResponseEntity<String> getMessage() {
+    return ResponseEntity.ok(message);
+  }
 }
