@@ -6,9 +6,10 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.2.2.RELEASE</version>
+		<version>2.3.0.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>de.rieckpil.blog</groupId>
 	<artifactId>spring-boot-hibernate-flyway-best-practices</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
