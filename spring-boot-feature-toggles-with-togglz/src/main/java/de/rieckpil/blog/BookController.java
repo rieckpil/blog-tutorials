@@ -18,43 +18,43 @@ import java.time.LocalDate;
 @RequestMapping("/books")
 public class BookController {
 
-    @Autowired
-    private FeatureManager featureManager;
+  @Autowired
+  private FeatureManager featureManager;
 
-    @Autowired
-    private ObjectMapper objectMapper;
+  @Autowired
+  private ObjectMapper objectMapper;
 
-    @GetMapping
-    public ResponseEntity<JsonNode> getBook() {
+  @GetMapping
+  public ResponseEntity<JsonNode> getBook() {
 
-        ObjectNode book = objectMapper.createObjectNode();
-        book.put("title", "Spring Boot 2.1");
-        book.put("author", "Duke");
-        book.put("pages", 42);
+    ObjectNode book = objectMapper.createObjectNode();
+    book.put("title", "Spring Boot 2.1");
+    book.put("author", "Duke");
+    book.put("pages", 42);
 
-        if (featureManager.isActive(BookstoreFeatures.EXTENDED_INFORMATION)) {
-            book.put("description", "Book about using Spring Boot");
-            book.put("publishedAt", LocalDate.now().toString());
-        }
-
-        if (featureManager.isActive(BookstoreFeatures.PUBLIC_PRICES)) {
-            book.put("price", 89.50);
-        }
-
-        return ResponseEntity.ok(book);
+    if (featureManager.isActive(BookstoreFeatures.EXTENDED_INFORMATION)) {
+      book.put("description", "Book about using Spring Boot");
+      book.put("publishedAt", LocalDate.now().toString());
     }
 
-    @GetMapping
-    @RequestMapping("/wishlist")
-    public ResponseEntity<ArrayNode> getBookWishlist() {
-
-        if (featureManager.isActive(new NamedFeature("BOOK_WISHLIST"))) {
-            ArrayNode array = objectMapper.createArrayNode();
-            array.add("Spring Boot 2.2");
-            array.add("Spring Framework 6.0");
-            return ResponseEntity.ok(array);
-        }
-
-        return ResponseEntity.noContent().build();
+    if (featureManager.isActive(BookstoreFeatures.PUBLIC_PRICES)) {
+      book.put("price", 89.50);
     }
+
+    return ResponseEntity.ok(book);
+  }
+
+  @GetMapping
+  @RequestMapping("/wishlist")
+  public ResponseEntity<ArrayNode> getBookWishlist() {
+
+    if (featureManager.isActive(new NamedFeature("BOOK_WISHLIST"))) {
+      ArrayNode array = objectMapper.createArrayNode();
+      array.add("Spring Boot 2.2");
+      array.add("Spring Framework 6.0");
+      return ResponseEntity.ok(array);
+    }
+
+    return ResponseEntity.noContent().build();
+  }
 }

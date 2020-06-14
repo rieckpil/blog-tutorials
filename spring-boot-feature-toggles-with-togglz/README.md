@@ -1,4 +1,4 @@
-# Codebase for the blog post [#HOWTO: Feature Toggles for Spring Boot applications with Togglz](https://rieckpil.de/howto-feature-toggles-for-spring-boot-applications-with-togglz/)
+# Codebase for the blog post [Feature Toggles for Spring Boot applications with Togglz](https://rieckpil.de/howto-feature-toggles-for-spring-boot-applications-with-togglz/)
 
 Steps to run this project:
 
