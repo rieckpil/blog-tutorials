@@ -14,15 +14,15 @@ import javax.ws.rs.core.Response;
 @Stateless
 public class ReportResource {
 
-	@Inject
-	private PdfGenerator pdfGenerator;
+  @Inject
+  private PdfGenerator pdfGenerator;
 
-	@GET
-	@Produces(MediaType.APPLICATION_OCTET_STREAM)
-	public Response createSimplePdfWithChart() throws IOException {
-		return Response.ok(pdfGenerator.createPdf(), MediaType.APPLICATION_OCTET_STREAM)
-				.header("Content-Disposition", "attachment; filename=\"simplePdf.pdf\"").build();
+  @GET
+  @Produces(MediaType.APPLICATION_OCTET_STREAM)
+  public Response createSimplePdfWithChart() throws IOException {
+    return Response.ok(pdfGenerator.createPdf(), MediaType.APPLICATION_OCTET_STREAM)
+      .header("Content-Disposition", "attachment; filename=\"simplePdf.pdf\"").build();
 
-	}
+  }
 
 }
