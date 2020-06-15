@@ -3,6 +3,8 @@
 set -e
 set -o pipefail
 
+mvn -B -f consumer-driven-contracts-with-spring-cloud-contract/book-store-server install
+
 declare -a arr=("whats-new-in-spring-boot-2.1" 
  "bootstrap-jakarta-ee-8-application"
  "custom-maven-archetype"
@@ -12,6 +14,7 @@ declare -a arr=("whats-new-in-spring-boot-2.1"
  "random-data-in-java-using-java-faker"
  "guide-to-jakarta-ee-with-react-and-postgresql"
  "five-java-9-features"
+ "consumer-driven-contracts-with-spring-cloud-contract/book-store-client"
  "java-ee-with-kotlin"
  "spring-boot-with-kotlin"
  "spring-boot-feature-toggles-with-togglz"
