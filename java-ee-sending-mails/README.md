@@ -1,4 +1,4 @@
-# Codebase for the blog post [#HOWTO: Send emails with Java EE using Payara](https://rieckpil.de/howto-send-emails-with-java-ee-using-payara)
+# Codebase for the blog post [Send emails with Java EE using Payara](https://rieckpil.de/howto-send-emails-with-java-ee-using-payara)
 
 Steps to run this project:
 

@@ -20,42 +20,42 @@ import javax.mail.util.ByteArrayDataSource;
 @Stateless
 public class MailingService {
 
-    @Inject
-    @ConfigProperty(name = "email")
-    private String emailAddress;
+  @Inject
+  @ConfigProperty(name = "email")
+  private String emailAddress;
 
 
-    @Resource(name = "mail/localsmtp")
-    private Session mailSession;
+  @Resource(name = "mail/localsmtp")
+  private Session mailSession;
 
-    public void sendSimpleMail() {
+  public void sendSimpleMail() {
 
-        Message simpleMail = new MimeMessage(mailSession);
+    Message simpleMail = new MimeMessage(mailSession);
 
-        try {
-            simpleMail.setSubject("Hello World from Java EE!");
-            simpleMail.setRecipient(Message.RecipientType.TO, new InternetAddress(emailAddress));
+    try {
+      simpleMail.setSubject("Hello World from Java EE!");
+      simpleMail.setRecipient(Message.RecipientType.TO, new InternetAddress(emailAddress));
 
-            MimeMultipart mailContent = new MimeMultipart();
+      MimeMultipart mailContent = new MimeMultipart();
 
-            MimeBodyPart mailMessage = new MimeBodyPart();
-            mailMessage.setContent("<p>Take a look at the <b>scecretMessage.txt</b> file</p>", "text/html; charset=utf-8");
-            mailContent.addBodyPart(mailMessage);
+      MimeBodyPart mailMessage = new MimeBodyPart();
+      mailMessage.setContent("<p>Take a look at the <b>scecretMessage.txt</b> file</p>", "text/html; charset=utf-8");
+      mailContent.addBodyPart(mailMessage);
 
-            MimeBodyPart mailAttachment = new MimeBodyPart();
-            DataSource source = new ByteArrayDataSource("This is a secret message".getBytes(), "text/plain");
-            mailAttachment.setDataHandler(new DataHandler(source));
-            mailAttachment.setFileName("secretMessage.txt");
+      MimeBodyPart mailAttachment = new MimeBodyPart();
+      DataSource source = new ByteArrayDataSource("This is a secret message".getBytes(), "text/plain");
+      mailAttachment.setDataHandler(new DataHandler(source));
+      mailAttachment.setFileName("secretMessage.txt");
 
-            mailContent.addBodyPart(mailAttachment);
-            simpleMail.setContent(mailContent);
+      mailContent.addBodyPart(mailAttachment);
+      simpleMail.setContent(mailContent);
 
-            Transport.send(simpleMail);
+      Transport.send(simpleMail);
 
-            System.out.println("Message successfully send to: " + emailAddress);
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
-
+      System.out.println("Message successfully send to: " + emailAddress);
+    } catch (MessagingException e) {
+      e.printStackTrace();
     }
+
+  }
 }
