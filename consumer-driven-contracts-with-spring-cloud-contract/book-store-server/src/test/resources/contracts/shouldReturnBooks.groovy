@@ -3,15 +3,15 @@ package contracts
 import org.springframework.cloud.contract.spec.Contract
 
 Contract.make {
-    description 'Should return one book in a list'
+  description 'Should return one book in a list'
 
-    request {
-        method GET()
-        url '/books'
-    }
-    response {
-        status OK()
-        body '''\
+  request {
+    method GET()
+    url '/books'
+  }
+  response {
+    status OK()
+    body '''\
             [
                 {
                     "title": "Java 11",
@@ -20,8 +20,8 @@ Contract.make {
               }
             ]
         '''
-        headers {
-            contentType('application/json')
-        }
+    headers {
+      contentType('application/json')
     }
+  }
 }

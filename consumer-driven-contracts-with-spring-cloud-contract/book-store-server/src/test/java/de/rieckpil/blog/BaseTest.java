@@ -13,12 +13,12 @@ import static org.mockito.Mockito.when;
 @RunWith(SpringRunner.class)
 public abstract class BaseTest {
 
-    @Mock
-    private BookService mockedBookService;
+  @Mock
+  private BookService mockedBookService;
 
-    @Before
-    public void setup() {
-        when(mockedBookService.getBooks()).thenReturn(List.of(new Book("Java 11", "Technology", "42")));
-        RestAssuredMockMvc.standaloneSetup(new BookController(mockedBookService));
-    }
+  @Before
+  public void setup() {
+    when(mockedBookService.getBooks()).thenReturn(List.of(new Book("Java 11", "Technology", "42")));
+    RestAssuredMockMvc.standaloneSetup(new BookController(mockedBookService));
+  }
 }

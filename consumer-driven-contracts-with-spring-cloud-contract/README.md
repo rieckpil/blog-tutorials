@@ -1,4 +1,4 @@
-# Codebase for the blog post [#HOWTO: Consumer-Driven Contracts with Spring Cloud Contract](https://rieckpil.de/howto-consumer-driven-contracts-with-spring-cloud-contract/)
+# Codebase for the blog post [Consumer-Driven Contracts with Spring Cloud Contract](https://rieckpil.de/howto-consumer-driven-contracts-with-spring-cloud-contract/)
 
 Steps to run this project:
 

@@ -16,31 +16,31 @@ import javax.annotation.PostConstruct;
 @Service
 public class BookClient {
 
-    private WebClient webClient;
+  private WebClient webClient;
 
-    @PostConstruct
-    public void setUpWebClient() {
-        var tcpClient = TcpClient.create()
-                .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 2_000)
-                .doOnConnected(connection ->
-                        connection.addHandlerLast(new ReadTimeoutHandler(2))
-                                .addHandlerLast(new WriteTimeoutHandler(2)));
+  @PostConstruct
+  public void setUpWebClient() {
+    var tcpClient = TcpClient.create()
+      .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 2_000)
+      .doOnConnected(connection ->
+        connection.addHandlerLast(new ReadTimeoutHandler(2))
+          .addHandlerLast(new WriteTimeoutHandler(2)));
 
-        this.webClient = WebClient.builder()
-                .baseUrl("http://localhost:8080")
-                .clientConnector(new ReactorClientHttpConnector(HttpClient.from(tcpClient)))
-                .build();
-    }
+    this.webClient = WebClient.builder()
+      .baseUrl("http://localhost:8080")
+      .clientConnector(new ReactorClientHttpConnector(HttpClient.from(tcpClient)))
+      .build();
+  }
 
-    public JsonNode getAllAvailableBooks() {
+  public JsonNode getAllAvailableBooks() {
 
-        JsonNode availableBooks = webClient.get()
-                .uri("/books")
-                .accept(MediaType.APPLICATION_JSON)
-                .retrieve()
-                .bodyToMono(JsonNode.class)
-                .block();
+    JsonNode availableBooks = webClient.get()
+      .uri("/books")
+      .accept(MediaType.APPLICATION_JSON)
+      .retrieve()
+      .bodyToMono(JsonNode.class)
+      .block();
 
-        return availableBooks;
-    }
+    return availableBooks;
+  }
 }

@@ -9,14 +9,14 @@ import java.util.List;
 @RestController
 public class BookController {
 
-    private BookService bookService;
+  private BookService bookService;
 
-    public BookController(BookService bookService) {
-        this.bookService = bookService;
-    }
+  public BookController(BookService bookService) {
+    this.bookService = bookService;
+  }
 
-    @GetMapping("/books")
-    public ResponseEntity<List<Book>> getTodos() {
-        return ResponseEntity.ok(bookService.getBooks());
-    }
+  @GetMapping("/books")
+  public ResponseEntity<List<Book>> getTodos() {
+    return ResponseEntity.ok(bookService.getBooks());
+  }
 }
