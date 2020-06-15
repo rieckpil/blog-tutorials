@@ -6,6 +6,7 @@ set -o pipefail
 mvn -B -f consumer-driven-contracts-with-spring-cloud-contract/book-store-server install
 
 declare -a arr=("whats-new-in-spring-boot-2.1" 
+ "charts-in-pdf-java-ee"
  "bootstrap-jakarta-ee-8-application"
  "custom-maven-archetype"
  "demo-crud-application"

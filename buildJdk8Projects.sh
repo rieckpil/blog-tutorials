@@ -4,7 +4,6 @@ set -e
 set -o pipefail
 
 declare -a arr=("rest-easy-file-uploading-and-downloading" 
- "charts-in-pdf-java-ee"
  "dynamic-sql-querying-with-pagination"
  "generate-documents-from-word-templates-with-docx4j-on-wildfly14"
  "graalvm-intro"
