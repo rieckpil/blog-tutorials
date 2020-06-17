@@ -14,4 +14,4 @@ Steps to run this project:
 5. Tag the Docker image (to be able to push it to the local registry) `docker tag spring-boot-app localhost:5000/spring-boot-app`
 6. Push the Docker image to the local registry `docker push localhost:5000/spring-boot-app`
 7. Execute `kubectl apply -f deployment.yml` to deploy the application to Kubernetes
-8. Visit http://localhost:31000/api/messages
+8. Visit http://localhost:31000/api/messages or access it with `curl -v http://localhost:31000/api/messages`
