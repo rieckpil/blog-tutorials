@@ -4,7 +4,6 @@ set -e
 set -o pipefail
 
 declare -a arr=("rest-easy-file-uploading-and-downloading" 
- "dynamic-sql-querying-with-pagination"
  "generate-documents-from-word-templates-with-docx4j-on-wildfly14"
  "graalvm-intro"
  "hello-world-jsf-2.3"
@@ -28,8 +27,7 @@ declare -a arr=("rest-easy-file-uploading-and-downloading"
  "intercept-methods-with-cdi-interceptors"
  "simple-crud-table-with-jsf-and-primefaces"
  "java-benchmarking-with-jmh"
- "avoid-repeating-attributes-in-jpa-entities"
- "send-emails-with-sendgrid-and-spring-boot")
+ "avoid-repeating-attributes-in-jpa-entities")
 
 for project in "${arr[@]}"
 do
