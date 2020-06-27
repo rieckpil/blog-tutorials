@@ -18,6 +18,7 @@
   <properties>
     <java.version>11</java.version>
     <mockwebserver.version>4.7.2</mockwebserver.version>
+    <okhttp3.version>4.7.2</okhttp3.version>
   </properties>
 
   <dependencies>
@@ -46,11 +47,12 @@
       <artifactId>mockwebserver</artifactId>
       <version>${mockwebserver.version}</version>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.projectreactor</groupId>
-      <artifactId>reactor-test</artifactId>
-      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
   </dependencies>
 
