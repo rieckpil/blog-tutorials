@@ -79,7 +79,7 @@ class UsersClientTest {
 
     final Dispatcher dispatcher = new Dispatcher() {
       @Override
-      public MockResponse dispatch(RecordedRequest request) throws InterruptedException {
+      public MockResponse dispatch(RecordedRequest request) {
         switch (request.getPath()) {
           case "/users/1":
             return new MockResponse().setResponseCode(200);
@@ -97,6 +97,5 @@ class UsersClientTest {
     assertThrows(WebClientResponseException.class, () -> usersClient.getUserById(2L));
     assertThrows(WebClientResponseException.class, () -> usersClient.getUserById(4L));
   }
-
 
 }
