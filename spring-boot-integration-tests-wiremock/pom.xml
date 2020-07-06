@@ -17,7 +17,7 @@
 
   <properties>
     <java.version>11</java.version>
-    <wiremock.version>2.26.3</wiremock.version>
+    <wiremock.version>2.27.1</wiremock.version>
     <maven-failsafe-plugin.version>3.0.0-M4</maven-failsafe-plugin.version>
   </properties>
 
