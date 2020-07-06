@@ -12,31 +12,31 @@ import java.util.HashMap;
 @Stateless
 public class DocxGenerator {
 
-    private static final String TEMPLATE_NAME = "template.docx";
+  private static final String TEMPLATE_NAME = "template.docx";
 
-    public byte[] generateDocxFileFromTemplate(UserInformation userInformation) throws Exception {
+  public byte[] generateDocxFileFromTemplate(UserInformation userInformation) throws Exception {
 
-        InputStream templateInputStream = this.getClass().getClassLoader().getResourceAsStream(TEMPLATE_NAME);
+    InputStream templateInputStream = this.getClass().getClassLoader().getResourceAsStream(TEMPLATE_NAME);
 
-        WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.load(templateInputStream);
+    WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.load(templateInputStream);
 
-        MainDocumentPart documentPart = wordMLPackage.getMainDocumentPart();
+    MainDocumentPart documentPart = wordMLPackage.getMainDocumentPart();
 
-        VariablePrepare.prepare(wordMLPackage);
+    VariablePrepare.prepare(wordMLPackage);
 
-        HashMap<String, String> variables = new HashMap<>();
-        variables.put("firstName", userInformation.getFirstName());
-        variables.put("lastName", userInformation.getLastName());
-        variables.put("salutation", userInformation.getSalutation());
-        variables.put("message", userInformation.getMessage());
+    HashMap<String, String> variables = new HashMap<>();
+    variables.put("firstName", userInformation.getFirstName());
+    variables.put("lastName", userInformation.getLastName());
+    variables.put("salutation", userInformation.getSalutation());
+    variables.put("message", userInformation.getMessage());
 
-        documentPart.variableReplace(variables);
+    documentPart.variableReplace(variables);
 
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
-        wordMLPackage.save(outputStream);
+    wordMLPackage.save(outputStream);
 
-        return outputStream.toByteArray();
-    }
+    return outputStream.toByteArray();
+  }
 
 }

@@ -5,58 +5,58 @@ import javax.validation.constraints.Size;
 
 public class UserInformation {
 
-    @NotEmpty
-    private String firstName;
+  @NotEmpty
+  private String firstName;
 
-    @NotEmpty
-    private String lastName;
+  @NotEmpty
+  private String lastName;
 
-    @NotEmpty
-    @Size(max = 500)
-    private String message;
+  @NotEmpty
+  @Size(max = 500)
+  private String message;
 
-    @NotEmpty
-    private String salutation;
+  @NotEmpty
+  private String salutation;
 
-    public String getFirstName() {
-        return firstName;
-    }
+  public String getFirstName() {
+    return firstName;
+  }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
 
-    public String getLastName() {
-        return lastName;
-    }
+  public String getLastName() {
+    return lastName;
+  }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
 
-    public String getMessage() {
-        return message;
-    }
+  public String getMessage() {
+    return message;
+  }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
+  public void setMessage(String message) {
+    this.message = message;
+  }
 
-    public String getSalutation() {
-        return salutation;
-    }
+  public String getSalutation() {
+    return salutation;
+  }
 
-    public void setSalutation(String salutation) {
-        this.salutation = salutation;
-    }
+  public void setSalutation(String salutation) {
+    this.salutation = salutation;
+  }
 
-    @Override
-    public String toString() {
-        return "UserInformation{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", message='" + message + '\'' +
-                ", salutation='" + salutation + '\'' +
-                '}';
-    }
+  @Override
+  public String toString() {
+    return "UserInformation{" +
+      "firstName='" + firstName + '\'' +
+      ", lastName='" + lastName + '\'' +
+      ", message='" + message + '\'' +
+      ", salutation='" + salutation + '\'' +
+      '}';
+  }
 }

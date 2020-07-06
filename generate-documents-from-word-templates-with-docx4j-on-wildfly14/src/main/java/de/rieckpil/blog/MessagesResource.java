@@ -13,25 +13,25 @@ import javax.ws.rs.core.Response;
 @Path("messages")
 public class MessagesResource {
 
-    @Inject
-    DocxGenerator docxGenerator;
+  @Inject
+  DocxGenerator docxGenerator;
 
-    @POST
-    @Produces(MediaType.APPLICATION_OCTET_STREAM)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response createNewDocxMessage(@Valid @NotNull UserInformation userInformation) {
+  @POST
+  @Produces(MediaType.APPLICATION_OCTET_STREAM)
+  @Consumes(MediaType.APPLICATION_JSON)
+  public Response createNewDocxMessage(@Valid @NotNull UserInformation userInformation) {
 
-        byte[] result;
+    byte[] result;
 
-        try {
-            result = docxGenerator.generateDocxFileFromTemplate(userInformation);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return Response.serverError().build();
-        }
-
-        return Response.ok(result, MediaType.APPLICATION_OCTET_STREAM)
-                .header("Content-Disposition", "attachment; filename=\"message.docx\"")
-                .build();
+    try {
+      result = docxGenerator.generateDocxFileFromTemplate(userInformation);
+    } catch (Exception e) {
+      e.printStackTrace();
+      return Response.serverError().build();
     }
+
+    return Response.ok(result, MediaType.APPLICATION_OCTET_STREAM)
+      .header("Content-Disposition", "attachment; filename=\"message.docx\"")
+      .build();
+  }
 }

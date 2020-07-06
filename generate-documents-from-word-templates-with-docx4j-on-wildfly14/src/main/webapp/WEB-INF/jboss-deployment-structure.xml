@@ -1,7 +1,7 @@
 <jboss-deployment-structure>
-    <deployment>
-        <dependencies>
-            <module name="com.sun.xml.bind"/>
-        </dependencies>
-    </deployment>
+  <deployment>
+    <dependencies>
+      <module name="com.sun.xml.bind"/>
+    </dependencies>
+  </deployment>
 </jboss-deployment-structure>
