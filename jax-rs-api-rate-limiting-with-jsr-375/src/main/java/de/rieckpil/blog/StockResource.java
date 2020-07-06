@@ -10,10 +10,10 @@ import javax.ws.rs.core.Response;
 @Path("stocks")
 public class StockResource {
 
-    @GET
-    @RolesAllowed("USER")
-    public Response getAllStocks() {
-        JsonObject json = Json.createObjectBuilder().add("name", "Alphabet Inc.").add("price", 1220.5).build();
-        return Response.ok(json.toString()).build();
-    }
+  @GET
+  @RolesAllowed("USER")
+  public Response getAllStocks() {
+    JsonObject json = Json.createObjectBuilder().add("name", "Alphabet Inc.").add("price", 1220.5).build();
+    return Response.ok(json.toString()).build();
+  }
 }

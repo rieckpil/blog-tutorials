@@ -13,19 +13,19 @@ import java.util.List;
 @Startup
 public class ApiBudgetRefresher {
 
-    @PersistenceContext
-    EntityManager entityManager;
+  @PersistenceContext
+  EntityManager entityManager;
 
-    @Schedule(minute = "*", hour = "*", persistent = false)
-    public void updateApiBudget() {
-        System.out.println("-- refreshing API budget for all users");
+  @Schedule(minute = "*", hour = "*", persistent = false)
+  public void updateApiBudget() {
+    System.out.println("-- refreshing API budget for all users");
 
-        List<User> userList = entityManager.createQuery("SELECT u FROM User u", User.class).getResultList();
+    List<User> userList = entityManager.createQuery("SELECT u FROM User u", User.class).getResultList();
 
-        for (User user : userList) {
-            user.setAmountOfApiCalls(0);
-        }
-
-        System.out.println("-- successfully refreshed API budget for all users");
+    for (User user : userList) {
+      user.setAmountOfApiCalls(0);
     }
+
+    System.out.println("-- successfully refreshed API budget for all users");
+  }
 }

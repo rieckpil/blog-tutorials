@@ -7,10 +7,10 @@ import javax.security.enterprise.identitystore.DatabaseIdentityStoreDefinition;
 import javax.security.enterprise.identitystore.Pbkdf2PasswordHash;
 
 @DatabaseIdentityStoreDefinition(
-        dataSourceLookup = "jdbc/__default",
-        callerQuery = "SELECT password FROM user WHERE username = ?",
-        groupsQuery = "SELECT role FROM user_roles where username = ?",
-        hashAlgorithm = Pbkdf2PasswordHash.class
+  dataSourceLookup = "jdbc/__default",
+  callerQuery = "SELECT password FROM user WHERE username = ?",
+  groupsQuery = "SELECT role FROM user_roles where username = ?",
+  hashAlgorithm = Pbkdf2PasswordHash.class
 )
 @BasicAuthenticationMechanismDefinition
 @ApplicationScoped
