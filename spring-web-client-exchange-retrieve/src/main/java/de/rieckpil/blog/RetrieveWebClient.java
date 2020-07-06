@@ -48,6 +48,10 @@ public class RetrieveWebClient {
 
     response.getHeaders().forEach((key, value) -> System.out.println(key + ":" + value));
 
-    return response.getStatusCode() == HttpStatus.CREATED;
+    if (response.getStatusCodeValue() == 201) {
+      return !response.getHeaders().get(HttpHeaders.LOCATION).isEmpty();
+    } else {
+      return false;
+    }
   }
 }

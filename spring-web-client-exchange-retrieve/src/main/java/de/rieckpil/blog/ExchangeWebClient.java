@@ -43,7 +43,11 @@ public class ExchangeWebClient {
         System.out.println("Location header: " + clientResponse.headers().header(HttpHeaders.LOCATION)))
       .block();
 
-    return !response.headers().header(HttpHeaders.LOCATION).isEmpty();
+    if (response.statusCode().value() == 201) {
+      return !response.headers().header(HttpHeaders.LOCATION).isEmpty();
+    } else {
+      return false;
+    }
   }
 
 }
