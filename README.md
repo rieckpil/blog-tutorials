@@ -73,7 +73,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 * [Thymeleaf OAuth2 Login with Spring Security and AWS Cognito](https://rieckpil.de/thymeleaf-oauth2-login-with-spring-security-and-aws-cognito/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-security-aws-cognito-thymeleaf))
 * [Reuse containers with Testcontainers for fast integration tests](https://rieckpil.de/reuse-containers-with-testcontainers-for-fast-integration-tests/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/testcontainers-reuse-existing-containers))
 * [Test Spring WebClient with MockWebServer from OkHttp](https://rieckpil.de/test-spring-webclient-with-mockwebserver-from-okhttp/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-web-client-testing-with-mockwebserver))
-
+* [Spring WebClient exchange vs. retireve a comparison](https://rieckpil.de/spring-webclient-exchange-vs-retrieve-a-comparison/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-web-client-exchange-retrieve))
 
 ## WHATIS?
 
