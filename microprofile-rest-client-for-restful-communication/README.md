@@ -1,4 +1,4 @@
-# Codebase for the blog post [#HOWTO: MicroProfile Rest Client for RESTful communication](https://rieckpil.de/howto-microprofile-rest-client-for-restful-communication/)
+# Codebase for the blog post [MicroProfile Rest Client for RESTful communication](https://rieckpil.de/howto-microprofile-rest-client-for-restful-communication/)
 
 Steps to run this project:
 
