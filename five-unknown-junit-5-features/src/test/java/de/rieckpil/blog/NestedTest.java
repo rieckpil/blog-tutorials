@@ -1,5 +1,6 @@
 package de.rieckpil.blog;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -9,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class NestedTest {
 
   @Nested
+  @DisplayName("Testing division functionality")
   class DivisionTests {
 
     @Test
@@ -25,6 +27,7 @@ public class NestedTest {
   }
 
   @Nested
+  @DisplayName("Testing addition functionality")
   class AdditionTests {
 
     @Test
