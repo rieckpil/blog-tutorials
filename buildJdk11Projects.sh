@@ -5,7 +5,7 @@ set -o pipefail
 
 mvn -B -f consumer-driven-contracts-with-spring-cloud-contract/book-store-server install
 
-declare -a arr=("whats-new-in-spring-boot-2.1" 
+declare -a arr=("whats-new-in-spring-boot-2.1"
  "charts-in-pdf-java-ee"
  "send-emails-with-sendgrid-and-spring-boot"
  "bootstrap-jakarta-ee-8-application"
@@ -54,6 +54,7 @@ declare -a arr=("whats-new-in-spring-boot-2.1"
  "serverless-java-aws-examples/spring-cloud-function-aws"
  "spring-security-aws-cognito-thymeleaf"
  "testcontainers-reuse-existing-containers"
+ "five-unknown-junit-5-features"
 )
 
 for project in "${arr[@]}"
