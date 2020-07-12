@@ -16,17 +16,17 @@ public class ParallelTest {
 
   @Test
   public void testOne() {
-    assertEquals(4, 2 + 2);
+    assertEquals(42, 40 + 2);
   }
 
   @Test
   public void testTwo() {
-    assertEquals(4, 2 + 2);
+    assertEquals(42, 40 + 2);
   }
 
   @Test
   public void testThree() {
-    assertEquals(4, 2 + 2);
+    assertEquals(42, 40 + 2);
   }
 
 }

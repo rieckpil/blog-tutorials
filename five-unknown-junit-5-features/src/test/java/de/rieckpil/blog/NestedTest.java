@@ -32,7 +32,7 @@ public class NestedTest {
 
     @Test
     public void shouldAddTwo() {
-      assertEquals(4, 2 + 2);
+      assertEquals(42, 40 + 2);
     }
 
     @Test

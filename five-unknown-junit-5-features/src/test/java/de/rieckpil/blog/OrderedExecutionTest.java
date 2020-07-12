@@ -14,20 +14,20 @@ public class OrderedExecutionTest {
   @Order(2)
   public void testTwo() {
     System.out.println("Executing testTwo");
-    assertEquals(4, 2 + 2);
+    assertEquals(42, 40 + 2);
   }
 
   @Test
   @Order(1)
   public void testOne() {
     System.out.println("Executing testOne");
-    assertEquals(4, 2 + 2);
+    assertEquals(42, 40 + 2);
   }
 
   @Test
   @Order(3)
   public void testThree() {
     System.out.println("Executing testThree");
-    assertEquals(4, 2 + 2);
+    assertEquals(42, 40 + 2);
   }
 }
