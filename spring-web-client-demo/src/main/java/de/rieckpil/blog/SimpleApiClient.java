@@ -1,19 +1,25 @@
 package de.rieckpil.blog;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
+import reactor.util.retry.Retry;
+
+import java.time.Duration;
 
 @Service
 public class SimpleApiClient {
 
   private final WebClient defaultWebClient;
+  private final ObjectMapper objectMapper;
 
-  public SimpleApiClient(WebClient defaultWebClient) {
+  public SimpleApiClient(WebClient defaultWebClient, ObjectMapper objectMapper) {
     this.defaultWebClient = defaultWebClient;
+    this.objectMapper = objectMapper;
   }
 
   public JsonNode getTodoFromAPI() {
@@ -28,6 +34,15 @@ public class SimpleApiClient {
         return Mono.error(new RuntimeException("5xx"));
       })
       .bodyToMono(JsonNode.class)
+      .block();
+  }
+
+  public JsonNode getRetryTodoFromAPI() {
+    return this.defaultWebClient.get().uri("/todos/1")
+      .retrieve()
+      .bodyToMono(JsonNode.class)
+      .retryWhen(Retry.max(5))
+      .timeout(Duration.ofSeconds(2), Mono.just(objectMapper.createObjectNode().put("message", "fallback")))
       .block();
   }
 
