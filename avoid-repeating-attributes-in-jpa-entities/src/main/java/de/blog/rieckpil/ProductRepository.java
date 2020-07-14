@@ -1,4 +1,4 @@
-package de.blog.rieckpil.avoidrepeatingattributesinjpaentities;
+package de.blog.rieckpil;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

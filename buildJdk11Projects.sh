@@ -7,6 +7,7 @@ mvn -B -f consumer-driven-contracts-with-spring-cloud-contract/book-store-server
 
 declare -a arr=("whats-new-in-spring-boot-2.1"
  "charts-in-pdf-java-ee"
+ "avoid-repeating-attributes-in-jpa-entities"
  "graalvm-intro"
  "send-emails-with-sendgrid-and-spring-boot"
  "bootstrap-jakarta-ee-8-application"

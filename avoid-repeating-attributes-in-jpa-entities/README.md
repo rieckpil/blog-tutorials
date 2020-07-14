@@ -1,4 +1,4 @@
-# Codebase for the blog post [#HOWTO: Avoid repeating attributes in JPA entities](https://rieckpil.de/howto-avoid-repeating-attributes-in-jpa-entities/)
+# Codebase for the blog post [Avoid repeating attributes in JPA entities](https://rieckpil.de/howto-avoid-repeating-attributes-in-jpa-entities/)
 
 Steps to run this project:
 
