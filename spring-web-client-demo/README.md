@@ -1,4 +1,4 @@
-# Codebase for the blog post [#HOWTO: Use Spring’s WebClient for RESTful communication](https://rieckpil.de/howto-use-springs-webclient-for-restful-communication/)
+# Codebase for the blog post [Use Spring’s WebClient for RESTful communication](https://rieckpil.de/howto-use-springs-webclient-for-restful-communication/)
 
 Steps to run this project:
 
