@@ -5,7 +5,6 @@ set -o pipefail
 
 declare -a arr=("rest-easy-file-uploading-and-downloading" 
  "generate-documents-from-word-templates-with-docx4j-on-wildfly14"
- "graalvm-intro"
  "hello-world-jsf-2.3"
  "embedded-messaging-engine-open-liberty"
  "improved-java-ee-productivity-with-wad"

@@ -80,7 +80,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 ## WHATIS?
 
 * [JavaServer Faces. An introduction to JSF 2.3](https://rieckpil.de/whatis-java-server-faces-an-introduction-to-jsf-2-3/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/hello-world-jsf-2.3))
-* [GraalVM](https://rieckpil.de/whatis-graalvm/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/graalvm-intro))
+* [GraalVM - an introduction to the next level JVM](https://rieckpil.de/whatis-graalvm/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/graalvm-intro))
 * [MicroProfile Config](https://rieckpil.de/whatis-eclipse-microprofile-config/) ([Sources](https://github.com/rieckpil/getting-started-with-eclipse-microprofile/tree/master/microprofile-config))
 * [MicroProfile Fault Tolerance](https://rieckpil.de/whatis-eclipse-microprofile-fault-tolerance/) ([Sources](https://github.com/rieckpil/getting-started-with-eclipse-microprofile/tree/master/microprofile-fault-tolerance))
 * [MicroProfile Metrics](https://rieckpil.de/whatis-eclipse-microprofile-metrics/) ([Sources](https://github.com/rieckpil/getting-started-with-eclipse-microprofile/tree/master/microprofile-metrics))
