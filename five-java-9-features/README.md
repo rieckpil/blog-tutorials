@@ -1,4 +1,4 @@
-# Codebase for the blog post [#REVIEW: 5 Java 9 Features you might not know yet](https://rieckpil.de/review-5-java-9-features-you-might-not-know-yet/)
+# Codebase for the blog post [5 Java 9 Features you might not know yet](https://rieckpil.de/review-5-java-9-features-you-might-not-know-yet/)
 
 Steps to run this project:
 
