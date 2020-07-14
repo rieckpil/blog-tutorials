@@ -1,4 +1,6 @@
-FROM oracle/graalvm-ce:1.0.0-rc13
+FROM oracle/graalvm-ce:20.1.0
+
+RUN gu install native-image
 
 COPY src/main/java/*.java /tmp/
 COPY prettyMe.json /tmp/
