@@ -1,4 +1,4 @@
-package de.rieckpil.blog.lazyloadingofjpaattributeswithhibernate;
+package de.rieckpil.blog;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

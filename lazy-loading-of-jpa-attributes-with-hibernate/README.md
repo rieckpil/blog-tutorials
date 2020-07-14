@@ -1,4 +1,4 @@
-# Codebase for the blog post [#HOWTO: Lazy Loading of JPA attributes with Hibernate](https://rieckpil.de/how-to-lazy-loading-of-jpa-attributes-with-hibernate/)
+# Codebase for the blog post [Lazy Loading of JPA attributes with Hibernate](https://rieckpil.de/how-to-lazy-loading-of-jpa-attributes-with-hibernate/)
 
 Steps to run this project:
 
