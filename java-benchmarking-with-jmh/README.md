@@ -1,4 +1,4 @@
-# Codebase for the blog post [#HOWTO: Java Benchmarking with JMH (Java Microbenchmark Harness)](https://rieckpil.de/howto-java-benchmarking-with-jmh-java-microbenchmark-harness/)
+# Codebase for the blog post [Java Benchmarking with JMH (Java Microbenchmark Harness)](https://rieckpil.de/howto-java-benchmarking-with-jmh-java-microbenchmark-harness/)
 
 Steps to run this project:
 

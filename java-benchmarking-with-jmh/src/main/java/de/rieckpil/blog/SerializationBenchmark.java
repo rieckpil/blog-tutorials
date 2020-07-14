@@ -40,40 +40,38 @@ import java.util.concurrent.TimeUnit;
 
 public class SerializationBenchmark {
 
-    private static final ObjectMapper objectMapper = new ObjectMapper();
-    private static final Gson gson = new Gson();
+  private static final ObjectMapper objectMapper = new ObjectMapper();
+  private static final Gson gson = new Gson();
 
-    @Benchmark
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @Warmup(iterations = 5)
-    @Measurement(iterations = 10)
-    @BenchmarkMode(Mode.AverageTime)
-    public User benchmarkSerializationWithJackson(SerializationDataProvider serializationDataProvider) throws IOException {
-        return objectMapper.readValue(serializationDataProvider.jsonString, User.class);
+  @Benchmark
+  @OutputTimeUnit(TimeUnit.MILLISECONDS)
+  @Warmup(iterations = 5)
+  @Measurement(iterations = 10)
+  @BenchmarkMode(Mode.AverageTime)
+  public User benchmarkSerializationWithJackson(SerializationDataProvider serializationDataProvider) throws IOException {
+    return objectMapper.readValue(serializationDataProvider.jsonString, User.class);
+  }
+
+  @Benchmark
+  @OutputTimeUnit(TimeUnit.MILLISECONDS)
+  @Warmup(iterations = 5)
+  @Measurement(iterations = 10)
+  @BenchmarkMode(Mode.AverageTime)
+  public User benchmarkSerializationWithGSON(SerializationDataProvider serializationDataProvider) {
+    return gson.fromJson(serializationDataProvider.jsonString, User.class);
+  }
+
+  @State(Scope.Benchmark)
+  public static class SerializationDataProvider {
+
+    private String jsonString;
+
+    @Setup(Level.Invocation)
+    public void setup() {
+      this.jsonString = "{\"firstName\": \"Mike\", \"lastName\":\"Duke\", \"hobbies\": [{\"name\": \"Soccer\", " +
+        "\"tags\": [\"Teamsport\", \"Ball\", \"Outdoor\", \"Championship\"]}], \"address\":" +
+        " { \"street\": \"Mainstreet\", \"streetNumber\": \"1A\", \"city\": \"New York\", \"country\":\"USA\", " +
+        "\"postalCode\": 1337}}";
     }
-
-    @Benchmark
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @Warmup(iterations = 5)
-    @Measurement(iterations = 10)
-    @BenchmarkMode(Mode.AverageTime)
-    public User benchmarkSerializationWithGSON(SerializationDataProvider serializationDataProvider) {
-        return gson.fromJson(serializationDataProvider.jsonString, User.class);
-    }
-
-    @State(Scope.Benchmark)
-    public static class SerializationDataProvider {
-
-        private String jsonString;
-
-        @Setup(Level.Invocation)
-        public void setup() {
-            this.jsonString = "{\"firstName\": \"Mike\", \"lastName\":\"Duke\", \"hobbies\": [{\"name\": \"Soccer\", " +
-                    "\"tags\": [\"Teamsport\", \"Ball\", \"Outdoor\", \"Championship\"]}], \"address\":" +
-                    " { \"street\": \"Mainstreet\", \"streetNumber\": \"1A\", \"city\": \"New York\", \"country\":\"USA\", " +
-                    "\"postalCode\": 1337}}";
-        }
-    }
+  }
 }
-
-

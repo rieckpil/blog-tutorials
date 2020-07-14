@@ -23,8 +23,7 @@ declare -a arr=("rest-easy-file-uploading-and-downloading"
  "microprofile-rest-client-for-restful-communication/user-management-application"
  "nice-looking-jsf-apps-with-prime-faces-7"
  "intercept-methods-with-cdi-interceptors"
- "simple-crud-table-with-jsf-and-primefaces"
- "java-benchmarking-with-jmh")
+ "simple-crud-table-with-jsf-and-primefaces")
 
 for project in "${arr[@]}"
 do
