@@ -12,4 +12,4 @@ spring:
         provider:
           cognito:
             issuerUri: https://cognito-idp.eu-central-1.amazonaws.com/eu-central-1_q0EMn8pPG
-            usernameAttribute: username
+            userNameAttribute: cognito:username
