@@ -2,25 +2,24 @@ package de.rieckpil.blog;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.annotation.SubscribeMapping;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.util.HtmlUtils;
 
 @Controller
 public class GreetingController {
 
-  @MessageMapping("/hello")
+  @MessageMapping("/welcome")
   @SendTo("/topic/greetings")
-  public String greeting(String message) {
-    System.out.println(message);
-    return "Hello, " + HtmlUtils.htmlEscape(message) + "!";
+  public String greeting(String payload) {
+    System.out.println("Generating new greeting message for " + payload);
+    return "Hello, " + payload + "!";
   }
 
-  @MessageMapping("/object")
-  @SendTo("/topic/objects")
-  public Message greetingObject(Message message) {
-    Message result = new Message();
-    result.setMessage(message.getMessage().toUpperCase());
-    return result;
+  @SubscribeMapping("/chat")
+  public Message sendWelcomeMessageOnSubscription() {
+    Message welcomeMessage = new Message();
+    welcomeMessage.setMessage("Hello World!");
+    return welcomeMessage;
   }
 
 }
