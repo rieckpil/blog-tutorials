@@ -38,15 +38,14 @@ class GreetingControllerTest {
   }
 
   @Test
-  public void verifyGreetingIsReceived() throws InterruptedException, ExecutionException, TimeoutException {
+  public void verifyGreetingIsReceived() throws Exception {
 
-    CountDownLatch latch = new CountDownLatch(1);
+    BlockingQueue<String> blockingQueue = new ArrayBlockingQueue(1);
 
     webSocketStompClient.setMessageConverter(new StringMessageConverter());
 
     StompSession session = webSocketStompClient
-      .connect(getWsPath(), new StompSessionHandlerAdapter() {
-      })
+      .connect(getWsPath(), new StompSessionHandlerAdapter() {})
       .get(1, SECONDS);
 
     session.subscribe("/topic/greetings", new StompFrameHandler() {
@@ -59,21 +58,18 @@ class GreetingControllerTest {
       @Override
       public void handleFrame(StompHeaders headers, Object payload) {
         System.out.println("Received message: " + payload);
-        latch.countDown();
+        blockingQueue.add((String) payload);
       }
     });
 
     session.send("/app/welcome", "Mike");
 
-    if (!latch.await(1, TimeUnit.SECONDS)) {
-      fail("Message not received");
-    }
+    assertEquals("Hello, Mike!", blockingQueue.poll(1, SECONDS));
   }
 
   @Test
-  public void verifyWelcomeMessageIsSent() throws InterruptedException, ExecutionException, TimeoutException {
-
-    BlockingQueue<Message> blockingQueueObject = new ArrayBlockingQueue(1);
+  public void verifyWelcomeMessageIsSent() throws Exception {
+    CountDownLatch latch = new CountDownLatch(1);
 
     webSocketStompClient.setMessageConverter(new MappingJackson2MessageConverter());
 
@@ -91,11 +87,13 @@ class GreetingControllerTest {
 
       @Override
       public void handleFrame(StompHeaders headers, Object payload) {
-        blockingQueueObject.offer((Message) payload);
+        latch.countDown();
       }
     });
 
-    assertEquals("Hello World!", blockingQueueObject.poll(1, SECONDS).getMessage());
+    if (!latch.await(1, TimeUnit.SECONDS)) {
+      fail("Message not received");
+    }
   }
 
   private String getWsPath() {

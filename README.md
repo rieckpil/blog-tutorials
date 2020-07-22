@@ -75,7 +75,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 * [Test Spring WebClient with MockWebServer from OkHttp](https://rieckpil.de/test-spring-webclient-with-mockwebserver-from-okhttp/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-web-client-testing-with-mockwebserver))
 * [Spring WebClient exchange vs. retireve a comparison](https://rieckpil.de/spring-webclient-exchange-vs-retrieve-a-comparison/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-web-client-exchange-retrieve))
 * [Five JUnit 5 features you might not know yet](https://rieckpil.de/five-junit-5-features-you-might-not-know-yet/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/five-unkown-junit-5-features))
-
+* [Write integration tests for your Spring WebSocket endpoints](https://rieckpil.de/write-integration-tests-for-your-spring-websocket-endpoints/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-websocket-integration-tests))
 
 ## WHATIS?
 
