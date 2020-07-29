@@ -76,6 +76,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 * [Spring WebClient exchange vs. retireve a comparison](https://rieckpil.de/spring-webclient-exchange-vs-retrieve-a-comparison/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-web-client-exchange-retrieve))
 * [Five JUnit 5 features you might not know yet](https://rieckpil.de/five-junit-5-features-you-might-not-know-yet/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/five-unkown-junit-5-features))
 * [Write integration tests for your Spring WebSocket endpoints](https://rieckpil.de/write-integration-tests-for-your-spring-websocket-endpoints/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-websocket-integration-tests))
+* [Improve build times with Context Caching from Spring Test](https://rieckpil.de/improve-build-times-with-context-caching-from-spring-test/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/))
 
 ## WHATIS?
 
