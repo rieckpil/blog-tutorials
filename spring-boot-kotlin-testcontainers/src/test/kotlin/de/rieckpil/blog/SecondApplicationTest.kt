@@ -9,6 +9,8 @@ import org.springframework.test.context.DynamicPropertySource
 import org.springframework.test.web.reactive.server.WebTestClient
 import org.testcontainers.containers.PostgreSQLContainer
 
+internal class KPostgreSQLContainer(val image: String) : PostgreSQLContainer<KPostgreSQLContainer>(image)
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class SecondApplicationTest {
 
@@ -19,7 +21,7 @@ class SecondApplicationTest {
   private lateinit var webTestClient: WebTestClient
 
   companion object {
-    private val container = PostgreSQLContainer<Nothing>("postgres:12").apply {
+    private val container = KPostgreSQLContainer("postgres:12").apply {
       withDatabaseName("testdb")
       withUsername("duke")
       withPassword("s3crEt")
