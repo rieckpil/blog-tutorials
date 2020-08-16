@@ -9,7 +9,7 @@ import org.springframework.test.context.DynamicPropertySource
 import org.springframework.test.web.reactive.server.WebTestClient
 import org.testcontainers.containers.PostgreSQLContainer
 
-internal class KPostgreSQLContainer(val image: String) : PostgreSQLContainer<KPostgreSQLContainer>(image)
+internal class KPostgreSQLContainer(image: String) : PostgreSQLContainer<KPostgreSQLContainer>(image)
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class SecondApplicationTest {
