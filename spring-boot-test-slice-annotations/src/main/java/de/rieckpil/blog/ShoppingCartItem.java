@@ -8,9 +8,9 @@ class ShoppingCartItem {
   public ShoppingCartItem() {
   }
 
-  public ShoppingCartItem(Item item) {
+  public ShoppingCartItem(Item item, int quantity) {
     this.item = item;
-    this.quantity = 1;
+    this.quantity = quantity;
   }
 
   public void increment() {

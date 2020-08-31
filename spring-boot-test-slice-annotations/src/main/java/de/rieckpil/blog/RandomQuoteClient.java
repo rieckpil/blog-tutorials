@@ -2,7 +2,6 @@ package de.rieckpil.blog;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -21,9 +20,9 @@ public class RandomQuoteClient {
       .build();
   }
 
-  @Bean
   public String getRandomQuote() {
-    return this.restTemplate.getForObject("/qod", JsonNode.class)
+    return this.restTemplate
+      .getForObject("/qod", JsonNode.class)
       .get("contents")
       .get("quotes").get(0)
       .get("quote").asText();

@@ -3,6 +3,9 @@ package de.rieckpil.blog;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -15,11 +18,11 @@ public class PaymentResponse {
 
   private UUID paymentConfirmationCode;
 
-  @JsonAlias("payment_amount")
+  @JsonProperty("payment_amount")
   private BigDecimal amount;
 
   @JsonFormat(
-    shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd@HH:mm:ss", locale = "en_US")
+    shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd|HH:mm:ss", locale = "en_US")
   private LocalDateTime paymentTime;
 
   public String getId() {
