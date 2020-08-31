@@ -78,6 +78,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 * [Write integration tests for your Spring WebSocket endpoints](https://rieckpil.de/write-integration-tests-for-your-spring-websocket-endpoints/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-websocket-integration-tests))
 * [Improve build times with Context Caching from Spring Test](https://rieckpil.de/improve-build-times-with-context-caching-from-spring-test/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/))
 * [Testing Spring Boot Applications with Kotlin and Testcontainers](https://rieckpil.de/testing-spring-boot-applications-with-kotlin-and-testcontainers/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-kotlin-testcontainers))
+* [Spring Boot Test Slices Overview and Usage](https://rieckpil.de/spring-boot-test-slices-overview-and-usage/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-test-slice-annotations))
 
 ## WHATIS?
 
