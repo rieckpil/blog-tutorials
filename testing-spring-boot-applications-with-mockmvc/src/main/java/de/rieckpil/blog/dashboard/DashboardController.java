@@ -21,6 +21,7 @@ public class DashboardController {
     model.addAttribute("user", "Duke");
     model.addAttribute("analyticsGraph", dashboardService.getAnalyticsGraphData());
     model.addAttribute("quickNote", new QuickNote());
+
     return "dashboard";
   }
 }

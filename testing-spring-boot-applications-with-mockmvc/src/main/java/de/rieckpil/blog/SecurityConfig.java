@@ -13,8 +13,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     http
       .authorizeRequests(authorize -> authorize
         .mvcMatchers(HttpMethod.GET, "/dashboard").permitAll()
-        .mvcMatchers(HttpMethod.GET, "/api/users").permitAll()
         .mvcMatchers(HttpMethod.GET, "/api/tasks/**").authenticated()
+        .mvcMatchers("/api/users/**").permitAll()
         .mvcMatchers("/**").authenticated()
       )
       .httpBasic();
