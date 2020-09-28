@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.mockito.ArgumentMatchers.anyString;
@@ -58,12 +60,10 @@ class TaskControllerTest {
   }
 
   @Test
+  @WithMockUser("duke")
   public void shouldRejectDeletingReviewsWhenUserLacksAdminRole() throws Exception {
     this.mockMvc
-      .perform(
-        delete("/api/tasks/42")
-          .with(user("duke"))
-      )
+      .perform(delete("/api/tasks/42"))
       .andExpect(status().isForbidden());
   }
 
@@ -72,7 +72,7 @@ class TaskControllerTest {
     this.mockMvc
       .perform(
         delete("/api/tasks/42")
-          .with(user("duke").roles("ADMIN", "SUPER_USER"))
+          .with(SecurityMockMvcRequestPostProcessors.user("duke").roles("ADMIN", "SUPER_USER"))
           .with(csrf())
       )
       .andExpect(status().isOk());

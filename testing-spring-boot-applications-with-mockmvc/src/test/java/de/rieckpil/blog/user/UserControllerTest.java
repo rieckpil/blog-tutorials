@@ -7,6 +7,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.List;
 
@@ -16,7 +18,8 @@ import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(UserController.class)
 class UserControllerTest {
@@ -33,11 +36,11 @@ class UserControllerTest {
       .thenReturn(List.of(new User("duke", "duke@spring.io")));
 
     this.mockMvc
-      .perform(get("/api/users"))
-      .andExpect(status().isOk())
-      .andExpect(jsonPath("$.size()").value(1))
-      .andExpect(jsonPath("$[0].username").value("duke"))
-      .andExpect(jsonPath("$[0].email").value("duke@spring.io"));
+      .perform(MockMvcRequestBuilders.get("/api/users"))
+      .andExpect(MockMvcResultMatchers.status().isOk())
+      .andExpect(MockMvcResultMatchers.jsonPath("$.size()").value(1))
+      .andExpect(MockMvcResultMatchers.jsonPath("$[0].username").value("duke"))
+      .andExpect(MockMvcResultMatchers.jsonPath("$[0].email").value("duke@spring.io"));
   }
 
   @Test
