@@ -80,6 +80,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 * [Testing Spring Boot Applications with Kotlin and Testcontainers](https://rieckpil.de/testing-spring-boot-applications-with-kotlin-and-testcontainers/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-kotlin-testcontainers))
 * [Spring Boot Test Slices Overview and Usage](https://rieckpil.de/spring-boot-test-slices-overview-and-usage/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-test-slice-annotations))
 * [Guide to Testing Spring Boot applications with MockMvc](https://rieckpil.de/guide-to-testing-spring-boot-applications-with-mockmvc/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/testing-spring-boot-applications-with-mockmvc))
+* [Mocking Statics Methods with Mockito (Kotlin & Java)](https://rieckpil.de/mocking-static-methods-with-mockito-java-kotlin/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/mockito-tips-and-tricks))
 
 ## WHATIS?
 
