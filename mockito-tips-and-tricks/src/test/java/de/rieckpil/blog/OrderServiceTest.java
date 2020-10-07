@@ -32,7 +32,6 @@ class OrderServiceTest {
       mockedLocalDateTime.when(LocalDateTime::now).thenReturn(defaultLocalDateTime);
 
       Order result = cut.createOrder("MacBook Pro", 2L, "42");
-
       assertEquals(defaultLocalDateTime, result.getCreationDate());
     }
   }

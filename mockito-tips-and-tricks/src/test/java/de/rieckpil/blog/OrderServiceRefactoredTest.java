@@ -18,23 +18,17 @@ class OrderServiceRefactoredTest {
   private OrderServiceRefactored cut = new OrderServiceRefactored(clock, orderIdGenerator);
 
   @Test
-  void shouldIncludeRandomOrderIdWhenNoParentOrderExists() {
+  void shouldIncludeRandomIdAndCurrentDateTime() {
     when(orderIdGenerator.generateOrderId()).thenReturn("8d8b30e3-de52-4f1c-a71c-9905a8043dac");
 
-    Order result = cut.createOrder("MacBook Pro", 2L, null);
-
-    assertEquals("8d8b30e3-de52-4f1c-a71c-9905a8043dac", result.getId());
-  }
-
-  @Test
-  void shouldIncludeCurrentTimeWhenCreatingANewOrder() {
     LocalDateTime defaultLocalDateTime = LocalDateTime.of(2020, 1, 1, 12, 0);
     Clock fixedClock = Clock.fixed(defaultLocalDateTime.toInstant(ZoneOffset.UTC), ZoneId.of("UTC"));
     when(clock.instant()).thenReturn(fixedClock.instant());
     when(clock.getZone()).thenReturn(fixedClock.getZone());
 
-    Order result = cut.createOrder("MacBook Pro", 2L, "42");
+    Order result = cut.createOrder("MacBook Pro", 2L, null);
 
+    assertEquals("8d8b30e3-de52-4f1c-a71c-9905a8043dac", result.getId());
     assertEquals(defaultLocalDateTime, result.getCreationDate());
   }
 }
