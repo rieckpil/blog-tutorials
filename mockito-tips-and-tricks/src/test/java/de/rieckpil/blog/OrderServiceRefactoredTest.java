@@ -1,5 +1,8 @@
 package de.rieckpil.blog;
 
+import de.rieckpil.blog.staticsmocks.Order;
+import de.rieckpil.blog.staticsmocks.OrderIdGenerator;
+import de.rieckpil.blog.staticsmocks.OrderServiceRefactored;
 import org.junit.jupiter.api.Test;
 
 import java.time.Clock;

@@ -1,5 +1,7 @@
 package de.rieckpil.blog;
 
+import de.rieckpil.blog.staticsmocks.Order;
+import de.rieckpil.blog.staticsmocks.OrderService;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
@@ -11,9 +13,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class OrderServiceTest {
 
-  private OrderService cut = new OrderService();
-  private UUID defaultUuid = UUID.fromString("8d8b30e3-de52-4f1c-a71c-9905a8043dac");
-  private LocalDateTime defaultLocalDateTime = LocalDateTime.of(2020, 1, 1, 12, 0);
+  private final OrderService cut = new OrderService();
+  private final UUID defaultUuid = UUID.fromString("8d8b30e3-de52-4f1c-a71c-9905a8043dac");
+  private final LocalDateTime defaultLocalDateTime = LocalDateTime.of(2020, 1, 1, 12, 0);
 
   @Test
   void shouldIncludeRandomOrderIdWhenNoParentOrderExists() {

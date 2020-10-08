@@ -1,4 +1,4 @@
-package de.rieckpil.blog;
+package de.rieckpil.blog.staticsmocks;
 
 import java.time.LocalDateTime;
 

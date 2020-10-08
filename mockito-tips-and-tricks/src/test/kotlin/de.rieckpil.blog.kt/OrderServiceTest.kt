@@ -1,6 +1,6 @@
 package de.rieckpil.blog.kt
 
-import de.rieckpil.blog.OrderService
+import de.rieckpil.blog.staticsmocks.OrderService
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito
