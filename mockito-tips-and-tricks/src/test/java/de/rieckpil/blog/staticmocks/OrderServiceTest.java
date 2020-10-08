@@ -1,4 +1,4 @@
-package de.rieckpil.blog;
+package de.rieckpil.blog.staticmocks;
 
 import de.rieckpil.blog.staticsmocks.Order;
 import de.rieckpil.blog.staticsmocks.OrderService;
