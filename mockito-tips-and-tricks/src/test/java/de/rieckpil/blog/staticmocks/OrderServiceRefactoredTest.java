@@ -16,9 +16,9 @@ import static org.mockito.Mockito.when;
 
 class OrderServiceRefactoredTest {
 
-  private OrderIdGenerator orderIdGenerator = mock(OrderIdGenerator.class);
-  private Clock clock = mock(Clock.class);
-  private OrderServiceRefactored cut = new OrderServiceRefactored(clock, orderIdGenerator);
+  private final OrderIdGenerator orderIdGenerator = mock(OrderIdGenerator.class);
+  private final Clock clock = mock(Clock.class);
+  private final OrderServiceRefactored cut = new OrderServiceRefactored(clock, orderIdGenerator);
 
   @Test
   void shouldIncludeRandomIdAndCurrentDateTime() {
