@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Book Store</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.3/css/bootstrap.min.css" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.3/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div>
+  <h1 th:text="${message}"></h1>
+  <button id="fetch-books">Fetch Books!</button>
+
+  <div style="margin-top: 10px" id="latest-books-container">
+    <p>No Books available (yet)!</p>
+  </div>
+</div>
+
+</body>
+
+<script>
+  const fetchBooks = () => {
+    fetch("http://localhost:8080/api/books")
+      .then(response => response.json())
+      .then(body => {
+        const table = createTable(body);
+        document.getElementById("latest-books-container").innerHTML = "";
+        document.getElementById("latest-books-container").appendChild(table);
+      });
+  };
+
+  const button = document.getElementById("fetch-books");
+  button.onclick = () => fetchBooks();
+
+  const createTable = (books) => {
+    const table = document.createElement('table');
+    table.setAttribute('border', '1');
+
+    const tableBody = document.createElement('tbody');
+    tableBody.id = "all-books";
+
+    books.forEach(book => {
+      const row = document.createElement('tr');
+      const idColumn = document.createElement('td');
+      idColumn.appendChild(document.createTextNode(book.id));
+
+      const isbnColumn = document.createElement('td');
+      isbnColumn.appendChild(document.createTextNode(book.isbn));
+      isbnColumn.setAttribute('rowSpan', '2')
+
+      const titleColumn = document.createElement('td');
+      titleColumn.appendChild(document.createTextNode(book.title));
+
+      row.appendChild(idColumn);
+      row.appendChild(isbnColumn);
+      row.appendChild(titleColumn)
+
+      tableBody.appendChild(row);
+    });
+
+    table.appendChild(tableBody);
+    return table;
+  };
+</script>
+</html>
+
