@@ -19,7 +19,7 @@
 
 <script>
   const fetchBooks = () => {
-    fetch("http://localhost:8080/api/books")
+    fetch("/api/books")
       .then(response => response.json())
       .then(body => {
         const table = createTable(body);
