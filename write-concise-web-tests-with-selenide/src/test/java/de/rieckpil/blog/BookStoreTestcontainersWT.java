@@ -15,14 +15,13 @@ import org.testcontainers.containers.BrowserWebDriverContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 
 @Testcontainers(disabledWithoutDocker = true)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class BookStoreYouTubeWT {
-
-  @LocalServerPort
-  private Integer port;
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+public class BookStoreTestcontainersWT {
 
   @Container
   public static BrowserWebDriverContainer<?> webDriverContainer =
@@ -30,13 +29,15 @@ public class BookStoreYouTubeWT {
       .withCapabilities(new ChromeOptions()
         .addArguments("--no-sandbox")
         .addArguments("--disable-dev-shm-usage"));
-
   @RegisterExtension
   public static ScreenShooterExtension screenShooterExtension =
     new ScreenShooterExtension().to("target/selenide");
+  @LocalServerPort
+  private Integer port;
 
   @Test
   public void shouldDisplayBook() {
+
 
     Configuration.timeout = 2000;
     Configuration.baseUrl = "http://172.17.0.1:" + port;
@@ -47,13 +48,7 @@ public class BookStoreYouTubeWT {
     open("/book-store");
 
     $(By.id("all-books")).shouldNot(Condition.exist);
-
-    screenshot("pre-book-fetch");
-
     $(By.id("fetch-books")).click();
-
-    screenshot("post-book-fetch");
-
     $(By.id("all-books")).shouldBe(Condition.visible);
   }
 }
