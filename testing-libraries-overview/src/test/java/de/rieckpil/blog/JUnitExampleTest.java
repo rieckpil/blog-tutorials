@@ -1,5 +1,5 @@
 package de.rieckpil.blog;
-
+// tag::JUnitExampleTest[]
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -13,3 +13,4 @@ class JUnitExampleTest {
     });
   }
 }
+// end::JUnitExampleTest[]
