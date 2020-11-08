@@ -29,9 +29,11 @@ public class BookStoreTestcontainersWT {
       .withCapabilities(new ChromeOptions()
         .addArguments("--no-sandbox")
         .addArguments("--disable-dev-shm-usage"));
+
   @RegisterExtension
   public static ScreenShooterExtension screenShooterExtension =
     new ScreenShooterExtension().to("target/selenide");
+
   @LocalServerPort
   private Integer port;
 
