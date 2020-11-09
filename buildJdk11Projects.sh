@@ -68,6 +68,7 @@ declare -a arr=("whats-new-in-spring-boot-2.1"
  "mockito-tips-and-tricks"
  "write-concise-web-tests-with-selenide"
  "testing-libraries-overview"
+ "difference-between-mock-and-mockbean"
 )
 
 for project in "${arr[@]}"
