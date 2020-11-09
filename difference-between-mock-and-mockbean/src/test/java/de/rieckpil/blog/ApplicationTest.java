@@ -20,5 +20,4 @@ class ApplicationTest {
   void contextLoadsWithAllBeans() {
     // e.g. now use the WebTestClient to access our endpoint
   }
-
 }

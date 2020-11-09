@@ -17,11 +17,6 @@ public class StockService {
   }
 
   public BigDecimal getLatestPrice(String stockCode) {
-
-    if (stockCode.length() > 4) {
-      throw new IllegalArgumentException("Invalid Stock Code");
-    }
-
     if (techCompanies.contains(stockCode)) {
       return BigDecimal.valueOf(Double.MAX_VALUE);
     }
