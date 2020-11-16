@@ -31,7 +31,8 @@ class DashboardControllerTest {
   @Test
   void shouldReturnDashboardViewWithDefaultModel() throws Exception {
 
-    EntityExchangeResult<byte[]> result = this.webTestClient.mutateWith(mockUser()).get()
+    EntityExchangeResult<byte[]> result = this.webTestClient
+      .get()
       .uri("/dashboard")
       .exchange()
       .expectStatus().is2xxSuccessful()
