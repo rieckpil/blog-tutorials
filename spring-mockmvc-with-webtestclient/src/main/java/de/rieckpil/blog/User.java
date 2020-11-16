@@ -2,6 +2,7 @@ package de.rieckpil.blog;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -15,6 +16,12 @@ class User {
   private Set<String> tags;
 
   public User() {
+  }
+
+  public User(Long id, String name) {
+    this.name = name;
+    this.id = id;
+    this.tags = new HashSet<>();
   }
 
   public User(Long id, String name, Set<String> tags) {

@@ -9,6 +9,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.client.MockMvcWebTestClient;
 
+import static org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers.mockUser;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
@@ -30,7 +31,7 @@ class DashboardControllerTest {
   @Test
   void shouldReturnDashboardViewWithDefaultModel() throws Exception {
 
-    EntityExchangeResult<byte[]> result = this.webTestClient.get()
+    EntityExchangeResult<byte[]> result = this.webTestClient.mutateWith(mockUser()).get()
       .uri("/dashboard")
       .exchange()
       .expectStatus().is2xxSuccessful()
