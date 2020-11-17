@@ -1,4 +1,4 @@
-# Codebase for the blog post [Test Your Spring MVC Controller With WebTestClient Against MockMvc](https://rieckpil.de/test-your-spring-mvc-controller-with-webtestclient-against-mockmvc/)
+# Codebase for the blog post [Test Your Spring MVC Controller with the WebTestClient and MockMvc](https://rieckpil.de/test-your-spring-mvc-controller-with-webtestclient-against-mockmvc/)
 
 Steps to run this project:
 

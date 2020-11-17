@@ -82,7 +82,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 * [Guide to Testing Spring Boot applications with MockMvc](https://rieckpil.de/guide-to-testing-spring-boot-applications-with-mockmvc/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/testing-spring-boot-applications-with-mockmvc))
 * [Mocking Statics Methods with Mockito (Kotlin & Java)](https://rieckpil.de/mocking-static-methods-with-mockito-java-kotlin/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/mockito-tips-and-tricks))
 * [Write Concise Web Tests With Selenide for Java Projects](https://rieckpil.de/write-concise-web-tests-with-selenide-for-java-projects/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/write-concise-web-tests-with-selenide))
-* [Test Your Spring MVC Controller With WebTestClient Against MockMvc](https://rieckpil.de/test-your-spring-mvc-controller-with-webtestclient-against-mockmvc/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-mockmvc-with-webtestclient))
+* [Test Your Spring MVC Controller with the WebTestClient and MockMvc](https://rieckpil.de/test-your-spring-mvc-controller-with-webtestclient-against-mockmvc/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-mockmvc-with-webtestclient))
 
 ## WHATIS?
 
