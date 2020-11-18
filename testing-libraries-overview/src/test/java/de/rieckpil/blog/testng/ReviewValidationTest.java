@@ -15,6 +15,11 @@ public class ReviewValidationTest {
     System.out.println("Before Suite");
   }
 
+  @BeforeTest
+  public void beforeTest() {
+    System.out.println("Before Test");
+  }
+
   @BeforeClass
   public void beforeClass() {
     System.out.println("Before Class");
