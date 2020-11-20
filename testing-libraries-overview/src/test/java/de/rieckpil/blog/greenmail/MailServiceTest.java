@@ -46,7 +46,7 @@ class MailServiceTest {
   }
 
   @Test
-  void shouldReceiveLastEmailForUser() throws Exception {
+  void shouldReceiveLastMailForUser() throws Exception {
 
     Session smtpSession = greenMail.getSmtp().createSession();
 
