@@ -15,7 +15,7 @@
   <name>spring-boot-datajpatest</name>
 
   <properties>
-    <java.version>11</java.version>
+    <java.version>15</java.version>
     <testcontainers.version>1.15.0</testcontainers.version>
   </properties>
 
@@ -31,6 +31,11 @@
     <dependency>
       <groupId>org.flywaydb</groupId>
       <artifactId>flyway-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.vladmihalcea</groupId>
+      <artifactId>hibernate-types-52</artifactId>
+      <version>2.10.0</version>
     </dependency>
 
     <dependency>
