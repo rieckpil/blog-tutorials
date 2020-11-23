@@ -20,7 +20,7 @@ public class Order {
 
   @Type(type = "jsonb")
   @Column(columnDefinition = "jsonb")
-  private String info;
+  private String items;
 
   public Order() {
   }
@@ -41,11 +41,20 @@ public class Order {
     this.trackingNumber = trackingNumber;
   }
 
-  public String getInfo() {
-    return info;
+  public String getItems() {
+    return items;
   }
 
-  public void setInfo(String info) {
-    this.info = info;
+  public void setItems(String info) {
+    this.items = info;
+  }
+
+  @Override
+  public String toString() {
+    return "Order{" +
+      "id=" + id +
+      ", trackingNumber='" + trackingNumber + '\'' +
+      ", items='" + items + '\'' +
+      '}';
   }
 }
