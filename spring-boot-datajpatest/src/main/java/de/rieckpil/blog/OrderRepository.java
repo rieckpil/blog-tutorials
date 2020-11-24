@@ -13,4 +13,6 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
       WHERE items @> '[{"name": "MacBook Pro"}]';
     """, nativeQuery = true)
   List<Order> findAllContainingMacBookPro();
+
+  List<Order> findAllByTrackingNumber(String trackingNumber);
 }
