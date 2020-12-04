@@ -15,6 +15,7 @@
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <mockito.version>3.5.13</mockito.version>
+    <mockito-kotlin.version>2.2.0</mockito-kotlin.version>
   </properties>
 
   <dependencyManagement>
@@ -48,6 +49,12 @@
       <groupId>org.mockito</groupId>
       <artifactId>mockito-junit-jupiter</artifactId>
       <version>${mockito.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.nhaarman.mockitokotlin2</groupId>
+      <artifactId>mockito-kotlin</artifactId>
+      <version>${mockito-kotlin.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
