@@ -7,7 +7,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-@WebMvcTest(value = RootController.class,properties = "welcome.message=Inline Hello World!")
+@WebMvcTest(value = RootController.class, properties = "welcome.message=Inline Hello World!")
 class RootControllerInlineTest {
 
   @Autowired
