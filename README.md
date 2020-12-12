@@ -84,6 +84,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 * [Write Concise Web Tests With Selenide for Java Projects](https://rieckpil.de/write-concise-web-tests-with-selenide-for-java-projects/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/write-concise-web-tests-with-selenide))
 * [Test Your Spring MVC Controller with the WebTestClient and MockMvc](https://rieckpil.de/test-your-spring-mvc-controller-with-webtestclient-against-mockmvc/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-mockmvc-with-webtestclient))
 * [Test Your Spring Boot JPA Persistence Layer With @DataJpaTest](https://rieckpil.de/test-your-spring-boot-jpa-persistence-layer-with-datajpatest/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-datajpatest))
+* [Override Spring Boot Configuration Properties For Tests](https://rieckpil.de/override-spring-boot-configuration-properties-for-tests/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-override-test-properties))
 
 ## WHATIS?
 
