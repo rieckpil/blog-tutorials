@@ -9,5 +9,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - run: npm install -g markdown-link-check
-      - run: find . -name \*.md -exec markdown-link-check -c .broken-link-config.json {} \;
+      - run: |
+          npm install -g markdown-link-check
+          find . -type f -name '*.md' | xargs -L1 npx markdown-link-check -c .broken-link-config.json --quiet
