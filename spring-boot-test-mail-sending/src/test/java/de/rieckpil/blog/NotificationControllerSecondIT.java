@@ -1,11 +1,6 @@
 package de.rieckpil.blog;
 
-import com.icegreen.greenmail.configuration.GreenMailConfiguration;
-import com.icegreen.greenmail.junit5.GreenMailExtension;
-import com.icegreen.greenmail.util.GreenMailUtil;
-import com.icegreen.greenmail.util.ServerSetupTest;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.RegisterExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -13,18 +8,29 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-
-import javax.mail.internet.MimeMessage;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
+import org.testcontainers.containers.GenericContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
+import org.testcontainers.utility.DockerImageName;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Testcontainers
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class NotificationControllerIT {
+class NotificationControllerSecondIT {
 
-  @RegisterExtension
-  static GreenMailExtension greenMail = new GreenMailExtension(ServerSetupTest.SMTP)
-    .withConfiguration(GreenMailConfiguration.aConfig().withUser("duke", "springboot"))
-    .withPerMethodLifecycle(false);
+  @Container
+  static GenericContainer greenMailContainer = new GenericContainer<>(DockerImageName.parse("greenmail/standalone:1.6.1"))
+    .withEnv("GREENMAIL_OPTS", "-Dgreenmail.setup.test.all -Dgreenmail.hostname=0.0.0.0 -Dgreenmail.users=duke:springboot")
+    .withExposedPorts(3025);
+
+  @DynamicPropertySource
+  static void configureMailHost(DynamicPropertyRegistry registry) {
+    registry.add("spring.mail.host", greenMailContainer::getHost);
+    registry.add("spring.mail.port", greenMailContainer::getFirstMappedPort);
+  }
 
   @Autowired
   private TestRestTemplate testRestTemplate;
@@ -42,9 +48,5 @@ class NotificationControllerIT {
 
     assertEquals(200, response.getStatusCodeValue());
 
-    MimeMessage receivedMessage = greenMail.getReceivedMessages()[0];
-    assertEquals("Hello World!", GreenMailUtil.getBody(receivedMessage));
-    assertEquals(1, receivedMessage.getAllRecipients().length);
-    assertEquals("duke@spring.io", receivedMessage.getAllRecipients()[0].toString());
   }
 }
