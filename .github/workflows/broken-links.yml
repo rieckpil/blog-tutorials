@@ -2,7 +2,7 @@ name: Check for broken links
 on: [push, pull_request]
 jobs:
   broken-link-check:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     name: Check for broken links in README.md
     steps:
       - uses: actions/checkout@v1

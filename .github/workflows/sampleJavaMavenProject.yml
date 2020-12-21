@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   compile:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     strategy:
       matrix:
         java: [ 11, 12, 13 ]
@@ -17,7 +17,7 @@ jobs:
           java-version: ${{ matrix.java }}
       - run: mvn -f github-actions-java-maven/pom.xml clean compile
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     needs: compile
     name: Build Maven project
     steps:
@@ -39,9 +39,9 @@ jobs:
       with:
         name: artifact
         path: github-actions-java-maven/target/github-actions-java-maven.jar
-  deploy: 
-    runs-on: ubuntu-latest  
-    needs: build 
+  deploy:
+    runs-on: ubuntu-20.04
+    needs: build
     name: Build Docker container and deploy to Kubernetes
     steps:
     - uses: actions/checkout@v1
@@ -55,7 +55,7 @@ jobs:
         mv artifact/github-actions-java-maven.jar github-actions-java-maven/target
         docker build -t de.rieckpil.blog/github-actions-sample github-actions-java-maven
     - name: Access secrets
-      env: 
+      env:
         SUPER_SECRET: ${{ secrets.SUPER_SECRET }}
       run: echo "Content of secret - $SUPER_SECRET"
     - name: Push Docker images

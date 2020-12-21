@@ -2,7 +2,7 @@ name: Build Gradle Projects
 on: [push, pull_request]
 jobs:
   build-jdk8:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     name: Build Java 8 projects
     steps:
     - uses: actions/checkout@v1
