@@ -85,6 +85,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 * [Test Your Spring MVC Controller with the WebTestClient and MockMvc](https://rieckpil.de/test-your-spring-mvc-controller-with-webtestclient-against-mockmvc/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-mockmvc-with-webtestclient))
 * [Test Your Spring Boot JPA Persistence Layer With @DataJpaTest](https://rieckpil.de/test-your-spring-boot-jpa-persistence-layer-with-datajpatest/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-datajpatest))
 * [Override Spring Boot Configuration Properties For Tests](https://rieckpil.de/override-spring-boot-configuration-properties-for-tests/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-override-test-properties))
+* [Use GreenMail For Spring Mail (JavaMailSender) JUnit 5 Integration Tests](https://rieckpil.de/use-greenmail-for-spring-mail-javamailsender-junit-5-integration-tests/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-test-mail-sending))
 
 ## WHATIS?
 
