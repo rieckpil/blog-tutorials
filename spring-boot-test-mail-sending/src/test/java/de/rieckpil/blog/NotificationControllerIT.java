@@ -16,6 +16,8 @@ import org.springframework.http.ResponseEntity;
 
 import javax.mail.internet.MimeMessage;
 
+import static java.util.concurrent.TimeUnit.SECONDS;
+import static org.awaitility.Awaitility.await;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -42,9 +44,14 @@ class NotificationControllerIT {
 
     assertEquals(200, response.getStatusCodeValue());
 
-    MimeMessage receivedMessage = greenMail.getReceivedMessages()[0];
-    assertEquals("Hello World!", GreenMailUtil.getBody(receivedMessage));
-    assertEquals(1, receivedMessage.getAllRecipients().length);
-    assertEquals("duke@spring.io", receivedMessage.getAllRecipients()[0].toString());
+    await().atMost(2, SECONDS).untilAsserted(() -> {
+      MimeMessage[] receivedMessages = greenMail.getReceivedMessages();
+      assertEquals(1, receivedMessages.length);
+
+      MimeMessage receivedMessage = receivedMessages[0];
+      assertEquals("Hello World!", GreenMailUtil.getBody(receivedMessage));
+      assertEquals(1, receivedMessage.getAllRecipients().length);
+      assertEquals("duke@spring.io", receivedMessage.getAllRecipients()[0].toString());
+    });
   }
 }
