@@ -13,6 +13,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 
 * [Spring Boot Test Slices Overview and Usage](https://rieckpil.de/spring-boot-test-slices-overview-and-usage/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-test-slice-annotations))
 * [Guide to Testing Spring Boot applications with MockMvc](https://rieckpil.de/guide-to-testing-spring-boot-applications-with-mockmvc/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/testing-spring-boot-applications-with-mockmvc))
+* [MongoDB Testcontainers Setup for @DataMongoTest](https://rieckpil.de/mongodb-testcontainers-setup-for-datamongotest/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-data-mongo-test-testcontainers))
 * [Mocking Statics Methods with Mockito (Kotlin & Java)](https://rieckpil.de/mocking-static-methods-with-mockito-java-kotlin/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/mockito-tips-and-tricks))
 * [Write Concise Web Tests With Selenide for Java Projects](https://rieckpil.de/write-concise-web-tests-with-selenide-for-java-projects/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/write-concise-web-tests-with-selenide))
 * [Test Your Spring MVC Controller with the WebTestClient and MockMvc](https://rieckpil.de/test-your-spring-mvc-controller-with-webtestclient-against-mockmvc/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-mockmvc-with-webtestclient))
