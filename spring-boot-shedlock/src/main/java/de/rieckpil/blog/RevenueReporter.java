@@ -17,6 +17,6 @@ public class RevenueReporter {
   @Scheduled(cron = "0 * * * * *")
   @SchedulerLock(name = "shortRunningTask", lockAtMostFor = "50s", lockAtLeastFor = "30s")
   public void shortRunningTask() {
-    System.out.println("Short running task");
+    System.out.println("Start short running task");
   }
 }
