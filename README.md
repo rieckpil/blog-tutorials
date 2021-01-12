@@ -41,6 +41,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 
 ## Articles about Spring Boot
 
+* [Lock @Scheduled Tasks With ShedLock And Spring Boot](https://rieckpil.de/lock-scheduled-tasks-with-shedlock-and-spring-boot/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-shedlock))
 * [Best Practices Flyway and Hibernate with Spring Boot](https://rieckpil.de/howto-best-practices-for-flyway-and-hibernate-with-spring-boot/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-hibernate-flyway-best-practices))
 * [Up- and download files with React and Spring Boot](https://rieckpil.de/howto-up-and-download-files-with-react-and-spring-boot/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-uploading-and-downloading-files-with-react))
 * [Expose git information with Spring Boot’s Actuator](https://rieckpil.de/howto-expose-git-information-with-spring-boots-actuator/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/expose-git-information-actuator))
