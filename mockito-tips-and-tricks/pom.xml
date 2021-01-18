@@ -14,7 +14,7 @@
     <kotlin.version>1.4.10</kotlin.version>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
-    <mockito.version>3.5.13</mockito.version>
+    <mockito.version>3.7.0</mockito.version>
     <mockito-kotlin.version>2.2.0</mockito-kotlin.version>
   </properties>
 
