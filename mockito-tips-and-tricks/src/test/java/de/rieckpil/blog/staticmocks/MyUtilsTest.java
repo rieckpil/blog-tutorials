@@ -1,5 +1,6 @@
-package de.rieckpil.blog.staticsmocks;
+package de.rieckpil.blog.staticmocks;
 
+import de.rieckpil.blog.staticsmocks.MyUtils;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
