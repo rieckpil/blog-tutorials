@@ -47,4 +47,22 @@ class PaymentProcessorTest {
       assertEquals(2, mocked.constructed().size());
     }
   }
+
+  @Test
+  void mockDifferentObjectConstructionWithAnswer() {
+    try (MockedConstruction<PaymentProcessor> mocked = Mockito.mockConstructionWithAnswer(PaymentProcessor.class,
+      // default answer for the first mock
+      invocation -> new BigDecimal("500.00"),
+      // additional answer for all further mocks
+      invocation -> new BigDecimal("42.00"))) {
+
+      PaymentProcessor firstInstance = new PaymentProcessor();
+      PaymentProcessor secondInstance = new PaymentProcessor();
+      PaymentProcessor thirdInstance = new PaymentProcessor();
+
+      assertEquals(new BigDecimal("500.00"), firstInstance.chargeCustomer("42", BigDecimal.ZERO));
+      assertEquals(new BigDecimal("42.00"), secondInstance.chargeCustomer("42", BigDecimal.ZERO));
+      assertEquals(new BigDecimal("42.00"), thirdInstance.chargeCustomer("42", BigDecimal.ZERO));
+    }
+  }
 }
