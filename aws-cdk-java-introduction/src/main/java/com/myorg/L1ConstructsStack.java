@@ -12,18 +12,18 @@ public class L1ConstructsStack extends Stack {
   public L1ConstructsStack(final Construct scope, final String id, final StackProps props) {
     super(scope, id, props);
 
-    CfnBucket s3Bucket = new CfnBucket(this, "L1Bucket", CfnBucketProps.builder()
-      .bucketName("l1-test-bucket-123")
-      .versioningConfiguration(CfnBucket.VersioningConfigurationProperty.builder().status("Enabled").build())
-      .accessControl("public-read")
+    CfnBucket bucket = new CfnBucket(this, "L1Construct", CfnBucketProps.builder()
+      .bucketName("example-l1-12345")
+      .versioningConfiguration(CfnBucket.VersioningConfigurationProperty.builder()
+        .status("Enabled").build())
       .publicAccessBlockConfiguration(CfnBucket.PublicAccessBlockConfigurationProperty.builder()
+        .restrictPublicBuckets(true)
+        .ignorePublicAcls(true)
         .blockPublicAcls(true)
         .blockPublicPolicy(true)
-        .ignorePublicAcls(true)
-        .restrictPublicBuckets(true)
         .build())
       .build());
 
-    s3Bucket.applyRemovalPolicy(RemovalPolicy.RETAIN);
+    bucket.applyRemovalPolicy(RemovalPolicy.RETAIN);
   }
 }

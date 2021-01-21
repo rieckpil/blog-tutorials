@@ -17,14 +17,22 @@ public class L3ConstructsStack extends Stack {
   public L3ConstructsStack(final Construct scope, final String id, final StackProps props) {
     super(scope, id, props);
 
-    Vpc vpc = new Vpc(this, "MyVpc", VpcProps.builder().maxAzs(2).build());
-    Cluster cluster = new Cluster(this, "MyCluster", ClusterProps.builder().vpc(vpc).build());
+    Vpc vpc = new Vpc(this, "ExampleVpc", VpcProps.builder()
+      .maxAzs(2)
+      .build());
 
-    new ApplicationLoadBalancedFargateService(this, "MyFargate", ApplicationLoadBalancedFargateServiceProps.builder()
+    Cluster cluster = new Cluster(this, "ExampleCluster", ClusterProps.builder()
+      .vpc(vpc)
+      .build());
+
+    new ApplicationLoadBalancedFargateService(this, "ExampleFargate", ApplicationLoadBalancedFargateServiceProps.builder()
       .cluster(cluster)
       .publicLoadBalancer(true)
       .taskImageOptions(ApplicationLoadBalancedTaskImageOptions.builder()
-        .image(ContainerImage.fromRegistry("amazon/amazon-ecs-sample")).build())
+        .image(ContainerImage.fromRegistry("amazon/amazon-ecs-sample"))
+        .build())
+      .desiredCount(2)
       .build());
+
   }
 }
