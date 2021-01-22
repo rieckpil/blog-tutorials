@@ -32,7 +32,7 @@
     <selenium.version>3.141.59</selenium.version>
     <microshed-testing.version>0.9</microshed-testing.version>
     <awaitility.version>4.0.3</awaitility.version>
-    <rest-assured.version>4.3.3</rest-assured.version>
+    <rest-assured.version>4.2.0</rest-assured.version>
     <greenmail.version>1.6.0</greenmail.version>
   </properties>
 
