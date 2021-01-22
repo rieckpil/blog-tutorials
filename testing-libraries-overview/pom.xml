@@ -3,16 +3,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.4.0</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
+
   <groupId>de.rieckpil.blog</groupId>
   <artifactId>testing-libraries-overview</artifactId>
   <version>1.0.0</version>
   <name>testing-libraries-overview</name>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
-    <junit.version>5.7.0</junit.version>
+    <java.version>11</java.version>
     <testcontainers.version>1.15.0</testcontainers.version>
     <mockito.version>3.6.0</mockito.version>
     <testng.version>6.8</testng.version>
@@ -28,7 +32,7 @@
     <selenium.version>3.141.59</selenium.version>
     <microshed-testing.version>0.9</microshed-testing.version>
     <awaitility.version>4.0.3</awaitility.version>
-    <rest-assured.version>4.3.1</rest-assured.version>
+    <rest-assured.version>4.3.3</rest-assured.version>
     <greenmail.version>1.6.0</greenmail.version>
   </properties>
 
@@ -37,7 +41,7 @@
       <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit-bom</artifactId>
-        <version>${junit.version}</version>
+        <version>5.7.0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -52,6 +56,11 @@
   </dependencyManagement>
 
   <dependencies>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
 
     <dependency>
       <groupId>com.sun.mail</groupId>
@@ -200,11 +209,20 @@
       <version>${rest-assured.version}</version>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+    </dependency>
   </dependencies>
 
   <build>
     <finalName>${project.artifactId}</finalName>
     <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
