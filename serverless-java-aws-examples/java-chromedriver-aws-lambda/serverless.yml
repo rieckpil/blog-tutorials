@@ -1,0 +1,16 @@
+service: java-chromedriver-aws-lambda
+
+provider:
+  name: aws
+  runtime: java11
+  profile: serverless-admin
+  region: eu-central-1
+  timeout: 10
+  lambdaHashingVersion: 20201221
+
+package:
+  artifact: target/java-chromedriver-aws-lambda.jar
+
+functions:
+  invokeChrome:
+    handler: de.rieckpil.blog.InvokeChrome
