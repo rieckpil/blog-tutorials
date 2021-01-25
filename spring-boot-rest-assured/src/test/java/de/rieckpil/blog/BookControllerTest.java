@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 
 @WebMvcTest(BookController.class)
 class BookControllerTest {
@@ -39,6 +40,24 @@ class BookControllerTest {
       .given()
         .auth().none()
         .param("amount", 42)
+      .when()
+        .get("/api/books")
+      .then()
+        .statusCode(200)
+        .body("$.size()", Matchers.equalTo(1))
+        .body("[0].id", Matchers.equalTo(42))
+        .body("[0].isbn", Matchers.equalTo("42"))
+        .body("[0].author", Matchers.equalTo("Duke"))
+        .body("[0].title", Matchers.equalTo("REST Assured With Spring Boot"));
+  }
+
+  @Test
+  void shouldAllowBookRetrievalWithoutAuthenticationShort() {
+
+    Mockito.when(bookService.getAllBooks(anyInt())).thenReturn(
+      List.of(new Book(42L, "42", "REST Assured With Spring Boot", "Duke")));
+
+    RestAssuredMockMvc
       .when()
         .get("/api/books")
       .then()

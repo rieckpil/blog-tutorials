@@ -10,7 +10,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-
     http
       .csrf()
       .disable()
@@ -21,6 +20,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
           .mvcMatchers(HttpMethod.GET, "/api/books").permitAll()
           .mvcMatchers(HttpMethod.POST, "/api/books").hasRole("ADMIN")
           .anyRequest().authenticated());
-
   }
 }

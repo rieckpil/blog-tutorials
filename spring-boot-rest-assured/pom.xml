@@ -18,6 +18,7 @@
   <properties>
     <java.version>11</java.version>
     <groovy.version>3.0.7</groovy.version>
+    <rest-assured.version>4.3.3</rest-assured.version>
   </properties>
 
   <dependencies>
@@ -36,15 +37,7 @@
 
     <dependency>
       <groupId>io.rest-assured</groupId>
-      <artifactId>rest-assured-all</artifactId>
-      <version>4.3.3</version>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>io.rest-assured</groupId>
       <artifactId>spring-mock-mvc</artifactId>
-      <version>4.3.3</version>
       <scope>test</scope>
     </dependency>
 
