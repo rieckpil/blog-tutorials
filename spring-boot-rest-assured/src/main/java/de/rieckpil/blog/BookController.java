@@ -32,7 +32,6 @@ public class BookController {
   }
 
   @PostMapping
-  @RolesAllowed("ADMIN")
   public ResponseEntity<Void> createNewBook(
     @Valid @RequestBody BookRequest bookRequest,
     UriComponentsBuilder uriComponentsBuilder) {

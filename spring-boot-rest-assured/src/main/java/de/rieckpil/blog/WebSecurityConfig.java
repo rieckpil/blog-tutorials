@@ -13,13 +13,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     http
       .csrf()
-      .and()
+      .disable()
       .httpBasic()
       .and()
       .authorizeRequests(
         requests -> requests
           .mvcMatchers(HttpMethod.GET, "/api/books").permitAll()
-          .mvcMatchers(HttpMethod.POST, "/api/books").authenticated()
+          .mvcMatchers(HttpMethod.POST, "/api/books").hasRole("ADMIN")
           .anyRequest().authenticated());
 
   }

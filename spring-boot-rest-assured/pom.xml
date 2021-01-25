@@ -17,6 +17,7 @@
 
   <properties>
     <java.version>11</java.version>
+    <groovy.version>3.0.7</groovy.version>
   </properties>
 
   <dependencies>
