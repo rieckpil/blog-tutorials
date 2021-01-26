@@ -11,6 +11,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 
 ## Articles about Testing
 
+* [Testing Spring Boot Applications With REST Assured](https://rieckpil.de/testing-spring-boot-applications-with-rest-assured/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-rest-assured))
 * [Spring Boot Test Slices Overview and Usage](https://rieckpil.de/spring-boot-test-slices-overview-and-usage/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-test-slice-annotations))
 * [Guide to Testing Spring Boot applications with MockMvc](https://rieckpil.de/guide-to-testing-spring-boot-applications-with-mockmvc/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/testing-spring-boot-applications-with-mockmvc))
 * [MongoDB Testcontainers Setup for @DataMongoTest](https://rieckpil.de/mongodb-testcontainers-setup-for-datamongotest/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-data-mongo-test-testcontainers))
