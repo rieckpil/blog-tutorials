@@ -17,7 +17,7 @@ public class BookService {
     book.setIsbn(bookRequest.getIsbn());
     book.setAuthor(bookRequest.getAuthor());
     book.setTitle(bookRequest.getTitle());
-    book.setId(ThreadLocalRandom.current().nextLong());
+    book.setId(Math.abs(ThreadLocalRandom.current().nextLong()));
 
     bookStore.add(book);
 

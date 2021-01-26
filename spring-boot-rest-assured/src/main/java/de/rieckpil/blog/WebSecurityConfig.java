@@ -18,6 +18,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       .authorizeRequests(
         requests -> requests
           .mvcMatchers(HttpMethod.GET, "/api/books").permitAll()
+          .mvcMatchers(HttpMethod.GET, "/api/books/*").permitAll()
           .mvcMatchers(HttpMethod.POST, "/api/books").hasRole("ADMIN")
           .anyRequest().authenticated());
   }

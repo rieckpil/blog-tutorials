@@ -8,6 +8,7 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -87,11 +88,11 @@ class BookControllerTest {
   }
 
   @Test
+  @WithMockUser(username = "duke", roles = {"USER", "EDITOR"})
   void shouldBlockBookCreationForNonAdminUsers() {
 
     RestAssuredMockMvc
       .given()
-        .auth().with(SecurityMockMvcRequestPostProcessors.user("duke").roles("USER"))
         .contentType("application/json")
         .body("{\"title\": \"Effective Java\", \"isbn\":\"978-0-13-468599-1 \", \"author\":\"Joshua Bloch\"}")
       .when()
