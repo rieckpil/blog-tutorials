@@ -35,6 +35,7 @@
     <rest-assured.version>4.3.3</rest-assured.version>
     <greenmail.version>1.6.0</greenmail.version>
     <groovy.version>3.0.7</groovy.version>
+    <citrus.version>2.8.0</citrus.version>
   </properties>
 
   <dependencyManagement>
@@ -183,6 +184,30 @@
       <version>${microshed-testing.version}</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.consol.citrus</groupId>
+      <artifactId>citrus-core</artifactId>
+      <version>${citrus.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.consol.citrus</groupId>
+      <artifactId>citrus-java-dsl</artifactId>
+      <version>${citrus.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.consol.citrus</groupId>
+      <artifactId>citrus-jms</artifactId>
+      <version>${citrus.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.consol.citrus</groupId>
+      <artifactId>citrus-http</artifactId>
+      <version>${citrus.version}</version>
+      <scope>test</scope>
+    </dependency>
 
     <!-- Utility Libraries -->
     <dependency>
@@ -248,6 +273,11 @@
             <version>2.22.2</version>
           </dependency>
         </dependencies>
+      </plugin>
+      <plugin>
+        <groupId>com.consol.citrus.mvn</groupId>
+        <artifactId>citrus-maven-plugin</artifactId>
+        <version>${citrus.version}</version>
       </plugin>
     </plugins>
   </build>
