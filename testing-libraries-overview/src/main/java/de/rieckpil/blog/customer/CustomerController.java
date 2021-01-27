@@ -16,7 +16,7 @@ import java.util.UUID;
 @RequestMapping("/api/customers")
 public class CustomerController {
 
-  @GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+  @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
   public List<Customer> returnAllCustomers() {
     return createSampleCustomers();
   }
