@@ -15,6 +15,7 @@ import java.util.List;
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
@@ -47,6 +48,8 @@ class CustomerControllerTest {
 
     List<String> tagList = get(uri).jsonPath().getList("[0].tags");
 
+    assertEquals(3, tagList.size());
+
     // What is the total order amount for the first customer?
     get(uri)
       .then()
@@ -66,7 +69,6 @@ class CustomerControllerTest {
   }
 
   @Test
-  @Disabled
   void basicRESTAssuredXMLExample() {
 
     given()
@@ -78,37 +80,26 @@ class CustomerControllerTest {
     .then()
       .statusCode(200)
       .header("Content-Type", equalTo("application/xml"))
-      .body("[0].username", equalTo("duke42"));
+      .body("List.item[0].username", equalTo("duke42"));
 
   }
 
   @Test
-  @Disabled
   void advancedRESTAssuredXMLVerification() {
     URI uri = URI.create("http://localhost:" + port + "/api/customers");
 
-    get(uri).then().body("[0].orders.size()", equalTo(2));
-    get(uri).then().body("[0].address.city", equalTo("Berlin"));
-    get(uri).then().body("[0].orders[0].products[0].name", equalTo("MacBook Pro"));
+    List<String> tagList = given().accept("application/xml")
+      .get(uri).xmlPath().getList("List.item[0].tags.tag");
 
-    List<String> tagList = get(uri).jsonPath().getList("[0].tags");
+    assertEquals(3, tagList.size());
 
-    // What is the total order amount for the first customer?
-    get(uri)
-      .then()
-      .body("[0].orders.collect{it.products}.flatten().sum{it.price * it.quantity}", greaterThan(6000.00));
-
-    // Which customer has the most tags?
-    get(uri)
-      .then()
-      .body("max{ it.tags.size() }.username", equalTo("duke42"));
-
-    // Which products where ordered with a quantity >= 42?
-    get(uri)
-      .then()
-      .body("collectMany{c -> c.orders.collect { it.products }}.flatten().findAll{it.quantity >= 42}.name",
-        hasItems("Chocolate", "Chewing Gum"));
-
+    // Which customers has the least tags?
+    given()
+      .accept("application/xml")
+    .when()
+      .get(uri)
+    .then()
+      .body("List.item.min { it.tags.tag.size() }.username", equalTo("bob"));
   }
 
   @Test

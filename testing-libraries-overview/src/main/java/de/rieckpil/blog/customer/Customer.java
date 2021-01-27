@@ -1,5 +1,8 @@
 package de.rieckpil.blog.customer;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
 import java.util.List;
 import java.util.Set;
 
@@ -7,8 +10,15 @@ public class Customer {
 
   private String username;
   private String id;
+
+  @JacksonXmlElementWrapper(localName = "tags")
+  @JacksonXmlProperty(localName = "tag")
   private Set<String> tags;
+
+  @JacksonXmlElementWrapper(localName = "orders")
+  @JacksonXmlProperty(localName = "order")
   private List<Order> orders;
+
   private Address address;
 
   public Customer() {

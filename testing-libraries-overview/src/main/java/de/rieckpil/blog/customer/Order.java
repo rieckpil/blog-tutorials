@@ -1,11 +1,17 @@
 package de.rieckpil.blog.customer;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class Order {
 
+  @JacksonXmlElementWrapper(localName = "products")
+  @JacksonXmlProperty(localName = "product")
   private List<Product> products;
+
   private String paymentMethod;
   private LocalDateTime orderedAt;
 

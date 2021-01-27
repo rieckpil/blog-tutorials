@@ -1,8 +1,11 @@
 package de.rieckpil.blog.customer;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
 import java.math.BigDecimal;
 
 public class Product {
+
   private String name;
   private BigDecimal price;
   private Long quantity;
