@@ -1,6 +1,5 @@
 package de.rieckpil.blog.customer;
 
-import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 import java.util.Set;
 

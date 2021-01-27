@@ -1,9 +1,9 @@
 package de.rieckpil.blog.customer;
 
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -65,4 +65,18 @@ public class CustomerController {
     return List.of(customerOne, customerTwo, customerThree);
   }
 
+  @PostMapping
+  public ResponseEntity<Void> createNewUser(
+    @RequestBody CustomerCreationRequest request,
+    UriComponentsBuilder uriComponentsBuilder) {
+
+    System.out.println(request);
+
+    return ResponseEntity
+      .created(uriComponentsBuilder
+        .path("/api/customers/{id}")
+        .buildAndExpand("42")
+        .toUri())
+      .build();
+  }
 }
