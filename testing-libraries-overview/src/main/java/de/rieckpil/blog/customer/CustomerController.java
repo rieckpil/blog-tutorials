@@ -7,6 +7,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
@@ -15,7 +16,7 @@ import java.util.UUID;
 @RequestMapping("/api/customers")
 public class CustomerController {
 
-  @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+  @GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
   public List<Customer> returnAllCustomers() {
     return createSampleCustomers();
   }
@@ -62,7 +63,7 @@ public class CustomerController {
         new Product("Chewing Gum", BigDecimal.valueOf(0.49), 100L)
       ), "DEBIT", LocalDateTime.now().minusDays(5))));
 
-    return List.of(customerOne, customerTwo, customerThree);
+    return Arrays.asList(customerOne, customerTwo, customerThree);
   }
 
   @PostMapping
