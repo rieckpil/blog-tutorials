@@ -13,15 +13,13 @@ public class Order {
   private List<Product> products;
 
   private String paymentMethod;
-  private LocalDateTime orderedAt;
 
   public Order() {
   }
 
-  public Order(List<Product> products, String paymentMethod, LocalDateTime orderedAt) {
+  public Order(List<Product> products, String paymentMethod) {
     this.products = products;
     this.paymentMethod = paymentMethod;
-    this.orderedAt = orderedAt;
   }
 
   public List<Product> getProducts() {
@@ -40,11 +38,4 @@ public class Order {
     this.paymentMethod = paymentMethod;
   }
 
-  public LocalDateTime getOrderedAt() {
-    return orderedAt;
-  }
-
-  public void setOrderedAt(LocalDateTime orderedAt) {
-    this.orderedAt = orderedAt;
-  }
 }

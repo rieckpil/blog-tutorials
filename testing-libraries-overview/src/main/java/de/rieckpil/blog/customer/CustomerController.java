@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -32,11 +31,11 @@ public class CustomerController {
       new Order(List.of(
         new Product("MacBook Pro", BigDecimal.valueOf(1499.99), 3L),
         new Product("Kindle Paperwhite", BigDecimal.valueOf(149.00), 10L)
-      ), "DEBIT", LocalDateTime.now().minusDays(42)),
+      ), "DEBIT"),
       new Order(List.of(
         new Product("Milk", BigDecimal.valueOf(0.99), 12L),
         new Product("Chocolate", BigDecimal.valueOf(2.99), 42L)
-      ), "CREDIT_CARD", LocalDateTime.now().minusDays(12))));
+      ), "CREDIT_CARD")));
 
     Customer customerTwo = new Customer();
     customerTwo.setId(UUID.randomUUID().toString());
@@ -47,7 +46,7 @@ public class CustomerController {
       new Order(List.of(
         new Product("iPhone 12", BigDecimal.valueOf(999.99), 12L),
         new Product("Laptop", BigDecimal.valueOf(649.00), 10L)
-      ), "PAYPAL", LocalDateTime.now().minusWeeks(42))));
+      ), "PAYPAL")));
 
     Customer customerThree = new Customer();
     customerThree.setId(UUID.randomUUID().toString());
@@ -58,10 +57,10 @@ public class CustomerController {
       new Order(List.of(
         new Product("MacBook Pro", BigDecimal.valueOf(2499.99), 2L),
         new Product("Kindle", BigDecimal.valueOf(99.00), 5L)
-      ), "DEBIT", LocalDateTime.now().minusDays(42)),
+      ), "DEBIT"),
       new Order(List.of(
         new Product("Chewing Gum", BigDecimal.valueOf(0.49), 100L)
-      ), "DEBIT", LocalDateTime.now().minusDays(5))));
+      ), "DEBIT")));
 
     return Arrays.asList(customerOne, customerTwo, customerThree);
   }
