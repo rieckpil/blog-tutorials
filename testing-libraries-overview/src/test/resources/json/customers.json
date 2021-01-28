@@ -1,0 +1,117 @@
+[
+  {
+    "username": "duke42",
+    "id": "45bedb9a-8ea7-414a-8717-7ce5637afa53",
+    "tags": [
+      "EARLY_BIRD",
+      "VIP",
+      "PLATINUM_MEMBER"
+    ],
+    "orders": [
+      {
+        "products": [
+          {
+            "name": "MacBook Pro",
+            "price": 1499.99,
+            "quantity": 3
+          },
+          {
+            "name": "Kindle Paperwhite",
+            "price": 149.0,
+            "quantity": 10
+          }
+        ],
+        "paymentMethod": "DEBIT"
+      },
+      {
+        "products": [
+          {
+            "name": "Milk",
+            "price": 0.99,
+            "quantity": 12
+          },
+          {
+            "name": "Chocolate",
+            "price": 2.99,
+            "quantity": 42
+          }
+        ],
+        "paymentMethod": "CREDIT_CARD"
+      }
+    ],
+    "address": {
+      "city": "Berlin",
+      "country": "Germany",
+      "postalCode": "12347"
+    }
+  },
+  {
+    "username": "alice",
+    "id": "e6bbd15b-1d6d-44de-9d3c-f59e789fdde6",
+    "tags": [
+      "DELAYED_PAYMENTS",
+      "BRONZE_MEMBER"
+    ],
+    "orders": [
+      {
+        "products": [
+          {
+            "name": "iPhone 12",
+            "price": 999.99,
+            "quantity": 12
+          },
+          {
+            "name": "Laptop",
+            "price": 649.0,
+            "quantity": 10
+          }
+        ],
+        "paymentMethod": "PAYPAL"
+      }
+    ],
+    "address": {
+      "city": "Paris",
+      "country": "France",
+      "postalCode": "75000"
+    }
+  },
+  {
+    "username": "bob",
+    "id": "f49c00f0-c04f-4010-bad8-3105850660fb",
+    "tags": [
+      "GOLD_MEMBER"
+    ],
+    "orders": [
+      {
+        "products": [
+          {
+            "name": "MacBook Pro",
+            "price": 2499.99,
+            "quantity": 2
+          },
+          {
+            "name": "Kindle",
+            "price": 99.0,
+            "quantity": 5
+          }
+        ],
+        "paymentMethod": "DEBIT"
+      },
+      {
+        "products": [
+          {
+            "name": "Chewing Gum",
+            "price": 0.49,
+            "quantity": 100
+          }
+        ],
+        "paymentMethod": "DEBIT"
+      }
+    ],
+    "address": {
+      "city": "São Paulo",
+      "country": "Brazil",
+      "postalCode": "17800-000"
+    }
+  }
+]
