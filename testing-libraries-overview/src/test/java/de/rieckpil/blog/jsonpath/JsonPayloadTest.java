@@ -53,7 +53,7 @@ class JsonPayloadTest {
     int orders = JsonPath.parse(jsonPayload).read("$[0].orders.length()");
     double orderedProducts = JsonPath.parse(jsonPayload).read("$..quantity.sum()");
 
-    // Set<String> keys = JsonPath.parse(jsonPayload).read("$[:1].address.keys()");
+    Set<String> keys = JsonPath.parse("{\"name\":\"duke\", \"age\": 42}").read("$.keys()");
 
     assertEquals(0.49, min, 0.01);
     assertEquals(2499.99, max, 0.01);
@@ -62,6 +62,29 @@ class JsonPayloadTest {
 
     assertEquals(2, orders);
     assertEquals(196.00, orderedProducts, 0.01);
+    assertEquals(2, keys.size());
+  }
+
+  @Test
+  void filterOperators() {
+
+    // Which orders for the first customer have the paymentMethod DEBIT?
+    JsonPath.parse(jsonPayload).read("$[0].orders[?(@.paymentMethod == 'DEBIT')]");
+
+    // Which products are expensive?
+    JsonPath.parse(jsonPayload).read("$[*].orders[*].products[?(@.price > 1999)]");
+
+    // Which customer has more than 2 tags?
+    JsonPath.parse(jsonPayload).read("$[?(@.tags.size() > 2)]");
+
+    // We can also combine the expressions with || and &&
+    JsonPath.parse(jsonPayload).read("$[?(@.tags.size() > 2 || @.address.city in ['Berlin', 'Paris'])]");
+
+    // Which orders have more than one product for the customer duke42?
+    JsonPath.parse(jsonPayload).read("$[?(@.username == 'duke42')].orders[?(@.products.length() > 1)]");
+
+    // For which customers did we specify the continent as part of the address?
+    JsonPath.parse(jsonPayload).read("$[?(@.address.continent)]");
 
   }
 }
