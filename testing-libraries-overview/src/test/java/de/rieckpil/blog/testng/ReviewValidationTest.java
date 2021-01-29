@@ -1,6 +1,6 @@
 package de.rieckpil.blog.testng;
 
-import de.rieckpil.blog.ReviewValidation;
+import de.rieckpil.blog.review.ReviewValidation;
 import org.testng.Assert;
 import org.testng.annotations.*;
 

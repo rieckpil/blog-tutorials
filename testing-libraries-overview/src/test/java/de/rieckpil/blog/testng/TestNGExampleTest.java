@@ -1,4 +1,4 @@
-package de.rieckpil.blog;
+package de.rieckpil.blog.testng;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;

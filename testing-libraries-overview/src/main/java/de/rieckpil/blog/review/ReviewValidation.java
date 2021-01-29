@@ -1,4 +1,4 @@
-package de.rieckpil.blog;
+package de.rieckpil.blog.review;
 
 public class ReviewValidation {
 
