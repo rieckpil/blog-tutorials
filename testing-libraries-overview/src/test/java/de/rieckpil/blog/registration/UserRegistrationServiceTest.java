@@ -11,7 +11,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
@@ -42,12 +45,29 @@ class UserRegistrationServiceTest {
     User result = this.cut.registerUser("duke");
   }
 
+@Test
+void shouldPropagateException() {
+  Mockito.when(userRepository.findByUsername("devil"))
+    .thenThrow(new RuntimeException("DEVIL'S SQL EXCEPTION"));
+
+  assertThrows(RuntimeException.class, () -> cut.registerUser("devil"));
+
+  Mockito.verify(userRepository, never()).save(ArgumentMatchers.any(User.class));
+  Mockito.verify(userRepository, times(1)).findByUsername("devil");
+}
+
   @Test
-  void shouldPropagateException() {
-    Mockito.when(userRepository.findByUsername("devil"))
-      .thenThrow(new RuntimeException("DEVIL'S SQL EXCEPTION"));
+  void shouldCreateUnknownUser() {
+    Mockito.when(userRepository.findByUsername("duke")).thenReturn(null);
+    Mockito.when(userRepository.save(ArgumentMatchers.any(User.class)))
+      .thenAnswer(context -> {
+        User user = context.getArgument(0);
+        user.setId(42L);
+        return user;
+      });
 
-    assertThrows(RuntimeException.class, () -> cut.registerUser("devil"));
+    User result = this.cut.registerUser("duke");
+
+    assertEquals(42, result.getId());
   }
-
 }
