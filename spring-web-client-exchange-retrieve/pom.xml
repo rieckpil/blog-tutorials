@@ -6,10 +6,10 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.3.0.RELEASE</version>
+    <version>2.4.0</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
-  
+
   <groupId>de.rieckpil.blog</groupId>
   <artifactId>spring-web-client-exchange-retrieve</artifactId>
   <version>0.0.1-SNAPSHOT</version>
@@ -18,6 +18,7 @@
 
   <properties>
     <java.version>11</java.version>
+    <wiremock.version>2.27.1</wiremock.version>
   </properties>
 
   <dependencies>
@@ -34,12 +35,12 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>org.junit.vintage</groupId>
-          <artifactId>junit-vintage-engine</artifactId>
-        </exclusion>
-      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>com.github.tomakehurst</groupId>
+      <artifactId>wiremock-jre8</artifactId>
+      <version>${wiremock.version}</version>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>io.projectreactor</groupId>
