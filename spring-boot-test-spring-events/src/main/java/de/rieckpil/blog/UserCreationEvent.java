@@ -20,4 +20,14 @@ public class UserCreationEvent extends ApplicationEvent {
   public Long getId() {
     return id;
   }
+
+
+  @Override
+  public String toString() {
+    return "UserCreationEvent{" +
+      "username='" + username + '\'' +
+      ", id=" + id +
+      ", timestamp=" + super.getTimestamp() +
+      '}';
+  }
 }

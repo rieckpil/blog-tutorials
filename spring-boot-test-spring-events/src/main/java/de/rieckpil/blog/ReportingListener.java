@@ -9,7 +9,7 @@ public class ReportingListener {
   @EventListener(UserCreationEvent.class)
   public void reportUserCreation(UserCreationEvent event) {
     // e.g. increment a counter to report the total amount of new users
-    System.out.println("Increment NewUserCounter as new user was created: " + event);
+    System.out.println("Increment counter as new user was created: " + event);
   }
 
   @EventListener(UserCreationEvent.class)
