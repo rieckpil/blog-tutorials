@@ -5,10 +5,11 @@ provider:
   runtime: java11
   profile: serverless-admin
   region: eu-central-1
-  timeout: 30
-  memorySize: 4096
+  timeout: 10
+  memorySize: 2048
+  logRetentionInDays: 7
   lambdaHashingVersion: 20201221
 
 functions:
   invokeChrome:
-    image: 547530709389.dkr.ecr.eu-central-1.amazonaws.com/lambda-java-chrome:2
+    image: 547530709389.dkr.ecr.eu-central-1.amazonaws.com/lambda-java-chrome:3

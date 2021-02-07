@@ -6,13 +6,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-public class InvokeChrome implements RequestHandler<Void, String> {
+public class InvokeChrome implements RequestHandler<String[], String> {
 
   @Override
-  public String handleRequest(Void input, Context context) {
+  public String handleRequest(String[] input, Context context) {
 
     ChromeOptions chromeOptions = new ChromeOptions();
     chromeOptions.addArguments(
+      "--disable-gpu",
       "--headless",
       "--single-process",
       "--disable-dev-shm-usage",
@@ -20,10 +21,13 @@ public class InvokeChrome implements RequestHandler<Void, String> {
 
     WebDriver driver = new ChromeDriver(chromeOptions);
 
-    driver.get("https://rieckpil.de");
-    String pageTitle = driver.getTitle();
+    for (String url : input) {
+      driver.get(url);
+      System.out.println(driver.getTitle());
+    }
+
     driver.quit();
 
-    return pageTitle;
+    return "Successfully scraped page titles!";
   }
 }
