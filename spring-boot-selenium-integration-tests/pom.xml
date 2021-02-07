@@ -16,7 +16,7 @@
 
   <properties>
     <java.version>11</java.version>
-    <testcontainers.version>1.14.3</testcontainers.version>
+    <testcontainers.version>1.15.1</testcontainers.version>
     <selenium.version>3.141.59</selenium.version>
   </properties>
 

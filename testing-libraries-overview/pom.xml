@@ -17,7 +17,7 @@
 
   <properties>
     <java.version>11</java.version>
-    <testcontainers.version>1.15.0</testcontainers.version>
+    <testcontainers.version>1.15.1</testcontainers.version>
     <mockito.version>3.7.0</mockito.version>
     <testng.version>6.8</testng.version>
     <hamcrest.version>2.2</hamcrest.version>
