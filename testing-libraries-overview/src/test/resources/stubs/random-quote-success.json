@@ -1,0 +1,31 @@
+{
+  "success": {
+    "total": 1
+  },
+  "contents": {
+    "quotes": [
+      {
+        "quote": "Vision without action is daydream. Action without vision is nightmare..",
+        "length": "73",
+        "author": "Japanese Proverb",
+        "tags": [
+          "action",
+          "inspire",
+          "vision"
+        ],
+        "category": "inspire",
+        "language": "en",
+        "date": "2020-12-16",
+        "permalink": "https://theysaidso.com/quote/japanese-proverb-vision-without-action-is-daydream-action-without-vision-is-nigh",
+        "id": "1frNkKmnuhbKYO4OyURZyQeF",
+        "background": "https://theysaidso.com/img/qod/qod-inspire.jpg",
+        "title": "Inspiring Quote of the day"
+      }
+    ]
+  },
+  "baseurl": "https://theysaidso.com",
+  "copyright": {
+    "year": 2022,
+    "url": "https://theysaidso.com"
+  }
+}
