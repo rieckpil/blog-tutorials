@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.util.Collections;
+
 public class InvokeWebDriver implements RequestHandler<String[], String> {
 
   @Override
@@ -14,13 +16,14 @@ public class InvokeWebDriver implements RequestHandler<String[], String> {
     System.setProperty("webdriver.chrome.verboseLogging", "true");
 
     ChromeOptions chromeOptions = new ChromeOptions();
+    chromeOptions.setHeadless(true);
+    chromeOptions.setExperimentalOption("excludeSwitches", Collections.singletonList("load-extension"));
+
     chromeOptions.addArguments(
       "--whitelisted-ips",
-      "--single-process",
       "--disable-extensions",
       "--disable-dev-shm-usage",
       "--no-sandbox");
-    chromeOptions.setHeadless(true);
 
     WebDriver driver = new ChromeDriver(chromeOptions);
 
