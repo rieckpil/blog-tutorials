@@ -13,6 +13,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 
 * [Record Spring Events When Testing Spring Boot Applications](https://rieckpil.de/record-spring-events-when-testing-spring-boot-applications/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-test-spring-events))
 * [Testing Spring Boot Applications With REST Assured](https://rieckpil.de/testing-spring-boot-applications-with-rest-assured/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-rest-assured))
+* [How to Test Java HTTP Client Usages (e.g OkHttp, Apache HttpClient)](https://rieckpil.de/how-to-test-java-http-client-usages-e-g-okhttp-apache-httpclient/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/test-java-http-clients))
 * [Spring Boot Test Slices Overview and Usage](https://rieckpil.de/spring-boot-test-slices-overview-and-usage/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-test-slice-annotations))
 * [Guide to Testing Spring Boot applications with MockMvc](https://rieckpil.de/guide-to-testing-spring-boot-applications-with-mockmvc/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/testing-spring-boot-applications-with-mockmvc))
 * [MongoDB Testcontainers Setup for @DataMongoTest](https://rieckpil.de/mongodb-testcontainers-setup-for-datamongotest/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-data-mongo-test-testcontainers))
