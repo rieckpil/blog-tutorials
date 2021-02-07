@@ -12,7 +12,7 @@
     <maven.compiler.target>11</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <aws-lambda-java-core.version>1.2.1</aws-lambda-java-core.version>
-    <selenium-java.version>3.14.0</selenium-java.version>
+    <selenium-java.version>3.141.59</selenium-java.version>
   </properties>
 
   <dependencies>
