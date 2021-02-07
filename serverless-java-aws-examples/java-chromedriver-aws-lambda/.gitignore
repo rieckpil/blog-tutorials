@@ -1,17 +1,32 @@
-*.class
-target
-/bin/
-/.settings/
-.project
+HELP.md
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+### STS ###
+.apt_generated
 .classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
 
-resolution.properties
-chromedriver
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
 
-# Package Files
-*.jar
-*.war
-*.ear
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
 
-# Serverless directories
-.serverless
+### VS Code ###
+.vscode/

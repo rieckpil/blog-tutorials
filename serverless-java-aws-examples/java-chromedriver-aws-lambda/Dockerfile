@@ -1,25 +1,15 @@
-FROM amazon/aws-lambda-java:11 as base
+FROM public.ecr.aws/lambda/java:11
 
 RUN yum install -y wget unzip libX11
+
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm && \
+    yum install -y google-chrome-stable_current_x86_64.rpm
 
 RUN CHROME_DRIVER_VERSION=`curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE` && \
     wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip && \
     unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 
-FROM base as build
-RUN yum install -y maven
+COPY target/dependency ${LAMBDA_TASK_ROOT}/lib/
+COPY target/classes ${LAMBDA_TASK_ROOT}
 
-WORKDIR /src
-ADD . .
-
-RUN mvn dependency:go-offline dependency:copy-dependencies
-RUN mvn package
-
-FROM base
-WORKDIR /function
-
-COPY --from=build /src/target/dependency/*.jar ./
-COPY --from=build /src/target/*.jar ./
-
-ENTRYPOINT [ "/usr/bin/java", "-cp", "./*", "com.amazonaws.services.lambda.runtime.api.client.AWSLambda" ]
-CMD [ "de.rieckpil.blog.InvokeChrome::handleRequest" ]
+CMD ["de.rieckpil.blog.InvokeChrome::handleRequest"]

@@ -13,4 +13,4 @@ package:
 
 functions:
   invokeChrome:
-    handler: de.rieckpil.blog.InvokeChrome
+    image: 547530709389.dkr.ecr.eu-central-1.amazonaws.com/lambda-java-chrome:1
