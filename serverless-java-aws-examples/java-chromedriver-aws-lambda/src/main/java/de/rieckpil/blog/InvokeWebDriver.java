@@ -11,15 +11,16 @@ public class InvokeWebDriver implements RequestHandler<String[], String> {
   @Override
   public String handleRequest(String[] input, Context context) {
 
+    System.setProperty("webdriver.chrome.verboseLogging", "true");
+
     ChromeOptions chromeOptions = new ChromeOptions();
     chromeOptions.addArguments(
       "--whitelisted-ips",
-      "--disable-gpu",
-      "--headless",
       "--single-process",
       "--disable-extensions",
       "--disable-dev-shm-usage",
       "--no-sandbox");
+    chromeOptions.setHeadless(true);
 
     WebDriver driver = new ChromeDriver(chromeOptions);
 
