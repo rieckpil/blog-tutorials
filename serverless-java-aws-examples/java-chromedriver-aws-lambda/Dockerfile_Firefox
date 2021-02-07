@@ -1,0 +1,15 @@
+FROM public.ecr.aws/lambda/java:11
+
+RUN yum install -y wget tar gzip bzip2 libX11
+
+RUN wget -O /tmp/firefox.tar "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US" && \
+    tar -xvf /tmp/firefox.tar -C /usr/local/ && \
+    ln -s /usr/local/firefox/firefox /usr/bin/firefox
+
+RUN wget -O /tmp/geckodriver.tar.gz https://github.com/mozilla/geckodriver/releases/download/v0.29.0/geckodriver-v0.29.0-linux64.tar.gz && \
+    tar -xvf /tmp/geckodriver.tar.gz -C /usr/local/bin/
+
+COPY target/dependency ${LAMBDA_TASK_ROOT}/lib/
+COPY target/classes ${LAMBDA_TASK_ROOT}
+
+CMD ["de.rieckpil.blog.InvokeWebDriver::handleRequest"]

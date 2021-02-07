@@ -6,16 +6,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-public class InvokeChrome implements RequestHandler<String[], String> {
+public class InvokeWebDriver implements RequestHandler<String[], String> {
 
   @Override
   public String handleRequest(String[] input, Context context) {
 
     ChromeOptions chromeOptions = new ChromeOptions();
     chromeOptions.addArguments(
+      "--whitelisted-ips",
       "--disable-gpu",
       "--headless",
       "--single-process",
+      "--disable-extensions",
       "--disable-dev-shm-usage",
       "--no-sandbox");
 
