@@ -17,16 +17,11 @@ public class InvokeWebDriver implements RequestHandler<String[], String> {
 
     ChromeOptions chromeOptions = new ChromeOptions();
     chromeOptions.setExperimentalOption("excludeSwitches", Collections.singletonList("load-extension"));
-    chromeOptions.setExperimentalOption("useAutomationExtension", false);
 
     chromeOptions.addArguments(
       "--headless",
       "--remote-debugging-port=0",
       "--disable-extensions",
-      "--homedir=/tmp",
-      "--user-data-dir=/tmp/user-data",
-      "--data-path=/tmp/data-path",
-      "--disk-cache-dir=/tmp/cache-dir",
       "--disable-dev-shm-usage",
       "--no-sandbox");
 
