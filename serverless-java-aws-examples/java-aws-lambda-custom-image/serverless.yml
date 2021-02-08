@@ -1,0 +1,15 @@
+service: java-aws-lambda-custom-image
+
+provider:
+  name: aws
+  runtime: java11
+  profile: serverless-admin
+  region: eu-central-1
+  timeout: 10
+  memorySize: 1024
+  logRetentionInDays: 7
+  lambdaHashingVersion: 20201221
+
+functions:
+  customRuntime:
+    image: 547530709389.dkr.ecr.eu-central-1.amazonaws.com/java-aws-lambda-custom-image:1
