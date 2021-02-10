@@ -9,7 +9,15 @@ import org.assertj.core.api.Assertions;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
+import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
+import java.io.StringReader;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
@@ -49,7 +57,7 @@ public class HamcrestTest {
   }
 
   @Test
-  void advancedAssertions() {
+  void advancedAssertions() throws ParserConfigurationException, IOException, SAXException {
 
     MatcherAssert
       .assertThat(List.of("duke", "mike", "alice", "john"), Matchers.allOf(
@@ -74,6 +82,16 @@ public class HamcrestTest {
       .assertThat(39.99, Matchers.closeTo(39.9985, 0.01));
 
     // XPath example
+
+    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    DocumentBuilder builder = factory.newDocumentBuilder();
+    Document xml = builder.parse(new InputSource(new StringReader("<customers><customer type=\"VIP\"><name>duke</name></customer></customers>")));
+
+    MatcherAssert
+      .assertThat(xml, Matchers.allOf(
+        Matchers.hasXPath("/customers/customer[1]/name", Matchers.is("duke")),
+        Matchers.hasXPath("//*[@type='VIP']", Matchers.is("duke"))
+      ));
   }
 
   @Test
