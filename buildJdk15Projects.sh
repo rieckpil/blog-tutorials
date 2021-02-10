@@ -5,6 +5,7 @@ set -o pipefail
 
 declare -a arr=(
  "spring-boot-datajpatest"
+ "serverless-java-aws-examples/java-aws-lambda-custom-image"
 )
 
 for project in "${arr[@]}"
