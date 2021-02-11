@@ -2,46 +2,49 @@ package de.rieckpil.blog.hamcrest;
 
 import de.rieckpil.blog.customer.Customer;
 import de.rieckpil.blog.customer.Order;
-import org.assertj.core.api.AbstractAssert;
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
+import org.hamcrest.TypeSafeMatcher;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-public class HasOrderVolumeGreaterThan extends AbstractAssert<HasOrderVolumeGreaterThan, Customer> {
+public class HasOrderVolumeGreaterThan extends TypeSafeMatcher<Customer> {
 
-  protected HasOrderVolumeGreaterThan(Customer customer) {
-    super(customer, HasOrderVolumeGreaterThan.class);
+  private BigDecimal expected;
+
+  public HasOrderVolumeGreaterThan(BigDecimal expected) {
+    this.expected = expected;
   }
 
-  public static HasOrderVolumeGreaterThan assertThat(Customer actual) {
-    return new HasOrderVolumeGreaterThan(actual);
+  @Override
+  protected boolean matchesSafely(Customer customer) {
+    BigDecimal actualOrderVolume = calculateOrderVolume(customer.getOrders());
+    return expected.compareTo(actualOrderVolume) < 0;
   }
 
-  public HasOrderVolumeGreaterThan isVIP() {
-    isNotNull();
-
-    if (!this.actual.getTags().contains("VIP")) {
-      failWithMessage("Expected customer <%s> to be VIP but not VIP tag was found <%s>", actual.getUsername(), actual.getTags());
-    }
-
-    return this;
+  @Override
+  public void describeTo(Description description) {
+    description.appendText("customer to have a greater order volume than ");
+    description.appendValue(expected);
   }
 
-  public HasOrderVolumeGreaterThan hasOrderVolumeGreaterThan(BigDecimal expected) {
-    isNotNull();
+  @Override
+  protected void describeMismatchSafely(Customer item, Description mismatchDescription) {
+    mismatchDescription.appendText("customer only ordered for a total of ");
+    mismatchDescription.appendValue(calculateOrderVolume(item.getOrders()));
+  }
 
-    BigDecimal orderVolume = this.actual
-      .getOrders()
+  public static Matcher hasOrderVolumeGreaterThan(BigDecimal expected) {
+    return new HasOrderVolumeGreaterThan(expected);
+  }
+
+  private BigDecimal calculateOrderVolume(List<Order> orders) {
+    return orders
       .stream()
       .map(Order::getProducts)
       .flatMap(List::stream)
       .map(product -> product.getPrice().multiply(BigDecimal.valueOf(product.getQuantity())))
       .reduce(BigDecimal.ZERO, BigDecimal::add);
-
-    if (expected.compareTo(orderVolume) > 0) {
-      failWithMessage("Expected customer's order volume to be greater than <%s> but was <%s>", expected, orderVolume);
-    }
-
-    return this;
   }
 }

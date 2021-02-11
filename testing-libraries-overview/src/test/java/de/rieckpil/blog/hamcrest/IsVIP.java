@@ -1,47 +1,29 @@
 package de.rieckpil.blog.hamcrest;
 
 import de.rieckpil.blog.customer.Customer;
-import de.rieckpil.blog.customer.Order;
-import org.assertj.core.api.AbstractAssert;
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
+import org.hamcrest.TypeSafeMatcher;
 
-import java.math.BigDecimal;
-import java.util.List;
+public class IsVIP extends TypeSafeMatcher<Customer> {
 
-public class IsVIP extends AbstractAssert<IsVIP, Customer> {
-
-  protected IsVIP(Customer customer) {
-    super(customer, IsVIP.class);
+  @Override
+  protected boolean matchesSafely(Customer customer) {
+    return customer.getTags().contains("VIP");
   }
 
-  public static IsVIP assertThat(Customer actual) {
-    return new IsVIP(actual);
+  @Override
+  protected void describeMismatchSafely(Customer item, Description mismatchDescription) {
+    mismatchDescription.appendText("customer only had the following tags ");
+    mismatchDescription.appendValue(item.getTags());
   }
 
-  public IsVIP isVIP() {
-    isNotNull();
-
-    if (!this.actual.getTags().contains("VIP")) {
-      failWithMessage("Expected customer <%s> to be VIP but not VIP tag was found <%s>", actual.getUsername(), actual.getTags());
-    }
-
-    return this;
+  @Override
+  public void describeTo(Description description) {
+    description.appendText("customer to be VIP");
   }
 
-  public IsVIP hasOrderVolumeGreaterThan(BigDecimal expected) {
-    isNotNull();
-
-    BigDecimal orderVolume = this.actual
-      .getOrders()
-      .stream()
-      .map(Order::getProducts)
-      .flatMap(List::stream)
-      .map(product -> product.getPrice().multiply(BigDecimal.valueOf(product.getQuantity())))
-      .reduce(BigDecimal.ZERO, BigDecimal::add);
-
-    if (expected.compareTo(orderVolume) > 0) {
-      failWithMessage("Expected customer's order volume to be greater than <%s> but was <%s>", expected, orderVolume);
-    }
-
-    return this;
+  public static Matcher isVIP() {
+    return new IsVIP();
   }
 }

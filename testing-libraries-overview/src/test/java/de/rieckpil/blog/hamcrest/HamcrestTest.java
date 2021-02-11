@@ -1,11 +1,9 @@
 package de.rieckpil.blog.hamcrest;
 
-import de.rieckpil.blog.assertj.CustomerAssert;
 import de.rieckpil.blog.customer.Address;
 import de.rieckpil.blog.customer.Customer;
 import de.rieckpil.blog.customer.Order;
 import de.rieckpil.blog.customer.Product;
-import org.assertj.core.api.Assertions;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
@@ -23,6 +21,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
+import static de.rieckpil.blog.hamcrest.HasOrderVolumeGreaterThan.hasOrderVolumeGreaterThan;
+import static de.rieckpil.blog.hamcrest.IsVIP.isVIP;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class HamcrestTest {
@@ -99,13 +99,12 @@ public class HamcrestTest {
 
     Customer customer = createTestCustomer("duke42");
 
-    CustomerAssert.assertThat(customer)
-      .isVIP()
-      .hasOrderVolumeGreaterThan(BigDecimal.TEN);
+    MatcherAssert.assertThat(customer, isVIP());
 
-    Assertions.assertThatThrownBy(() -> CustomerAssert.assertThat(customer)
-      .isVIP()
-      .hasOrderVolumeGreaterThan(BigDecimal.valueOf(9999.99)));
+    MatcherAssert.assertThat(customer, hasOrderVolumeGreaterThan(BigDecimal.valueOf(999.99)));
+
+    assertThrows(AssertionError.class,
+      () -> MatcherAssert.assertThat(customer, hasOrderVolumeGreaterThan(BigDecimal.valueOf(9999.99))));
   }
 
   private Customer createTestCustomer(String username) {
