@@ -1,6 +1,7 @@
 package de.rieckpil.blog.testcontainers;
 
 import org.junit.jupiter.api.Test;
+import org.testcontainers.containers.BindMode;
 import org.testcontainers.containers.Container.ExecResult;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.wait.strategy.Wait;
@@ -19,7 +20,7 @@ public class BasicContainerTest {
     new GenericContainer<>(DockerImageName.parse("jboss/keycloak:11.0.0"))
       .waitingFor(Wait.forHttp("/auth").forStatusCode(200))
       .withExposedPorts(8080)
-      // map some file to the container
+      .withClasspathResourceMapping("/config/test.txt", "/tmp/test.txt", BindMode.READ_WRITE)
       .withEnv(Map.of(
         "KEYCLOAK_USER", "testcontainers",
         "KEYCLOAK_PASSWORD", "testcontainers",

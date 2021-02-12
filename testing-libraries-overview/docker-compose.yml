@@ -1,0 +1,13 @@
+version: '3'
+services:
+  database:
+    image: postgres:12.3
+    environment:
+      - POSTGRES_USER=testcontainers
+      - POSTGRES_PASSWORD=secret
+  keycloak:
+    image: jboss/keycloak:11.0.0
+    environment:
+      - KEYCLOAK_USER=testcontainers
+      - KEYCLOAK_PASSWORD=secret
+      - DB_VENDOR=h2
