@@ -1,0 +1,86 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Deploys a Cognito stack.
+Parameters:
+  ApplicationName:
+    Type: String
+    Description: The name of the application, used as a prefix for Cognito resources
+  LoginPageDomainPrefix:
+    Type: String
+    Description: The prefix for the domain of the Cognito hosted login page
+
+Resources:
+  UserPool:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      UserPoolName: !Sub ${ApplicationName}-user-pool
+      AdminCreateUserConfig:
+        AllowAdminCreateUserOnly: True
+      AutoVerifiedAttributes:
+        - email
+      AliasAttributes:
+        - email
+      UsernameConfiguration:
+        CaseSensitive: True
+      AccountRecoverySetting:
+        RecoveryMechanisms:
+          - Name: verified_email
+            Priority: 1
+      MfaConfiguration: "OFF"
+      EmailConfiguration:
+        EmailSendingAccount: COGNITO_DEFAULT
+      Policies:
+        PasswordPolicy:
+          MinimumLength: 12
+          RequireLowercase: True
+          RequireNumbers: True
+          RequireSymbols: True
+          RequireUppercase: True
+          TemporaryPasswordValidityDays: 7
+      Schema:
+        - Name: email
+          AttributeDataType: String
+          Mutable: false
+          Required: true
+  UserPoolClient:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      ClientName: !Sub ${ApplicationName}-client
+      GenerateSecret: true
+      UserPoolId: !Ref UserPool
+      CallbackURLs:
+        - http://localhost:8080/login/oauth2/code/cognito
+      LogoutURLs:
+        - http://localhost:8080
+      SupportedIdentityProviders:
+        - COGNITO
+      AllowedOAuthFlowsUserPoolClient: True
+      AllowedOAuthFlows:
+        - code
+      AllowedOAuthScopes:
+        - openid
+        - email
+        - profile
+      PreventUserExistenceErrors: ENABLED
+  UserPoolDomain:
+    Type: AWS::Cognito::UserPoolDomain
+    Properties:
+      UserPoolId: !Ref UserPool
+      Domain: !Ref LoginPageDomainPrefix
+Outputs:
+  UserPoolId:
+    Value: !Ref UserPool
+    Export:
+      Name: UserPool::Id
+  UserPoolProviderUrl:
+    Value: !GetAtt UserPool.ProviderURL
+    Export:
+      Name: UserPool::ProviderURL
+  UserPoolLogoutUrl:
+    Value: !Sub 'https://${LoginPageDomainPrefix}.auth.${AWS::Region}.amazoncognito.com/logout'
+    Export:
+      Name: UserPool::LogoutURL
+  UserPoolClientId:
+    Value: !Ref UserPoolClient
+    Export:
+      Name: UserPoolClient::Id
+
