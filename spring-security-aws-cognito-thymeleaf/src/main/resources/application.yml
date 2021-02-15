@@ -4,7 +4,7 @@ spring:
       client:
         registration:
           cognito:
-            clientId: ${COGNITO_CLIENT_ID}
+            clientId: foo-bar-replace-me
             clientSecret: ${COGNITO_CLIENT_SECRET}
             scope: openid, profile, email
             redirectUriTemplate: http://localhost:8080/login/oauth2/code/cognito
