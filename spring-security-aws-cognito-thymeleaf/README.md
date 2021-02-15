@@ -1,4 +1,4 @@
-# Codebase for the blog post [Thymeleaf OAuth2 Login with Spring Security and AWS Cognito](https://rieckpil.de/thymeleaf-oauth2-login-with-spring-security-and-aws-cognito/)
+# Codebase for the blog post [Thymeleaf OAuth2 Login with Spring Security and AWS Cognito](https://rieckpil.de/thymeleaf-oauth2-login-with-spring-security-and-aws-cognito/) and
 
 Steps to run this project:
 
