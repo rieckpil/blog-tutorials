@@ -6,10 +6,12 @@ spring:
           cognito:
             clientId: ${COGNITO_CLIENT_ID}
             clientSecret: ${COGNITO_CLIENT_SECRET}
-            scope: openid, email
+            scope: openid, profile, email
             redirectUriTemplate: http://localhost:8080/login/oauth2/code/cognito
-            clientName: spring-boot-backend
+            clientName: rieckpil-test-client
         provider:
           cognito:
-            issuerUri: https://cognito-idp.eu-central-1.amazonaws.com/eu-central-1_q0EMn8pPG
-            userNameAttribute: cognito:username
+            issuerUri: https://cognito-idp.eu-central-1.amazonaws.com/eu-central-1_1c1xrYxCx
+
+cognito:
+  logoutUrl: https://rieckpil-test.auth.eu-central-1.amazoncognito.com/logout
