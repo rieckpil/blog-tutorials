@@ -44,6 +44,13 @@ public class JSONAssertTest {
 
     JSONAssert.assertEquals("{name: 'duke', tags: ['VIP', 'Customer']}", object, false);
 
+    String result = "['mike', 'john', 'alice', 'anna']";
+    JSONAssert.assertEquals("['alice', 'anna', 'mike', 'john']", result, false);
+
+    assertThrows(AssertionError.class, () -> {
+      String failingExample = "['mike', 'john', 'alice', 'anna']";
+      JSONAssert.assertEquals("['alice', 'anna', 'john']", failingExample, false);
+    });
   }
 
   @Test
