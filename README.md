@@ -6,6 +6,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 
 ## Cheat Sheets
 
+* [JUnit 5 & Mockito Cheat Sheet](https://rieckpil.de/junit-5-and-mockito-cheat-sheet-for-java-developers/)
 * [Java EE & Jakarta EE application servers Cheat Sheet](https://rieckpil.de/cheatsheet-java-jakarta-ee-application-servers/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/application-server-cheatsheet))
 * [Spring Web MVC Cheat Sheet](https://rieckpil.de/spring-web-mvc-cheat-sheet/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/))
 
