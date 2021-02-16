@@ -64,6 +64,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 
 ## Articles about AWS
 
+* [OIDC Logout With AWS Cognito and Spring Security](https://rieckpil.de/oidc-logout-with-aws-cognito-and-spring-security/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-security-aws-cognito-thymeleaf))
 * [Java AWS Lambda Container Image Support (Complete Guide)](https://rieckpil.de/java-aws-lambda-container-image-support-complete-guide/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/serverless-java-aws-examples/java-aws-lambda-custom-image))
 * [Resolving Spring Boot properties using the AWS Parameter Store (SSM)](https://rieckpil.de/resolving-spring-boot-properties-using-the-aws-parameter-store-ssm/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-aws-ssm-parameter-resolving))
 * [Java AWS Lambda with Serverless and Maven - Thumbnail Generator](http://rieckpil.de/aws-lambda-with-serverless-java-and-maven-thumbnail-generator) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/serverless-java-aws-examples/thumbnail-generator))
