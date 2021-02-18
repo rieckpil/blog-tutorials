@@ -13,6 +13,10 @@ import org.xmlunit.diff.DifferenceEngine;
 import org.xmlunit.matchers.CompareMatcher;
 import org.xmlunit.matchers.EvaluateXPathMatcher;
 import org.xmlunit.matchers.HasXPathMatcher;
+import org.xmlunit.validation.Languages;
+import org.xmlunit.validation.ValidationProblem;
+import org.xmlunit.validation.ValidationResult;
+import org.xmlunit.validation.Validator;
 import org.xmlunit.xpath.JAXPXPathEngine;
 import org.xmlunit.xpath.XPathEngine;
 
@@ -103,5 +107,32 @@ public class XMLUnitTest {
       EvaluateXPathMatcher.hasXPath("//customer[last()]/address/city/text()", CoreMatchers.is("São Paulo")));
 
     MatcherAssert.assertThat(responseBody, CoreMatchers.not(HasXPathMatcher.hasXPath("//cars")));
+  }
+
+  @Test
+  void xmlSchemaValidation() {
+
+    Validator validator = Validator.forLanguage(Languages.W3C_XML_SCHEMA_NS_URI);
+    validator.setSchemaSource(Input.fromStream(XMLUnitTest.class.getResourceAsStream("/xml/customers.xsd")).build());
+
+    ValidationResult validationResult = validator
+      .validateInstance(Input.fromStream(XMLUnitTest.class.getResourceAsStream("/xml/customers.xml")).build());
+
+    assertTrue(validationResult.isValid(), "XML payload did not match XSD");
+  }
+
+  @Test
+  void xmlSchemaValidationFailure() {
+    Validator validator = Validator.forLanguage(Languages.W3C_XML_SCHEMA_NS_URI);
+    validator.setSchemaSource(Input.fromStream(XMLUnitTest.class.getResourceAsStream("/xml/customers.xsd")).build());
+
+    ValidationResult failingResult = validator
+      .validateInstance(Input.fromString("<customers><car></car></customers>").build());
+
+    assertFalse(failingResult.isValid(), "XML payload did match XSD");
+
+    for (ValidationProblem problem : failingResult.getProblems()) {
+      System.out.println(problem.getMessage());
+    }
   }
 }
