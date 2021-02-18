@@ -1,5 +1,7 @@
 package de.rieckpil.blog.xmlunit;
 
+import org.assertj.core.util.Streams;
+import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -9,13 +11,16 @@ import org.xmlunit.builder.Input;
 import org.xmlunit.diff.DOMDifferenceEngine;
 import org.xmlunit.diff.DifferenceEngine;
 import org.xmlunit.matchers.CompareMatcher;
+import org.xmlunit.matchers.EvaluateXPathMatcher;
+import org.xmlunit.matchers.HasXPathMatcher;
 import org.xmlunit.xpath.JAXPXPathEngine;
 import org.xmlunit.xpath.XPathEngine;
 
 import javax.xml.transform.Source;
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class XMLUnitTest {
 
@@ -69,7 +74,7 @@ public class XMLUnitTest {
   }
 
   @Test
-  void xPathTestExampleJUnitJupiter() throws IOException {
+  void xPathTestExample() throws IOException {
 
     Source responseBody = Input
       .fromString(new String(this.getClass().getResourceAsStream("/xml/customers.xml").readAllBytes()))
@@ -78,14 +83,25 @@ public class XMLUnitTest {
     XPathEngine xpath = new JAXPXPathEngine();
 
     Iterable<Node> allCustomers = xpath.selectNodes("//customer", responseBody);
+    Iterable<Node> amountOfVIPs = xpath.selectNodes("//customer/tags/tag[text()=\"VIP\"]", responseBody);
+    Iterable<Node> amountOfLaptopOrders = xpath.selectNodes("//products/product/name[text()=\"Laptop\"]", responseBody);
+    String cityNameLastCustomer = xpath.evaluate("//customer[last()]/address/city/text()", responseBody);
 
-    for (Node node :
-      allCustomers) {
-      System.out.println(node);
-    }
+    assertEquals(3, Streams.stream(allCustomers).count());
+    assertEquals(1, Streams.stream(amountOfVIPs).count());
+    assertTrue(Streams.stream(amountOfLaptopOrders).count() > 0, "Nobody ordered a Laptop");
+    assertEquals("São Paulo", cityNameLastCustomer);
 
-    System.out.println(allCustomers.spliterator().getExactSizeIfKnown());
-    System.out.println(xpath.evaluate("/customers/customer[0]/username/text()", responseBody));
-    System.out.println(xpath.evaluate("/customers/customer[0]", responseBody));
+    assertThat(allCustomers).hasSize(3);
+    assertThat(amountOfVIPs).hasSize(1);
+    assertThat(amountOfLaptopOrders).hasSize(1);
+    assertThat(cityNameLastCustomer).isEqualTo("São Paulo");
+
+    MatcherAssert.assertThat(responseBody, HasXPathMatcher.hasXPath("//tags"));
+
+    MatcherAssert.assertThat(responseBody,
+      EvaluateXPathMatcher.hasXPath("//customer[last()]/address/city/text()", CoreMatchers.is("São Paulo")));
+
+    MatcherAssert.assertThat(responseBody, CoreMatchers.not(HasXPathMatcher.hasXPath("//cars")));
   }
 }
