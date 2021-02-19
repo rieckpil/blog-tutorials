@@ -1,4 +1,4 @@
-package de.rieckpil.blog.wiremock;
+package de.rieckpil.blog.client;
 
 import java.util.List;
 

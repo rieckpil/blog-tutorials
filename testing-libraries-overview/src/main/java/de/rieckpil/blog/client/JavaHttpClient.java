@@ -1,4 +1,4 @@
-package de.rieckpil.blog.wiremock;
+package de.rieckpil.blog.client;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;

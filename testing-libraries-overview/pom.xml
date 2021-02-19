@@ -17,7 +17,7 @@
 
   <properties>
     <java.version>11</java.version>
-    <testcontainers.version>1.15.1</testcontainers.version>
+    <testcontainers.version>1.15.2</testcontainers.version>
     <mockito.version>3.7.0</mockito.version>
     <testng.version>6.8</testng.version>
     <hamcrest.version>2.2</hamcrest.version>
@@ -27,6 +27,8 @@
     <powermock.version>2.0.9</powermock.version>
     <wiremock.version>2.27.2</wiremock.version>
     <mockwebserver.version>4.9.0</mockwebserver.version>
+    <okio.version>2.10.0</okio.version>
+    <okhttp3.version>4.9.0</okhttp3.version>
     <xmlunit.version>2.8.2</xmlunit.version>
     <selenide.version>5.15.0</selenide.version>
     <selenium.version>3.141.59</selenium.version>
@@ -53,6 +55,11 @@
         <version>${testcontainers.version}</version>
         <type>pom</type>
         <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.squareup.okio</groupId>
+        <artifactId>okio</artifactId>
+        <version>${okio.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -156,11 +163,11 @@
       <version>${wiremock.version}</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>com.squareup.okhttp3</groupId>
-      <artifactId>mockwebserver</artifactId>
-      <version>${mockwebserver.version}</version>
-    </dependency>
+<dependency>
+  <groupId>com.squareup.okhttp3</groupId>
+  <artifactId>mockwebserver</artifactId>
+  <version>${mockwebserver.version}</version>
+</dependency>
 
     <!-- Infrastructure Libraries -->
     <dependency>
