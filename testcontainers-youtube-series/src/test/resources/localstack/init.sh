@@ -3,4 +3,4 @@
 awslocal sqs create-queue --queue-name testcontainers
 awslocal s3api create-bucket --bucket testcontainers
 
-echo "Finished LocalStack initialization"
+echo "Initialized."
