@@ -12,6 +12,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 
 ## Articles about Testing
 
+* [Initialization Strategies With Testcontainers For Integration Tests](https://rieckpil.de/initialization-strategies-with-testcontainers-for-integration-tests/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/testcontainers-youtube-series))
 * [Record Spring Events When Testing Spring Boot Applications](https://rieckpil.de/record-spring-events-when-testing-spring-boot-applications/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-test-spring-events))
 * [Testing Spring Boot Applications With REST Assured](https://rieckpil.de/testing-spring-boot-applications-with-rest-assured/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-rest-assured))
 * [How to Test Java HTTP Client Usages (e.g OkHttp, Apache HttpClient)](https://rieckpil.de/how-to-test-java-http-client-usages-e-g-okhttp-apache-httpclient/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/test-java-http-clients))
