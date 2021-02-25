@@ -1,4 +1,4 @@
-package de.rieckpil.blog.junit;
+package de.rieckpil.blog.junit5;
 // tag::JUnitExampleTest[]
 import org.junit.jupiter.api.Test;
 

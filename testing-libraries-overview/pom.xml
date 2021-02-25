@@ -17,6 +17,7 @@
 
   <properties>
     <java.version>11</java.version>
+    <junit4.version>4.13.2</junit4.version>
     <testcontainers.version>1.15.2</testcontainers.version>
     <mockito.version>3.7.0</mockito.version>
     <testng.version>6.8</testng.version>
@@ -88,6 +89,12 @@
     </dependency>
 
     <!-- Test Runner -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit4.version}</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
