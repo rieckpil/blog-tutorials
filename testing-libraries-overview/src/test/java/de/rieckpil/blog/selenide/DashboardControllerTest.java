@@ -4,8 +4,11 @@ import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 
@@ -16,6 +19,14 @@ class DashboardControllerWebTest {
 
   @LocalServerPort
   private Integer port;
+
+  @BeforeAll
+  static void configure() {
+    ChromeOptions chromeOptions = new ChromeOptions();
+    chromeOptions.addArguments("--no-sandbox", "--disable-dev-shm-usage");
+
+    Configuration.browserCapabilities = chromeOptions;
+  }
 
   @Test
   void accessDashboardPage() {
@@ -49,6 +60,7 @@ class DashboardControllerWebTest {
   }
 
   @Test
+  @Disabled("Showcase only")
   void accessDashboardWithFirefox() {
     Configuration.browser = "firefox";
     Configuration.browserSize = "1337x1337";
