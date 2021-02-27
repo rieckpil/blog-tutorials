@@ -14,6 +14,7 @@ import org.springframework.boot.web.server.LocalServerPort;
 
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
+@Disabled("Showcase only")
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 class DashboardControllerWebTest {
 
@@ -60,7 +61,6 @@ class DashboardControllerWebTest {
   }
 
   @Test
-  @Disabled("Showcase only")
   void accessDashboardWithFirefox() {
     Configuration.browser = "firefox";
     Configuration.browserSize = "1337x1337";
