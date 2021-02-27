@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.3/css/bootstrap.min.css" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.3/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div>
+  <h1 th:text="${message}"></h1>
+  <button id="fetch-customers">Fetch Customers!</button>
+
+  <div style="margin-top: 10px" id="latest-customers-container">
+    <p>No customers available (yet)!</p>
+  </div>
+</div>
+
+</body>
+
+<script>
+  const fetchCustomers = () => {
+    fetch('/api/customers')
+      .then(response => response.json())
+      .then(body => {
+        const table = createTable(body);
+        document.getElementById('latest-customers-container').innerHTML = '';
+        document.getElementById('latest-customers-container').appendChild(table);
+      });
+  };
+
+  const button = document.getElementById('fetch-customers');
+  button.onclick = () => fetchCustomers();
+
+  const createTable = (books) => {
+    const table = document.createElement('table');
+    table.setAttribute('border', '1');
+
+    const tableBody = document.createElement('tbody');
+    tableBody.id = 'all-customers';
+
+    books.forEach(customer => {
+      const row = document.createElement('tr');
+      row.className = 'customer-information';
+
+      const usernameColumn = document.createElement('td');
+      usernameColumn.appendChild(document.createTextNode(customer.username));
+
+      const addressColumn = document.createElement('td');
+      addressColumn.appendChild(document.createTextNode(customer.address.country));
+
+      const oderColumn = document.createElement('td');
+      oderColumn.appendChild(document.createTextNode(customer.orders.length));
+
+      row.appendChild(usernameColumn);
+      row.appendChild(addressColumn);
+      row.appendChild(oderColumn)
+
+      tableBody.appendChild(row);
+    });
+
+    table.appendChild(tableBody);
+    return table;
+  };
+</script>
+</html>
