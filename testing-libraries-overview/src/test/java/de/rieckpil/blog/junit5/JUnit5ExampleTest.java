@@ -50,7 +50,7 @@ class JUnit5ExampleTest {
 
   @Test
   @Tag("fast-test")
-  public void fastTest() {
+  void fastTest() {
     Assertions.assertEquals("FAST", "fast".toUpperCase());
   }
 
