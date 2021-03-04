@@ -179,11 +179,11 @@
       <version>${wiremock.version}</version>
       <scope>test</scope>
     </dependency>
-<dependency>
-  <groupId>com.squareup.okhttp3</groupId>
-  <artifactId>mockwebserver</artifactId>
-  <version>${mockwebserver.version}</version>
-</dependency>
+    <dependency>
+      <groupId>com.squareup.okhttp3</groupId>
+      <artifactId>mockwebserver</artifactId>
+      <version>${mockwebserver.version}</version>
+    </dependency>
 
     <!-- Infrastructure Libraries -->
     <dependency>
@@ -251,12 +251,12 @@
     </dependency>
 
     <!-- Utility Libraries -->
-<dependency>
-  <groupId>com.codeborne</groupId>
-  <artifactId>selenide</artifactId>
-  <version>${selenide.version}</version>
-  <scope>test</scope>
-</dependency>
+    <dependency>
+      <groupId>com.codeborne</groupId>
+      <artifactId>selenide</artifactId>
+      <version>${selenide.version}</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
       <groupId>com.icegreen</groupId>
       <artifactId>greenmail</artifactId>

@@ -1,4 +1,4 @@
-package de.rieckpil.blog.greenmail;
+package de.rieckpil.blog.mailing;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
