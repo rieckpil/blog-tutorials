@@ -19,6 +19,7 @@ class OrderServiceTest {
 
   @Test
   void shouldIncludeRandomOrderIdWhenNoParentOrderExists() {
+
     try (MockedStatic<UUID> mockedUuid = Mockito.mockStatic(UUID.class)) {
       mockedUuid.when(UUID::randomUUID).thenReturn(defaultUuid);
 
