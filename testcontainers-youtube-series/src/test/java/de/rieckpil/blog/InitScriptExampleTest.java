@@ -15,7 +15,7 @@ public class InitScriptExampleTest {
     .withUsername("testcontainers")
     .withPassword("testcontainers")
     .withInitScript("database/INIT.sql")
-    .withDatabaseName("tescontainers");
+    .withDatabaseName("testcontainers");
 
   @Test
   void testPostgreSQLModule() throws SQLException {
