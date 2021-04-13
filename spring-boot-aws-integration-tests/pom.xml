@@ -5,9 +5,10 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.2.6.RELEASE</version>
+    <version>2.3.9.RELEASE</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
+
   <groupId>de.rieckpil.blog</groupId>
   <artifactId>spring-boot-aws-integration-tests</artifactId>
   <version>0.0.1-SNAPSHOT</version>
@@ -16,8 +17,8 @@
 
   <properties>
     <java.version>11</java.version>
-    <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
-    <testcontainers.version>1.15.1</testcontainers.version>
+    <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
+    <testcontainers.version>1.15.2</testcontainers.version>
     <awaitility.version>4.0.2</awaitility.version>
   </properties>
 

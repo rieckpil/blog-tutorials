@@ -1,16 +1,22 @@
 package de.rieckpil.blog;
 
 import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.AmazonS3Exception;
+import com.amazonaws.services.sqs.AmazonSQSAsync;
+import com.amazonaws.services.sqs.AmazonSQSAsyncClientBuilder;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.cloud.aws.messaging.core.QueueMessagingTemplate;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.testcontainers.containers.localstack.LocalStackContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+import org.testcontainers.utility.DockerImageName;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -24,11 +30,11 @@ import static org.testcontainers.containers.localstack.LocalStackContainer.Servi
 
 @Testcontainers
 @SpringBootTest
-@Import(AwsTestConfig.class)
 public class SimpleMessageListenerIT {
 
   @Container
-  static LocalStackContainer localStack = new LocalStackContainer("0.10.0")
+  static LocalStackContainer localStack =
+    new LocalStackContainer(DockerImageName.parse("localstack/localstack:0.10.0"))
     .withServices(S3, SQS)
     .withEnv("DEFAULT_REGION", "eu-central-1");
 
@@ -36,6 +42,26 @@ public class SimpleMessageListenerIT {
   static void beforeAll() throws IOException, InterruptedException {
     localStack.execInContainer("awslocal", "sqs", "create-queue", "--queue-name", QUEUE_NAME);
     localStack.execInContainer("awslocal", "s3", "mb", "s3://" + BUCKET_NAME);
+  }
+
+  @TestConfiguration
+  static class AwsTestConfig {
+
+    @Bean
+    public AmazonS3 amazonS3() {
+      return AmazonS3ClientBuilder.standard()
+        .withCredentials(localStack.getDefaultCredentialsProvider())
+        .withEndpointConfiguration(localStack.getEndpointConfiguration(S3))
+        .build();
+    }
+
+    @Bean
+    public AmazonSQSAsync amazonSQS() {
+      return AmazonSQSAsyncClientBuilder.standard()
+        .withCredentials(localStack.getDefaultCredentialsProvider())
+        .withEndpointConfiguration(localStack.getEndpointConfiguration(SQS))
+        .build();
+    }
   }
 
   @Autowired
