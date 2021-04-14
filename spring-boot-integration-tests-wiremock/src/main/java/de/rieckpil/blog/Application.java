@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootIntegrationTestsWiremockApplication {
+public class Application {
 
   public static void main(String[] args) {
-    SpringApplication.run(SpringBootIntegrationTestsWiremockApplication.class, args);
+    SpringApplication.run(Application.class, args);
   }
 
 }

@@ -33,7 +33,7 @@ class TodoControllerIT {
   }
 
   @Test
-  public void testGetAllTodosShouldReturnDataFromClient() {
+  void testGetAllTodosShouldReturnDataFromClient() {
     this.wireMockServer.stubFor(
       WireMock.get("/todos")
         .willReturn(aResponse()
@@ -56,11 +56,12 @@ class TodoControllerIT {
   }
 
   @Test
-  public void testGetAllTodosShouldPropagateErrorMessageFromClient() {
+  void testGetAllTodosShouldPropagateErrorMessageFromClient() {
     this.wireMockServer.stubFor(
       WireMock.get("/todos")
         .willReturn(aResponse()
-          .withStatus(403))
+          .withStatus(403)
+          .withFixedDelay(2000)) // milliseconds
     );
 
     this.webTestClient
