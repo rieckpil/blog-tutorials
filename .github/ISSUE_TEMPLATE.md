@@ -1,4 +1,4 @@
-<!--- This issue tracker is **ONLY** used for reporting bugs for examples presented in a blog post on [rieckpil.de](https://rieckpil.de/). Please use [StackOverflow](https://stackoverflow.com) for asking general questions. -->
+<!--- This issue tracker is **ONLY** used for reporting bugs for examples presented in a blog post on [rieckpil.de](https://rieckpil.de/) or asking related questions. Please use [Stack Overflow](https://stackoverflow.com) for asking general questions. -->
 
 ## Blog post you are referring to
 <!--- Please add the name of the blog post or the folder name of the source code -->
