@@ -1,5 +1,9 @@
 name: Build Gradle Projects
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 5 * * SUN'
 jobs:
   build-jdk8:
     runs-on: ubuntu-20.04
