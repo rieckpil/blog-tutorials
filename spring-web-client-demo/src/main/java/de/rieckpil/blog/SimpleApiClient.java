@@ -17,6 +17,7 @@ public class SimpleApiClient {
   private final WebClient defaultWebClient;
   private final ObjectMapper objectMapper;
 
+  // inject the configured WebClient @Bean from the configuration above
   public SimpleApiClient(WebClient defaultWebClient, ObjectMapper objectMapper) {
     this.defaultWebClient = defaultWebClient;
     this.objectMapper = objectMapper;

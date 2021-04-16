@@ -28,18 +28,43 @@ public class SimpleWebClientConfiguration {
   private static final String BASE_URL = "https://jsonplaceholder.typicode.com";
   private static final Logger logger = LoggerFactory.getLogger(SimpleApiClient.class);
 
-  @Bean
-  public WebClient defaultWebClient() {
+  // @Bean
+  public WebClient webClientFromBuilder(WebClient.Builder webClientBuilder) {
 
-    var tcpClient = TcpClient.create()
-      .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 2_000)
+    HttpClient httpClient = HttpClient.create()
+      .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 2_000) // millis
       .doOnConnected(connection ->
-        connection.addHandlerLast(new ReadTimeoutHandler(2))
-          .addHandlerLast(new WriteTimeoutHandler(2)));
+        connection
+          .addHandlerLast(new ReadTimeoutHandler(2)) // seconds
+          .addHandlerLast(new WriteTimeoutHandler(2))); // seconds
+
+    return webClientBuilder
+      .baseUrl(BASE_URL)
+      .clientConnector(new ReactorClientHttpConnector(httpClient))
+      .defaultCookie("cookieKey", "cookieValue", "teapot", "amsterdam")
+      .defaultCookie("secretToken", UUID.randomUUID().toString())
+      .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+      .defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
+      .defaultHeader(HttpHeaders.USER_AGENT, "I'm a teapot")
+      .filter(ExchangeFilterFunctions.basicAuthentication("rieckpil", UUID.randomUUID().toString()))
+      .filter(logRequest())
+      .filter(logResponse())
+      .build();
+  }
+
+  @Bean
+  public WebClient webClientFromScratch() {
+
+    HttpClient httpClient = HttpClient.create()
+      .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 2_000) // millis
+      .doOnConnected(connection ->
+        connection
+          .addHandlerLast(new ReadTimeoutHandler(2)) // seconds
+          .addHandlerLast(new WriteTimeoutHandler(2))); // seconds
 
     return WebClient.builder()
       .baseUrl(BASE_URL)
-      .clientConnector(new ReactorClientHttpConnector(HttpClient.from(tcpClient)))
+      .clientConnector(new ReactorClientHttpConnector(httpClient))
       .defaultCookie("cookieKey", "cookieValue", "teapot", "amsterdam")
       .defaultCookie("secretToken", UUID.randomUUID().toString())
       .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)

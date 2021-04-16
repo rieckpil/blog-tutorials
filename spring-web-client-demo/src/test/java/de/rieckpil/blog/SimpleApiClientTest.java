@@ -1,57 +1,46 @@
 package de.rieckpil.blog;
 
-import org.junit.jupiter.api.Disabled;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import okhttp3.mockwebserver.MockResponse;
+import okhttp3.mockwebserver.MockWebServer;
+import okhttp3.mockwebserver.RecordedRequest;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.web.reactive.server.WebTestClient;
-import org.springframework.web.reactive.function.BodyInserters;
+import org.springframework.web.reactive.function.client.WebClient;
 
+import java.io.IOException;
 
-@ExtendWith(SpringExtension.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class SimpleApiClientTest {
 
-  @Autowired
-  private WebTestClient webTestClient;
+  private MockWebServer mockWebServer;
+  private SimpleApiClient cut; // Class Under Test
 
-  @Test
-  @Disabled
-  public void testGetTodosAPICall() {
-    this.webTestClient
-      .get()
-      .uri("https://jsonplaceholder.typicode.com/todos/1")
-      .accept(MediaType.APPLICATION_JSON)
-      .exchange()
-      .expectStatus().isOk()
-      .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
-      .expectBody()
-      .jsonPath("$.title").isNotEmpty()
-      .jsonPath("$.userId").isNotEmpty()
-      .jsonPath("$.completed").isNotEmpty();
+  @BeforeEach
+  void setup() throws IOException {
+    this.mockWebServer = new MockWebServer();
+    this.mockWebServer.start();
+    this.cut = new SimpleApiClient(WebClient
+      .builder()
+      .baseUrl(mockWebServer.url("/").toString()).build(), new ObjectMapper());
   }
 
   @Test
-  @Disabled
-  public void testPostNewTodoCall() {
-    this.webTestClient
-      .post()
-      .uri("https://jsonplaceholder.typicode.com/todos")
-      .contentType(MediaType.APPLICATION_JSON)
-      .accept(MediaType.APPLICATION_JSON)
-      .body(BodyInserters.fromValue("{ \"title\": \"foo\", \"body\": \"bar\", \"userId\": \"1\"}"))
-      .exchange()
-      .expectStatus().isCreated()
-      .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
-      .expectBody()
-      .jsonPath("$.title").isNotEmpty()
-      .jsonPath("$.body").isNotEmpty()
-      .jsonPath("$.userId").isNotEmpty()
-      .jsonPath("$.userId").isEqualTo("1")
-      .jsonPath("$.id").isNotEmpty();
-  }
+  void testGetUserById() throws InterruptedException {
+    MockResponse mockResponse = new MockResponse()
+      .addHeader("Content-Type", "application/json; charset=utf-8")
+      .setBody("{\"id\": 1, \"name\":\"write good tests\"}");
 
+    mockWebServer.enqueue(mockResponse);
+
+    JsonNode result = cut.getTodoFromAPI();
+
+    assertEquals(1, result.get("id").asInt());
+    assertEquals("write good tests", result.get("name").asText());
+
+    RecordedRequest request = mockWebServer.takeRequest();
+    assertEquals("/todos/1", request.getPath());
+  }
 }
