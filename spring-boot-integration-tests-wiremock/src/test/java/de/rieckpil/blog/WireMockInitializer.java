@@ -8,11 +8,14 @@ import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.event.ContextClosedEvent;
 
+import java.util.Map;
+
 public class WireMockInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 
   @Override
   public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
-    WireMockServer wireMockServer = new WireMockServer(new WireMockConfiguration().dynamicPort());
+    WireMockServer wireMockServer =
+      new WireMockServer(new WireMockConfiguration().dynamicPort());
     wireMockServer.start();
 
     configurableApplicationContext.getBeanFactory().registerSingleton("wireMockServer", wireMockServer);
@@ -24,7 +27,7 @@ public class WireMockInitializer implements ApplicationContextInitializer<Config
     });
 
     TestPropertyValues
-      .of("todo_url:http://localhost:" + wireMockServer.port() + "/todos")
+      .of(Map.of("todo_base_url", "http://localhost:" + wireMockServer.port()))
       .applyTo(configurableApplicationContext);
   }
 }

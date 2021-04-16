@@ -20,6 +20,7 @@ public class TodoController {
   public ArrayNode getAllTodos() {
     return this.todoWebClient
       .get()
+      .uri("/todos")
       .retrieve()
       .bodyToMono(ArrayNode.class)
       .block();
