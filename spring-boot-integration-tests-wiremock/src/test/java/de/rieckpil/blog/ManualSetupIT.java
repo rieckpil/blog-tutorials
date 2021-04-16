@@ -89,7 +89,6 @@ class ManualSetupIT {
     List<LoggedRequest> unmatchedRequests = wireMockServer.findAllUnmatchedRequests();
 
     assertEquals(0, unmatchedRequests.size());
-
   }
 
   private void stubForTodosResponse() {
