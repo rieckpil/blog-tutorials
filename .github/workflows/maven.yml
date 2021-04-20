@@ -25,4 +25,6 @@ jobs:
         with:
           java-version: ${{ matrix.versions }}
       - name: Build all projects with Maven
-        run: ./buildJdk${{ matrix.versions }}Projects.sh
+        run: |
+        chmod +x ./buildJdk${{ matrix.versions }}Projects.sh
+        ./buildJdk${{ matrix.versions }}Projects.sh
