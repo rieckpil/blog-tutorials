@@ -4,5 +4,5 @@ Steps to run this project:
 
 1. Clone this Git repository
 2. Navigate to the folder `testing-spring-rest-template`
-3. Make sure to have Java 13 installed available: `java -version`
+3. Make sure to have Java 16 installed: `java -version`
 4. Execute all tests with `mvn test`

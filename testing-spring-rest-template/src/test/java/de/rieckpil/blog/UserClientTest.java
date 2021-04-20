@@ -27,7 +27,7 @@ class UserClientTest {
   private MockRestServiceServer mockRestServiceServer;
 
   @Test
-  public void userClientSuccessfullyReturnsUser() {
+  void userClientSuccessfullyReturnsUser() {
 
     String json = """
       {
@@ -51,7 +51,7 @@ class UserClientTest {
   }
 
   @Test
-  public void userClientSuccessfullyReturnsUserDuke() throws Exception {
+  void userClientSuccessfullyReturnsUserDuke() throws Exception {
 
     String json = this.objectMapper
       .writeValueAsString(new User(new UserData(42L, "duke@java.org", "duke", "duke", "duke")));
@@ -70,7 +70,7 @@ class UserClientTest {
   }
 
   @Test
-  public void userClientThrowsExceptionWhenNoUserIsFound() {
+  void userClientThrowsExceptionWhenNoUserIsFound() {
     this.mockRestServiceServer.expect(requestTo("/api/users/1"))
       .andRespond(MockRestResponseCreators.withStatus(HttpStatus.NOT_FOUND));
 

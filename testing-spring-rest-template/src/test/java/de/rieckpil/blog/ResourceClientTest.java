@@ -25,19 +25,19 @@ class ResourceClientTest {
   private MockRestServiceServer mockRestServiceServer;
 
   @BeforeEach
-  // @Before for JUnit 4
-  public void setUp() {
+    // @Before for JUnit 4
+  void setUp() {
     this.mockRestServiceServer.reset();
   }
 
   @AfterEach
- // @After for JUnit 4
-  public void tearDown() {
+    // @After for JUnit 4
+  void tearDown() {
     this.mockRestServiceServer.verify();
   }
 
   @Test
-  public void successfullyReturnData() {
+  void successfullyReturnData() {
 
     String json = """
         {
@@ -53,5 +53,4 @@ class ResourceClientTest {
 
     assertNotNull(result);
   }
-
 }
