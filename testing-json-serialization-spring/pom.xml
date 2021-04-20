@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.2.2.RELEASE</version>
+    <version>2.4.5</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
@@ -13,7 +13,7 @@
   <artifactId>testing-json-serialization-spring</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>testing-json-serialization-spring</name>
-  <description>Testing JSON serialization with Spring</description>
+  <description>Testing JSON serialization with Spring Boot</description>
 
   <properties>
     <java.version>11</java.version>
@@ -29,12 +29,6 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>org.junit.vintage</groupId>
-          <artifactId>junit-vintage-engine</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
   </dependencies>
 
