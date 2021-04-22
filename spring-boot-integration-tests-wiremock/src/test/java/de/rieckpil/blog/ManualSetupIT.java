@@ -3,11 +3,13 @@ package de.rieckpil.blog;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
+import com.github.tomakehurst.wiremock.matching.UrlPattern;
 import com.github.tomakehurst.wiremock.stubbing.ServeEvent;
 import com.github.tomakehurst.wiremock.stubbing.StubMapping;
 import com.github.tomakehurst.wiremock.verification.LoggedRequest;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -54,6 +56,13 @@ class ManualSetupIT {
     wireMockServer.stop();
   }
 
+  @BeforeEach
+  void clearWireMock() {
+    System.out.println("Stubbings from last test: " + wireMockServer.getStubMappings().size());
+    wireMockServer.resetAll();
+    System.out.println("Stubbings after reset: " + wireMockServer.getStubMappings().size());
+  }
+
   @Test
   void shouldStartWireMock() {
 
@@ -64,11 +73,61 @@ class ManualSetupIT {
   }
 
   @Test
-  void verifyRequests() {
+  void verifyRequestsPartInitial() {
+
+    wireMockServer.stubFor(
+      WireMock.get(urlEqualTo("/todos"))
+        .willReturn(aResponse()
+          .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
+          .withBodyFile("todo-api/response-200.json")
+        )
+    );
+
+    this.webTestClient
+      .get()
+      .uri("/api/todos")
+      .exchange()
+      .expectStatus().isOk()
+      .expectBody().jsonPath("$.length()").isEqualTo(3);
+  }
+
+  @Test
+  void verifyRequestsFailing() {
+
+    // anyUrl
+    // urlPathMatching
+
+    wireMockServer.stubFor(
+      WireMock.get(WireMock.anyUrl())
+        .atPriority(1) // highest priority
+        .willReturn(aResponse()
+          .withStatus(500)
+          .withBody("Server unavailable"))
+    );
+
+    wireMockServer.givenThat(
+      WireMock.get(WireMock.anyUrl())
+        .atPriority(10)
+        .willReturn(aResponse()
+          .withStatus(200)
+          .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
+          .withBody("[]"))
+    );
+
+
+    this.webTestClient
+      .get()
+      .uri("/api/todos")
+      .exchange()
+      .expectStatus().is5xxServerError();
+  }
+
+  @Test
+  void verifyRequestsPartTwo() {
 
     stubForTodosResponseWithBodyFile();
 
-    webTestClient
+    this.webTestClient
       .get()
       .uri("/api/todos")
       .exchange()
@@ -109,7 +168,7 @@ class ManualSetupIT {
       WireMock.get(urlEqualTo("/todos"))
         .willReturn(aResponse()
           .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
-          .withBodyFile("todo-api-response-200.json")
+          .withBodyFile("todo-api/response-200.json")
         )
     );
   }
