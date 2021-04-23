@@ -21,6 +21,7 @@ public class TodoController {
     return this.todoWebClient
       .get()
       .uri("/todos")
+      .header("X-Auth", "duke")
       .retrieve()
       .bodyToMono(ArrayNode.class)
       .block();

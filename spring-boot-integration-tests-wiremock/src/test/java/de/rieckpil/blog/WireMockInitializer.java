@@ -1,6 +1,5 @@
 package de.rieckpil.blog;
 
-
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
 import org.springframework.boot.test.util.TestPropertyValues;
@@ -13,21 +12,25 @@ import java.util.Map;
 public class WireMockInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 
   @Override
-  public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
+  public void initialize(ConfigurableApplicationContext applicationContext) {
+
     WireMockServer wireMockServer =
       new WireMockServer(new WireMockConfiguration().dynamicPort());
+
     wireMockServer.start();
 
-    configurableApplicationContext.getBeanFactory().registerSingleton("wireMockServer", wireMockServer);
-
-    configurableApplicationContext.addApplicationListener(applicationEvent -> {
+    applicationContext.addApplicationListener(applicationEvent -> {
       if (applicationEvent instanceof ContextClosedEvent) {
         wireMockServer.stop();
       }
     });
 
+    applicationContext.getBeanFactory()
+      .registerSingleton("wireMockServer", wireMockServer);
+
     TestPropertyValues
-      .of(Map.of("todo_base_url", "http://localhost:" + wireMockServer.port()))
-      .applyTo(configurableApplicationContext);
+      .of(Map.of("todo_base_url", wireMockServer.baseUrl()))
+      .applyTo(applicationContext);
+
   }
 }
