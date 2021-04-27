@@ -19,18 +19,15 @@ class InspirationalQuotesClientTest {
   @Mock
   private WebClient webClient;
 
-  @Mock
-  private WebClient.RequestHeadersUriSpec requestHeadersUriSpec;
-
-  @Mock
-  private WebClient.ResponseSpec responseSpec;
-
-
   @InjectMocks
   private InspirationalQuotesClient cut; // class under test
 
   @Test
   void shouldReturnInMockingHell() {
+
+    WebClient.RequestHeadersUriSpec requestHeadersUriSpec = Mockito.mock(WebClient.RequestHeadersUriSpec.class);
+    WebClient.ResponseSpec responseSpec = Mockito.mock(WebClient.ResponseSpec.class);
+
     when(webClient.get()).thenReturn(requestHeadersUriSpec);
     when(requestHeadersUriSpec.uri("/api/quotes")).thenReturn(requestHeadersUriSpec);
     when(requestHeadersUriSpec.retrieve()).thenReturn(responseSpec);

@@ -3,11 +3,13 @@ package de.rieckpil.blog.deepstubs;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Answers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -26,14 +28,20 @@ class DeepStubClientTest {
     Mockito
       .when(webClient
         .get()
-        .uri("/api/quotes")
+        .uri(ArgumentMatchers.anyString())
         .retrieve()
-        .bodyToMono(String.class)
-        .block())
-      .thenReturn("That's a code smell");
+        .bodyToMono(String.class))
+      .thenReturn(Mono.just("Less setup hell - but not better"));
 
     String result = cut.fetchRandomQuote();
 
-    assertEquals("That's a code smell", result);
+    assertEquals("Less setup hell - but not better", result);
+
+    Mockito.verify(webClient.get().uri("/quotes").retrieve()).bodyToMono(String.class);
+
+    // The following verifications won't work and fail
+    // Mockito.verify(webClient.get().uri("/quotes")).retrieve();
+    // Mockito.verify(webClient.get()).uri("/quotes");
+    // Mockito.verify(webClient).get();
   }
 }
