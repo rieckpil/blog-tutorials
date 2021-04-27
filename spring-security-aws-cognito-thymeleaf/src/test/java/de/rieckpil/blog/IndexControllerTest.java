@@ -1,6 +1,7 @@
 package de.rieckpil.blog;
 
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -12,6 +13,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@Disabled
 @WebMvcTest
 class IndexControllerTest {
 
@@ -19,7 +21,7 @@ class IndexControllerTest {
   private MockMvc mockMvc;
 
   @Test
-  public void anonymousUsersShouldNotGetSecretMessage() throws Exception {
+  void anonymousUsersShouldNotGetSecretMessage() throws Exception {
     this.mockMvc
       .perform(get("/")
         .with(anonymous()))
@@ -29,7 +31,7 @@ class IndexControllerTest {
   }
 
   @Test
-  public void authenticatedUsersShouldGetSecretMessage() throws Exception {
+  void authenticatedUsersShouldGetSecretMessage() throws Exception {
     this.mockMvc
       .perform(get("/")
         .with(oidcLogin()))
@@ -39,7 +41,7 @@ class IndexControllerTest {
   }
 
   @Test
-  public void authenticatedAdminUsersShouldGetDetailedSecretMessage() throws Exception {
+  void authenticatedAdminUsersShouldGetDetailedSecretMessage() throws Exception {
     this.mockMvc
       .perform(get("/")
         .with(oidcLogin().authorities(new SimpleGrantedAuthority("ROLE_ADMIN"))))
@@ -47,5 +49,4 @@ class IndexControllerTest {
       .andExpect(model().attributeExists("secretMessage", "message"))
       .andExpect(model().attribute("secretMessage", "Admin message is s3crEt"));
   }
-
 }
