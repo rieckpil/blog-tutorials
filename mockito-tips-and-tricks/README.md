@@ -1,4 +1,6 @@
-# Codebase for the blog post [Mocking Statics Methods with Mockito (Kotlin & Java)](https://rieckpil.de/mocking-static-methods-with-mockito-java-kotlin/)
+# Codebase for various Mockito-related blog posts
+
+- [Mocking Statics Methods with Mockito (Kotlin & Java)](https://rieckpil.de/mocking-static-methods-with-mockito-java-kotlin/)
 
 Steps to run this project:
 

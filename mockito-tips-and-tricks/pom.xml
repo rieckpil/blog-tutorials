@@ -16,6 +16,8 @@
     <maven.compiler.target>11</maven.compiler.target>
     <mockito.version>3.9.0</mockito.version>
     <mockito-kotlin.version>2.2.0</mockito-kotlin.version>
+    <mockwebserver.version>4.8.0</mockwebserver.version>
+    <okhttp3.version>4.8.0</okhttp3.version>
   </properties>
 
   <dependencyManagement>
@@ -66,6 +68,13 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.squareup.okhttp3</groupId>
+      <artifactId>mockwebserver</artifactId>
+      <version>${mockwebserver.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
