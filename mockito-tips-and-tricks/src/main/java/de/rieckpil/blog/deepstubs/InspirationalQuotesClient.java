@@ -20,7 +20,7 @@ public class InspirationalQuotesClient {
         .bodyToMono(String.class)
         .block();
     } catch (WebClientException webClientException) {
-      return "Every time a mock returns, a mock a fairy dies.";
+      return "Every time a mock returns a mock, a fairy dies.";
     }
   }
 }
