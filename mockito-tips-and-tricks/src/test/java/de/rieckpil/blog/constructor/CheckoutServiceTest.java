@@ -26,6 +26,7 @@ class CheckoutServiceTest {
       BigDecimal result = cut.purchaseProduct("MacBook Pro", "42");
 
       assertEquals(BigDecimal.TEN, result);
+      assertEquals(1, mocked.constructed().size());
     }
   }
 }
