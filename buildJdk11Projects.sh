@@ -77,6 +77,7 @@ declare -a arr=("whats-new-in-spring-boot-2.1"
  "spring-boot-rest-assured"
  "spring-data-mongo-test-testcontainers"
  "spring-boot-test-spring-events"
+ "spring-boot-testing-tips-and-tricks"
 )
 
 for project in "${arr[@]}"
