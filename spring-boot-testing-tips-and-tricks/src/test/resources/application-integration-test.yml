@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: integration-test
+  jpa:
+    hibernate:
+      ddl-auto: validate
