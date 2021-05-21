@@ -1,4 +1,4 @@
-# Codebase for the blog post [#HOWTO: Create Spring Boot applications with Maven and Kotlin](https://rieckpil.de/create-spring-boot-applications-with-maven-and-kotlin/)
+# Codebase for the blog post [Building Spring Boot Applications With Maven and Kotlin](https://rieckpil.de/create-spring-boot-applications-with-maven-and-kotlin/)
 
 Steps to run this project:
 
