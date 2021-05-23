@@ -9,15 +9,18 @@ import org.springframework.cloud.contract.stubrunner.spring.StubRunnerProperties
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
-@AutoConfigureStubRunner(ids = {"de.rieckpil.blog:book-store-server:+:stubs:8080"}, stubsMode = StubRunnerProperties.StubsMode.LOCAL)
-public class BookClientTest {
+@SpringBootTest
+@AutoConfigureStubRunner(
+  ids = {"de.rieckpil.blog:book-store-server:+:stubs:8080"},
+  stubsMode = StubRunnerProperties.StubsMode.LOCAL
+)
+class BookClientTest {
 
   @Autowired
   private BookClient cut;
 
   @Test
-  public void testContractToBookStoreServer() {
+  void testContractToBookStoreServer() {
 
     JsonNode result = cut.getAllAvailableBooks();
 
@@ -32,5 +35,4 @@ public class BookClientTest {
     assertTrue(firstBook.get("genre").isTextual());
     assertTrue(firstBook.get("title").isTextual());
   }
-
 }

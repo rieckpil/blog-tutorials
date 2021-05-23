@@ -6,21 +6,21 @@ import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.netty.http.client.HttpClient;
-import reactor.netty.tcp.TcpClient;
 
 import javax.annotation.PostConstruct;
 
-@Service
+@Component
 public class BookClient {
 
   private WebClient webClient;
 
   @PostConstruct
   public void setUpWebClient() {
-    var tcpClient = TcpClient.create()
+    var httpClient = HttpClient.create()
       .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 2_000)
       .doOnConnected(connection ->
         connection.addHandlerLast(new ReadTimeoutHandler(2))
@@ -28,7 +28,7 @@ public class BookClient {
 
     this.webClient = WebClient.builder()
       .baseUrl("http://localhost:8080")
-      .clientConnector(new ReactorClientHttpConnector(HttpClient.from(tcpClient)))
+      .clientConnector(new ReactorClientHttpConnector(httpClient))
       .build();
   }
 
