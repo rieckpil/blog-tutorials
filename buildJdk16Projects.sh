@@ -11,5 +11,5 @@ declare -a arr=(
 
 for project in "${arr[@]}"
 do
-  mvn -B -f $project/pom.xml verify
+  mvn -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn -f $project/pom.xml verify
 done
