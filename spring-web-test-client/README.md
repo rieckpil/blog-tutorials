@@ -1,4 +1,4 @@
-# Codebase for the blog post [#HOWTO: Spring WebTestClient for efficient testing of your REST API](https://rieckpil.de/spring-webtestclient-for-efficient-testing-of-your-rest-api/)
+# Codebase for the blog post [Spring WebTestClient for Efficient REST API Testing](https://rieckpil.de/spring-webtestclient-for-efficient-testing-of-your-rest-api/)
 
 Steps to run this project:
 
