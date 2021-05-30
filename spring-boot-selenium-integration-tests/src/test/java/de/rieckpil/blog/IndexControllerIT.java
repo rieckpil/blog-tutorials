@@ -23,14 +23,16 @@ class IndexControllerIT {
   private int port;
 
   @Container
-  private BrowserWebDriverContainer container = new BrowserWebDriverContainer()
+  private BrowserWebDriverContainer<?> container = new BrowserWebDriverContainer<>()
     .withCapabilities(new ChromeOptions());
 
   @Test
-  public void shouldDisplayMessage() {
+  void shouldDisplayMessage() {
     // depending on your operation system try 172.17.0.1 as IP or container.getTestHostIpAddress()
     this.container.getWebDriver().get("http://host.docker.internal:" + port + "/index");
+
     WebElement messageElement = this.container.getWebDriver().findElementById("message");
+
     assertEquals("Integration Test with Selenium", messageElement.getText());
   }
 }
