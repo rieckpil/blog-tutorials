@@ -12,6 +12,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 
 ## Articles about Testing
 
+* [Maven Setup For Testing Java Applications](https://rieckpil.de/maven-setup-for-testing-java-applications/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/testing-java-applications-with-maven))
 * [Creating Deep Stubs With Mockito to Chain Method Stubbing](https://rieckpil.de/creating-deep-stubs-with-mockito-to-chain-method-stubbing/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/mockito-tips-and-tricks))
 * [Spring Boot Unit and Integration Testing Overview](https://rieckpil.de/spring-boot-unit-and-integration-testing-overview/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-testing-tips-and-tricks))
 * [Initialization Strategies With Testcontainers For Integration Tests](https://rieckpil.de/initialization-strategies-with-testcontainers-for-integration-tests/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/testcontainers-youtube-series))
