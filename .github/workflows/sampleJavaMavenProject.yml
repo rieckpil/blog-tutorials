@@ -22,7 +22,7 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     needs: compile
-    name: Build Maven project
+    name: Build the Maven Project
     steps:
     - uses: actions/checkout@v2
     - uses: actions/cache@v2
@@ -42,23 +42,24 @@ jobs:
     - name: Upload Maven build artifact
       uses: actions/upload-artifact@v2
       with:
-        name: artifact
+        name: artifact.jar
         path: github-actions-java-maven/target/github-actions-java-maven.jar
 
   deploy:
     runs-on: ubuntu-20.04
     needs: build
-    name: Build Docker container and deploy to Kubernetes
+    name: Build Docker Container and Deploy to Kubernetes
     steps:
     - uses: actions/checkout@v2
     - name: Download Maven build artifact
       uses: actions/download-artifact@v2
       with:
-        name: artifact
+        name: artifact.jar
+        path: github-actions-java-maven/target
     - name: Build Docker container
       run: |
-        mkdir -p github-actions-java-maven/target
-        mv artifact/github-actions-java-maven.jar github-actions-java-maven/target
+        ls -al 
+        ls target -al
         docker build -t de.rieckpil.blog/github-actions-sample github-actions-java-maven
     - name: Access secrets
       env:
