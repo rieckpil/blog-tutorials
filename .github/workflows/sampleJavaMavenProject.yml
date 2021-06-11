@@ -38,7 +38,8 @@ jobs:
           java-version: '11'
           java-package: jdk
     - name: Build and test project
-      run: mvn -f github-actions-java-maven/pom.xml clean verify
+      working-directory: github-actions-java-maven
+      run: mvn -B verify
     - name: Upload Maven build artifact
       uses: actions/upload-artifact@v2
       with:
@@ -57,10 +58,10 @@ jobs:
         name: artifact.jar
         path: github-actions-java-maven/target
     - name: Build Docker container
+      working-directory: github-actions-java-maven
       run: |
-        ls -al 
-        ls target -al
-        docker build -t de.rieckpil.blog/github-actions-sample github-actions-java-maven
+        ls -al target/
+        docker build -t de.rieckpil.blog/github-actions-sample .
     - name: Access secrets
       env:
         SUPER_SECRET: ${{ secrets.SUPER_SECRET }}
