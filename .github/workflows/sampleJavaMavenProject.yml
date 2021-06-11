@@ -10,43 +10,49 @@ jobs:
         java: [ 11, 12, 13 ]
     name: Java ${{ matrix.java }} compile
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
       - name: Setup java
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v2
         with:
+          distribution: 'adopt'
+          java-package: jdk
           java-version: ${{ matrix.java }}
       - run: mvn -f github-actions-java-maven/pom.xml clean compile
+
   build:
     runs-on: ubuntu-20.04
     needs: compile
     name: Build Maven project
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/cache@v1
+    - uses: actions/checkout@v2
+    - uses: actions/cache@v2
       with:
         path: ~/.m2/repository
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
     - name: Set up JDK 11
-      uses: actions/setup-java@v1
+      uses: actions/setup-java@v2
       with:
-        java-version: 11
+          distribution: 'adopt'
+          java-version: '11'
+          java-package: jdk
     - name: Build and test project
       run: mvn -f github-actions-java-maven/pom.xml clean verify
     - name: Upload Maven build artifact
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v2
       with:
         name: artifact
         path: github-actions-java-maven/target/github-actions-java-maven.jar
+
   deploy:
     runs-on: ubuntu-20.04
     needs: build
     name: Build Docker container and deploy to Kubernetes
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Download Maven build artifact
-      uses: actions/download-artifact@v1
+      uses: actions/download-artifact@v2
       with:
         name: artifact
     - name: Build Docker container
