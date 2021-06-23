@@ -10,14 +10,17 @@ jobs:
         java: [ 11, 12, 13 ]
     name: Java ${{ matrix.java }} compile
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup java
+      - name: Checkout Source Code
+        uses: actions/checkout@v2
+      - name: Setup Java
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
           java-package: jdk
           java-version: ${{ matrix.java }}
-      - run: mvn -f github-actions-java-maven/pom.xml clean compile
+      - name: Compile the Project
+        working-directory: github-actions-java-maven
+        run: mvn -B pom.xml compile
 
   build:
     runs-on: ubuntu-20.04
