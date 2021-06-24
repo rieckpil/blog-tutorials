@@ -20,56 +20,55 @@ jobs:
           java-version: ${{ matrix.java }}
       - name: Compile the Project
         working-directory: github-actions-java-maven
-        run: mvn -B pom.xml compile
+        run: mvn -B compile
 
   build:
     runs-on: ubuntu-20.04
     needs: compile
     name: Build the Maven Project
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/cache@v2
-      with:
-        path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-maven-
-    - name: Set up JDK 11
-      uses: actions/setup-java@v2
-      with:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
           distribution: 'adopt'
           java-version: '11'
           java-package: jdk
-    - name: Build and test project
-      working-directory: github-actions-java-maven
-      run: mvn -B verify
-    - name: Upload Maven build artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: artifact.jar
-        path: github-actions-java-maven/target/github-actions-java-maven.jar
+      - name: Build and test project
+        working-directory: github-actions-java-maven
+        run: mvn -B verify
+      - name: Upload Maven build artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifact.jar
+          path: github-actions-java-maven/target/github-actions-java-maven.jar
 
   deploy:
     runs-on: ubuntu-20.04
     needs: build
     name: Build Docker Container and Deploy to Kubernetes
     steps:
-    - uses: actions/checkout@v2
-    - name: Download Maven build artifact
-      uses: actions/download-artifact@v2
-      with:
-        name: artifact.jar
-        path: github-actions-java-maven/target
-    - name: Build Docker container
-      working-directory: github-actions-java-maven
-      run: |
-        ls -al target/
-        docker build -t de.rieckpil.blog/github-actions-sample .
-    - name: Access secrets
-      env:
-        SUPER_SECRET: ${{ secrets.SUPER_SECRET }}
-      run: echo "Content of secret - $SUPER_SECRET"
-    - name: Push Docker images
-      run: echo "Pushing Docker image to Container Registry (e.g. ECR)"
-    - name: Deploy application
-      run: echo "Deploying application (e.g. Kubernetes)"
+      - uses: actions/checkout@v2
+      - name: Download Maven build artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: artifact.jar
+          path: github-actions-java-maven/target
+      - name: Build Docker container
+        working-directory: github-actions-java-maven
+        run: |
+          docker build -t de.rieckpil.blog/github-actions-sample .
+      - name: Access secrets
+        env:
+          SUPER_SECRET: ${{ secrets.SUPER_SECRET }}
+        run: echo "Content of secret - $SUPER_SECRET"
+      - name: Push Docker images
+        run: echo "Pushing Docker image to Container Registry (e.g. ECR)"
+      - name: Deploy application
+        run: echo "Deploying application (e.g. Kubernetes)"
