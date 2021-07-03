@@ -8,16 +8,32 @@
     <version>2.5.1</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
+
   <groupId>de.rieckpil.blog</groupId>
   <artifactId>spring-boot-testing-primer</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>spring-boot-testing-primer</name>
-  <description>Demo project for Spring Boot</description>
+
   <properties>
     <java.version>11</java.version>
+    <testcontainers.version>1.15.3</testcontainers.version>
+    <selenide.version>5.22.0</selenide.version>
   </properties>
-  <dependencies>
 
+  <dependencyManagement>
+    <dependencies>
+      <!-- Added with Exercise #10 -->
+      <dependency>
+        <groupId>org.testcontainers</groupId>
+        <artifactId>testcontainers-bom</artifactId>
+        <version>${testcontainers.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
     <!-- Basic Dependencies from Exercise #1 -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -53,6 +69,31 @@
       <scope>test</scope>
     </dependency>
 
+    <!-- Added with Exercise #10 -->
+    <dependency>
+      <groupId>org.testcontainers</groupId>
+      <artifactId>postgresql</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.testcontainers</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Added with Exercise #12 -->
+    <dependency>
+      <groupId>com.codeborne</groupId>
+      <artifactId>selenide</artifactId>
+      <version>${selenide.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.testcontainers</groupId>
+      <artifactId>selenium</artifactId>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -77,5 +118,4 @@
       </plugin>
     </plugins>
   </build>
-
 </project>
