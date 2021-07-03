@@ -51,6 +51,8 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
+
+      <!-- Added with Exercise #2 -->
       <plugin>
         <artifactId>maven-failsafe-plugin</artifactId>
         <version>3.0.0-M5</version>
