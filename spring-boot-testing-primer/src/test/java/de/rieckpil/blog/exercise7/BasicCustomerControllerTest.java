@@ -5,6 +5,7 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 import de.rieckpil.blog.customer.Customer;
+import de.rieckpil.blog.customer.CustomerController;
 import de.rieckpil.blog.customer.CustomerService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -17,7 +18,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest
+@WebMvcTest(CustomerController.class)
 class BasicCustomerControllerTest {
 
   @Autowired
