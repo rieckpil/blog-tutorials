@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import java.time.ZonedDateTime;
 
 @Entity
@@ -17,6 +16,20 @@ public class Customer {
   private String name;
 
   private ZonedDateTime joinedAt;
+
+  public Customer() {
+  }
+
+  public Customer(String name, ZonedDateTime joinedAt) {
+    this.name = name;
+    this.joinedAt = joinedAt;
+  }
+
+  public Customer(Long id, String name, ZonedDateTime joinedAt) {
+    this.id = id;
+    this.name = name;
+    this.joinedAt = joinedAt;
+  }
 
   public Long getId() {
     return id;
