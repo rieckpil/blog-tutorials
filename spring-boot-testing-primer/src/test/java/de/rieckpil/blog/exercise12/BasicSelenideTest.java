@@ -2,6 +2,7 @@ package de.rieckpil.blog.exercise12;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -18,13 +19,16 @@ class BasicSelenideTest {
   @LocalServerPort
   private int port;
 
+  @BeforeAll
+  static void configureChromeDriver() {
+    ChromeOptions chromeOptions = new ChromeOptions();
+    chromeOptions.addArguments("--no-sandbox", "--disable-dev-shm-usage", "--headless", "--disable-gpu", "--disable-extensions");
+
+    Configuration.browserCapabilities = chromeOptions;
+  }
+
   @Test
   void shouldAccessDashboardAndSubmitForm() {
-
-    Configuration.browserCapabilities = new ChromeOptions()
-      .addArguments("--no-sandbox")
-      .addArguments("--disable-dev-shm-usage");
-
     Selenide.open("http://localhost:" + port + "/dashboard");
 
     assertEquals("Dashboard", Selenide.title());
