@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Dashboard</title>
+</head>
+<body>
+  <div>
+    <p th:text="${message}"></p>
+    <form>
+      <label for="fname">First name:</label><br/>
+      <input type="text" id="fname" name="fname"><br/>
+      <label for="lname">Last name:</label><br/>
+      <input type="text" id="lname" name="lname"><br/><br/>
+      <input type="submit" id="submit" value="Submit">
+    </form>
+  </div>
+</body>
+</html>

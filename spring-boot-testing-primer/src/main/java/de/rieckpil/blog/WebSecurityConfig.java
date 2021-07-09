@@ -15,6 +15,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     http.authorizeRequests()
       .mvcMatchers(HttpMethod.GET, "/api/customers").permitAll()
       .mvcMatchers(HttpMethod.GET, "/api/customers/*").authenticated()
+      .mvcMatchers(HttpMethod.GET, "/dashboard").permitAll()
       .requestMatchers(EndpointRequest.to(HealthEndpoint.class)).permitAll()
       .anyRequest().authenticated()
     .and()

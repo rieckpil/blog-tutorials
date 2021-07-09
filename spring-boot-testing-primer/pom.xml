@@ -76,6 +76,12 @@
       <scope>test</scope>
     </dependency>
 
+    <!-- Added with Exercise #12 -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+
     <!-- Added with Exercise #10 -->
     <dependency>
       <groupId>org.testcontainers</groupId>
