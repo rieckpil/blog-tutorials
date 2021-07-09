@@ -1,8 +1,10 @@
 package de.rieckpil.blog.exercise12;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 
@@ -18,6 +20,10 @@ class BasicSelenideTest {
 
   @Test
   void shouldAccessDashboardAndSubmitForm() {
+
+    Configuration.browserCapabilities = new ChromeOptions()
+      .addArguments("--no-sandbox")
+      .addArguments("--disable-dev-shm-usage");
 
     Selenide.open("http://localhost:" + port + "/dashboard");
 
