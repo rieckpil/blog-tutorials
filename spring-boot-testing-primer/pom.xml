@@ -30,6 +30,13 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+      <!-- Apple M1 Processor Support https://github.com/testcontainers/testcontainers-java/issues/3834#issuecomment-788995236 -->
+      <dependency>
+        <groupId>net.java.dev.jna</groupId>
+        <artifactId>jna</artifactId>
+        <version>5.8.0</version>
+        <scope>test</scope>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
