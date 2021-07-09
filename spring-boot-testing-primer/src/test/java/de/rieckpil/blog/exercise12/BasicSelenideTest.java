@@ -22,7 +22,12 @@ class BasicSelenideTest {
   @BeforeAll
   static void configureChromeDriver() {
     ChromeOptions chromeOptions = new ChromeOptions();
-    chromeOptions.addArguments("--no-sandbox", "--disable-dev-shm-usage", "--headless", "--disable-gpu", "--disable-extensions");
+    chromeOptions.addArguments(
+      "--no-sandbox",
+      "--disable-dev-shm-usage",
+      "--headless",
+      "--disable-gpu",
+      "--disable-extensions");
 
     Configuration.browserCapabilities = chromeOptions;
   }
