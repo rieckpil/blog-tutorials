@@ -11,7 +11,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.client.MockRestServiceServer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
+import static org.springframework.test.web.client.response.MockRestResponseCreators.withServerError;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
 @RestClientTest(TodosClient.class)
@@ -39,4 +41,14 @@ class TodosClientTest {
     assertEquals(1, result.size());
   }
 
+  @Test
+  void shouldPropagateFailure() {
+    this.server
+      .expect(requestTo("/todos"))
+      .andRespond(withServerError());
+
+    assertThrows(RuntimeException.class, () -> {
+      todosClient.fetchAllTodos();
+    });
+  }
 }
