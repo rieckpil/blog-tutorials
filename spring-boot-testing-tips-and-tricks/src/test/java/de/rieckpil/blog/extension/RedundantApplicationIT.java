@@ -1,25 +1,24 @@
 package de.rieckpil.blog.extension;
 
-import de.rieckpil.blog.CustomerService;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.env.Environment;
+import org.springframework.context.ApplicationContext;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-class ApplicationIT {
+@ExtendWith(SpringExtension.class) // can be removed
+class RedundantApplicationIT {
 
   @Autowired
-  // resolved via DependencyInjectionTestExecutionListener
-  private CustomerService customerService;
+  ApplicationContext context;
 
   @Test
-  void needsEnvironmentBeanToVerifySomething(
-    @Autowired Environment environment // resolved via the SpringExtension
-  ) {
-    assertNotNull(environment);
+  void shouldStartContext() {
+    assertNotNull(context);
   }
 }
