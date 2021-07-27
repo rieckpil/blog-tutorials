@@ -2,6 +2,7 @@
 
 - [Spring Boot Unit and Integration Testing Overview](https://rieckpil.de/spring-boot-unit-and-integration-testing-overview/)
 - [Guide to @SpringBootTest for Spring Boot Integration Tests](https://rieckpil.de/guide-to-springboottest-for-spring-boot-integration-tests/)
+- [What the Heck Is the SpringExtension Used For?](https://rieckpil.de/what-the-heck-is-the-springextension-used-for/)
 
 Steps to run this project:
 
