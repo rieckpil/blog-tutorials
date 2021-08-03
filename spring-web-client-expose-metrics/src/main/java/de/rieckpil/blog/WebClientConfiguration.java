@@ -9,22 +9,21 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.netty.http.client.HttpClient;
-import reactor.netty.tcp.TcpClient;
 
 @Configuration
 public class WebClientConfiguration {
 
   @Bean
   public WebClient webClient(WebClient.Builder webClientBuilder) {
-    TcpClient tcpClient = TcpClient.create()
-      .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 2_000)
+    HttpClient httpClient = HttpClient.create()
+      .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 4_000)
       .doOnConnected(connection ->
-        connection.addHandlerLast(new ReadTimeoutHandler(2))
-          .addHandlerLast(new WriteTimeoutHandler(2)));
+        connection.addHandlerLast(new ReadTimeoutHandler(4))
+          .addHandlerLast(new WriteTimeoutHandler(4)));
 
     return webClientBuilder
       .defaultHeader(HttpHeaders.USER_AGENT, "SAMPLE_APP")
-      .clientConnector(new ReactorClientHttpConnector(HttpClient.from(tcpClient)))
+      .clientConnector(new ReactorClientHttpConnector(httpClient))
       .build();
   }
 }

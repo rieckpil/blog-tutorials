@@ -1,4 +1,4 @@
-# Codebase for the blog post [#HOWTO: Expose Metrics of Spring WebClient using Spring Boot Actuator](https://rieckpil.de/expose-metrics-of-spring-webclient-using-spring-boot-actuator)
+# Codebase for the blog post [Expose Metrics of Spring WebClient using Spring Boot Actuator](https://rieckpil.de/expose-metrics-of-spring-webclient-using-spring-boot-actuator)
 
 Steps to run this project:
 
