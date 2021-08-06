@@ -72,8 +72,8 @@ class App extends Component {
           <h3>Upload a file</h3>
           <h4 style={{color: 'red'}}>{this.state.error}</h4>
           <h4 style={{color: 'green'}}>{this.state.msg}</h4>
-          <input onChange={this.onFileChange} type="file"></input>
-          <button onClick={this.uploadFile}>Upload</button>   
+          <input onChange={this.onFileChange} type="file"/>
+          <button onClick={this.uploadFile}>Upload</button>
         </div>
         <div className="App-intro">
           <h3>Download a random file</h3>
