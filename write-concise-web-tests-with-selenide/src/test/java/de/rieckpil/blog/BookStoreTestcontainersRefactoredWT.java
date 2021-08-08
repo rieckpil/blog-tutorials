@@ -4,14 +4,16 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.junit5.ScreenShooterExtension;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.core.env.Environment;
 import org.testcontainers.Testcontainers;
 import org.testcontainers.containers.BrowserWebDriverContainer;
 
@@ -35,9 +37,9 @@ class BookStoreTestcontainersRefactoredWT {
   @LocalServerPort
   private Integer port;
 
-  @BeforeEach
-  void setup() {
-    Testcontainers.exposeHostPorts(port);
+  @BeforeAll
+  static void beforeAll(@Autowired Environment environment) {
+    Testcontainers.exposeHostPorts(environment.getProperty("local.server.port", Integer.class));
     webDriverContainer.start();
   }
 
