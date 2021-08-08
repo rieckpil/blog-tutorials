@@ -43,9 +43,8 @@ class BookStoreTestcontainersRefactoredWT {
 
   @Test
   void shouldDisplayBook() {
-
     Configuration.timeout = 2000;
-    Configuration.baseUrl = "http://172.17.0.1:" + port;
+    Configuration.baseUrl = String.format("http://host.testcontainers.internal:%d/", port);
 
     RemoteWebDriver remoteWebDriver = webDriverContainer.getWebDriver();
     WebDriverRunner.setWebDriver(remoteWebDriver);
