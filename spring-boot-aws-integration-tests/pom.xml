@@ -18,7 +18,7 @@
   <properties>
     <java.version>11</java.version>
     <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
-    <testcontainers.version>1.15.2</testcontainers.version>
+    <testcontainers.version>1.16.0</testcontainers.version>
     <awaitility.version>4.0.2</awaitility.version>
   </properties>
 

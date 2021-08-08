@@ -18,7 +18,7 @@
   <properties>
     <java.version>11</java.version>
     <greenmail.version>1.6.1</greenmail.version>
-    <testcontainers.version>1.15.1</testcontainers.version>
+    <testcontainers.version>1.16.0</testcontainers.version>
     <awaitility.version>4.0.3</awaitility.version>
   </properties>
 
