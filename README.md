@@ -1,4 +1,4 @@
-# Codebase for the tutorials on my [blog](https://rieckpil.de/)
+# Codebase For Various Tutorials On [rieckpil.de](https://rieckpil.de/)
 
 [![](https://github.com/rieckpil/blog-tutorials/workflows/Build%20Java/badge.svg)](https://github.com/rieckpil/blog-tutorials/actions)
 
