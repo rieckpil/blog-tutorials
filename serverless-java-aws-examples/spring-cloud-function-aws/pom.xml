@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.3.0.RELEASE</version>
+    <version>2.5.3</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
@@ -19,8 +19,8 @@
   <properties>
     <java.version>11</java.version>
     <aws-lambda-java-core.version>1.2.1</aws-lambda-java-core.version>
-    <spring-cloud-function.version>3.0.7.RELEASE</spring-cloud-function.version>
-    <wrapper.version>1.0.17.RELEASE</wrapper.version>
+    <spring-cloud-function.version>3.1.4</spring-cloud-function.version>
+    <wrapper.version>1.0.27.RELEASE</wrapper.version>
     <aws-lambda-java-events.version>2.2.7</aws-lambda-java-events.version>
     <aws-java-sdk-s3.version>1.11.792</aws-java-sdk-s3.version>
   </properties>
