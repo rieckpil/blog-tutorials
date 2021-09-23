@@ -1,0 +1,22 @@
+service: marketing-automation
+
+variablesResolutionMode: 20210326
+
+provider:
+  name: aws
+  runtime: java11
+  stage: production
+  region: eu-central-1
+  timeout: 120
+  memorySize: 1024
+  logRetentionInDays: 7
+  lambdaHashingVersion: 20201221
+
+package:
+  artifact: target/spring-cloud-function-aws-kotlin-1.0.0-aws.jar
+
+functions:
+  test:
+    handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker
+    environment:
+      MAIN_CLASS: org.springframework.boot.loader.wrapper.ThinJarWrapper
