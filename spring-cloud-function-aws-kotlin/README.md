@@ -1,3 +1,5 @@
+# Minimum Reproducible Example for a Spring Boot + Kotlin + Spring Cloud AWS Lambda Setup
+
 Steps to reproduce:
 
 1. `npm install -g serverless`
