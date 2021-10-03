@@ -1,5 +1,7 @@
 # Minimum Reproducible Example for a Spring Boot + Kotlin + Spring Cloud AWS Lambda Setup
 
+**Fixed since Spring Cloud Function > 3.2.0-M2**: https://github.com/spring-cloud/spring-cloud-function/issues/747
+
 Steps to reproduce:
 
 1. `npm install -g serverless`

@@ -1,4 +1,4 @@
-service: marketing-automation
+service: kotlin-spring-cloud-aws-test
 
 variablesResolutionMode: 20210326
 
@@ -19,4 +19,4 @@ functions:
   test:
     handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker
     environment:
-      MAIN_CLASS: org.springframework.boot.loader.wrapper.ThinJarWrapper
+      SPRING_CLOUD_FUNCTION_DEFINITION: test
