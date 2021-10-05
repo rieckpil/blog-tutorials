@@ -3,10 +3,12 @@ service: thumbnail-generator
 provider:
   name: aws
   runtime: java11
-  profile: serverless-admin
+  profile: rieckpil-github # make sure to create this profile or replace it with an existing
   region: eu-central-1
   timeout: 10
   memorySize: 1024
+  lambdaHashingVersion: 20201221
+  logRetentionInDays: 7
   iamRoleStatements:
     - Effect: 'Allow'
       Action:
@@ -16,7 +18,7 @@ provider:
         - !Join ['', ['arn:aws:s3:::', !Ref ServerlessDeploymentBucket, '/*']]
 
 custom:
-  thumbnailBucket: image-uploads-java-thumbnail-example
+  thumbnailBucket: image-uploads-java-thumbnail-example-rieckpil # S3 bucket names are unique
 
 package:
   artifact: target/thumbnail-generator.jar
