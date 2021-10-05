@@ -18,7 +18,7 @@ provider:
         - !Join ['', ['arn:aws:s3:::', !Ref ServerlessDeploymentBucket, '/*']]
 
 custom:
-  thumbnailBucket: image-uploads-java-thumbnail-example-rieckpil # S3 bucket names are unique
+  thumbnailBucket: image-uploads-java-thumbnail-example # S3 bucket names are unique
 
 package:
   artifact: target/thumbnail-generator.jar
