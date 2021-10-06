@@ -6,6 +6,8 @@ provider:
   region: eu-central-1
   profile: serverless-admin
   memory: 1024
+  lambdaHashingVersion: 20201221
+  logRetentionInDays: 7
   timeout: 10
   iamRoleStatements:
     - Effect: 'Allow'
@@ -13,7 +15,7 @@ provider:
         - 's3:*'
       Resource:
         - 'arn:aws:s3:::${self:custom.orderEventBucket}/*'
-        - !Join ['', ['arn:aws:s3:::', !Ref ServerlessDeploymentBucket, '/*']]
+        - !Join [ '', [ 'arn:aws:s3:::', !Ref ServerlessDeploymentBucket, '/*' ] ]
 
 custom:
   orderEventBucket: order-event-bucket-rieckpil
