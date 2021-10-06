@@ -4,7 +4,7 @@ provider:
   name: aws
   runtime: java11
   region: eu-central-1
-  profile: serverless-admin
+  profile: serverless-admin # add this profile to ~/.aws/config or use an existing profile
   memory: 1024
   lambdaHashingVersion: 20201221
   logRetentionInDays: 7
@@ -18,7 +18,7 @@ provider:
         - !Join [ '', [ 'arn:aws:s3:::', !Ref ServerlessDeploymentBucket, '/*' ] ]
 
 custom:
-  orderEventBucket: order-event-bucket-rieckpil
+  orderEventBucket: order-event-bucket-rieckpil # change to a globally unique bucket name
 
 package:
   artifact: target/spring-cloud-function-aws-1.0.0-shaded.jar
