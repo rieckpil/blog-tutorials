@@ -1,0 +1,42 @@
+service: aws-kotlin-example
+
+plugins:
+  - serverless-plugin-aws-alerts
+
+provider:
+  name: aws
+  runtime: java11
+  stage: production
+  region: eu-central-1
+  timeout: 120
+  memorySize: 1024
+  logRetentionInDays: 7
+  lambdaHashingVersion: 20201221
+
+custom:
+  alerts:
+    stages:
+      - production
+    definitions:
+      functionErrors:
+        period: 300 # evaluate every 5 minutes
+    topics:
+      alarm:
+        topic: ${self:service}-production-alerts-alarm
+        notifications:
+          - protocol: email
+            endpoint: your@email.com
+    alarms:
+      - functionErrors
+
+package:
+  artifact: target/spring-cloud-function-kotlin-aws.jar
+
+functions:
+  fetch-random-quotes:
+    handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker
+    description: Showcasing Spring Cloud Function for AWS, Kotlin and Spring Boot
+    events:
+      - schedule: rate(5 minutes)
+    environment:
+      SPRING_CLOUD_FUNCTION_DEFINITION: fetchRandomQuote
