@@ -13,7 +13,7 @@ declare -a arr=(
  "expose-git-information-actuator"
  "serverless-java-aws-examples/thumbnail-generator"
  "serverless-java-aws-examples/spring-cloud-function-aws"
- "serverless-java-aws-examples/spring-cloud-function-aws-kotlin"
+ "serverless-java-aws-examples/spring-cloud-function-kotlin-aws"
  "spring-security-aws-cognito-thymeleaf"
  "testcontainers-reuse-existing-containers"
  "five-unknown-junit-5-features"
