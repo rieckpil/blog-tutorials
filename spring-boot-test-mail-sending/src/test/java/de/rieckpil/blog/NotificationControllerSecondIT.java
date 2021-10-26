@@ -27,7 +27,7 @@ class NotificationControllerSecondIT {
   @Container
   static GenericContainer greenMailContainer = new GenericContainer<>(DockerImageName.parse("greenmail/standalone:1.6.1"))
     .waitingFor(Wait.forLogMessage(".*Starting GreenMail standalone.*", 1))
-    .withEnv("GREENMAIL_OPTS", "-Dgreenmail.startup.timeout=3000 -Dgreenmail.setup.test.smtp -Dgreenmail.hostname=0.0.0.0 -Dgreenmail.auth.disabled -Dgreenmail.users=duke:springboot")
+    .withEnv("GREENMAIL_OPTS", "-Dgreenmail.setup.test.smtp -Dgreenmail.hostname=0.0.0.0 -Dgreenmail.users=duke:springboot")
     .withExposedPorts(3025);
 
   @DynamicPropertySource
