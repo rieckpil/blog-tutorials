@@ -1,0 +1,31 @@
+{
+  "success": {
+    "total": 1
+  },
+  "contents": {
+    "quotes": [
+      {
+        "quote": "If you have dreams it is your responsibility to make them happen.",
+        "length": "65",
+        "author": "Bel Pesce",
+        "tags": [
+          "dream",
+          "inspire",
+          "success"
+        ],
+        "category": "inspire",
+        "language": "en",
+        "date": "2021-10-26",
+        "permalink": "https://theysaidso.com/quote/bel-pesce-if-you-have-dreams-it-is-your-responsibility-to-make-them-happen",
+        "id": "iWINxzfW8UffbWR9P_rONgeF",
+        "background": "https://theysaidso.com/img/qod/qod-inspire.jpg",
+        "title": "Inspiring Quote of the day"
+      }
+    ]
+  },
+  "baseurl": "https://theysaidso.com",
+  "copyright": {
+    "year": 2023,
+    "url": "https://theysaidso.com"
+  }
+}

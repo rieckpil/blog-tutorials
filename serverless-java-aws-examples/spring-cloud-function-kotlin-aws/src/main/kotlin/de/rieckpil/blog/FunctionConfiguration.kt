@@ -14,7 +14,7 @@ class FunctionConfiguration(
 ) {
 
   @Bean
-  fun fetchRandomQuote(): (Message<Any>) -> Unit {
+  fun fetchRandomQuote(): (Message<Any>) -> String {
     return {
 
       val awsContext = it.headers["aws-context"] as Context
@@ -33,8 +33,7 @@ class FunctionConfiguration(
       val quote = response?.get("contents")?.get("quotes")?.get(0)?.get("quote")
       val author = response?.get("contents")?.get("quotes")?.get(0)?.get("author")
 
-      logger.log("Quote of the day: $quote from $author")
-
+      "Quote of the day: $quote from $author"
     }
   }
 }
