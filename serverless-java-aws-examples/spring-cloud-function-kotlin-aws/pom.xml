@@ -23,6 +23,8 @@
     <aws-lambda-java-core.version>1.2.1</aws-lambda-java-core.version>
     <wrapper.version>1.0.27.RELEASE</wrapper.version>
     <aws-lambda-java-events.version>3.10.0</aws-lambda-java-events.version>
+    <mockwebserver.version>4.7.2</mockwebserver.version>
+    <okhttp3.version>4.7.2</okhttp3.version>
   </properties>
 
 	<dependencies>
@@ -83,9 +85,9 @@
 			<scope>test</scope>
 		</dependency>
     <dependency>
-      <groupId>com.github.tomakehurst</groupId>
-      <artifactId>wiremock-jre8</artifactId>
-      <version>2.31.0</version>
+      <groupId>com.squareup.okhttp3</groupId>
+      <artifactId>mockwebserver</artifactId>
+      <version>${mockwebserver.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

@@ -1,35 +1,37 @@
 package de.rieckpil.blog
 
-import com.github.tomakehurst.wiremock.client.WireMock.*
-import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo
-import com.github.tomakehurst.wiremock.junit5.WireMockTest
+import okhttp3.mockwebserver.MockResponse
+import okhttp3.mockwebserver.MockWebServer
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.springframework.http.HttpHeaders
 import org.springframework.messaging.MessageHeaders
 import org.springframework.messaging.support.GenericMessage
 import org.springframework.web.reactive.function.client.WebClient
 
-@WireMockTest
 class FunctionConfigurationTest {
 
+  private lateinit var mockWebServer: MockWebServer
   private lateinit var functionConfiguration: FunctionConfiguration
 
   @BeforeEach
-  fun setUp(wireMockRuntimeInfo: WireMockRuntimeInfo) {
+  fun setUp() {
+    mockWebServer = MockWebServer()
+    mockWebServer.start()
+
     functionConfiguration = FunctionConfiguration(
-      WebClient.builder().baseUrl(wireMockRuntimeInfo.httpBaseUrl).build()
+      WebClient.builder().baseUrl(mockWebServer.url("/").toString()).build()
     )
   }
 
   @Test
   fun `should return quote with author on successful API response`() {
 
-    stubFor(get(urlEqualTo("/qod?languages=en"))
-      .willReturn(aResponse()
-        .withHeader(HttpHeaders.CONTENT_TYPE, "application/json")
-        .withBodyFile("successful-quote-response.json")))
+    val mockResponse = MockResponse()
+      .addHeader("Content-Type", "application/json")
+      .setBody(FunctionConfigurationTest::class.java.getResource("/stubs/successful-quote-response.json").readText())
+
+    mockWebServer.enqueue(mockResponse)
 
     val result = functionConfiguration
       .fetchRandomQuote()(GenericMessage("", MessageHeaders(mapOf("aws-context" to TestLambdaContext()))))
