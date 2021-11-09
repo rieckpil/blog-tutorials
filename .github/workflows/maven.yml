@@ -5,27 +5,32 @@ on:
   schedule:
     - cron: '0 5 * * SUN'
 jobs:
-  build-java-8-and-16-projects:
+  build-java-8-and-17-projects:
     strategy:
       fail-fast: false
       matrix:
-        versions: [8, 16]
+        versions: [8, 17]
     runs-on: ubuntu-20.04
     name: Build Java ${{ matrix.versions }} projects
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/cache@v1
+      - name: VCS checkout
+        uses: actions/checkout@v1
+
+      - name: Set up cache
+        uses: actions/cache@v1
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-jdk${{ matrix.versions }}-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-jdk${{ matrix.versions }}-
+
       - name: Set up JDK ${{ matrix.versions }}
         uses: actions/setup-java@v2
         with:
           java-version: ${{ matrix.versions }}
           distribution: 'adopt'
           java-package: 'jdk'
+
       - name: Build all projects with Maven
         run: |
           chmod +x ./buildJdk${{ matrix.versions }}Projects.sh
@@ -39,19 +44,24 @@ jobs:
     runs-on: ubuntu-20.04
     name: Build Java 11 Batch ${{ matrix.batch }} projects
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/cache@v1
+      - name: VCS checkout
+        uses: actions/checkout@v1
+
+      - name: Set up cache
+        uses: actions/cache@v1
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-jdk${{ matrix.batch }}-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-jdk${{ matrix.batch }}-
+
       - name: Set up JDK $11
         uses: actions/setup-java@v2
         with:
           java-version: 11
           distribution: 'adopt'
           java-package: 'jdk'
+
       - name: Build all projects of batch with Maven
         run: |
           chmod +x ./buildJdk11Projects_0${{ matrix.batch }}.sh

@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.4.0</version>
+    <version>2.5.5</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
@@ -15,7 +15,7 @@
   <name>spring-boot-datajpatest</name>
 
   <properties>
-    <java.version>15</java.version>
+    <java.version>17</java.version>
     <testcontainers.version>1.16.0</testcontainers.version>
   </properties>
 
@@ -35,7 +35,7 @@
     <dependency>
       <groupId>com.vladmihalcea</groupId>
       <artifactId>hibernate-types-52</artifactId>
-      <version>2.10.0</version>
+      <version>2.14.0</version>
     </dependency>
 
     <dependency>
