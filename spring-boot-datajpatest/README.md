@@ -1,4 +1,4 @@
-# Codebase for the blog post [Test Your Spring Boot JPA Persistence Layer With @DataJpaTest](https://rieckpil.de/test-your-spring-boot-jpa-persistence-layer-with-datajpatest/)
+# Codebase for the blog post [Spring Data JPA Persistence Layer Tests With @DataJpaTest](https://rieckpil.de/test-your-spring-boot-jpa-persistence-layer-with-datajpatest/)
 
 Steps to run this project:
 
