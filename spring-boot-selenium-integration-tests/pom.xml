@@ -18,7 +18,7 @@
 
   <properties>
     <java.version>11</java.version>
-    <testcontainers.version>1.15.3</testcontainers.version>
+    <testcontainers.version>1.16.2</testcontainers.version>
     <selenium.version>3.141.59</selenium.version>
   </properties>
 
@@ -47,11 +47,6 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.testcontainers</groupId>
-      <artifactId>junit-jupiter</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
