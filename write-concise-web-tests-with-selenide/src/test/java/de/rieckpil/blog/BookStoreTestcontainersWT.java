@@ -4,26 +4,26 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.junit5.ScreenShooterExtension;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.core.env.Environment;
+import org.testcontainers.Testcontainers;
 import org.testcontainers.containers.BrowserWebDriverContainer;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 
-@Testcontainers(disabledWithoutDocker = true)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class BookStoreTestcontainersWT {
 
-  @Container
   public static BrowserWebDriverContainer<?> webDriverContainer =
     new BrowserWebDriverContainer<>()
       .withCapabilities(new ChromeOptions()
@@ -37,12 +37,17 @@ public class BookStoreTestcontainersWT {
   @LocalServerPort
   private Integer port;
 
+  @BeforeAll
+  static void beforeAll(@Autowired Environment environment) {
+    Testcontainers.exposeHostPorts(environment.getProperty("local.server.port", Integer.class));
+    webDriverContainer.start();
+  }
+
   @Test
   public void shouldDisplayBook() {
 
-
     Configuration.timeout = 2000;
-    Configuration.baseUrl = "http://172.17.0.1:" + port;
+    Configuration.baseUrl = String.format("http://host.testcontainers.internal:%d", port);
 
     RemoteWebDriver remoteWebDriver = webDriverContainer.getWebDriver();
     WebDriverRunner.setWebDriver(remoteWebDriver);
