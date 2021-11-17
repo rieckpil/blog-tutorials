@@ -6,12 +6,17 @@ import java.util.Map;
 import java.util.UUID;
 
 import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.AmazonS3Exception;
+import com.amazonaws.services.sqs.AmazonSQSAsync;
+import com.amazonaws.services.sqs.AmazonSQSAsyncClientBuilder;
 import io.awspring.cloud.messaging.core.QueueMessagingTemplate;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.messaging.support.GenericMessage;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
@@ -28,7 +33,7 @@ import static org.testcontainers.containers.localstack.LocalStackContainer.Servi
 
 @Testcontainers
 @SpringBootTest
-class SimpleMessageListenerIT {
+class SimpleMessageListenerPre23IT {
 
   private static final String QUEUE_NAME = "order-event-test-queue";
   private static final String BUCKET_NAME = "order-event-test-bucket";
@@ -36,7 +41,7 @@ class SimpleMessageListenerIT {
   @Container
   static LocalStackContainer localStack =
     new LocalStackContainer(DockerImageName.parse("localstack/localstack:0.13.0"))
-      .withServices(S3, SQS);
+    .withServices(S3, SQS);
 
   @BeforeAll
   static void beforeAll() throws IOException, InterruptedException {
@@ -48,10 +53,28 @@ class SimpleMessageListenerIT {
   static void overrideConfiguration(DynamicPropertyRegistry registry) {
     registry.add("event-processing.order-event-queue", () -> QUEUE_NAME);
     registry.add("event-processing.order-event-bucket", () -> BUCKET_NAME);
-    registry.add("cloud.aws.sqs.endpoint", () -> localStack.getEndpointOverride(SQS));
-    registry.add("cloud.aws.s3.endpoint", () -> localStack.getEndpointOverride(S3));
     registry.add("cloud.aws.credentials.access-key", localStack::getAccessKey);
     registry.add("cloud.aws.credentials.secret-key", localStack::getSecretKey);
+  }
+
+  @TestConfiguration
+  static class AwsTestConfig {
+
+    @Bean
+    public AmazonS3 amazonS3() {
+      return AmazonS3ClientBuilder.standard()
+        .withCredentials(localStack.getDefaultCredentialsProvider())
+        .withEndpointConfiguration(localStack.getEndpointConfiguration(S3))
+        .build();
+    }
+
+    @Bean
+    public AmazonSQSAsync amazonSQS() {
+      return AmazonSQSAsyncClientBuilder.standard()
+        .withCredentials(localStack.getDefaultCredentialsProvider())
+        .withEndpointConfiguration(localStack.getEndpointConfiguration(SQS))
+        .build();
+    }
   }
 
   @Autowired
@@ -65,7 +88,7 @@ class SimpleMessageListenerIT {
 
     queueMessagingTemplate.send(QUEUE_NAME, new GenericMessage<>("""
         {
-           "id": "42",
+           "id": "13",
            "message": "Please delivery ASAP",
            "product": "MacBook Pro",
            "orderedAt": "2021-11-11 12:00:00",
@@ -77,6 +100,6 @@ class SimpleMessageListenerIT {
       .ignoreException(AmazonS3Exception.class)
       .await()
       .atMost(5, SECONDS)
-      .untilAsserted(() -> assertNotNull(amazonS3.getObject(BUCKET_NAME, "42")));
+      .untilAsserted(() -> assertNotNull(amazonS3.getObject(BUCKET_NAME, "13")));
   }
 }

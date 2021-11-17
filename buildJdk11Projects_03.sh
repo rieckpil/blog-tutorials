@@ -9,7 +9,6 @@ declare -a arr=(
  "testing-json-serialization-spring"
  "spring-web-mvc-cheat-sheet"
  "spring-boot-aws-ssm-parameter-resolving"
- "spring-boot-aws-integration-tests"
  "expose-git-information-actuator"
  "serverless-java-aws-examples/thumbnail-generator"
  "serverless-java-aws-examples/spring-cloud-function-aws"

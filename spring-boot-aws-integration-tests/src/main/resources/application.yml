@@ -4,12 +4,8 @@ cloud:
       static: eu-central-1
     stack:
       auto: false
-#    credentials:
-#      accessKey: ABC
-#      secretKey: XYZ
+      enabled: false
 
-sqs:
-  orderEventQueue: order-event-queue
-
-s3:
-  orderEventBucket: order-event-bucket
+event-processing:
+  order-event-queue: order-event-queue
+  order-event-bucket: order-event-bucket

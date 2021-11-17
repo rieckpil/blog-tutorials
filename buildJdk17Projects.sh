@@ -6,6 +6,7 @@ set -o pipefail
 declare -a arr=(
  "testing-spring-rest-template"
  "spring-boot-datajpatest"
+ "spring-boot-aws-integration-tests"
  "serverless-java-aws-examples/java-aws-lambda-custom-image"
 )
 
