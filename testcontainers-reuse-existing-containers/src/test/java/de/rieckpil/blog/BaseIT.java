@@ -4,16 +4,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.utility.DockerImageName;
 
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 public abstract class BaseIT {
 
-  static final PostgreSQLContainer postgreSQLContainer;
+  static final PostgreSQLContainer<?> postgreSQLContainer;
 
   static {
-    postgreSQLContainer = (PostgreSQLContainer) new PostgreSQLContainer()
+    postgreSQLContainer = new PostgreSQLContainer<>(DockerImageName.parse("postgres:13"))
       .withDatabaseName("test")
       .withUsername("duke")
       .withPassword("s3cret")
@@ -28,5 +29,4 @@ public abstract class BaseIT {
     registry.add("spring.datasource.password", postgreSQLContainer::getPassword);
     registry.add("spring.datasource.username", postgreSQLContainer::getUsername);
   }
-
 }

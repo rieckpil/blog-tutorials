@@ -36,12 +36,11 @@ class SecondApplicationIT extends BaseIT{
   @Test
   void contextLoads() {
     this.todoRepository.saveAll(List.of(new Todo("Write blog post", LocalDateTime.now().plusDays(2)),
-      new Todo("Clean appartment", LocalDateTime.now().plusDays(4))));
+      new Todo("Clean apartment", LocalDateTime.now().plusDays(4))));
 
     ResponseEntity<ArrayNode> result = this.testRestTemplate.getForEntity("/todos", ArrayNode.class);
     assertEquals(200, result.getStatusCodeValue());
     assertTrue(result.getBody().isArray());
     assertEquals(2, result.getBody().size());
   }
-
 }

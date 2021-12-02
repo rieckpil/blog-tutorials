@@ -24,5 +24,4 @@ class ApplicationIT extends BaseIT{
     ResponseEntity<JsonNode> result = testRestTemplate.getForEntity("/todos", JsonNode.class);
     assertEquals(200, result.getStatusCodeValue());
   }
-
 }
