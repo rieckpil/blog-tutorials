@@ -1,0 +1,1 @@
+{"version":"0.1.0","name":"frontend","dependencies":{"axios":{"version":"0.25.0"},"keycloak-js":{"version":"16.1.1"},"react-dom":{"version":"17.0.2"},"react-scripts":{"version":"4.0.3"},"react":{"version":"17.0.2"},"semantic-ui-css":{"version":"2.4.1"},"semantic-ui-react":{"version":"2.1.1"}}}
