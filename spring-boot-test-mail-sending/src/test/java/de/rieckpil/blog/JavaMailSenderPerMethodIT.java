@@ -10,11 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 
@@ -23,19 +18,27 @@ import static org.awaitility.Awaitility.await;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class JavaMailSenderIT {
+class JavaMailSenderPerMethodIT {
 
   @RegisterExtension
   static GreenMailExtension greenMail = new GreenMailExtension(ServerSetupTest.SMTP)
     .withConfiguration(GreenMailConfiguration.aConfig().withUser("duke", "springboot"))
-    .withPerMethodLifecycle(false);
+    .withPerMethodLifecycle(true);
 
   @Autowired
   private JavaMailSender javaMailSender;
 
   @Test
-  void shouldUseGreenMail() {
+  void verifyDeliveryToGreenMailServer() {
+    sendEmailAndVerify();
+  }
 
+  @Test
+  void verifyDeliveryToGreenMailServerSecond() {
+    sendEmailAndVerify();
+  }
+
+  private void sendEmailAndVerify() {
     SimpleMailMessage mail = new SimpleMailMessage();
     mail.setFrom("admin@spring.io");
     mail.setSubject("A new message for you");
