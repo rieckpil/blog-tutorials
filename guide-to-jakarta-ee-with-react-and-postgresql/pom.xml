@@ -13,7 +13,7 @@
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <postgresql.version>42.2.8</postgresql.version>
+        <postgresql.version>42.2.25</postgresql.version>
         <microprofile.version>3.0</microprofile.version>
         <jakarta.jakartaee-api.version>8.0.0</jakarta.jakartaee-api.version>
         <flyway-core.version>6.0.4</flyway-core.version>
