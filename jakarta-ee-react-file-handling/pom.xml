@@ -92,7 +92,7 @@
         </executions>
         <configuration>
           <workingDirectory>src/main/frontend</workingDirectory>
-          <nodeVersion>v12.13.1</nodeVersion>
+          <nodeVersion>v16.13.1</nodeVersion>
         </configuration>
       </plugin>
       <plugin>
