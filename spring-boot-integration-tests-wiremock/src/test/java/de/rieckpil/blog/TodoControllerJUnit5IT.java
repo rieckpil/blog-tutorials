@@ -14,7 +14,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ContextConfiguration(initializers = {WireMockInitializer.class})
-public class TodoControllerJUnit5IT {
+class TodoControllerJUnit5IT {
 
   @Autowired
   private WebTestClient webTestClient;
