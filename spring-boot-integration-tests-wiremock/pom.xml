@@ -17,7 +17,7 @@
   <description>Integration Tests with Spring Boot and WireMock</description>
 
   <properties>
-    <java.version>11</java.version>
+    <java.version>17</java.version>
     <wiremock.version>2.32.0</wiremock.version>
   </properties>
 

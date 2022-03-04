@@ -25,9 +25,6 @@ class TodoControllerSpringInitializerIT {
   @Autowired
   private WebTestClient webTestClient;
 
-  @LocalServerPort
-  private Integer port;
-
   @AfterEach
   public void afterEach() {
     this.wireMockServer.resetAll();
@@ -45,7 +42,7 @@ class TodoControllerSpringInitializerIT {
 
     this.webTestClient
       .get()
-      .uri("http://localhost:" + port + "/api/todos")
+      .uri("/api/todos")
       .exchange()
       .expectStatus()
       .is2xxSuccessful()
@@ -67,7 +64,7 @@ class TodoControllerSpringInitializerIT {
 
     this.webTestClient
       .get()
-      .uri("http://localhost:" + port + "/api/todos")
+      .uri("/api/todos")
       .exchange()
       .expectStatus()
       .isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR_500);

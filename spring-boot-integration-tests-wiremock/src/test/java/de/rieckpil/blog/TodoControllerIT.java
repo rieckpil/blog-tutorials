@@ -33,28 +33,28 @@ class TodoControllerIT {
     this.wireMockServer.resetAll();
   }
 
-  @Test
-  void testGetAllTodosShouldReturnDataFromClient() {
-    this.wireMockServer.stubFor(
-      WireMock.get("/todos")
-        .willReturn(aResponse()
-          .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
-          .withBody("[{\"userId\": 1,\"id\": 1,\"title\": \"Learn Spring Boot 3.0\", \"completed\": false}," +
-            "{\"userId\": 1,\"id\": 2,\"title\": \"Learn WireMock\", \"completed\": true}]"))
-    );
+@Test
+void testGetAllTodosShouldReturnDataFromClient() {
+  this.wireMockServer.stubFor(
+    WireMock.get("/todos")
+      .willReturn(aResponse()
+        .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
+        .withBody("[{\"userId\": 1,\"id\": 1,\"title\": \"Learn Spring Boot 3.0\", \"completed\": false}," +
+          "{\"userId\": 1,\"id\": 2,\"title\": \"Learn WireMock\", \"completed\": true}]"))
+  );
 
-    this.webTestClient
-      .get()
-      .uri("http://localhost:" + port + "/api/todos")
-      .exchange()
-      .expectStatus()
-      .is2xxSuccessful()
-      .expectBody()
-      .jsonPath("$[0].title")
-      .isEqualTo("Learn Spring Boot 3.0")
-      .jsonPath("$.length()")
-      .isEqualTo(2);
-  }
+  this.webTestClient
+    .get()
+    .uri("/api/todos")
+    .exchange()
+    .expectStatus()
+    .is2xxSuccessful()
+    .expectBody()
+    .jsonPath("$[0].title")
+    .isEqualTo("Learn Spring Boot 3.0")
+    .jsonPath("$.length()")
+    .isEqualTo(2);
+}
 
   @Test
   void testGetAllTodosShouldPropagateErrorMessageFromClient() {

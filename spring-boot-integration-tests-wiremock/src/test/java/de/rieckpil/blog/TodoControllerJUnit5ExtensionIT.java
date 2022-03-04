@@ -2,6 +2,7 @@ package de.rieckpil.blog;
 
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.junit5.WireMockExtension;
+import org.eclipse.jetty.http.HttpStatus;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
@@ -23,25 +24,25 @@ class TodoControllerJUnit5ExtensionIT {
   private WebTestClient webTestClient;
 
   @RegisterExtension
-  static WireMockExtension wireMock = WireMockExtension.newInstance()
+  static WireMockExtension wireMockServer = WireMockExtension.newInstance()
     .options(wireMockConfig().dynamicPort())
     .build();
 
-  @DynamicPropertySource
-  static void configureProperties(DynamicPropertyRegistry registry) {
-    registry.add("todo_base_url", wireMock::baseUrl);
-  }
+@DynamicPropertySource
+static void configureProperties(DynamicPropertyRegistry registry) {
+  registry.add("todo_base_url", wireMockServer::baseUrl);
+}
 
   @AfterEach
   void resetAll() {
     // we're using one WireMock server for the test class (see static on the WireMockExtension definition)
-    wireMock.resetAll();
+    wireMockServer.resetAll();
   }
 
   @Test
   void basicWireMockExample() {
 
-    wireMock.stubFor(
+    wireMockServer.stubFor(
       WireMock.get(WireMock.urlEqualTo("/todos"))
         .willReturn(aResponse()
           .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
@@ -56,21 +57,20 @@ class TodoControllerJUnit5ExtensionIT {
       .expectBody().jsonPath("$.length()").isEqualTo(3)
       .jsonPath("$[0].title").isEqualTo("delectus aut autem");
   }
-
   @Test
-  void basicWireMockExampleTwo() {
-    wireMock.stubFor(
+  void testGetAllTodosShouldPropagateErrorMessageFromClient() {
+    wireMockServer.stubFor(
       WireMock.get("/todos")
         .willReturn(aResponse()
-          .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
-          .withBody("[]"))
+          .withStatus(403)
+          .withFixedDelay(2000)) // milliseconds
     );
 
     this.webTestClient
       .get()
       .uri("/api/todos")
       .exchange()
-      .expectStatus().isOk()
-      .expectBody().jsonPath("$.length()").isEqualTo(0);
+      .expectStatus()
+      .isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR_500);
   }
 }
