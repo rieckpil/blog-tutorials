@@ -38,8 +38,9 @@ class BookStoreWT {
   void shouldDisplayBooks() {
 
     Configuration.reportsFolder = "target/selenide";
+    Configuration.baseUrl = "http://localhost:" + port;
 
-    open("http://localhost:" + port + "/book-store");
+    open("/book-store");
 
     $(By.id("all-books")).shouldNot(Condition.exist);
 
