@@ -8,6 +8,7 @@ declare -a arr=(
  "spring-boot-datajpatest"
  "spring-boot-aws-integration-tests"
  "serverless-java-aws-examples/java-aws-lambda-custom-image"
+ "spring-boot-integration-tests-wiremock"
 )
 
 for project in "${arr[@]}"

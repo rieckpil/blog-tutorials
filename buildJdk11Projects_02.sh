@@ -4,7 +4,6 @@ set -e
 set -o pipefail
 
 declare -a arr=(
- "spring-boot-integration-tests-wiremock"
  "spring-boot-integration-tests-testcontainers"
  "telegram-bot-notifications-with-java"
  "websockets-with-jakarta-ee"
