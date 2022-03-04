@@ -22,7 +22,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class BookStoreTestcontainersWT {
+class BookStoreTestcontainersWT {
 
   public static BrowserWebDriverContainer<?> webDriverContainer =
     new BrowserWebDriverContainer<>()
@@ -31,7 +31,7 @@ public class BookStoreTestcontainersWT {
         .addArguments("--disable-dev-shm-usage"));
 
   @RegisterExtension
-  public static ScreenShooterExtension screenShooterExtension =
+  static ScreenShooterExtension screenShooterExtension =
     new ScreenShooterExtension().to("target/selenide");
 
   @LocalServerPort
@@ -44,7 +44,7 @@ public class BookStoreTestcontainersWT {
   }
 
   @Test
-  public void shouldDisplayBook() {
+  void shouldDisplayBook() {
 
     Configuration.timeout = 2000;
     Configuration.baseUrl = String.format("http://host.testcontainers.internal:%d", port);

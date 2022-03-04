@@ -27,14 +27,14 @@ public class BookStoreYouTubeWT {
   @LocalServerPort
   private Integer port;
 
-  public static BrowserWebDriverContainer<?> webDriverContainer =
+  static BrowserWebDriverContainer<?> webDriverContainer =
     new BrowserWebDriverContainer<>()
       .withCapabilities(new ChromeOptions()
         .addArguments("--no-sandbox")
         .addArguments("--disable-dev-shm-usage"));
 
   @RegisterExtension
-  public static ScreenShooterExtension screenShooterExtension =
+  static ScreenShooterExtension screenShooterExtension =
     new ScreenShooterExtension().to("target/selenide");
 
   @BeforeAll
@@ -44,7 +44,7 @@ public class BookStoreYouTubeWT {
   }
 
   @Test
-  public void shouldDisplayBook() {
+  void shouldDisplayBook() {
 
     Configuration.timeout = 2000;
     Configuration.baseUrl = String.format("http://host.testcontainers.internal:%d", port);

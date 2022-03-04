@@ -1,5 +1,6 @@
 package de.rieckpil.blog;
 
+import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.junit5.ScreenShooterExtension;
@@ -15,19 +16,18 @@ import org.springframework.boot.web.server.LocalServerPort;
 import static com.codeborne.selenide.Selenide.*;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 
-@Disabled
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class BookStoreWT {
+class BookStoreWT {
 
   @LocalServerPort
   private Integer port;
 
   @RegisterExtension
-  public static ScreenShooterExtension extension =
+  static ScreenShooterExtension extension =
     new ScreenShooterExtension().to("target/selenide");
 
   @BeforeAll
-  public static void configureChromeDriver() {
+  static void configureChromeDriver() {
     ChromeOptions chromeOptions = new ChromeOptions();
     chromeOptions.addArguments("--no-sandbox", "--disable-dev-shm-usage");
 
@@ -35,7 +35,7 @@ public class BookStoreWT {
   }
 
   @Test
-  public void shouldDisplayBooks() {
+  void shouldDisplayBooks() {
 
     Configuration.reportsFolder = "target/selenide";
 
@@ -47,6 +47,6 @@ public class BookStoreWT {
 
     $(By.id("fetch-books")).click();
     $(By.id("all-books")).shouldBe(Condition.visible);
-    $$(By.tagName("h1")).shouldHaveSize(1);
+    $$(By.tagName("h1")).shouldHave(CollectionCondition.size(1));
   }
 }
