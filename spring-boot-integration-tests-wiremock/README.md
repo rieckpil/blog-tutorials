@@ -1,5 +1,7 @@
 # Codebase for the blog post [Spring Boot Integration Tests with WireMock and JUnit 5](https://rieckpil.de/spring-boot-integration-tests-with-wiremock-and-junit-5/)
 
+![](diagram.png)
+
 Steps to run this project:
 
 1. Clone this Git repository
