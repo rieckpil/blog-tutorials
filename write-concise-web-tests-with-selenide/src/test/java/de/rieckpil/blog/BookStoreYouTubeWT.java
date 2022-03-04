@@ -22,7 +22,7 @@ import static org.testcontainers.Testcontainers.exposeHostPorts;
 
 @Testcontainers(disabledWithoutDocker = true)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class BookStoreYouTubeWT {
+class BookStoreYouTubeWT {
 
   @LocalServerPort
   private Integer port;
