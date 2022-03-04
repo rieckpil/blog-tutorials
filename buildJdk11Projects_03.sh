@@ -29,6 +29,7 @@ declare -a arr=(
  "spring-boot-testing-tips-and-tricks"
  "testing-java-applications-with-maven"
  "spring-boot-testing-primer"
+ "open-rewrite-example"
 )
 
 for project in "${arr[@]}"
