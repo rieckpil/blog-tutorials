@@ -43,6 +43,11 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>org.junit.vintage</groupId>
+      <artifactId>junit-vintage-engine</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
       <version>${mockito.version}</version>
@@ -51,6 +56,12 @@
     <dependency>
       <groupId>org.testcontainers</groupId>
       <artifactId>junit-jupiter</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>net.java.dev.jna</groupId>
+      <artifactId>jna</artifactId>
+      <version>5.9.0</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -87,6 +98,7 @@
           <activeRecipes>
             <recipe>org.openrewrite.java.testing.mockito.Mockito1to3Migration</recipe>
           </activeRecipes>
+          <pomCacheEnabled>false</pomCacheEnabled>
         </configuration>
         <dependencies>
           <dependency>
