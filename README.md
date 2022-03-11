@@ -111,6 +111,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 
 ## Miscellaneous
 
+* [Automatic Java Code Migration with OpenRewrite (Mockito Example)](https://rieckpil.de/automatic-java-code-migration-with-openrewrite-mockito-example) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/open-rewrite-example))
 * [Simple database documentation with SchemaSpy](https://rieckpil.de/howto-simple-database-documentation-with-schemaspy/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/simple-database-documentation-with-schema-spy))
 * [Preview PDF files with React](https://rieckpil.de/howto-pdf-preview-with-react/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/pdf-preview-react))
 * [Writing PostgreSQL functions with Java using PL/Java](https://rieckpil.de/howto-writing-postgresql-functions-with-java-using-pl-java/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/running-java-within-postgres))
