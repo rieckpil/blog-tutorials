@@ -16,6 +16,7 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.core.env.Environment;
 import org.testcontainers.Testcontainers;
 import org.testcontainers.containers.BrowserWebDriverContainer;
+import org.testcontainers.utility.DockerImageName;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -25,7 +26,13 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 class BookStoreTestcontainersWT {
 
   public static BrowserWebDriverContainer<?> webDriverContainer =
-    new BrowserWebDriverContainer<>()
+    new BrowserWebDriverContainer<>(
+      System.getProperty("os.arch").equals("aarch64") ?
+        DockerImageName.parse("seleniarm/standalone-chromium")
+          .asCompatibleSubstituteFor("selenium/standalone-chrome")
+        : DockerImageName.parse("selenium/standalone-chrome")
+    )
+
       .withCapabilities(new ChromeOptions()
         .addArguments("--no-sandbox")
         .addArguments("--disable-dev-shm-usage"));
