@@ -1,4 +1,4 @@
-# Codebase For Various Tutorials On [rieckpil.de](https://rieckpil.de/)
+# Hands-On Code Examples for Various Tutorials on [rieckpil.de](https://rieckpil.de/)
 
 [![](https://github.com/rieckpil/blog-tutorials/workflows/Build%20Java/badge.svg)](https://github.com/rieckpil/blog-tutorials/actions)
 
