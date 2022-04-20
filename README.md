@@ -2,11 +2,11 @@
 
 [![](https://github.com/rieckpil/blog-tutorials/workflows/Build%20Java/badge.svg)](https://github.com/rieckpil/blog-tutorials/actions)
 
-If you find an issue or bug within the provided code examples, feel free to open an [issue](https://github.com/rieckpil/blog-tutorials/issues) and I will take a look.
+If you find an issue or bug within the provided code examples, feel free to open an [issue](https://github.com/rieckpil/blog-tutorials/issues), and I will take a look.
 
 ## Cheat Sheets
 
-* [JUnit 5 & Mockito Cheat Sheet](https://rieckpil.de/junit-5-and-mockito-cheat-sheet-for-java-developers/)
+* [Testing Java Applications Cheat Sheet](https://rieckpil.de/testing-java-applications-cheat-sheet/)
 * [Java EE & Jakarta EE Application Server Cheat Sheet](https://rieckpil.de/cheatsheet-java-jakarta-ee-application-servers/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/application-server-cheatsheet))
 * [Spring Web MVC Cheat Sheet](https://rieckpil.de/spring-web-mvc-cheat-sheet/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/))
 
