@@ -1,0 +1,23 @@
+{
+  "flags": {
+    "root-log-level": {
+      "key": "root-log-level",
+      "on": true,
+      "variations": [
+        "TRACE",
+        "DEBUG",
+        "INFO",
+        "WARN",
+        "ERROR"
+      ]
+    }
+  },
+  "segments": {
+    "segment-key-1": {
+      "key": "segment-key-1",
+      "includes": [
+        "user-key-1"
+      ]
+    }
+  }
+}

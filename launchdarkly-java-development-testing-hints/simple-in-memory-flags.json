@@ -1,0 +1,8 @@
+{
+  "flagValues": {
+    "root-log-level": "DEBUG",
+    "vat-amount": 19.5,
+    "max-parallel-sessions": 32,
+    "enable-event-publishing": true
+  }
+}
