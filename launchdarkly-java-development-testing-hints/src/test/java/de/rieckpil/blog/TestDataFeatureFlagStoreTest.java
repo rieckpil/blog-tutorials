@@ -21,13 +21,14 @@ class TestDataFeatureFlagStoreTest {
     CountDownLatch countDownLatch = new CountDownLatch(1);
 
     TestData testData = TestData.dataSource();
+
     testData.update(
       testData
         .flag("root-log-level")
         .valueForAllUsers(LDValue.of("ERROR")));
 
-    FeatureFlagClient cut =
-      new FeatureFlagClient(
+    LaunchDarklyFeatureFlagClient cut =
+      new LaunchDarklyFeatureFlagClient(
         new LDClient(
           "ignored-access-key",
           new LDConfig.Builder().dataSource(testData).events(Components.noEvents()).build()));
