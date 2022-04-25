@@ -12,11 +12,12 @@
     <maven.compiler.target>17</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <testcontainers.version>1.15.3</testcontainers.version>
+    <testcontainers.version>1.17.1</testcontainers.version>
     <junit-jupiter.version>5.7.2</junit-jupiter.version>
-    <mockito.version>3.10.0</mockito.version>
+    <mockito.version>4.5.1</mockito.version>
     <awaitility.version>4.2.0</awaitility.version>
-    <launchdarkly-java-server-sdk.version>5.7.1</launchdarkly-java-server-sdk.version>
+    <launchdarkly.version>5.8.0</launchdarkly.version>
+    <log4j-api.version>2.17.2</log4j-api.version>
   </properties>
 
   <dependencyManagement>
@@ -42,12 +43,33 @@
     <dependency>
       <groupId>com.launchdarkly</groupId>
       <artifactId>launchdarkly-java-server-sdk</artifactId>
-      <version>${launchdarkly-java-server-sdk.version}</version>
+      <version>${launchdarkly.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>${log4j-api.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>${log4j-api.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-slf4j-impl</artifactId>
+      <version>${log4j-api.version}</version>
     </dependency>
     <dependency>
       <groupId>org.json</groupId>
       <artifactId>json</artifactId>
       <version>20220320</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>3.22.0</version>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -82,11 +104,11 @@
       </plugin>
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.0.0-M5</version>
+        <version>3.0.0-M6</version>
       </plugin>
       <plugin>
         <artifactId>maven-failsafe-plugin</artifactId>
-        <version>3.0.0-M5</version>
+        <version>3.0.0-M6</version>
         <executions>
           <execution>
             <goals>
