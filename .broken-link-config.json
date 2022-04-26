@@ -2,6 +2,9 @@
   "ignorePatterns": [
     {
       "pattern": "localhost:"
+    },
+    {
+      "pattern": "https://developer.github.com/apps/*"
     }
   ]
 }
