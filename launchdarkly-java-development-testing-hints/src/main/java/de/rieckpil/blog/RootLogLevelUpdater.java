@@ -22,7 +22,7 @@ public class RootLogLevelUpdater {
     featureFlagClient.registerChangeListener(
       "root-log-level",
       "duke",
-      (newValue, oldValue) -> {
+      (oldValue, newValue) -> {
 
         LOG.info("Going to change the root log level from '{}' to '{}'", oldValue, newValue);
 

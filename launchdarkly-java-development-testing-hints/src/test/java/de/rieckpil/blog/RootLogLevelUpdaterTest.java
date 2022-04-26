@@ -5,17 +5,11 @@ import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.awaitility.Awaitility.await;
-import static org.junit.jupiter.api.Assertions.*;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.verify;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class RootLogLevelUpdaterTest {
 
@@ -29,11 +23,12 @@ class RootLogLevelUpdaterTest {
   }
 
   @Test
-  @Disabled
   void shouldUpdateRootLogLevel() {
+    assertNotEquals(Level.TRACE, LogManager.getRootLogger().getLevel());
+
     cut.registerListener();
 
-    assertNotEquals(Level.TRACE, LogManager.getRootLogger().getLevel());
+    testDataFeatureFlagClient.updateFeatureFlag("root-log-level", "TRACE");
 
     await()
       .atMost(2, TimeUnit.SECONDS)
