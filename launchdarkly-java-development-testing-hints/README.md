@@ -1,3 +1,8 @@
-# Project de.rieckpil.blog/launchdarkly-java-development-testing-hints
+# Codebase for the blog post [LaunchDarkly Java Testing and Local Development Hints](https://rieckpil.de/launchdarkly-java-testing-and-local-development-hints/)
 
-Build the project and run all tests with `./mvnw package` or `mvnw.cmd package` for Windows.
+Steps to run this project:
+
+1. Clone this Git repository
+2. Navigate to the folder `launchdarkly-java-development-testing-hints`
+3. Run all tests with `./mvnw verify`
+
