@@ -10,6 +10,7 @@ declare -a arr=(
  "serverless-java-aws-examples/java-aws-lambda-custom-image"
  "spring-boot-integration-tests-wiremock"
  "launchdarkly-java-development-testing-hints"
+ "spring-boot-web-mvc-testing"
 )
 
 for project in "${arr[@]}"
