@@ -33,6 +33,6 @@ class WebhookAuthorizationHandlerInterceptorTest {
       .isFalse();
 
     assertThat(httpServletResponse.getStatus())
-      .isEqualTo(401);
+      .isEqualTo(403);
   }
 }

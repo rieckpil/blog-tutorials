@@ -26,7 +26,7 @@ class WebhookControllerTest {
            }
           """)
       )
-      .andExpect(status().isUnauthorized());
+      .andExpect(status().isForbidden());
   }
 
   @Test
@@ -41,7 +41,7 @@ class WebhookControllerTest {
            }
           """)
       )
-      .andExpect(status().isUnauthorized());
+      .andExpect(status().isForbidden());
   }
 
   @Test

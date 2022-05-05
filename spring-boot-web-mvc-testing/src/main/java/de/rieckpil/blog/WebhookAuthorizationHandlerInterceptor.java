@@ -27,8 +27,8 @@ public class WebhookAuthorizationHandlerInterceptor implements HandlerIntercepto
     if (validApiKey.equalsIgnoreCase(apiKey)) {
       return true;
     } else {
-      LOG.warn("Invalid api-key in the request when trying to access webhooks: '{}'", apiKey);
-      response.sendError(401);
+      LOG.warn("Invalid API key in the request when trying to access webhooks: '{}'", apiKey);
+      response.sendError(403); // you may also argue to return 401 here
       return false;
     }
   }
