@@ -16,7 +16,7 @@ class WebhookControllerTest {
   private MockMvc mockMvc;
 
   @Test
-  void shouldForbidAccessWithInvalidApiKey() throws Exception {
+  void shouldForbidAccessWithMissingApiKey() throws Exception {
     this.mockMvc
       .perform(post("/webhooks/orders")
         .contentType(APPLICATION_JSON)
@@ -30,7 +30,7 @@ class WebhookControllerTest {
   }
 
   @Test
-  void shouldForbidAccessWithMissingApiKey() throws Exception {
+  void shouldForbidAccessWithInvalidApiKey() throws Exception {
     this.mockMvc
       .perform(post("/webhooks/orders")
         .header("X-API-KEY", "invalid42")
