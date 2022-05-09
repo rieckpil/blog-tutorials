@@ -12,6 +12,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 
 ## Articles about Testing
 
+* [Spring Boot Test Spring Web MVC HandlerInterceptor](https://rieckpil.de/spring-boot-test-spring-web-mvc-handlerinterceptor/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-web-mvc-testing))
 * [LaunchDarkly Java Testing and Local Development Hints](https://rieckpil.de/launchdarkly-java-testing-and-local-development-hints/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/launchdarkly-java-development-testing-hints))
 * [What the Heck Is the SpringExtension Used For?](https://rieckpil.de/what-the-heck-is-the-springextension-used-for/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-testing-tips-and-tricks))
 * [Maven Setup For Testing Java Applications](https://rieckpil.de/maven-setup-for-testing-java-applications/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/testing-java-applications-with-maven))
