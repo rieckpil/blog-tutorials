@@ -26,7 +26,7 @@ import static org.mockito.Mockito.verify;
 import static org.testcontainers.containers.localstack.LocalStackContainer.*;
 import static org.testcontainers.containers.localstack.LocalStackContainer.Service.SQS;
 
-@SqsTest
+@SqsTest(OrderListener.class)
 @Testcontainers
 class OrderListenerTest {
 
