@@ -1,7 +1,6 @@
 name: Build Maven Projects
 on:
   push:
-  pull_request:
   schedule:
     - cron: '0 5 * * SUN'
 jobs:
