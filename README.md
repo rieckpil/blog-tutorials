@@ -12,6 +12,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 
 ## Articles about Testing
 
+* [Amazon SQS Listener Testing with @SqsTest (Spring Cloud AWS)](https://rieckpil.de/amazon-sqs-listener-testing-with-sqstest-spring-cloud-aws/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-cloud-aws-testing))
 * [Spring Boot Test Spring Web MVC HandlerInterceptor](https://rieckpil.de/spring-boot-test-spring-web-mvc-handlerinterceptor/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-web-mvc-testing))
 * [LaunchDarkly Java Testing and Local Development Hints](https://rieckpil.de/launchdarkly-java-testing-and-local-development-hints/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/launchdarkly-java-development-testing-hints))
 * [What the Heck Is the SpringExtension Used For?](https://rieckpil.de/what-the-heck-is-the-springextension-used-for/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-testing-tips-and-tricks))
