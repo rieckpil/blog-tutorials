@@ -51,9 +51,8 @@ class CustomerControllerTestRestTemplateTest {
       requestHeaders
     );
 
-    ResponseEntity<List<Customer>> response = this.testRestTemplate
-      .exchange("/api/customers", HttpMethod.POST, requestEntity, new ParameterizedTypeReference<>() {
-      });
+    ResponseEntity<Void> response = this.testRestTemplate
+      .exchange("/api/customers", HttpMethod.POST, requestEntity, Void.class);
 
     assertThat(response.getStatusCodeValue())
       .isEqualTo(201);
