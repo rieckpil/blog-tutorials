@@ -21,9 +21,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.javafaker</groupId>
-            <artifactId>javafaker</artifactId>
-            <version>0.17.2</version>
+            <groupId>io.github.serpro69</groupId>
+            <artifactId>kotlin-faker</artifactId>
+            <version>1.11.0</version>
         </dependency>
     </dependencies>
     <build>

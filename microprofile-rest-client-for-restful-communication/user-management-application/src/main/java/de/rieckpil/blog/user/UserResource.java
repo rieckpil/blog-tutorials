@@ -1,6 +1,6 @@
 package de.rieckpil.blog.user;
 
-import com.github.javafaker.Faker;
+import io.github.serpro69.kfaker.Faker;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.security.RolesAllowed;
@@ -50,6 +50,6 @@ public class UserResource {
     @RolesAllowed("ADMIN")
     public void createNewUser(JsonObject user) {
         this.userDatabase
-                .put(user.getInt("userId"), this.randomUser.name().firstName());
+                .put(user.getInt("userId"), this.randomUser.getName().firstName());
     }
 }
