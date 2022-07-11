@@ -10,7 +10,7 @@ Steps to run this project:
 6. Deploy the AWS Lambda with Serverless `serverless deploy -v`
 7. Upload `.png` files to S3 (don't forget to replace the bucket name) and wait for the created thumbnail:
 ```shell script
-aws s3api put-object --bucket image-uploads-java-thumbnail-example --key uploads/myPicture.png --body myPicture.png --profile rieckpil
+aws s3api put-object --bucket image-uploads-java-thumbnail-example --key uploads/myPicture.png --body myPicture.png --profile serverless-admin
 aws s3api list-objects-v2 --bucket image-uploads-java-thumbnail-example --profile serverless-admin
 ```
 8. To remove the AWS Lambda and its infrastructure, delete all files within the S3 bucket and run `serverless remove`
