@@ -16,7 +16,6 @@ declare -a arr=(
  "spring-security-aws-cognito-thymeleaf"
  "testcontainers-reuse-existing-containers"
  "five-unknown-junit-5-features"
- "spring-websocket-integration-tests"
  "spring-test-context-caching-introduction"
  "spring-boot-kotlin-testcontainers"
  "dependency-version-update-plugin"

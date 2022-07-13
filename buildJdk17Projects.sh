@@ -12,6 +12,7 @@ declare -a arr=(
  "launchdarkly-java-development-testing-hints"
  "spring-boot-web-mvc-testing"
  "spring-cloud-aws-sqs-testing"
+ "spring-websocket-integration-tests"
 )
 
 for project in "${arr[@]}"

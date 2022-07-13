@@ -3,7 +3,7 @@ package de.rieckpil.blog;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.messaging.converter.MappingJackson2MessageConverter;
 import org.springframework.messaging.converter.StringMessageConverter;
 import org.springframework.messaging.simp.stomp.StompFrameHandler;
@@ -20,8 +20,8 @@ import java.util.List;
 import java.util.concurrent.*;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
+import static org.awaitility.Awaitility.await;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class GreetingControllerTest {
@@ -32,20 +32,21 @@ class GreetingControllerTest {
   private WebSocketStompClient webSocketStompClient;
 
   @BeforeEach
-  public void setup() {
+  void setup() {
     this.webSocketStompClient = new WebSocketStompClient(new SockJsClient(
       List.of(new WebSocketTransport(new StandardWebSocketClient()))));
   }
 
   @Test
-  public void verifyGreetingIsReceived() throws Exception {
+  void verifyGreetingIsReceived() throws Exception {
 
-    BlockingQueue<String> blockingQueue = new ArrayBlockingQueue(1);
+    BlockingQueue<String> blockingQueue = new ArrayBlockingQueue<>(1);
 
     webSocketStompClient.setMessageConverter(new StringMessageConverter());
 
     StompSession session = webSocketStompClient
-      .connect(getWsPath(), new StompSessionHandlerAdapter() {})
+      .connect(getWsPath(), new StompSessionHandlerAdapter() {
+      })
       .get(1, SECONDS);
 
     session.subscribe("/topic/greetings", new StompFrameHandler() {
@@ -57,18 +58,19 @@ class GreetingControllerTest {
 
       @Override
       public void handleFrame(StompHeaders headers, Object payload) {
-        System.out.println("Received message: " + payload);
         blockingQueue.add((String) payload);
       }
     });
 
     session.send("/app/welcome", "Mike");
 
-    assertEquals("Hello, Mike!", blockingQueue.poll(1, SECONDS));
+    await()
+      .atMost(1, SECONDS)
+      .untilAsserted(() -> assertEquals("Hello, Mike!", blockingQueue.poll()));
   }
 
   @Test
-  public void verifyWelcomeMessageIsSent() throws Exception {
+  void verifyWelcomeMessageIsSent() throws Exception {
     CountDownLatch latch = new CountDownLatch(1);
 
     webSocketStompClient.setMessageConverter(new MappingJackson2MessageConverter());
@@ -91,9 +93,9 @@ class GreetingControllerTest {
       }
     });
 
-    if (!latch.await(1, TimeUnit.SECONDS)) {
-      fail("Message not received");
-    }
+    await()
+      .atMost(1, SECONDS)
+      .untilAsserted(() -> assertEquals(0, latch.getCount()));
   }
 
   private String getWsPath() {
