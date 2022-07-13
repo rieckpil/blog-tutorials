@@ -45,7 +45,8 @@ class GreetingControllerTest {
     webSocketStompClient.setMessageConverter(new StringMessageConverter());
 
     StompSession session = webSocketStompClient
-      .connect(getWsPath(), new StompSessionHandlerAdapter() {})
+      .connect(getWsPath(), new StompSessionHandlerAdapter() {
+      })
       .get(1, SECONDS);
 
     session.subscribe("/topic/greetings", new StompFrameHandler() {
@@ -63,7 +64,9 @@ class GreetingControllerTest {
 
     session.send("/app/welcome", "Mike");
 
-    assertEquals("Hello, Mike!", blockingQueue.poll(1, SECONDS));
+    await()
+      .atMost(1, SECONDS)
+      .untilAsserted(() -> assertEquals("Hello, Mike!", blockingQueue.poll()));
   }
 
   @Test
