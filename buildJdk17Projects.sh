@@ -13,6 +13,7 @@ declare -a arr=(
  "spring-boot-web-mvc-testing"
  "spring-cloud-aws-sqs-testing"
  "spring-websocket-integration-tests"
+ "spring-boot-test-mockmvc-webtestclient-testresttemplate"
 )
 
 for project in "${arr[@]}"
