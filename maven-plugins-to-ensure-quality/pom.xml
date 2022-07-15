@@ -65,6 +65,14 @@
         <groupId>com.github.spotbugs</groupId>
         <artifactId>spotbugs-maven-plugin</artifactId>
         <version>4.7.1.0</version>
+        <executions>
+          <execution>
+            <goals>
+              <!-- uncomment below to run it as part of your build -->
+              <!-- <goal>check</goal> -->
+            </goals>
+          </execution>
+        </executions>
       </plugin>
 
       <plugin>
