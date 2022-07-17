@@ -16,7 +16,7 @@
 
   <properties>
     <java.version>11</java.version>
-    <togglz.version>2.6.1.Final</togglz.version>
+    <togglz.version>2.9.4</togglz.version>
   </properties>
 
   <dependencies>
