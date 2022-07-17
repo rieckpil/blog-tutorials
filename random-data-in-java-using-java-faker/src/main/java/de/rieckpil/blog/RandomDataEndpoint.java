@@ -3,8 +3,7 @@ package de.rieckpil.blog;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.github.javafaker.Faker;
-import org.springframework.beans.factory.annotation.Autowired;
+import net.datafaker.Faker;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,8 +14,11 @@ import java.util.Locale;
 @RequestMapping("/random")
 public class RandomDataEndpoint {
 
-  @Autowired
-  private ObjectMapper objectMapper;
+  private final ObjectMapper objectMapper;
+
+  public RandomDataEndpoint(ObjectMapper objectMapper) {
+    this.objectMapper = objectMapper;
+  }
 
   @GetMapping("/persons")
   public JsonNode getRandomPersons() {
