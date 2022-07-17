@@ -22,7 +22,7 @@
     <spring-cloud-function.version>3.1.4</spring-cloud-function.version>
     <wrapper.version>1.0.27.RELEASE</wrapper.version>
     <aws-lambda-java-events.version>3.10.0</aws-lambda-java-events.version>
-    <aws-java-sdk-s3.version>1.12.80</aws-java-sdk-s3.version>
+    <aws-java-sdk-s3.version>1.12.261</aws-java-sdk-s3.version>
   </properties>
 
   <dependencies>
