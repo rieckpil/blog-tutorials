@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,11 +17,13 @@ import java.time.LocalDate;
 @RequestMapping("/books")
 public class BookController {
 
-  @Autowired
-  private FeatureManager featureManager;
+  private final FeatureManager featureManager;
+  private final ObjectMapper objectMapper;
 
-  @Autowired
-  private ObjectMapper objectMapper;
+  public BookController(FeatureManager featureManager, ObjectMapper objectMapper) {
+    this.featureManager = featureManager;
+    this.objectMapper = objectMapper;
+  }
 
   @GetMapping
   public ResponseEntity<JsonNode> getBook() {
