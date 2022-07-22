@@ -16,6 +16,7 @@ declare -a arr=(
  "spring-boot-test-mockmvc-webtestclient-testresttemplate"
  "random-data-in-java-using-java-faker"
  "spring-boot-feature-toggles-with-togglz"
+ "spring-boot-rest-assured"
 )
 
 for project in "${arr[@]}"

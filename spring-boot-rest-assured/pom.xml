@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.4.0</version>
+    <version>2.7.0</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
@@ -16,9 +16,8 @@
   <name>spring-boot-rest-assured</name>
 
   <properties>
-    <java.version>11</java.version>
-    <groovy.version>3.0.7</groovy.version>
-    <rest-assured.version>4.3.3</rest-assured.version>
+    <java.version>17</java.version>
+    <rest-assured.version>5.1.1</rest-assured.version>
   </properties>
 
   <dependencies>
