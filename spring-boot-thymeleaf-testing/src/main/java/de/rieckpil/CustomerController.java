@@ -30,9 +30,11 @@ public class CustomerController {
   @PostMapping
   public String createCustomer(
     @Valid CustomerFormObject customerFormObject,
-    BindingResult bindingResult) {
+    BindingResult bindingResult,
+    Model model) {
 
     if (bindingResult.hasErrors()) {
+      model.addAttribute("customers", CUSTOMERS);
       return "customers";
     }
 
