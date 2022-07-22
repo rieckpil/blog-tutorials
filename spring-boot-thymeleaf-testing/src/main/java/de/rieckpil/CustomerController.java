@@ -1,5 +1,10 @@
 package de.rieckpil;
 
+import javax.validation.Valid;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,33 +16,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/customers")
 public class CustomerController {
 
+  private static final List<Customer> CUSTOMERS = new ArrayList<>();
+
   @GetMapping
   public String getCustomerView(Model model) {
 
-    model.addAttribute("customerCreationForm", new CustomerCreationRequest("", "", ""));
+    model.addAttribute("customerFormObject", new CustomerFormObject());
+    model.addAttribute("customers", CUSTOMERS);
 
     return "customers";
   }
 
   @PostMapping
   public String createCustomer(
-    CustomerCreationRequest customerCreationRequest,
-    BindingResult bindingResult,
-    Model model) {
+    @Valid CustomerFormObject customerFormObject,
+    BindingResult bindingResult) {
 
-    if(bindingResult.hasErrors()) {
+    if (bindingResult.hasErrors()) {
       return "customers";
     }
 
-    // store customers
+    CUSTOMERS.add(Customer.from(customerFormObject));
 
     return "redirect:/customers";
   }
 
-  record CustomerCreationRequest(
-    String customerName,
-    String customerNumber,
-    String customerEmailAddress
-  ) {
+  public record Customer(
+    String name,
+    String number,
+    String email,
+    LocalDateTime createdAt) {
+
+    public static Customer from(CustomerFormObject customerFormObject) {
+      return new Customer(customerFormObject.getName(), customerFormObject.getNumber(), customerFormObject.getEmail(), LocalDateTime.now());
+    }
   }
 }

@@ -10,8 +10,8 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
   @Bean
-  public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-    return http.authorizeRequests(
+  public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+    httpSecurity.authorizeRequests(
         authorize ->
           authorize.mvcMatchers("/customers").permitAll()
             .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
@@ -19,8 +19,8 @@ public class SecurityConfig {
       )
       .formLogin()
       .and()
-      .csrf()
-      .and()
-      .build();
+      .csrf();
+
+    return httpSecurity.build();
   }
 }
