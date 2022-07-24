@@ -14,7 +14,7 @@
     <kotlin.version>1.4.10</kotlin.version>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
-    <mockito.version>4.6.2</mockito.version>
+    <mockito.version>4.6.1</mockito.version>
     <mockito-kotlin.version>4.0.0</mockito-kotlin.version>
     <mockwebserver.version>4.8.0</mockwebserver.version>
     <okhttp3.version>4.8.0</okhttp3.version>
@@ -60,7 +60,7 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>com.nhaarman.mockitokotlin2</groupId>
+      <groupId>org.mockito.kotlin</groupId>
       <artifactId>mockito-kotlin</artifactId>
       <version>${mockito-kotlin.version}</version>
       <scope>test</scope>
