@@ -14,8 +14,8 @@
     <kotlin.version>1.4.10</kotlin.version>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
-    <mockito.version>3.9.0</mockito.version>
-    <mockito-kotlin.version>2.2.0</mockito-kotlin.version>
+    <mockito.version>4.6.2</mockito.version>
+    <mockito-kotlin.version>4.0.0</mockito-kotlin.version>
     <mockwebserver.version>4.8.0</mockwebserver.version>
     <okhttp3.version>4.8.0</okhttp3.version>
   </properties>
