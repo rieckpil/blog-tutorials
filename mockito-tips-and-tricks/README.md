@@ -8,4 +8,4 @@ Steps to run this project:
 
 1. Clone this Git repository
 2. Navigate to the folder `mockito-tips-and-tricks`
-3. Build the project to run all the tests with `mvn package`
+3. Build the project to run all the tests with `./mvnw verify`
