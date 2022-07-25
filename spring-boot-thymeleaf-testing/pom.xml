@@ -18,6 +18,7 @@
 
   <properties>
     <java.version>17</java.version>
+    <htmlunit.version>2.63.0</htmlunit.version>
   </properties>
 
   <dependencies>
@@ -60,6 +61,11 @@
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>net.sourceforge.htmlunit</groupId>
+      <artifactId>htmlunit</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
