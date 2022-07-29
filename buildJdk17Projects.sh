@@ -17,6 +17,7 @@ declare -a arr=(
  "random-data-in-java-using-java-faker"
  "spring-boot-feature-toggles-with-togglz"
  "spring-boot-rest-assured"
+ "spring-boot-thymeleaf-testing"
 )
 
 for project in "${arr[@]}"

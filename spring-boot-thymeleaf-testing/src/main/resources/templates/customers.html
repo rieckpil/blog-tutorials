@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Customers</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container">
+  <div class="row mt-4">
+
+    <div class="col-4">
+      <h2>Create a Customer</h2>
+      <form
+        th:object="${customerFormObject}"
+        th:action="@{/customers}"
+        th:method="POST">
+        <div class="mb-3">
+          <label for="customerName" class="form-label">Customer Name</label>
+          <input th:field="*{name}" th:classappend="${#fields.hasErrors('name')}? 'is-invalid'"
+                 type="text" class="form-control" id="customerName">
+        </div>
+        <div class="mb-3">
+          <label for="customerNumber" class="form-label">Customer Number</label>
+          <input th:field="*{number}" th:classappend="${#fields.hasErrors('number')}? 'is-invalid'"
+                 type="text" class="form-control" id="customerNumber" aria-describedby="customerNumberHelp">
+          <div id="customerNumberHelp" class="form-text">All customer numbers have to start with C.</div>
+        </div>
+        <div class="mb-3">
+          <label for="customerEmailAddress" class="form-label">Customer Email Address</label>
+          <input th:field="*{email}" th:classappend="${#fields.hasErrors('email')}? 'is-invalid'"
+                 type="email" class="form-control" id="customerEmailAddress"
+                 aria-describedby="customerEmailAddressHelp">
+          <div id="customerEmailAddressHelp" class="form-text">Ensure you have the customer's permission to store their
+            email address.
+          </div>
+        </div>
+        <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <div class="col-8">
+      <h2>All Customers</h2>
+      <table class="table" id="customer-list">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Number</th>
+          <th scope="col">Email</th>
+          <th scope="col">Created At</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="customer, iter : ${customers}">
+          <th scope="row" th:text="${iter.count}"></th>
+          <td th:text="${customer.name()}"></td>
+          <td th:text="${customer.number()}"></td>
+          <td th:text="${customer.email()}"></td>
+          <td th:text="${#temporals.format(customer.createdAt(), 'dd-MM-yyyy HH:mm')}"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
