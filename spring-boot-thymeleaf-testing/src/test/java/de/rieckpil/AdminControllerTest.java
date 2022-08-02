@@ -36,8 +36,7 @@ class AdminControllerTest {
   @Test
   void shouldRedirectAnonymousUserToLogin() throws Exception {
     this.mockMvc
-      .perform(get("/admin")
-        .header(ACCEPT, APPLICATION_JSON))
+      .perform(get("/admin"))
       .andExpect(status().is3xxRedirection());
   }
 
@@ -45,8 +44,7 @@ class AdminControllerTest {
   @WithMockUser(username = "duke")
   void shouldAllowAccessForAuthenticatedUser() throws Exception {
     this.mockMvc
-      .perform(get("/admin")
-        .header(ACCEPT, APPLICATION_JSON))
+      .perform(get("/admin"))
       .andExpect(status().isOk())
       .andExpect(view().name("admin"))
       .andExpect(model().attributeExists("message"));
