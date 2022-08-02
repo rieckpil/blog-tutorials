@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders;
+import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
@@ -45,6 +47,16 @@ class AdminControllerTest {
   void shouldAllowAccessForAuthenticatedUser() throws Exception {
     this.mockMvc
       .perform(get("/admin"))
+      .andExpect(status().isOk())
+      .andExpect(view().name("admin"))
+      .andExpect(model().attributeExists("message"));
+  }
+
+  @Test
+  void shouldAllowAccessForAuthenticatedUserAlternative() throws Exception {
+    this.mockMvc
+      .perform(get("/admin")
+        .with(SecurityMockMvcRequestPostProcessors.user("mike")))
       .andExpect(status().isOk())
       .andExpect(view().name("admin"))
       .andExpect(model().attributeExists("message"));
