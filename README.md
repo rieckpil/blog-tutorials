@@ -12,6 +12,8 @@ If you find an issue or bug within the provided code examples, feel free to open
 
 ## Articles about Testing
 
+
+* [Test Thymeleaf Controller Endpoints with Spring Boot and MockMvc](https://rieckpil.de/test-thymeleaf-controller-endpoints-with-spring-boot-and-mockmvc/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-thymeleaf-testing))
 * [Spring Boot Testing: MockMvc vs. WebTestClient vs. TestRestTemplate](https://rieckpil.de/spring-boot-testing-mockmvc-vs-webtestclient-vs-testresttemplate/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-test-mockmvc-webtestclient-testresttemplate))
 * [Amazon SQS Listener Testing with @SqsTest (Spring Cloud AWS)](https://rieckpil.de/amazon-sqs-listener-testing-with-sqstest-spring-cloud-aws/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-cloud-aws-sqs-testing))
 * [Spring Boot Test Spring Web MVC HandlerInterceptor](https://rieckpil.de/spring-boot-test-spring-web-mvc-handlerinterceptor/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-web-mvc-testing))
