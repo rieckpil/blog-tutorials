@@ -30,7 +30,7 @@ class BookStoreTestcontainersWT {
       System.getProperty("os.arch").equals("aarch64") ?
         DockerImageName.parse("seleniarm/standalone-chromium")
           .asCompatibleSubstituteFor("selenium/standalone-chrome")
-        : DockerImageName.parse("selenium/standalone-chrome")
+        : DockerImageName.parse("selenium/standalone-chrome:4.3.0-20220726")
     )
       .withCapabilities(new ChromeOptions()
         .addArguments("--no-sandbox")
