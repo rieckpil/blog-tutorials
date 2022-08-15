@@ -32,7 +32,6 @@ class BookStoreTestcontainersWT {
           .asCompatibleSubstituteFor("selenium/standalone-chrome")
         : DockerImageName.parse("selenium/standalone-chrome")
     )
-
       .withCapabilities(new ChromeOptions()
         .addArguments("--no-sandbox")
         .addArguments("--disable-dev-shm-usage"));
