@@ -11,10 +11,10 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testcontainers.containers.BrowserWebDriverContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
-import org.testcontainers.utility.DockerImageName;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.screenshot;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Testcontainers
@@ -22,10 +22,7 @@ class SeleniumExampleTest {
 
   @Container
   static BrowserWebDriverContainer<?> webDriverContainer =
-    new BrowserWebDriverContainer<>(System.getProperty("os.arch").equals("aarch64") ?
-      DockerImageName.parse("seleniarm/standalone-chromium")
-        .asCompatibleSubstituteFor("selenium/standalone-chrome")
-      : DockerImageName.parse("selenium/standalone-chrome"))
+    new BrowserWebDriverContainer<>()
       .withRecordingMode(BrowserWebDriverContainer.VncRecordingMode.RECORD_ALL, new File("./target"))
       .withCapabilities(new ChromeOptions()
         .addArguments("--no-sandbox")
@@ -40,6 +37,8 @@ class SeleniumExampleTest {
     WebDriverRunner.setWebDriver(remoteWebDriver);
 
     open("/contact-us");
+
+    screenshot("contact-us");
 
     String h1Text = $(By.tagName("h1")).text();
 
