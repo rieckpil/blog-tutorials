@@ -1,5 +1,5 @@
 {
   "devDependencies": {
-    "serverless-plugin-aws-alerts": "^1.7.3"
+    "serverless-plugin-aws-alerts": "^1.7.5"
   }
 }
