@@ -18,6 +18,7 @@ declare -a arr=(
  "spring-boot-feature-toggles-with-togglz"
  "spring-boot-rest-assured"
  "spring-boot-thymeleaf-testing"
+ "testcontainers-introduction"
 )
 
 for project in "${arr[@]}"
