@@ -32,6 +32,7 @@ class SeleniumExampleTest {
   void shouldAccessHomePage() {
     Configuration.timeout = 2000;
     Configuration.baseUrl = "https://www.extenda.com/";
+    Configuration.reportsFolder = "target/selenide-reports";
 
     RemoteWebDriver remoteWebDriver = webDriverContainer.getWebDriver();
     WebDriverRunner.setWebDriver(remoteWebDriver);
