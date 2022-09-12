@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.utility.DockerImageName;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 class GenericContainerExampleTest {
 
   static GenericContainer<?> nginx =
@@ -15,6 +17,8 @@ class GenericContainerExampleTest {
     nginx.start();
 
     // container is running
+    assertThat(nginx.isRunning())
+      .isTrue();
 
     nginx.stop();
   }
