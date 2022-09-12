@@ -7,15 +7,15 @@ import org.testcontainers.utility.DockerImageName;
 
 class GenericContainerExampleTest {
 
-  static GenericContainer<?> database =
-    new GenericContainer<>(DockerImageName.parse("postgres:14.0"));
+  static GenericContainer<?> nginx =
+    new GenericContainer<>(DockerImageName.parse("nginx:1.23.1"));
 
   @Test
-  void shouldConnectToDatabase() {
-    database.start();
+  void shouldStartContainer() {
+    nginx.start();
 
-    // access to the database
+    // container is running
 
-    database.stop();
+    nginx.stop();
   }
 }
