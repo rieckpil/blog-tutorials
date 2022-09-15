@@ -19,6 +19,7 @@ declare -a arr=(
  "spring-boot-rest-assured"
  "spring-boot-thymeleaf-testing"
  "testcontainers-introduction"
+ "maven-junit-paralellize-tests"
 )
 
 for project in "${arr[@]}"
