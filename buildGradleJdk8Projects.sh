@@ -7,5 +7,7 @@ declare -a arr=("kotlin-javascript-transpiling-gradle")
 
 for project in "${arr[@]}"
 do
-  gradle -b $project/build.gradle.kts build
+  cd $project
+  ./gradlew build
+  cd ..
 done
