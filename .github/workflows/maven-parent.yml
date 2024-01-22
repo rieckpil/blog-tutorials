@@ -1,11 +1,11 @@
-name: Build Maven Projects
+name: Build All Maven Projects
 on:
   push:
   schedule:
     - cron: '0 5 * * SUN'
 jobs:
   build-maven-parent-pom:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     name: Build Java Projects
     steps:
       - name: VCS checkout
