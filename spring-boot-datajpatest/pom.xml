@@ -27,9 +27,9 @@
       <artifactId>flyway-core</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.vladmihalcea</groupId>
-      <artifactId>hibernate-types-52</artifactId>
-      <version>2.14.0</version>
+      <groupId>io.hypersistence</groupId>
+      <artifactId>hypersistence-utils-hibernate-63</artifactId>
+      <version>3.7.0</version>
     </dependency>
 
     <dependency>
