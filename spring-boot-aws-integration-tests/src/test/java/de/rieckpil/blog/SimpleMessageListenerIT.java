@@ -1,13 +1,10 @@
 package de.rieckpil.blog;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.Map;
-import java.util.UUID;
 
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.model.AmazonS3Exception;
-import io.awspring.cloud.messaging.core.QueueMessagingTemplate;
+import io.awspring.cloud.s3.S3Exception;
+import io.awspring.cloud.sqs.operations.SqsTemplate;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +16,8 @@ import org.testcontainers.containers.localstack.LocalStackContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
+import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.GetObjectRequest;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.awaitility.Awaitility.given;
@@ -55,15 +54,15 @@ class SimpleMessageListenerIT {
   }
 
   @Autowired
-  private AmazonS3 amazonS3;
+  private S3Client amazonS3;
 
   @Autowired
-  private QueueMessagingTemplate queueMessagingTemplate;
+  private SqsTemplate sqsTemplate;
 
   @Test
   void messageShouldBeUploadedToBucketOnceConsumedFromQueue() {
 
-    queueMessagingTemplate.send(QUEUE_NAME, new GenericMessage<>("""
+    sqsTemplate.send(QUEUE_NAME, new GenericMessage<>("""
         {
            "id": "42",
            "message": "Please delivery ASAP",
@@ -74,9 +73,9 @@ class SimpleMessageListenerIT {
       """, Map.of("contentType", "application/json")));
 
     given()
-      .ignoreException(AmazonS3Exception.class)
+      .ignoreException(S3Exception.class)
       .await()
       .atMost(5, SECONDS)
-      .untilAsserted(() -> assertNotNull(amazonS3.getObject(BUCKET_NAME, "42")));
+      .untilAsserted(() -> assertNotNull(amazonS3.getObject(GetObjectRequest.builder().bucket(BUCKET_NAME).key("42").build())));
   }
 }
