@@ -1,4 +1,4 @@
-# Codebase for the blog post [CRUD Applications with Spring Boot](https://rieckpil.de/courses/tdd-spring-boot-crud-application/)
+# Codebase for the blog post CRUD Applications with Spring Boot
 
 Steps to run this project:
 
