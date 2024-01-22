@@ -27,6 +27,7 @@
     <module>spring-boot-rest-assured</module>
     <module>spring-boot-thymeleaf-testing</module>
     <module>spring-boot-web-mvc-testing</module>
+    <module>spring-boot-test-slice-annotations</module>
     <module>spring-cloud-aws-sqs-testing</module>
     <module>spring-websocket-integration-tests</module>
     <module>spring-boot-test-mockmvc-webtestclient-testresttemplate</module>
