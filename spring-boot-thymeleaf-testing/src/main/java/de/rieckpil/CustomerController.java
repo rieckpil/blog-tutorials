@@ -1,6 +1,6 @@
 package de.rieckpil;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 @Controller
 @RequestMapping("/customers")
 public class CustomerController {
