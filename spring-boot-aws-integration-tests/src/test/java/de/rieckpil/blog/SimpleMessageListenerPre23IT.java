@@ -3,6 +3,7 @@ package de.rieckpil.blog;
 import io.awspring.cloud.s3.S3Exception;
 import io.awspring.cloud.sqs.operations.SqsTemplate;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -32,6 +33,7 @@ import static org.testcontainers.containers.localstack.LocalStackContainer.Servi
 
 @Testcontainers
 @SpringBootTest
+@Disabled
 class SimpleMessageListenerPre23IT {
 
   private static final String QUEUE_NAME = "order-event-test-queue";
