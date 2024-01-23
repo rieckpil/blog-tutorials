@@ -5,6 +5,5 @@ event-processing:
 spring:
   cloud:
     aws:
-
       region:
         static: eu-central-1

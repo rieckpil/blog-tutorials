@@ -1,8 +1,5 @@
 package de.rieckpil.blog;
 
-import java.io.IOException;
-import java.util.Map;
-
 import io.awspring.cloud.s3.S3Exception;
 import io.awspring.cloud.sqs.operations.SqsTemplate;
 import org.junit.jupiter.api.BeforeAll;
@@ -18,6 +15,9 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.GetObjectRequest;
+
+import java.io.IOException;
+import java.util.Map;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.awaitility.Awaitility.given;
@@ -47,10 +47,10 @@ class SimpleMessageListenerIT {
   static void overrideConfiguration(DynamicPropertyRegistry registry) {
     registry.add("event-processing.order-event-queue", () -> QUEUE_NAME);
     registry.add("event-processing.order-event-bucket", () -> BUCKET_NAME);
-    registry.add("cloud.aws.sqs.endpoint", () -> localStack.getEndpointOverride(SQS));
-    registry.add("cloud.aws.s3.endpoint", () -> localStack.getEndpointOverride(S3));
-    registry.add("cloud.aws.credentials.access-key", localStack::getAccessKey);
-    registry.add("cloud.aws.credentials.secret-key", localStack::getSecretKey);
+    registry.add("spring.cloud.aws.sqs.endpoint", () -> localStack.getEndpointOverride(SQS));
+    registry.add("spring.cloud.aws.s3.endpoint", () -> localStack.getEndpointOverride(S3));
+    registry.add("spring.cloud.aws.credentials.access-key", localStack::getAccessKey);
+    registry.add("spring.cloud.aws.credentials.secret-key", localStack::getSecretKey);
   }
 
   @Autowired
