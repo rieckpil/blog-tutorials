@@ -1,0 +1,22 @@
+name: Build All Maven Projects
+on:
+  push:
+  schedule:
+    - cron: '0 5 * * SUN'
+jobs:
+  build-maven-parent-pom:
+    runs-on: ubuntu-latest
+    name: Build Java Projects
+    steps:
+      - name: VCS checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: 'adopt'
+          cache: 'maven'
+
+      - name: Build all projects with Maven
+        run: ./mvnw verify --fail-at-end -B -T 1C

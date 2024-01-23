@@ -19,7 +19,6 @@ declare -a arr=(
  "spring-test-context-caching-introduction"
  "spring-boot-kotlin-testcontainers"
  "dependency-version-update-plugin"
- "spring-boot-test-slice-annotations"
  "testing-spring-boot-applications-with-mockmvc"
  "mockito-tips-and-tricks"
  "write-concise-web-tests-with-selenide"

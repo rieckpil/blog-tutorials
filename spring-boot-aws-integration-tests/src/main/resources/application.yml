@@ -1,11 +1,9 @@
-cloud:
-  aws:
-    region:
-      static: eu-central-1
-    stack:
-      auto: false
-      enabled: false
-
 event-processing:
   order-event-queue: order-event-queue
   order-event-bucket: order-event-bucket
+
+spring:
+  cloud:
+    aws:
+      region:
+        static: eu-central-1

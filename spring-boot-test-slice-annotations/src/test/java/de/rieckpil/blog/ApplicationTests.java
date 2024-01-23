@@ -29,5 +29,4 @@ class ApplicationTests {
     assertNotNull(shoppingCartRepository);
     assertNotNull(bookRepository);
   }
-
 }

@@ -4,23 +4,19 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.5.5</version>
-    <relativePath/> <!-- lookup parent from repository -->
+    <groupId>de.rieckpil.blog</groupId>
+    <artifactId>blog-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <groupId>de.rieckpil.blog</groupId>
   <artifactId>spring-boot-aws-integration-tests</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>spring-boot-aws-integration-tests</name>
   <description>Spring Boot integration tests with AWS services</description>
 
   <properties>
-    <java.version>17</java.version>
-    <awspring.version>2.3.2</awspring.version>
-    <testcontainers.version>1.16.2</testcontainers.version>
-    <awaitility.version>4.1.1</awaitility.version>
+    <awspring.version>3.1.0</awspring.version>
   </properties>
 
   <dependencies>
@@ -30,9 +26,13 @@
     </dependency>
     <dependency>
       <groupId>io.awspring.cloud</groupId>
-      <artifactId>spring-cloud-starter-aws-messaging</artifactId>
+      <artifactId>spring-cloud-aws-starter-sqs</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>io.awspring.cloud</groupId>
+      <artifactId>spring-cloud-aws-starter-s3</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.testcontainers</groupId>
       <artifactId>localstack</artifactId>
@@ -41,12 +41,6 @@
     <dependency>
       <groupId>org.testcontainers</groupId>
       <artifactId>junit-jupiter</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.awaitility</groupId>
-      <artifactId>awaitility</artifactId>
-      <version>${awaitility.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -65,22 +59,11 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-      <dependency>
-        <groupId>org.testcontainers</groupId>
-        <artifactId>testcontainers-bom</artifactId>
-        <version>${testcontainers.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
     </dependencies>
   </dependencyManagement>
 
   <build>
     <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
@@ -96,5 +79,4 @@
       </plugin>
     </plugins>
   </build>
-
 </project>

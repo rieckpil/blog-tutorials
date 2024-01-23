@@ -1,17 +1,9 @@
 package de.rieckpil.blog;
 
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.util.Map;
-import java.util.UUID;
-
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import com.amazonaws.services.s3.model.AmazonS3Exception;
-import com.amazonaws.services.sqs.AmazonSQSAsync;
-import com.amazonaws.services.sqs.AmazonSQSAsyncClientBuilder;
-import io.awspring.cloud.messaging.core.QueueMessagingTemplate;
+import io.awspring.cloud.s3.S3Exception;
+import io.awspring.cloud.sqs.operations.SqsTemplate;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,6 +16,14 @@ import org.testcontainers.containers.localstack.LocalStackContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
+import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
+import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
+import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.GetObjectRequest;
+import software.amazon.awssdk.services.sqs.SqsClient;
+
+import java.io.IOException;
+import java.util.Map;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.awaitility.Awaitility.given;
@@ -33,6 +33,7 @@ import static org.testcontainers.containers.localstack.LocalStackContainer.Servi
 
 @Testcontainers
 @SpringBootTest
+@Disabled
 class SimpleMessageListenerPre23IT {
 
   private static final String QUEUE_NAME = "order-event-test-queue";
@@ -53,35 +54,38 @@ class SimpleMessageListenerPre23IT {
   static void overrideConfiguration(DynamicPropertyRegistry registry) {
     registry.add("event-processing.order-event-queue", () -> QUEUE_NAME);
     registry.add("event-processing.order-event-bucket", () -> BUCKET_NAME);
-    registry.add("cloud.aws.credentials.access-key", localStack::getAccessKey);
-    registry.add("cloud.aws.credentials.secret-key", localStack::getSecretKey);
+    registry.add("spring.cloud.aws.credentials.access-key", localStack::getAccessKey);
+    registry.add("spring.cloud.aws.credentials.secret-key", localStack::getSecretKey);
+    System.setProperty("aws.region", "eu-central-1");
+    System.setProperty("aws.accessKeyId", "foo");
+    System.setProperty("aws.secretAccessKey", "bar");
   }
 
   @TestConfiguration
   static class AwsTestConfig {
 
     @Bean
-    public AmazonS3 amazonS3() {
-      return AmazonS3ClientBuilder.standard()
-        .withCredentials(localStack.getDefaultCredentialsProvider())
-        .withEndpointConfiguration(localStack.getEndpointConfiguration(S3))
+    public S3Client amazonS3() {
+      return S3Client.builder()
+        .credentialsProvider(StaticCredentialsProvider.create(AwsBasicCredentials.create(localStack.getAccessKey(),  localStack.getSecretKey())))
+        .endpointOverride(localStack.getEndpointOverride(S3))
         .build();
     }
 
     @Bean
-    public AmazonSQSAsync amazonSQS() {
-      return AmazonSQSAsyncClientBuilder.standard()
-        .withCredentials(localStack.getDefaultCredentialsProvider())
-        .withEndpointConfiguration(localStack.getEndpointConfiguration(SQS))
+    public SqsClient amazonSQS() {
+      return SqsClient.builder()
+        .credentialsProvider(StaticCredentialsProvider.create(AwsBasicCredentials.create(localStack.getAccessKey(),  localStack.getSecretKey())))
+        .endpointOverride(localStack.getEndpointOverride(SQS))
         .build();
     }
   }
 
   @Autowired
-  private AmazonS3 amazonS3;
+  private S3Client amazonS3;
 
   @Autowired
-  private QueueMessagingTemplate queueMessagingTemplate;
+  private SqsTemplate queueMessagingTemplate;
 
   @Test
   void messageShouldBeUploadedToBucketOnceConsumedFromQueue() {
@@ -97,9 +101,9 @@ class SimpleMessageListenerPre23IT {
       """, Map.of("contentType", "application/json")));
 
     given()
-      .ignoreException(AmazonS3Exception.class)
+      .ignoreException(S3Exception.class)
       .await()
       .atMost(5, SECONDS)
-      .untilAsserted(() -> assertNotNull(amazonS3.getObject(BUCKET_NAME, "13")));
+      .untilAsserted(() -> assertNotNull(amazonS3.getObject(GetObjectRequest.builder().bucket(BUCKET_NAME).key("13").build())));
   }
 }

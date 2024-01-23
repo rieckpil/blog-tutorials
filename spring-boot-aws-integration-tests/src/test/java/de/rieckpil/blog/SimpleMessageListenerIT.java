@@ -1,13 +1,7 @@
 package de.rieckpil.blog;
 
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.util.Map;
-import java.util.UUID;
-
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.model.AmazonS3Exception;
-import io.awspring.cloud.messaging.core.QueueMessagingTemplate;
+import io.awspring.cloud.s3.S3Exception;
+import io.awspring.cloud.sqs.operations.SqsTemplate;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +13,12 @@ import org.testcontainers.containers.localstack.LocalStackContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
+import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.GetObjectRequest;
+import software.amazon.awssdk.services.s3.model.NoSuchKeyException;
+
+import java.io.IOException;
+import java.time.LocalDateTime;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.awaitility.Awaitility.given;
@@ -48,35 +48,27 @@ class SimpleMessageListenerIT {
   static void overrideConfiguration(DynamicPropertyRegistry registry) {
     registry.add("event-processing.order-event-queue", () -> QUEUE_NAME);
     registry.add("event-processing.order-event-bucket", () -> BUCKET_NAME);
-    registry.add("cloud.aws.sqs.endpoint", () -> localStack.getEndpointOverride(SQS));
-    registry.add("cloud.aws.s3.endpoint", () -> localStack.getEndpointOverride(S3));
-    registry.add("cloud.aws.credentials.access-key", localStack::getAccessKey);
-    registry.add("cloud.aws.credentials.secret-key", localStack::getSecretKey);
+    registry.add("spring.cloud.aws.sqs.endpoint", () -> localStack.getEndpointOverride(SQS));
+    registry.add("spring.cloud.aws.s3.endpoint", () -> localStack.getEndpointOverride(S3));
+    registry.add("spring.cloud.aws.credentials.access-key", localStack::getAccessKey);
+    registry.add("spring.cloud.aws.credentials.secret-key", localStack::getSecretKey);
   }
 
   @Autowired
-  private AmazonS3 amazonS3;
+  private S3Client amazonS3;
 
   @Autowired
-  private QueueMessagingTemplate queueMessagingTemplate;
+  private SqsTemplate sqsTemplate;
 
   @Test
   void messageShouldBeUploadedToBucketOnceConsumedFromQueue() {
 
-    queueMessagingTemplate.send(QUEUE_NAME, new GenericMessage<>("""
-        {
-           "id": "42",
-           "message": "Please delivery ASAP",
-           "product": "MacBook Pro",
-           "orderedAt": "2021-11-11 12:00:00",
-           "expressDelivery": true
-        }
-      """, Map.of("contentType", "application/json")));
+    sqsTemplate.send(QUEUE_NAME, new GenericMessage<>(new OrderEvent("42", "MacBook Pro", "Please delivery ASAP", LocalDateTime.now().plusDays(4), false)));
 
     given()
-      .ignoreException(AmazonS3Exception.class)
+      .ignoreException(NoSuchKeyException.class)
       .await()
       .atMost(5, SECONDS)
-      .untilAsserted(() -> assertNotNull(amazonS3.getObject(BUCKET_NAME, "42")));
+      .untilAsserted(() -> assertNotNull(amazonS3.getObject(GetObjectRequest.builder().bucket(BUCKET_NAME).key("42").build())));
   }
 }

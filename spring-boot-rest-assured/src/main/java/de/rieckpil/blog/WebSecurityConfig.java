@@ -1,25 +1,28 @@
 package de.rieckpil.blog;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig {
 
-  @Override
-  protected void configure(HttpSecurity http) throws Exception {
+  @Bean
+  public SecurityFilterChain configure(HttpSecurity http) throws Exception {
     http
-      .csrf()
-      .disable()
-      .httpBasic()
-      .and()
-      .authorizeRequests(
+      .csrf(AbstractHttpConfigurer::disable)
+      .httpBasic(Customizer.withDefaults())
+      .authorizeHttpRequests(
         requests -> requests
-          .mvcMatchers(HttpMethod.GET, "/api/books").permitAll()
-          .mvcMatchers(HttpMethod.GET, "/api/books/*").permitAll()
-          .mvcMatchers(HttpMethod.POST, "/api/books").hasRole("ADMIN")
+          .requestMatchers(HttpMethod.GET, "/api/books").permitAll()
+          .requestMatchers(HttpMethod.GET, "/api/books/*").permitAll()
+          .requestMatchers(HttpMethod.POST, "/api/books").hasRole("ADMIN")
           .anyRequest().authenticated());
+
+    return http.build();
   }
 }

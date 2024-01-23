@@ -15,6 +15,7 @@ public class StartupComponent {
 
   @Bean
   CommandLineRunner commandLineRunner() {
-    return args -> System.out.println(randomQuoteClient.getRandomQuote());
+    // return args -> System.out.println(randomQuoteClient.getRandomQuote());
+    return args -> System.out.println("started");
   }
 }
