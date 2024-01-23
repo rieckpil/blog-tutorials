@@ -17,6 +17,10 @@ public class OrderEvent {
   @JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
   private LocalDateTime orderedAt;
 
+  public OrderEvent() {
+
+  }
+
   @JsonCreator
   public OrderEvent(String id, String product, String message, LocalDateTime orderedAt, boolean expressDelivery) {
     this.id = id;

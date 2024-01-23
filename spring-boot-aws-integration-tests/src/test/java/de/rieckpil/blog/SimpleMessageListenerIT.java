@@ -15,9 +15,10 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.GetObjectRequest;
+import software.amazon.awssdk.services.s3.model.NoSuchKeyException;
 
 import java.io.IOException;
-import java.util.Map;
+import java.time.LocalDateTime;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.awaitility.Awaitility.given;
@@ -62,18 +63,10 @@ class SimpleMessageListenerIT {
   @Test
   void messageShouldBeUploadedToBucketOnceConsumedFromQueue() {
 
-    sqsTemplate.send(QUEUE_NAME, new GenericMessage<>("""
-        {
-           "id": "42",
-           "message": "Please delivery ASAP",
-           "product": "MacBook Pro",
-           "orderedAt": "2021-11-11 12:00:00",
-           "expressDelivery": true
-        }
-      """, Map.of("contentType", "application/json")));
+    sqsTemplate.send(QUEUE_NAME, new GenericMessage<>(new OrderEvent("42", "MacBook Pro", "Please delivery ASAP", LocalDateTime.now().plusDays(4), false)));
 
     given()
-      .ignoreException(S3Exception.class)
+      .ignoreException(NoSuchKeyException.class)
       .await()
       .atMost(5, SECONDS)
       .untilAsserted(() -> assertNotNull(amazonS3.getObject(GetObjectRequest.builder().bucket(BUCKET_NAME).key("42").build())));
