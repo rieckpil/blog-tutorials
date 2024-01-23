@@ -55,6 +55,8 @@ class SimpleMessageListenerPre23IT {
     registry.add("spring.cloud.aws.credentials.access-key", localStack::getAccessKey);
     registry.add("spring.cloud.aws.credentials.secret-key", localStack::getSecretKey);
     System.setProperty("aws.region", "eu-central-1");
+    System.setProperty("aws.accessKeyId", "foo");
+    System.setProperty("aws.secretKey", "bar");
   }
 
   @TestConfiguration
