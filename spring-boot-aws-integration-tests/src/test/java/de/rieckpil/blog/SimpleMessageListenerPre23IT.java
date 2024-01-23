@@ -52,8 +52,9 @@ class SimpleMessageListenerPre23IT {
   static void overrideConfiguration(DynamicPropertyRegistry registry) {
     registry.add("event-processing.order-event-queue", () -> QUEUE_NAME);
     registry.add("event-processing.order-event-bucket", () -> BUCKET_NAME);
-    registry.add("cloud.aws.credentials.access-key", localStack::getAccessKey);
-    registry.add("cloud.aws.credentials.secret-key", localStack::getSecretKey);
+    registry.add("spring.cloud.aws.credentials.access-key", localStack::getAccessKey);
+    registry.add("spring.cloud.aws.credentials.secret-key", localStack::getSecretKey);
+    System.setProperty("aws.region", "eu-central-1");
   }
 
   @TestConfiguration
