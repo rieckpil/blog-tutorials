@@ -4,20 +4,15 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.7.0</version>
-    <relativePath/> <!-- lookup parent from repository -->
+    <groupId>de.rieckpil.blog</groupId>
+    <artifactId>blog-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <groupId>de.rieckpil.blog</groupId>
   <artifactId>maven-plugins-to-ensure-quality</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>maven-plugins-to-ensure-quality</name>
-
-  <properties>
-    <java.version>11</java.version>
-  </properties>
 
   <dependencies>
     <dependency>

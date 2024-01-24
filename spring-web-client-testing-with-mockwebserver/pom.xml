@@ -3,20 +3,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.3.0.RELEASE</version>
-    <relativePath/> <!-- lookup parent from repository -->
+    <groupId>de.rieckpil.blog</groupId>
+    <artifactId>blog-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <groupId>de.rieckpil.blog</groupId>
   <artifactId>spring-web-client-testing-with-mockwebserver</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>spring-web-client-testing-with-mockwebserver</name>
   <description>Demo project for Spring Boot</description>
 
   <properties>
-    <java.version>11</java.version>
     <mockwebserver.version>4.7.2</mockwebserver.version>
     <okhttp3.version>4.7.2</okhttp3.version>
   </properties>
