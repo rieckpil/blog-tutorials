@@ -59,7 +59,6 @@
     <module>spring-web-client-customizing</module>
     <module>spring-web-client-testing-with-mockwebserver</module>
     <module>spring-web-client-exchange-retrieve</module>
-    <module>spring-web-test-client</module>
     <module>maven-plugins-to-ensure-quality</module>
     <module>github-actions-java-maven</module>
     <module>spring-web-client-expose-metrics</module>
