@@ -1,6 +1,6 @@
 package de.rieckpil.blog;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
