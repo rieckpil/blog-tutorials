@@ -39,7 +39,6 @@ jobs:
           cache: 'maven'
 
       - name: Build and test project
-        working-directory: github-actions-java-maven
         run: ./mvnw -f github-actions-java-maven/pom.xml -B verify
 
       - name: Upload Maven build artifact
@@ -53,12 +52,14 @@ jobs:
     needs: build
     name: Build Docker Container and Deploy to Kubernetes
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+
       - name: Download Maven build artifact
         uses: actions/download-artifact@v2
         with:
           name: artifact.jar
           path: github-actions-java-maven/target
+
       - name: Build Docker container
         working-directory: github-actions-java-maven
         run: |
@@ -67,7 +68,9 @@ jobs:
         env:
           SUPER_SECRET: ${{ secrets.SUPER_SECRET }}
         run: echo "Content of secret - $SUPER_SECRET"
+
       - name: Push Docker images
         run: echo "Pushing Docker image to Container Registry (e.g. ECR)"
+
       - name: Deploy application
         run: echo "Deploying application (e.g. Kubernetes)"
