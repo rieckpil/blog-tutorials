@@ -18,8 +18,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class BookControllerIT {
 
-  @LocalServerPort
-  int randomServerPort;
+  @LocalServerPort int randomServerPort;
 
   private TestRestTemplate testRestTemplate;
 

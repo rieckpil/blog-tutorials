@@ -1,7 +1,7 @@
 package de.rieckpil.blog;
 
-import java.util.List;
 import jakarta.validation.Valid;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

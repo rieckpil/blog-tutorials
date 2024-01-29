@@ -1,8 +1,8 @@
 package de.blog.rieckpil;
 
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.concurrent.ThreadLocalRandom;
-import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;

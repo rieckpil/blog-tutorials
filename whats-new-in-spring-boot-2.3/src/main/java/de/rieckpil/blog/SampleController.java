@@ -1,10 +1,10 @@
 package de.rieckpil.blog;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Positive;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Positive;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
