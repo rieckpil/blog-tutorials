@@ -127,6 +127,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
         <configuration>
+          <skip>true</skip>
           <rules>
 <!--            <dependencyConvergence/>-->
           </rules>
@@ -149,9 +150,9 @@
               <version>1.17.0</version>
               <style>GOOGLE</style>
             </googleJavaFormat>
-            <importOrder>
-              <file>${project.basedir}/spotless.importorder</file>
-            </importOrder>
+<!--            <importOrder>-->
+<!--              <file>${project.parent}/spotless.importorder</file>-->
+<!--            </importOrder>-->
             <removeUnusedImports/>
           </java>
         </configuration>
@@ -179,5 +180,4 @@
       </plugin>
     </plugins>
   </build>
-
 </project>

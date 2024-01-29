@@ -9,9 +9,8 @@ import org.springframework.test.web.reactive.server.WebTestClient
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 class ApiControllerIntegrationTest(
-  @Autowired val webTestClient: WebTestClient
+  @Autowired val webTestClient: WebTestClient,
 ) {
-
   @Test
   fun `should get todos with status code 200`() {
     this.webTestClient
