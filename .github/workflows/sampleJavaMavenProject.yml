@@ -19,9 +19,9 @@ jobs:
           distribution: 'adopt'
           java-package: jdk
           java-version: ${{ matrix.java }}
+
       - name: Compile the Project
-        working-directory: github-actions-java-maven
-        run: ./mvnw -B compile
+        run: ./mvnw -f github-actions-java-maven/pom.xml -B compile
 
   build:
     runs-on: ubuntu-latest
@@ -40,7 +40,8 @@ jobs:
 
       - name: Build and test project
         working-directory: github-actions-java-maven
-        run: ./mvnw -B verify
+        run: ./mvnw -f github-actions-java-maven/pom.xml -B verify
+
       - name: Upload Maven build artifact
         uses: actions/upload-artifact@v2
         with:
