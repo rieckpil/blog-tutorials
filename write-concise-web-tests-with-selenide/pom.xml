@@ -16,9 +16,8 @@
   <description>Concise Web Tests with Selenide</description>
 
   <properties>
-    <selenide.version>6.3.3</selenide.version>
-    <testcontainers.version>1.16.3</testcontainers.version>
-    <selenium.version>4.3.0</selenium.version>
+    <selenide.version>7.0.4</selenide.version>
+    <selenium.version>4.16.1</selenium.version>
   </properties>
 
   <dependencies>
