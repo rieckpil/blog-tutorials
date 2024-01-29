@@ -12,14 +12,13 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 @TestPropertySource(properties = "welcome.message=Test Property Hello World!")
 class RootControllerTestPropertyTest {
 
-  @Autowired
-  private MockMvc mockMvc;
+  @Autowired private MockMvc mockMvc;
 
   @Test
   void shouldReturnDefaultWelcomeMessage() throws Exception {
     this.mockMvc
-      .perform(MockMvcRequestBuilders.get("/"))
-      .andExpect(MockMvcResultMatchers.status().isOk())
-      .andExpect(MockMvcResultMatchers.content().string("Test Property Hello World!"));
+        .perform(MockMvcRequestBuilders.get("/"))
+        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.content().string("Test Property Hello World!"));
   }
 }

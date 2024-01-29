@@ -1,9 +1,8 @@
 package de.rieckpil.blog;
 
-import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
 import java.util.Set;
+import org.springframework.stereotype.Service;
 
 @Service
 public class StockService {

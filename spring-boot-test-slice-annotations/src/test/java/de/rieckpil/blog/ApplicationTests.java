@@ -1,26 +1,22 @@
 package de.rieckpil.blog;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ApplicationTests {
 
-  @Autowired
-  private TestRestTemplate testRestTemplate;
+  @Autowired private TestRestTemplate testRestTemplate;
 
-  @Autowired
-  private RandomQuoteClient randomQuoteClient;
+  @Autowired private RandomQuoteClient randomQuoteClient;
 
-  @Autowired
-  private ShoppingCartRepository shoppingCartRepository;
+  @Autowired private ShoppingCartRepository shoppingCartRepository;
 
-  @Autowired
-  private BookRepository bookRepository;
+  @Autowired private BookRepository bookRepository;
 
   @Test
   void contextLoads() {

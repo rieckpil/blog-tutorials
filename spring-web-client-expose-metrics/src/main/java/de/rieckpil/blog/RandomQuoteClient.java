@@ -15,10 +15,10 @@ public class RandomQuoteClient {
 
   public JsonNode fetchRandomQuotes() {
     return webClient
-      .get()
-      .uri("https://quotes.rest/qod")
-      .retrieve()
-      .bodyToMono(JsonNode.class)
-      .block();
+        .get()
+        .uri("https://quotes.rest/qod")
+        .retrieve()
+        .bodyToMono(JsonNode.class)
+        .block();
   }
 }

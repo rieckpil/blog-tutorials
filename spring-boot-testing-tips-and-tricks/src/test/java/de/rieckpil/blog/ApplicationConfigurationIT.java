@@ -1,5 +1,7 @@
 package de.rieckpil.blog;
 
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,22 +10,18 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.core.env.Environment;
 import org.springframework.test.context.ActiveProfiles;
 
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-
 @SpringBootTest(
-  webEnvironment = WebEnvironment.RANDOM_PORT,
-  properties = {
-    "my.custom.property=inlined",
-    "spring.main.banner-mode=off" // don't do this when Josh Long is pairing with you
-  })
+    webEnvironment = WebEnvironment.RANDOM_PORT,
+    properties = {
+      "my.custom.property=inlined",
+      "spring.main.banner-mode=off" // don't do this when Josh Long is pairing with you
+    })
 @ActiveProfiles("integration-test")
 class ApplicationConfigurationIT {
 
-  @Autowired
-  private Environment environment;
+  @Autowired private Environment environment;
 
-  @MockBean
-  private CustomerService customerService;
+  @MockBean private CustomerService customerService;
 
   @Test
   void shouldPrintConfigurationValues() {

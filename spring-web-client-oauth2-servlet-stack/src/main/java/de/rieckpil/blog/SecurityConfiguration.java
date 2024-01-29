@@ -11,14 +11,13 @@ public class SecurityConfiguration {
 
   @Bean
   public SecurityFilterChain configure(HttpSecurity http) throws Exception {
-    http
-      .authorizeRequests()
-      .anyRequest().authenticated()
-      .and()
-      .oauth2Client(Customizer.withDefaults())
-      .oauth2Login(Customizer.withDefaults());
+    http.authorizeRequests()
+        .anyRequest()
+        .authenticated()
+        .and()
+        .oauth2Client(Customizer.withDefaults())
+        .oauth2Login(Customizer.withDefaults());
 
     return http.build();
   }
-
 }

@@ -2,17 +2,14 @@ package de.rieckpil;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+
 public class CustomerFormObject {
 
-  @NotEmpty
-  private String name;
+  @NotEmpty private String name;
 
-  @NotEmpty
-  private String number;
+  @NotEmpty private String number;
 
-  @Email
-  @NotEmpty
-  private String email;
+  @Email @NotEmpty private String email;
 
   public String getName() {
     return name;

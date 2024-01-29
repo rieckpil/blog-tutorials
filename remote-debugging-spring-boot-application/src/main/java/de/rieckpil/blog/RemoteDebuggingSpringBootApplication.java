@@ -9,5 +9,4 @@ public class RemoteDebuggingSpringBootApplication {
   public static void main(String[] args) {
     SpringApplication.run(RemoteDebuggingSpringBootApplication.class, args);
   }
-
 }

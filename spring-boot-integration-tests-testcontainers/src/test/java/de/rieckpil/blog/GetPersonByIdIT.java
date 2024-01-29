@@ -1,10 +1,12 @@
 package de.rieckpil.blog;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.springframework.boot.test.context.SpringBootTest.*;
+
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.testcontainers.containers.PostgreSQLContainer;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.util.TestPropertyValues;
@@ -16,10 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.springframework.boot.test.context.SpringBootTest.*;
+import org.testcontainers.containers.PostgreSQLContainer;
 
 // JUnit 4.12 example
 @RunWith(SpringRunner.class)
@@ -28,25 +27,23 @@ import static org.springframework.boot.test.context.SpringBootTest.*;
 public class GetPersonByIdIT {
 
   @ClassRule
-  public static PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer()
-    .withPassword("inmemory")
-    .withUsername("inmemory");
+  public static PostgreSQLContainer postgreSQLContainer =
+      new PostgreSQLContainer().withPassword("inmemory").withUsername("inmemory");
 
-  @Autowired
-  private PersonRepository personRepository;
+  @Autowired private PersonRepository personRepository;
 
-  @Autowired
-  public TestRestTemplate testRestTemplate;
+  @Autowired public TestRestTemplate testRestTemplate;
 
-  public static class Initializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
+  public static class Initializer
+      implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 
     @Override
     public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
-      TestPropertyValues values = TestPropertyValues.of(
-        "spring.datasource.url=" + postgreSQLContainer.getJdbcUrl(),
-        "spring.datasource.password=" + postgreSQLContainer.getPassword(),
-        "spring.datasource.username=" + postgreSQLContainer.getUsername()
-      );
+      TestPropertyValues values =
+          TestPropertyValues.of(
+              "spring.datasource.url=" + postgreSQLContainer.getJdbcUrl(),
+              "spring.datasource.password=" + postgreSQLContainer.getPassword(),
+              "spring.datasource.username=" + postgreSQLContainer.getUsername());
       values.applyTo(configurableApplicationContext);
     }
   }
@@ -59,7 +56,6 @@ public class GetPersonByIdIT {
     assertEquals(HttpStatus.NOT_FOUND, result.getStatusCode());
     assertNull(result.getBody().getName());
     assertNull(result.getBody().getId());
-
   }
 
   @Test
@@ -73,5 +69,4 @@ public class GetPersonByIdIT {
     assertEquals("Phil", result.getBody().getName());
     assertEquals(1l, result.getBody().getId().longValue());
   }
-
 }

@@ -12,12 +12,11 @@ public class WebClientConfig {
 
   @Bean
   public WebClient todoWebClient(
-    @Value("${todo_base_url}") String todoBaseUrl,
-    WebClient.Builder webClientBuilder) {
+      @Value("${todo_base_url}") String todoBaseUrl, WebClient.Builder webClientBuilder) {
 
     return webClientBuilder
-      .baseUrl(todoBaseUrl)
-      .defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
-      .build();
+        .baseUrl(todoBaseUrl)
+        .defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
+        .build();
   }
 }

@@ -12,42 +12,41 @@ import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 @Testcontainers
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ContextConfiguration(initializers = {GithubActionsJavaMavenApplicationIT.Initializer.class})
 class GithubActionsJavaMavenApplicationIT {
 
-  @Autowired
-  private WebTestClient webTestClient;
+  @Autowired private WebTestClient webTestClient;
 
   @Container
-  private static PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer()
-    .withDatabaseName("github")
-    .withUsername("github")
-    .withPassword("actions");
+  private static PostgreSQLContainer postgreSQLContainer =
+      new PostgreSQLContainer()
+          .withDatabaseName("github")
+          .withUsername("github")
+          .withPassword("actions");
 
   @Test
   void shouldReturnThreeDefaultUser() {
     this.webTestClient
-      .get()
-      .uri("/api/users")
-      .exchange()
-      .expectStatus()
-      .isOk()
-      .expectBody()
-      .jsonPath("$.length()").isEqualTo(3);
+        .get()
+        .uri("/api/users")
+        .exchange()
+        .expectStatus()
+        .isOk()
+        .expectBody()
+        .jsonPath("$.length()")
+        .isEqualTo(3);
   }
 
   static class Initializer
-    implements ApplicationContextInitializer<ConfigurableApplicationContext> {
+      implements ApplicationContextInitializer<ConfigurableApplicationContext> {
     public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
       TestPropertyValues.of(
-        "spring.datasource.url=" + postgreSQLContainer.getJdbcUrl(),
-        "spring.datasource.username=" + postgreSQLContainer.getUsername(),
-        "spring.datasource.password=" + postgreSQLContainer.getPassword()
-      ).applyTo(configurableApplicationContext.getEnvironment());
+              "spring.datasource.url=" + postgreSQLContainer.getJdbcUrl(),
+              "spring.datasource.username=" + postgreSQLContainer.getUsername(),
+              "spring.datasource.password=" + postgreSQLContainer.getPassword())
+          .applyTo(configurableApplicationContext.getEnvironment());
     }
   }
 }

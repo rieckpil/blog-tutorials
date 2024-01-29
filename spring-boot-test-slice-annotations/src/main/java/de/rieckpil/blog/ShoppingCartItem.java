@@ -5,8 +5,7 @@ class ShoppingCartItem {
   private Item item;
   private int quantity;
 
-  public ShoppingCartItem() {
-  }
+  public ShoppingCartItem() {}
 
   public ShoppingCartItem(Item item, int quantity) {
     this.item = item;
@@ -35,9 +34,6 @@ class ShoppingCartItem {
 
   @Override
   public String toString() {
-    return "ShoppingCartItem{" +
-      "item=" + item +
-      ", quantity=" + quantity +
-      '}';
+    return "ShoppingCartItem{" + "item=" + item + ", quantity=" + quantity + '}';
   }
 }

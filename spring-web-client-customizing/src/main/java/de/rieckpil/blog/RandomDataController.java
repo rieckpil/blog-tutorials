@@ -18,11 +18,6 @@ public class RandomDataController {
 
   @GetMapping
   public JsonNode getRandomData() {
-    return webClient
-      .get()
-      .uri("/todos")
-      .retrieve()
-      .bodyToMono(JsonNode.class)
-      .block();
+    return webClient.get().uri("/todos").retrieve().bodyToMono(JsonNode.class).block();
   }
 }

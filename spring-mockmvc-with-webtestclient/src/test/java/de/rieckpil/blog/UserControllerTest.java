@@ -1,5 +1,8 @@
 package de.rieckpil.blog;
 
+import static org.mockito.Mockito.when;
+
+import java.util.List;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,42 +15,38 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.client.MockMvcWebTestClient;
 import org.springframework.web.reactive.function.client.ExchangeFilterFunction;
 
-import java.util.List;
-
-import static org.mockito.Mockito.when;
-
 @WebMvcTest(UserController.class)
 class UserControllerTest {
 
-  @Autowired
-  private MockMvc mockMvc;
+  @Autowired private MockMvc mockMvc;
 
-  @MockBean
-  private UserService userService;
+  @MockBean private UserService userService;
 
   private WebTestClient webTestClient;
 
   @BeforeEach
   public void setup() {
-    this.webTestClient = MockMvcWebTestClient
-      .bindTo(mockMvc)
-      .defaultHeader("X-Duke", "42")
-      .filter(logRequest())
-      .build();
+    this.webTestClient =
+        MockMvcWebTestClient.bindTo(mockMvc)
+            .defaultHeader("X-Duke", "42")
+            .filter(logRequest())
+            .build();
   }
 
   @Test
   @WithMockUser(username = "duke")
   void shouldReturnListOfUsersForAuthenticatedRequests() {
     when(userService.getAllUsers())
-      .thenReturn(List.of(new User(42L, "duke"), new User(24L, "mike")));
+        .thenReturn(List.of(new User(42L, "duke"), new User(24L, "mike")));
 
     this.webTestClient
-      .get()
-      .uri("/api/users")
-      .exchange()
-      .expectStatus().is2xxSuccessful()
-      .expectBody().jsonPath("$.size()", Matchers.is(2));
+        .get()
+        .uri("/api/users")
+        .exchange()
+        .expectStatus()
+        .is2xxSuccessful()
+        .expectBody()
+        .jsonPath("$.size()", Matchers.is(2));
   }
 
   private ExchangeFilterFunction logRequest() {

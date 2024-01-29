@@ -1,5 +1,12 @@
 package de.rieckpil.blog;
 
+import static java.util.concurrent.TimeUnit.SECONDS;
+import static org.awaitility.Awaitility.await;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.concurrent.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,26 +22,18 @@ import org.springframework.web.socket.messaging.WebSocketStompClient;
 import org.springframework.web.socket.sockjs.client.SockJsClient;
 import org.springframework.web.socket.sockjs.client.WebSocketTransport;
 
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.concurrent.*;
-
-import static java.util.concurrent.TimeUnit.SECONDS;
-import static org.awaitility.Awaitility.await;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class GreetingControllerTest {
 
-  @LocalServerPort
-  private Integer port;
+  @LocalServerPort private Integer port;
 
   private WebSocketStompClient webSocketStompClient;
 
   @BeforeEach
   void setup() {
-    this.webSocketStompClient = new WebSocketStompClient(new SockJsClient(
-      List.of(new WebSocketTransport(new StandardWebSocketClient()))));
+    this.webSocketStompClient =
+        new WebSocketStompClient(
+            new SockJsClient(List.of(new WebSocketTransport(new StandardWebSocketClient()))));
   }
 
   @Test
@@ -44,29 +43,31 @@ class GreetingControllerTest {
 
     webSocketStompClient.setMessageConverter(new StringMessageConverter());
 
-    StompSession session = webSocketStompClient
-      .connect(getWsPath(), new StompSessionHandlerAdapter() {
-      })
-      .get(1, SECONDS);
+    StompSession session =
+        webSocketStompClient
+            .connect(getWsPath(), new StompSessionHandlerAdapter() {})
+            .get(1, SECONDS);
 
-    session.subscribe("/topic/greetings", new StompFrameHandler() {
+    session.subscribe(
+        "/topic/greetings",
+        new StompFrameHandler() {
 
-      @Override
-      public Type getPayloadType(StompHeaders headers) {
-        return String.class;
-      }
+          @Override
+          public Type getPayloadType(StompHeaders headers) {
+            return String.class;
+          }
 
-      @Override
-      public void handleFrame(StompHeaders headers, Object payload) {
-        blockingQueue.add((String) payload);
-      }
-    });
+          @Override
+          public void handleFrame(StompHeaders headers, Object payload) {
+            blockingQueue.add((String) payload);
+          }
+        });
 
     session.send("/app/welcome", "Mike");
 
     await()
-      .atMost(1, SECONDS)
-      .untilAsserted(() -> assertEquals("Hello, Mike!", blockingQueue.poll()));
+        .atMost(1, SECONDS)
+        .untilAsserted(() -> assertEquals("Hello, Mike!", blockingQueue.poll()));
   }
 
   @Test
@@ -75,31 +76,30 @@ class GreetingControllerTest {
 
     webSocketStompClient.setMessageConverter(new MappingJackson2MessageConverter());
 
-    StompSession session = webSocketStompClient
-      .connect(getWsPath(), new StompSessionHandlerAdapter() {
-      })
-      .get(1, SECONDS);
+    StompSession session =
+        webSocketStompClient
+            .connect(getWsPath(), new StompSessionHandlerAdapter() {})
+            .get(1, SECONDS);
 
-    session.subscribe("/app/chat", new StompFrameHandler() {
+    session.subscribe(
+        "/app/chat",
+        new StompFrameHandler() {
 
-      @Override
-      public Type getPayloadType(StompHeaders headers) {
-        return Message.class;
-      }
+          @Override
+          public Type getPayloadType(StompHeaders headers) {
+            return Message.class;
+          }
 
-      @Override
-      public void handleFrame(StompHeaders headers, Object payload) {
-        latch.countDown();
-      }
-    });
+          @Override
+          public void handleFrame(StompHeaders headers, Object payload) {
+            latch.countDown();
+          }
+        });
 
-    await()
-      .atMost(1, SECONDS)
-      .untilAsserted(() -> assertEquals(0, latch.getCount()));
+    await().atMost(1, SECONDS).untilAsserted(() -> assertEquals(0, latch.getCount()));
   }
 
   private String getWsPath() {
     return String.format("ws://localhost:%d/ws-endpoint", port);
   }
 }
-

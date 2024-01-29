@@ -4,13 +4,11 @@ import org.springframework.data.annotation.Id;
 
 public class Item {
 
-  @Id
-  private String id;
+  @Id private String id;
   private String name;
   private double price;
 
-  private Item() {
-  }
+  private Item() {}
 
   public Item(String name, double price) {
     this.name = name;
@@ -43,10 +41,6 @@ public class Item {
 
   @Override
   public String toString() {
-    return "Item{" +
-      "id='" + id + '\'' +
-      ", name='" + name + '\'' +
-      ", price=" + price +
-      '}';
+    return "Item{" + "id='" + id + '\'' + ", name='" + name + '\'' + ", price=" + price + '}';
   }
 }

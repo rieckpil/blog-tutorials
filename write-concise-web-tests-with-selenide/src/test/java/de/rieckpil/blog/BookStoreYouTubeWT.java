@@ -1,5 +1,8 @@
 package de.rieckpil.blog;
 
+import static com.codeborne.selenide.Selenide.*;
+import static org.testcontainers.Testcontainers.exposeHostPorts;
+
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
@@ -18,30 +21,26 @@ import org.testcontainers.containers.BrowserWebDriverContainer;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
-import static com.codeborne.selenide.Selenide.*;
-import static org.testcontainers.Testcontainers.exposeHostPorts;
-
 @Testcontainers(disabledWithoutDocker = true)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class BookStoreYouTubeWT {
 
-  @LocalServerPort
-  private Integer port;
+  @LocalServerPort private Integer port;
 
   public static BrowserWebDriverContainer<?> webDriverContainer =
-    new BrowserWebDriverContainer<>(
-      System.getProperty("os.arch").equals("aarch64") ?
-        DockerImageName.parse("seleniarm/standalone-chromium")
-          .asCompatibleSubstituteFor("selenium/standalone-chrome")
-        : DockerImageName.parse("selenium/standalone-chrome")
-    )
-      .withCapabilities(new ChromeOptions()
-        .addArguments("--no-sandbox")
-        .addArguments("--disable-dev-shm-usage"));
+      new BrowserWebDriverContainer<>(
+              System.getProperty("os.arch").equals("aarch64")
+                  ? DockerImageName.parse("seleniarm/standalone-chromium")
+                      .asCompatibleSubstituteFor("selenium/standalone-chrome")
+                  : DockerImageName.parse("selenium/standalone-chrome"))
+          .withCapabilities(
+              new ChromeOptions()
+                  .addArguments("--no-sandbox")
+                  .addArguments("--disable-dev-shm-usage"));
 
   @RegisterExtension
   static ScreenShooterExtension screenShooterExtension =
-    new ScreenShooterExtension().to("target/selenide");
+      new ScreenShooterExtension().to("target/selenide");
 
   @BeforeAll
   static void beforeAll(@Autowired Environment environment) {

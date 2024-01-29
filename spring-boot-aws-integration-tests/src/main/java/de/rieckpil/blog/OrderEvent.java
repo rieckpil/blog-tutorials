@@ -1,11 +1,10 @@
 package de.rieckpil.blog;
 
+import static com.fasterxml.jackson.annotation.JsonFormat.Shape;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.time.LocalDateTime;
-
-import static com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 public class OrderEvent {
 
@@ -17,12 +16,11 @@ public class OrderEvent {
   @JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
   private LocalDateTime orderedAt;
 
-  public OrderEvent() {
-
-  }
+  public OrderEvent() {}
 
   @JsonCreator
-  public OrderEvent(String id, String product, String message, LocalDateTime orderedAt, boolean expressDelivery) {
+  public OrderEvent(
+      String id, String product, String message, LocalDateTime orderedAt, boolean expressDelivery) {
     this.id = id;
     this.product = product;
     this.message = message;
@@ -72,12 +70,20 @@ public class OrderEvent {
 
   @Override
   public String toString() {
-    return "OrderEvent{" +
-      "id='" + id + '\'' +
-      ", product='" + product + '\'' +
-      ", message='" + message + '\'' +
-      ", orderedAt=" + orderedAt +
-      ", expressDelivery=" + expressDelivery +
-      '}';
+    return "OrderEvent{"
+        + "id='"
+        + id
+        + '\''
+        + ", product='"
+        + product
+        + '\''
+        + ", message='"
+        + message
+        + '\''
+        + ", orderedAt="
+        + orderedAt
+        + ", expressDelivery="
+        + expressDelivery
+        + '}';
   }
 }

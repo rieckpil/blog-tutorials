@@ -1,12 +1,11 @@
 package de.rieckpil.blog;
 
-import org.springframework.stereotype.Service;
-
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import javax.annotation.PostConstruct;
+import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
@@ -26,9 +25,7 @@ public class UserService {
   }
 
   public Optional<User> getUserById(Long id) {
-    return this.userList.stream()
-      .filter(user -> user.getId() == id)
-      .findFirst();
+    return this.userList.stream().filter(user -> user.getId() == id).findFirst();
   }
 
   public Optional<User> addNewUser(User user) {

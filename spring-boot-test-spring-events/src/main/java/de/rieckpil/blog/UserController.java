@@ -19,14 +19,12 @@ public class UserController {
 
   @PostMapping
   public ResponseEntity<Void> createNewUser(
-    @RequestBody String username,
-    UriComponentsBuilder uriComponentsBuilder) {
+      @RequestBody String username, UriComponentsBuilder uriComponentsBuilder) {
 
     Long id = this.userService.createUser(username);
 
-    return ResponseEntity
-      .created(uriComponentsBuilder.path("/api/users/{id}").buildAndExpand(id).toUri())
-      .build();
+    return ResponseEntity.created(
+            uriComponentsBuilder.path("/api/users/{id}").buildAndExpand(id).toUri())
+        .build();
   }
-
 }

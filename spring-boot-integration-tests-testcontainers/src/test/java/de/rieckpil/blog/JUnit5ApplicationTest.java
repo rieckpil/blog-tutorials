@@ -13,9 +13,8 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 class JUnit5ApplicationTest {
 
   @Container
-  static PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:12")
-    .withPassword("inmemory")
-    .withUsername("inmemory");
+  static PostgreSQLContainer<?> postgreSQLContainer =
+      new PostgreSQLContainer<>("postgres:12").withPassword("inmemory").withUsername("inmemory");
 
   @DynamicPropertySource
   static void postgresqlProperties(DynamicPropertyRegistry registry) {
@@ -25,6 +24,5 @@ class JUnit5ApplicationTest {
   }
 
   @Test
-  void contextLoads() {
-  }
+  void contextLoads() {}
 }

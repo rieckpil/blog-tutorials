@@ -13,10 +13,11 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 class ApplicationTest {
 
   @Container
-  static PostgreSQLContainer database = new PostgreSQLContainer<>("postgres:12")
-    .withUsername("spring")
-    .withPassword("secret")
-    .withDatabaseName("spring");
+  static PostgreSQLContainer database =
+      new PostgreSQLContainer<>("postgres:12")
+          .withUsername("spring")
+          .withPassword("secret")
+          .withDatabaseName("spring");
 
   @DynamicPropertySource
   static void setProperties(DynamicPropertyRegistry registry) {
@@ -26,7 +27,5 @@ class ApplicationTest {
   }
 
   @Test
-  void contextLoads() {
-  }
-
+  void contextLoads() {}
 }

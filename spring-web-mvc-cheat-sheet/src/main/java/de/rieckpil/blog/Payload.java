@@ -1,20 +1,17 @@
 package de.rieckpil.blog;
 
+import java.time.LocalDateTime;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
-import java.time.LocalDateTime;
 
 public class Payload {
 
-  @NotBlank
-  private String message;
+  @NotBlank private String message;
 
-  @Email
-  private String email;
+  @Email private String email;
 
-  @Future
-  private LocalDateTime memberSince;
+  @Future private LocalDateTime memberSince;
 
   public String getMessage() {
     return message;

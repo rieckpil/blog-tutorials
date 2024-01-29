@@ -14,9 +14,7 @@ public class Person {
 
   private String name;
 
-  public Person() {
-
-  }
+  public Person() {}
 
   public Person(Long id, String name) {
     this.id = id;
@@ -39,4 +37,3 @@ public class Person {
     this.name = name;
   }
 }
-

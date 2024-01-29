@@ -17,8 +17,7 @@ public class Todo {
   @Column(nullable = false)
   private LocalDateTime dueDate;
 
-  public Todo() {
-  }
+  public Todo() {}
 
   public Todo(String title, LocalDateTime dueDate) {
     this.id = null;

@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>3.2.2</version>
-    <relativePath/> <!-- lookup parent from repository -->
+    <relativePath></relativePath>
+    <!-- lookup parent from repository -->
   </parent>
 
   <groupId>de.rieckpil.blog</groupId>
   <artifactId>blog-parent</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
-
-  <properties>
-    <java.version>21</java.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-  </properties>
 
   <modules>
     <module>spring-boot-datajpatest</module>
@@ -81,6 +75,12 @@
     <module>testing-spring-rest-template</module>
   </modules>
 
+  <properties>
+    <java.version>21</java.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
+
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -108,6 +108,12 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
         <version>3.2.5</version>
+        <configuration>
+          <includes>
+            <include>**/*IT.java</include>
+            <include>**/*WT.java</include>
+          </includes>
+        </configuration>
         <executions>
           <execution>
             <goals>
@@ -116,12 +122,6 @@
             </goals>
           </execution>
         </executions>
-        <configuration>
-          <includes>
-            <include>**/*IT.java</include>
-            <include>**/*WT.java</include>
-          </includes>
-        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -129,7 +129,7 @@
         <configuration>
           <skip>true</skip>
           <rules>
-<!--            <dependencyConvergence/>-->
+            <!--            <dependencyConvergence/>-->
           </rules>
         </configuration>
         <executions>
@@ -150,10 +150,10 @@
               <version>1.17.0</version>
               <style>GOOGLE</style>
             </googleJavaFormat>
-<!--            <importOrder>-->
-<!--              <file>${project.parent}/spotless.importorder</file>-->
-<!--            </importOrder>-->
-            <removeUnusedImports/>
+            <!--            <importOrder>-->
+            <!--              <file>${project.parent}/spotless.importorder</file>-->
+            <!--            </importOrder>-->
+            <removeUnusedImports></removeUnusedImports>
           </java>
         </configuration>
         <executions>

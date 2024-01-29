@@ -6,8 +6,7 @@ public class Book {
   private String isbn;
   private String title;
 
-  public Book() {
-  }
+  public Book() {}
 
   public Book(Long id, String isbn, String title) {
     this.id = id;

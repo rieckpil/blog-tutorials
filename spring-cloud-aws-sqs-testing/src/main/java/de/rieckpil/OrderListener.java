@@ -1,15 +1,12 @@
 package de.rieckpil;
 
-import java.util.Map;
-
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.awspring.cloud.messaging.listener.annotation.SqsListener;
+import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.messaging.handler.annotation.Headers;
 import org.springframework.messaging.handler.annotation.Payload;
-import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -24,7 +21,8 @@ public class OrderListener {
   }
 
   @SqsListener("${order-queue-name}")
-  public void processOrder(@Payload ObjectNode payload, @Headers Map<String, Object> payloadHeaders) {
+  public void processOrder(
+      @Payload ObjectNode payload, @Headers Map<String, Object> payloadHeaders) {
     LOG.info("Incoming order payload {} with headers {}", payload, payloadHeaders);
 
     PurchaseOrder purchaseOrder = new PurchaseOrder();

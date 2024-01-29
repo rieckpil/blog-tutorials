@@ -8,9 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 // no @ExtendWith(SpringExtension.class) needed
 public class ApplicationTests {
 
-	@Test
-	@DisplayName("Load the whole Spring context")
-	public void contextLoads() {
-	}
-
+  @Test
+  @DisplayName("Load the whole Spring context")
+  public void contextLoads() {}
 }

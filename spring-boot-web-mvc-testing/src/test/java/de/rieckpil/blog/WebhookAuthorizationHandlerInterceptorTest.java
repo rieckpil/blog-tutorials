@@ -1,20 +1,19 @@
 package de.rieckpil.blog;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 class WebhookAuthorizationHandlerInterceptorTest {
 
   private WebhookAuthorizationHandlerInterceptor cut;
 
-  private final static String VALID_TEST_API_KEY = "test400";
+  private static final String VALID_TEST_API_KEY = "test400";
 
   @BeforeEach
   void setUp() {
@@ -29,10 +28,8 @@ class WebhookAuthorizationHandlerInterceptorTest {
 
     boolean result = cut.preHandle(httpServletRequest, httpServletResponse, null);
 
-    assertThat(result)
-      .isFalse();
+    assertThat(result).isFalse();
 
-    assertThat(httpServletResponse.getStatus())
-      .isEqualTo(403);
+    assertThat(httpServletResponse.getStatus()).isEqualTo(403);
   }
 }

@@ -10,7 +10,5 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class DeploySpringBootToGkeApplicationTests {
 
   @Test
-  public void contextLoads() {
-  }
-
+  public void contextLoads() {}
 }

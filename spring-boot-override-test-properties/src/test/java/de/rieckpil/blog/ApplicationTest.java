@@ -1,11 +1,10 @@
 package de.rieckpil.blog;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.autoconfigure.json.JsonTest;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(properties = "welcome.message=Spring Boot Test Hello World!")
 class ApplicationTest {

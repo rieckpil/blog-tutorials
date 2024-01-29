@@ -1,7 +1,6 @@
 package de.rieckpil.blog;
 
 import java.util.List;
-
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,8 +26,9 @@ public class PersonsController {
 
   @GetMapping("/{id}")
   public Person getPersonById(@PathVariable("id") Long id) {
-    return personRepository.findById(id).orElseThrow(() -> new NoPersonFoundException("Person with id:" + id +
-      " not found"));
+    return personRepository
+        .findById(id)
+        .orElseThrow(() -> new NoPersonFoundException("Person with id:" + id + " not found"));
   }
 
   @PostMapping

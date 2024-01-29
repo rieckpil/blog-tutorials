@@ -19,32 +19,41 @@ public class RetrieveWebClient {
   }
 
   public JsonNode getTodo(String id) {
-    return this.jsonPlaceholderWebClient.get()
-      .uri("/todos/{id}", id)
-      .retrieve()
-      .onStatus(HttpStatus::is4xxClientError, response -> response.rawStatusCode() == 418 ? Mono.empty() : Mono.error(new RuntimeException("Error")))
-      .onStatus(HttpStatus::is5xxServerError, response -> Mono.error(new RuntimeException("Error")))
-      .bodyToMono(JsonNode.class)
-      .block();
+    return this.jsonPlaceholderWebClient
+        .get()
+        .uri("/todos/{id}", id)
+        .retrieve()
+        .onStatus(
+            HttpStatus::is4xxClientError,
+            response ->
+                response.rawStatusCode() == 418
+                    ? Mono.empty()
+                    : Mono.error(new RuntimeException("Error")))
+        .onStatus(
+            HttpStatus::is5xxServerError, response -> Mono.error(new RuntimeException("Error")))
+        .bodyToMono(JsonNode.class)
+        .block();
   }
 
   public JsonNode getTodos() {
-    return this.jsonPlaceholderWebClient.get()
-      .uri("/todos")
-      .retrieve()
-      .bodyToMono(JsonNode.class)
-      .block();
+    return this.jsonPlaceholderWebClient
+        .get()
+        .uri("/todos")
+        .retrieve()
+        .bodyToMono(JsonNode.class)
+        .block();
   }
 
   public boolean createTodo(JsonNode payload) {
-    ResponseEntity<JsonNode> response = this.jsonPlaceholderWebClient
-      .post()
-      .uri("/todos")
-      .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-      .bodyValue(payload)
-      .retrieve()
-      .toEntity(JsonNode.class)
-      .block();
+    ResponseEntity<JsonNode> response =
+        this.jsonPlaceholderWebClient
+            .post()
+            .uri("/todos")
+            .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+            .bodyValue(payload)
+            .retrieve()
+            .toEntity(JsonNode.class)
+            .block();
 
     response.getHeaders().forEach((key, value) -> System.out.println(key + ":" + value));
 

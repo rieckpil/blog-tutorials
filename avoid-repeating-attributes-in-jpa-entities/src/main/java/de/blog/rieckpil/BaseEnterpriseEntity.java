@@ -1,12 +1,11 @@
 package de.blog.rieckpil;
 
+import java.time.LocalDateTime;
+import java.util.concurrent.ThreadLocalRandom;
+import javax.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
-import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.concurrent.ThreadLocalRandom;
 
 @Data
 @MappedSuperclass
@@ -18,15 +17,12 @@ public class BaseEnterpriseEntity {
 
   private String internId;
 
-  @CreationTimestamp
-  private LocalDateTime createdAt;
+  @CreationTimestamp private LocalDateTime createdAt;
 
-  @UpdateTimestamp
-  private LocalDateTime updatedAt;
+  @UpdateTimestamp private LocalDateTime updatedAt;
 
   @PrePersist
   public void prePersist() {
     this.internId = String.valueOf(Math.abs(ThreadLocalRandom.current().nextInt()));
   }
-
 }

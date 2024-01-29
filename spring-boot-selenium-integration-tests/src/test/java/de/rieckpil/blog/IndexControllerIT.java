@@ -1,5 +1,7 @@
 package de.rieckpil.blog;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,17 +14,14 @@ import org.springframework.core.env.Environment;
 import org.testcontainers.Testcontainers;
 import org.testcontainers.containers.BrowserWebDriverContainer;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 @ExtendWith({ScreenshotOnFailureExtension.class})
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class IndexControllerIT {
 
-  static BrowserWebDriverContainer<?> container = new BrowserWebDriverContainer<>()
-    .withCapabilities(new ChromeOptions());
+  static BrowserWebDriverContainer<?> container =
+      new BrowserWebDriverContainer<>().withCapabilities(new ChromeOptions());
 
-  @LocalServerPort
-  private int port;
+  @LocalServerPort private int port;
 
   @BeforeAll
   static void beforeAll(@Autowired Environment environment) {
@@ -33,8 +32,8 @@ class IndexControllerIT {
   @Test
   void shouldDisplayMessage() {
     container
-      .getWebDriver()
-      .get(String.format("http://host.testcontainers.internal:%d/index", port));
+        .getWebDriver()
+        .get(String.format("http://host.testcontainers.internal:%d/index", port));
 
     WebElement messageElement = container.getWebDriver().findElementById("message");
 

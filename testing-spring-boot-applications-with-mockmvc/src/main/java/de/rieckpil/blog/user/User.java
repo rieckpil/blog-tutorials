@@ -5,14 +5,11 @@ import jakarta.validation.constraints.NotEmpty;
 
 public class User {
 
-  @NotEmpty
-  private String username;
+  @NotEmpty private String username;
 
-  @Email
-  private String email;
+  @Email private String email;
 
-  public User() {
-  }
+  public User() {}
 
   public User(String username, String email) {
     this.username = username;

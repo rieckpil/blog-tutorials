@@ -5,7 +5,6 @@ import org.togglz.core.annotation.EnabledByDefault;
 import org.togglz.core.annotation.Label;
 
 public enum BookstoreFeatures implements Feature {
-
   @EnabledByDefault
   @Label("Provide extended information about a book")
   EXTENDED_INFORMATION,

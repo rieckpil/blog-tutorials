@@ -1,5 +1,8 @@
 package de.rieckpil.blog;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -10,20 +13,17 @@ import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 @DataJpaTest
 @Testcontainers
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class OrderRepositoryTest {
 
   @Container
-  static PostgreSQLContainer database = new PostgreSQLContainer("postgres:12")
-    .withDatabaseName("springboot")
-    .withPassword("springboot")
-    .withUsername("springboot");
+  static PostgreSQLContainer database =
+      new PostgreSQLContainer("postgres:12")
+          .withDatabaseName("springboot")
+          .withPassword("springboot")
+          .withUsername("springboot");
 
   @DynamicPropertySource
   static void setDatasourceProperties(DynamicPropertyRegistry propertyRegistry) {
@@ -32,17 +32,22 @@ class OrderRepositoryTest {
     propertyRegistry.add("spring.datasource.username", database::getUsername);
   }
 
-  @Autowired
-  private OrderRepository orderRepository;
+  @Autowired private OrderRepository orderRepository;
 
   @Test
   void shouldReturnOrdersThatContainMacBookPro() {
 
-    orderRepository.save(createOrder("42", """
+    orderRepository.save(
+        createOrder(
+            "42",
+            """
          [{"name": "MacBook Pro", "amount" : 42}, {"name": "iPhone Pro", "amount" : 42}]
       """));
 
-    orderRepository.save(createOrder("43", """
+    orderRepository.save(
+        createOrder(
+            "43",
+            """
          [{"name": "Kindle", "amount" : 13}, {"name": "MacBook Pro", "amount" : 10}]
       """));
 

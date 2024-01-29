@@ -10,14 +10,13 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 @WebMvcTest(RootController.class)
 class RootControllerTest {
 
-  @Autowired
-  private MockMvc mockMvc;
+  @Autowired private MockMvc mockMvc;
 
   @Test
   void shouldReturnDefaultWelcomeMessage() throws Exception {
     this.mockMvc
-      .perform(MockMvcRequestBuilders.get("/"))
-      .andExpect(MockMvcResultMatchers.status().isOk())
-      .andExpect(MockMvcResultMatchers.content().string("Test Default Profile Hello World!"));
+        .perform(MockMvcRequestBuilders.get("/"))
+        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.content().string("Test Default Profile Hello World!"));
   }
 }

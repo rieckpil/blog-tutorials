@@ -14,31 +14,27 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Configuration
 public class WebClientConfig {
 
-    @Bean
-    public WebClient webClient(ReactiveOAuth2AuthorizedClientManager authorizedClientManager) {
-        ServerOAuth2AuthorizedClientExchangeFilterFunction oauth =
-                new ServerOAuth2AuthorizedClientExchangeFilterFunction(authorizedClientManager);
-        return WebClient.builder()
-                .filter(oauth)
-                .build();
-    }
+  @Bean
+  public WebClient webClient(ReactiveOAuth2AuthorizedClientManager authorizedClientManager) {
+    ServerOAuth2AuthorizedClientExchangeFilterFunction oauth =
+        new ServerOAuth2AuthorizedClientExchangeFilterFunction(authorizedClientManager);
+    return WebClient.builder().filter(oauth).build();
+  }
 
-    @Bean
-    public ReactiveOAuth2AuthorizedClientManager authorizedClientManager(
-            ReactiveClientRegistrationRepository clientRegistrationRepository,
-            ServerOAuth2AuthorizedClientRepository authorizedClientRepository) {
+  @Bean
+  public ReactiveOAuth2AuthorizedClientManager authorizedClientManager(
+      ReactiveClientRegistrationRepository clientRegistrationRepository,
+      ServerOAuth2AuthorizedClientRepository authorizedClientRepository) {
 
-        ReactiveOAuth2AuthorizedClientProvider authorizedClientProvider =
-                ReactiveOAuth2AuthorizedClientProviderBuilder.builder()
-                        .authorizationCode()
-                        .build();
+    ReactiveOAuth2AuthorizedClientProvider authorizedClientProvider =
+        ReactiveOAuth2AuthorizedClientProviderBuilder.builder().authorizationCode().build();
 
-        DefaultReactiveOAuth2AuthorizedClientManager authorizedClientManager =
-                new DefaultReactiveOAuth2AuthorizedClientManager(
-                        clientRegistrationRepository, authorizedClientRepository);
+    DefaultReactiveOAuth2AuthorizedClientManager authorizedClientManager =
+        new DefaultReactiveOAuth2AuthorizedClientManager(
+            clientRegistrationRepository, authorizedClientRepository);
 
-        authorizedClientManager.setAuthorizedClientProvider(authorizedClientProvider);
+    authorizedClientManager.setAuthorizedClientProvider(authorizedClientProvider);
 
-        return authorizedClientManager;
-    }
+    return authorizedClientManager;
+  }
 }

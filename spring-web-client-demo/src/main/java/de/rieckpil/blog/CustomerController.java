@@ -19,8 +19,6 @@ public class CustomerController {
 
   @GetMapping(path = "/{id}")
   public JsonNode getCustomerById(@PathVariable("id") Long id) {
-    return objectMapper.createObjectNode()
-      .put("name", "duke")
-      .put("customerId", id);
+    return objectMapper.createObjectNode().put("name", "duke").put("customerId", id);
   }
 }

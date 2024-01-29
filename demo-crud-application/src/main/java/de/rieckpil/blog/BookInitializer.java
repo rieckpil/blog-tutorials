@@ -1,19 +1,17 @@
 package de.rieckpil.blog;
 
 import com.github.javafaker.Faker;
+import java.util.UUID;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.util.UUID;
-
 @Slf4j
 @Component
 public class BookInitializer implements CommandLineRunner {
 
-  @Autowired
-  private BookRepository bookRepository;
+  @Autowired private BookRepository bookRepository;
 
   @Override
   public void run(String... args) throws Exception {
@@ -33,6 +31,5 @@ public class BookInitializer implements CommandLineRunner {
     }
 
     log.info("... finished book initialization");
-
   }
 }

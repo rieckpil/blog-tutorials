@@ -1,19 +1,16 @@
 package de.rieckpil.blog;
 
+import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.List;
 
 @Document
 public class ShoppingCart {
 
-  @Id
-  private String id;
+  @Id private String id;
   private List<ShoppingCartItem> shoppingCartItems;
 
-  public ShoppingCart() {
-  }
+  public ShoppingCart() {}
 
   public ShoppingCart(String id, List<ShoppingCartItem> shoppingCartItems) {
     this.id = id;

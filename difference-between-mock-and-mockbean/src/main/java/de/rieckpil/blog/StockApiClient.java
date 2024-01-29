@@ -1,9 +1,8 @@
 package de.rieckpil.blog;
 
-import org.springframework.stereotype.Component;
-
 import java.math.BigDecimal;
 import java.util.concurrent.ThreadLocalRandom;
+import org.springframework.stereotype.Component;
 
 @Component
 public class StockApiClient {

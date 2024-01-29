@@ -6,16 +6,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Customer {
 
-  @Id
-  private String id;
+  @Id private String id;
 
   private String email;
 
   private Integer rating;
 
-  public Customer() {
-
-  }
+  public Customer() {}
 
   public Customer(String email, Integer rating) {
     this.email = email;

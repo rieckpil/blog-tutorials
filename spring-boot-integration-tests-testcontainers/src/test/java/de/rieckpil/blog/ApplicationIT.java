@@ -1,15 +1,14 @@
 package de.rieckpil.blog;
 
-import org.junit.jupiter.api.Test;
-import org.testcontainers.containers.PostgreSQLContainer;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
-
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 // JUnit 5 example with Spring Boot >= 2.2.6
 @Testcontainers
@@ -17,9 +16,8 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 public class ApplicationIT {
 
   @Container
-  public static PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer()
-    .withPassword("inmemory")
-    .withUsername("inmemory");
+  public static PostgreSQLContainer postgreSQLContainer =
+      new PostgreSQLContainer().withPassword("inmemory").withUsername("inmemory");
 
   @DynamicPropertySource
   static void postgresqlProperties(DynamicPropertyRegistry registry) {
@@ -29,7 +27,5 @@ public class ApplicationIT {
   }
 
   @Test
-  public void contextLoads() {
-  }
-
+  public void contextLoads() {}
 }

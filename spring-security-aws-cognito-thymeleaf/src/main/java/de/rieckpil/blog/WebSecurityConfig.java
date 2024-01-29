@@ -11,23 +11,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   private final String clientId;
   private final String logoutUrl;
 
-  public WebSecurityConfig(@Value("${spring.security.oauth2.client.registration.cognito.clientId}") String clientId,
-                           @Value("${cognito.logoutUrl}") String logoutUrl) {
+  public WebSecurityConfig(
+      @Value("${spring.security.oauth2.client.registration.cognito.clientId}") String clientId,
+      @Value("${cognito.logoutUrl}") String logoutUrl) {
     this.clientId = clientId;
     this.logoutUrl = logoutUrl;
   }
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    http
-      .csrf()
-      .and()
-      .authorizeRequests(authorize ->
-        authorize.mvcMatchers("/").permitAll()
-          .anyRequest().authenticated())
-      .oauth2Login()
-      .and()
-      .logout()
-      .logoutSuccessHandler(new CognitoOidcLogoutSuccessHandler(logoutUrl, clientId));
+    http.csrf()
+        .and()
+        .authorizeRequests(
+            authorize -> authorize.mvcMatchers("/").permitAll().anyRequest().authenticated())
+        .oauth2Login()
+        .and()
+        .logout()
+        .logoutSuccessHandler(new CognitoOidcLogoutSuccessHandler(logoutUrl, clientId));
   }
 }

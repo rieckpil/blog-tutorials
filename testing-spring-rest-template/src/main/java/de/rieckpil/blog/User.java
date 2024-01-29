@@ -3,9 +3,7 @@ package de.rieckpil.blog;
 public class User {
   private UserData data;
 
-  public User() {
-
-  }
+  public User() {}
 
   public User(UserData data) {
     this.data = data;
@@ -21,8 +19,6 @@ public class User {
 
   @Override
   public String toString() {
-    return "User{" +
-      "data=" + data +
-      '}';
+    return "User{" + "data=" + data + '}';
   }
 }

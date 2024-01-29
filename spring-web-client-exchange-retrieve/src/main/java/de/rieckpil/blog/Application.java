@@ -12,7 +12,10 @@ public class Application implements CommandLineRunner {
   private final RetrieveWebClient retrieveWebClient;
   private final ObjectMapper objectMapper;
 
-  public Application(ExchangeWebClient exchangeWebClient, RetrieveWebClient retrieveWebClient, ObjectMapper objectMapper) {
+  public Application(
+      ExchangeWebClient exchangeWebClient,
+      RetrieveWebClient retrieveWebClient,
+      ObjectMapper objectMapper) {
     this.exchangeWebClient = exchangeWebClient;
     this.retrieveWebClient = retrieveWebClient;
     this.objectMapper = objectMapper;
@@ -27,12 +30,12 @@ public class Application implements CommandLineRunner {
     System.out.println(retrieveWebClient.getTodos());
     System.out.println(exchangeWebClient.getTodos());
 
-    System.out.println(exchangeWebClient.createTodo(objectMapper
-      .createObjectNode()
-      .put("task", "learn Spring Boot")));
+    System.out.println(
+        exchangeWebClient.createTodo(
+            objectMapper.createObjectNode().put("task", "learn Spring Boot")));
 
-    System.out.println(retrieveWebClient.createTodo(objectMapper
-      .createObjectNode()
-      .put("task", "learn Spring Boot")));
+    System.out.println(
+        retrieveWebClient.createTodo(
+            objectMapper.createObjectNode().put("task", "learn Spring Boot")));
   }
 }

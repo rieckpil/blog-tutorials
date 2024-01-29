@@ -1,7 +1,14 @@
 package de.rieckpil.blog;
 
-import io.awspring.cloud.s3.S3Exception;
+import static java.util.concurrent.TimeUnit.SECONDS;
+import static org.awaitility.Awaitility.given;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.testcontainers.containers.localstack.LocalStackContainer.Service.S3;
+import static org.testcontainers.containers.localstack.LocalStackContainer.Service.SQS;
+
 import io.awspring.cloud.sqs.operations.SqsTemplate;
+import java.io.IOException;
+import java.time.LocalDateTime;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,15 +24,6 @@ import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.GetObjectRequest;
 import software.amazon.awssdk.services.s3.model.NoSuchKeyException;
 
-import java.io.IOException;
-import java.time.LocalDateTime;
-
-import static java.util.concurrent.TimeUnit.SECONDS;
-import static org.awaitility.Awaitility.given;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.testcontainers.containers.localstack.LocalStackContainer.Service.S3;
-import static org.testcontainers.containers.localstack.LocalStackContainer.Service.SQS;
-
 @Testcontainers
 @SpringBootTest
 class SimpleMessageListenerIT {
@@ -35,8 +33,8 @@ class SimpleMessageListenerIT {
 
   @Container
   static LocalStackContainer localStack =
-    new LocalStackContainer(DockerImageName.parse("localstack/localstack:0.13.0"))
-      .withServices(S3, SQS);
+      new LocalStackContainer(DockerImageName.parse("localstack/localstack:0.13.0"))
+          .withServices(S3, SQS);
 
   @BeforeAll
   static void beforeAll() throws IOException, InterruptedException {
@@ -54,21 +52,31 @@ class SimpleMessageListenerIT {
     registry.add("spring.cloud.aws.credentials.secret-key", localStack::getSecretKey);
   }
 
-  @Autowired
-  private S3Client amazonS3;
+  @Autowired private S3Client amazonS3;
 
-  @Autowired
-  private SqsTemplate sqsTemplate;
+  @Autowired private SqsTemplate sqsTemplate;
 
   @Test
   void messageShouldBeUploadedToBucketOnceConsumedFromQueue() {
 
-    sqsTemplate.send(QUEUE_NAME, new GenericMessage<>(new OrderEvent("42", "MacBook Pro", "Please delivery ASAP", LocalDateTime.now().plusDays(4), false)));
+    sqsTemplate.send(
+        QUEUE_NAME,
+        new GenericMessage<>(
+            new OrderEvent(
+                "42",
+                "MacBook Pro",
+                "Please delivery ASAP",
+                LocalDateTime.now().plusDays(4),
+                false)));
 
     given()
-      .ignoreException(NoSuchKeyException.class)
-      .await()
-      .atMost(5, SECONDS)
-      .untilAsserted(() -> assertNotNull(amazonS3.getObject(GetObjectRequest.builder().bucket(BUCKET_NAME).key("42").build())));
+        .ignoreException(NoSuchKeyException.class)
+        .await()
+        .atMost(5, SECONDS)
+        .untilAsserted(
+            () ->
+                assertNotNull(
+                    amazonS3.getObject(
+                        GetObjectRequest.builder().bucket(BUCKET_NAME).key("42").build())));
   }
 }

@@ -1,6 +1,10 @@
 package de.rieckpil.blog;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
+import java.util.List;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,20 +17,13 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.List;
-
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyInt;
-
 @Import(WebSecurityConfig.class)
 @WebMvcTest(BookController.class)
 class BookControllerTest {
 
-  @MockBean
-  private BookService bookService;
+  @MockBean private BookService bookService;
 
-  @Autowired
-  private MockMvc mockMvc;
+  @Autowired private MockMvc mockMvc;
 
   @BeforeEach
   void setUp() {
@@ -36,16 +33,16 @@ class BookControllerTest {
   @Test
   void shouldAllowBookRetrievalWithoutAuthentication() {
 
-    Mockito.when(bookService.getAllBooks(42)).thenReturn(
-      List.of(new Book(42L, "42", "REST Assured With Spring Boot", "Duke")));
+    Mockito.when(bookService.getAllBooks(42))
+        .thenReturn(List.of(new Book(42L, "42", "REST Assured With Spring Boot", "Duke")));
 
-    RestAssuredMockMvc
-      .given()
-        .auth().none()
+    RestAssuredMockMvc.given()
+        .auth()
+        .none()
         .param("amount", 42)
-      .when()
+        .when()
         .get("/api/books")
-      .then()
+        .then()
         .statusCode(200)
         .body("$.size()", Matchers.equalTo(1))
         .body("[0].id", Matchers.equalTo(42))
@@ -57,13 +54,12 @@ class BookControllerTest {
   @Test
   void shouldAllowBookRetrievalWithoutAuthenticationShort() {
 
-    Mockito.when(bookService.getAllBooks(anyInt())).thenReturn(
-      List.of(new Book(42L, "42", "REST Assured With Spring Boot", "Duke")));
+    Mockito.when(bookService.getAllBooks(anyInt()))
+        .thenReturn(List.of(new Book(42L, "42", "REST Assured With Spring Boot", "Duke")));
 
-    RestAssuredMockMvc
-      .when()
+    RestAssuredMockMvc.when()
         .get("/api/books")
-      .then()
+        .then()
         .statusCode(200)
         .body("$.size()", Matchers.equalTo(1))
         .body("[0].id", Matchers.equalTo(42))
@@ -77,29 +73,32 @@ class BookControllerTest {
 
     Mockito.when(bookService.createNewBook(any(BookRequest.class))).thenReturn(42L);
 
-    RestAssuredMockMvc
-      .given()
-        .auth().with(SecurityMockMvcRequestPostProcessors.user("duke").roles("ADMIN"))
+    RestAssuredMockMvc.given()
+        .auth()
+        .with(SecurityMockMvcRequestPostProcessors.user("duke").roles("ADMIN"))
         .contentType("application/json")
-        .body("{\"title\": \"Effective Java\", \"isbn\":\"978-0-13-468599-1 \", \"author\":\"Joshua Bloch\"}")
-      .when()
+        .body(
+            "{\"title\": \"Effective Java\", \"isbn\":\"978-0-13-468599-1 \", \"author\":\"Joshua Bloch\"}")
+        .when()
         .post("/api/books")
-      .then()
+        .then()
         .statusCode(201)
         .header("Location", Matchers.containsString("/api/books/42"));
   }
 
   @Test
-  @WithMockUser(username = "duke", roles = {"USER", "EDITOR"})
+  @WithMockUser(
+      username = "duke",
+      roles = {"USER", "EDITOR"})
   void shouldBlockBookCreationForNonAdminUsers() {
 
-    RestAssuredMockMvc
-      .given()
+    RestAssuredMockMvc.given()
         .contentType("application/json")
-        .body("{\"title\": \"Effective Java\", \"isbn\":\"978-0-13-468599-1 \", \"author\":\"Joshua Bloch\"}")
-      .when()
+        .body(
+            "{\"title\": \"Effective Java\", \"isbn\":\"978-0-13-468599-1 \", \"author\":\"Joshua Bloch\"}")
+        .when()
         .post("/api/books")
-      .then()
+        .then()
         .statusCode(403);
   }
 }

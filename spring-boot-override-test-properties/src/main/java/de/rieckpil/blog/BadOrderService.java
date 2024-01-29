@@ -1,9 +1,8 @@
 package de.rieckpil.blog;
 
-import org.springframework.beans.factory.annotation.Value;
-
 import java.math.BigDecimal;
 import java.util.Set;
+import org.springframework.beans.factory.annotation.Value;
 
 public class BadOrderService {
 

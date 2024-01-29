@@ -1,16 +1,15 @@
 package de.rieckpil.blog;
 
-import org.springframework.beans.factory.annotation.Value;
-
 import java.math.BigDecimal;
 import java.util.Set;
+import org.springframework.beans.factory.annotation.Value;
 
 public class OrderService {
 
   private final Set<String> freeShippingCountries;
 
-  public OrderService(@Value("${order.free-shipping-countries}")
-                        Set<String> freeShippingCountries) {
+  public OrderService(
+      @Value("${order.free-shipping-countries}") Set<String> freeShippingCountries) {
     this.freeShippingCountries = freeShippingCountries;
   }
 

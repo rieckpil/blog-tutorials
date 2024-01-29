@@ -1,8 +1,7 @@
 package de.rieckpil.blog.task;
 
-import org.springframework.stereotype.Service;
-
 import java.util.concurrent.ThreadLocalRandom;
+import org.springframework.stereotype.Service;
 
 @Service
 public class TaskService {

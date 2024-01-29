@@ -1,8 +1,8 @@
 package de.rieckpil.blog;
 
-import javax.xml.bind.annotation.XmlRootElement;
 import java.time.LocalDateTime;
 import java.util.Set;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Order {
@@ -12,8 +12,7 @@ public class Order {
   private Long customerId;
   private LocalDateTime orderAt;
 
-  public Order() {
-  }
+  public Order() {}
 
   public Order(String id, Set<String> tags, Long customerId, LocalDateTime orderAt) {
     this.id = id;

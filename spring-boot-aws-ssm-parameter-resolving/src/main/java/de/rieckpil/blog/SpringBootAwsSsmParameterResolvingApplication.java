@@ -9,5 +9,4 @@ public class SpringBootAwsSsmParameterResolvingApplication {
   public static void main(String[] args) {
     SpringApplication.run(SpringBootAwsSsmParameterResolvingApplication.class, args);
   }
-
 }

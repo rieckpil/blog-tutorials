@@ -1,10 +1,15 @@
 package de.rieckpil;
 
-import java.time.Duration;
-import java.util.Map;
+import static org.awaitility.Awaitility.await;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
+import static org.testcontainers.containers.localstack.LocalStackContainer.*;
+import static org.testcontainers.containers.localstack.LocalStackContainer.Service.SQS;
 
 import io.awspring.cloud.messaging.core.QueueMessagingTemplate;
 import io.awspring.cloud.test.sqs.SqsTest;
+import java.time.Duration;
+import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -18,23 +23,17 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.awaitility.Awaitility.await;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-import static org.testcontainers.containers.localstack.LocalStackContainer.*;
-import static org.testcontainers.containers.localstack.LocalStackContainer.Service.SQS;
-
 @Testcontainers
 @SqsTest(OrderListener.class)
 class OrderListenerTest {
 
   @Container
-  static LocalStackContainer localStack = new LocalStackContainer(DockerImageName.parse("localstack/localstack:0.14.3"))
-    .withClasspathResourceMapping("/localstack", "/docker-entrypoint-initaws.d", BindMode.READ_ONLY)
-    .withServices(Service.SQS)
-    .waitingFor(Wait.forLogMessage(".*Initialized\\.\n", 1));
+  static LocalStackContainer localStack =
+      new LocalStackContainer(DockerImageName.parse("localstack/localstack:0.14.3"))
+          .withClasspathResourceMapping(
+              "/localstack", "/docker-entrypoint-initaws.d", BindMode.READ_ONLY)
+          .withServices(Service.SQS)
+          .waitingFor(Wait.forLogMessage(".*Initialized\\.\n", 1));
 
   @DynamicPropertySource
   static void properties(DynamicPropertyRegistry registry) {
@@ -45,29 +44,27 @@ class OrderListenerTest {
     registry.add("order-queue-name", () -> "test-order-queue");
   }
 
-  @Autowired
-  private QueueMessagingTemplate queueMessagingTemplate;
+  @Autowired private QueueMessagingTemplate queueMessagingTemplate;
 
-  @MockBean
-  private PurchaseOrderRepository purchaseOrderRepository;
+  @MockBean private PurchaseOrderRepository purchaseOrderRepository;
 
   @Test
   void shouldStoreIncomingPurchaseOrderInDatabase() {
 
     Map<String, Object> messageHeaders = Map.of("contentType", "application/json");
 
-    String payload = """
+    String payload =
+        """
       {
        "customer_name": "duke",
        "order_amount": 42
       }
       """;
 
-    queueMessagingTemplate
-      .send("test-order-queue", new GenericMessage<>(payload, messageHeaders));
+    queueMessagingTemplate.send("test-order-queue", new GenericMessage<>(payload, messageHeaders));
 
     await()
-      .atMost(Duration.ofSeconds(3))
-      .untilAsserted(() -> verify(purchaseOrderRepository).save(any(PurchaseOrder.class)));
+        .atMost(Duration.ofSeconds(3))
+        .untilAsserted(() -> verify(purchaseOrderRepository).save(any(PurchaseOrder.class)));
   }
 }

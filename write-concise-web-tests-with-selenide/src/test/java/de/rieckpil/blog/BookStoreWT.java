@@ -1,5 +1,8 @@
 package de.rieckpil.blog;
 
+import static com.codeborne.selenide.Selenide.*;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
@@ -13,19 +16,14 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 
-import static com.codeborne.selenide.Selenide.*;
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-
 @Disabled("Failing on CI, to be fixed")
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 class BookStoreWT {
 
-  @LocalServerPort
-  private Integer port;
+  @LocalServerPort private Integer port;
 
   @RegisterExtension
-  static ScreenShooterExtension extension =
-    new ScreenShooterExtension().to("target/selenide");
+  static ScreenShooterExtension extension = new ScreenShooterExtension().to("target/selenide");
 
   @BeforeAll
   static void configureChromeDriver() {

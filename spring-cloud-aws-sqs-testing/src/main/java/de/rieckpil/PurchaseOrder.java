@@ -7,9 +7,7 @@ import javax.persistence.Id;
 @Entity
 public class PurchaseOrder {
 
-  @Id
-  @GeneratedValue
-  private Long id;
+  @Id @GeneratedValue private Long id;
 
   private String customer;
 
