@@ -12,7 +12,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.core.env.Environment;
 import org.testcontainers.Testcontainers;
 import org.testcontainers.containers.BrowserWebDriverContainer;
@@ -30,7 +30,7 @@ class BookStoreTestcontainersWT {
       System.getProperty("os.arch").equals("aarch64") ?
         DockerImageName.parse("seleniarm/standalone-chromium")
           .asCompatibleSubstituteFor("selenium/standalone-chrome")
-        : DockerImageName.parse("selenium/standalone-chrome:4.3.0-20220726")
+        : DockerImageName.parse("selenium/standalone-chrome")
     )
       .withCapabilities(new ChromeOptions()
         .addArguments("--no-sandbox")

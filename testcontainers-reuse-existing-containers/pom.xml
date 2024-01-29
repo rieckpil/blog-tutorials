@@ -15,10 +15,6 @@
   <name>testcontainers-reuse-existing-containers</name>
   <description>Reuse existing Containers with Testcontainers</description>
 
-  <properties>
-    <testcontainers.version>1.16.2</testcontainers.version>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -52,12 +48,7 @@
   </dependencies>
 
   <build>
-    <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-      </plugin>
-    </plugins>
+    <!-- inherited from parent -->
   </build>
 
 </project>

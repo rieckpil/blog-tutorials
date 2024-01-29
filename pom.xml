@@ -111,6 +111,12 @@
             </goals>
           </execution>
         </executions>
+        <configuration>
+          <includes>
+            <include>**/*IT.java</include>
+            <include>**/*WT.java</include>
+          </includes>
+        </configuration>
       </plugin>
     </plugins>
   </build>
