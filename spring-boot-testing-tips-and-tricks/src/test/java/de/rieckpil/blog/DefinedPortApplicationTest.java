@@ -5,7 +5,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
 
 @Disabled("Will fail because other IT already launches on the defined port")
 @SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)

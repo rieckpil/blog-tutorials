@@ -1,9 +1,9 @@
 package de.rieckpil.blog;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Future;
-import javax.validation.constraints.NotBlank;
 
 public class Payload {
 

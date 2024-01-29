@@ -1,8 +1,8 @@
 package de.rieckpil.blog;
 
+import jakarta.xml.bind.annotation.XmlRootElement;
 import java.time.LocalDateTime;
 import java.util.Set;
-import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Order {

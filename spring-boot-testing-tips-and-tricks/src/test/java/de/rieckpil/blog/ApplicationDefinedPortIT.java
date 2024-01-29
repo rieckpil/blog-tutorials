@@ -3,9 +3,9 @@ package de.rieckpil.blog;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.actuate.autoconfigure.web.server.LocalManagementPort;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.boot.test.web.server.LocalManagementPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
 
 @SpringBootTest(
     webEnvironment = WebEnvironment.DEFINED_PORT,

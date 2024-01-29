@@ -1,7 +1,7 @@
 package de.rieckpil.blog
 
 import org.hibernate.annotations.NaturalId
-import javax.persistence.*
+import jakarta.persistence.*
 
 @Entity
 @Table(name = "books")
