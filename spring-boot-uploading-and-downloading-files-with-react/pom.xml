@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
-  <groupId>de.rieckpil.learning</groupId>
-  <artifactId>spring-boot-uploading-and-downloading-files-with-react</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
 
   <parent>
     <groupId>de.rieckpil.blog</groupId>
@@ -14,6 +8,11 @@
     <version>0.0.1-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
+
+  <groupId>de.rieckpil.learning</groupId>
+  <artifactId>spring-boot-uploading-and-downloading-files-with-react</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
 
   <dependencies>
     <dependency>
@@ -45,13 +44,13 @@
     <finalName>app</finalName>
     <resources>
       <resource>
-        <directory>${project.basedir}/frontend/build</directory>
-        <filtering>false</filtering>
         <targetPath>public/</targetPath>
+        <filtering>false</filtering>
+        <directory>${project.basedir}/frontend/build</directory>
       </resource>
       <resource>
-        <directory>${project.basedir}/src/main/resources</directory>
         <filtering>false</filtering>
+        <directory>${project.basedir}/src/main/resources</directory>
       </resource>
     </resources>
     <plugins>
@@ -59,6 +58,10 @@
         <groupId>com.github.eirslett</groupId>
         <artifactId>frontend-maven-plugin</artifactId>
         <version>1.15.0</version>
+        <configuration>
+          <workingDirectory>frontend</workingDirectory>
+          <nodeVersion>v16.20.0</nodeVersion>
+        </configuration>
         <executions>
           <execution>
             <id>install node and npm</id>
@@ -91,10 +94,6 @@
             </configuration>
           </execution>
         </executions>
-        <configuration>
-          <workingDirectory>frontend</workingDirectory>
-          <nodeVersion>v16.20.0</nodeVersion>
-        </configuration>
       </plugin>
     </plugins>
   </build>
