@@ -16,6 +16,7 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.core.env.Environment;
 import org.testcontainers.containers.BrowserWebDriverContainer;
 import org.testcontainers.junit.jupiter.Testcontainers;
+import org.testcontainers.utility.DockerImageName;
 
 import static com.codeborne.selenide.Selenide.*;
 import static org.testcontainers.Testcontainers.exposeHostPorts;
@@ -27,8 +28,13 @@ class BookStoreYouTubeWT {
   @LocalServerPort
   private Integer port;
 
-  static BrowserWebDriverContainer<?> webDriverContainer =
-    new BrowserWebDriverContainer<>()
+  public static BrowserWebDriverContainer<?> webDriverContainer =
+    new BrowserWebDriverContainer<>(
+      System.getProperty("os.arch").equals("aarch64") ?
+        DockerImageName.parse("seleniarm/standalone-chromium")
+          .asCompatibleSubstituteFor("selenium/standalone-chrome")
+        : DockerImageName.parse("selenium/standalone-chrome")
+    )
       .withCapabilities(new ChromeOptions()
         .addArguments("--no-sandbox")
         .addArguments("--disable-dev-shm-usage"));
