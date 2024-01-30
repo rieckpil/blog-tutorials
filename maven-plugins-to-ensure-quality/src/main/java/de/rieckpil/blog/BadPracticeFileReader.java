@@ -1,9 +1,8 @@
 package de.rieckpil.blog;
 
+import java.io.InputStream;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import java.io.InputStream;
 
 @Component
 public class BadPracticeFileReader implements CommandLineRunner {

@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-
 import java.time.LocalDate;
 
 @JsonNaming(PropertyNamingStrategy.LowerCaseStrategy.class)
@@ -20,7 +19,8 @@ public class UserDetails {
   @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
   private boolean enabled;
 
-  public UserDetails(Long id, String firstName, String lastName, LocalDate dateOfBirth, boolean enabled) {
+  public UserDetails(
+      Long id, String firstName, String lastName, LocalDate dateOfBirth, boolean enabled) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
@@ -67,5 +67,4 @@ public class UserDetails {
   public void setEnabled(boolean enabled) {
     this.enabled = enabled;
   }
-
 }

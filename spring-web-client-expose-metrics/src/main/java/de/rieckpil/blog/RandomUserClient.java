@@ -15,10 +15,10 @@ public class RandomUserClient {
 
   public JsonNode getRandomUserById(int id) {
     return webClient
-      .get()
-      .uri("https://jsonplaceholder.typicode.com/todos/{id}", id)
-      .retrieve()
-      .bodyToMono(JsonNode.class)
-      .block();
+        .get()
+        .uri("https://jsonplaceholder.typicode.com/todos/{id}", id)
+        .retrieve()
+        .bodyToMono(JsonNode.class)
+        .block();
   }
 }

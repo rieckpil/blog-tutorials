@@ -9,10 +9,11 @@ import org.springframework.messaging.converter.MappingJackson2MessageConverter;
 public class MessagingConfig {
 
   @Bean
-  public MappingJackson2MessageConverter mappingJackson2MessageConverter(ObjectMapper objectMapper) {
-    MappingJackson2MessageConverter jackson2MessageConverter = new MappingJackson2MessageConverter();
+  public MappingJackson2MessageConverter mappingJackson2MessageConverter(
+      ObjectMapper objectMapper) {
+    MappingJackson2MessageConverter jackson2MessageConverter =
+        new MappingJackson2MessageConverter();
     jackson2MessageConverter.setObjectMapper(objectMapper);
     return jackson2MessageConverter;
   }
-
 }

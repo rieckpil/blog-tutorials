@@ -17,22 +17,22 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 class AlternativeJUnit5ApplicationTest {
 
   @Container
-  static PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:12")
-    .withPassword("inmemory")
-    .withUsername("inmemory");
+  static PostgreSQLContainer<?> postgreSQLContainer =
+      new PostgreSQLContainer<>("postgres:16.1").withPassword("inmemory").withUsername("inmemory");
 
-  public static class Initializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
+  public static class Initializer
+      implements ApplicationContextInitializer<ConfigurableApplicationContext> {
     @Override
     public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
-      TestPropertyValues values = TestPropertyValues.of(
-        "spring.datasource.url=" + postgreSQLContainer.getJdbcUrl(),
-        "spring.datasource.password=" + postgreSQLContainer.getPassword(),
-        "spring.datasource.username=" + postgreSQLContainer.getUsername());
+      TestPropertyValues values =
+          TestPropertyValues.of(
+              "spring.datasource.url=" + postgreSQLContainer.getJdbcUrl(),
+              "spring.datasource.password=" + postgreSQLContainer.getPassword(),
+              "spring.datasource.username=" + postgreSQLContainer.getUsername());
       values.applyTo(configurableApplicationContext);
     }
   }
 
   @Test
-  void contextLoads() {
-  }
+  void contextLoads() {}
 }

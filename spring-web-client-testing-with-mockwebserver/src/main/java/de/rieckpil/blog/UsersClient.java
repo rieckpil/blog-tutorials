@@ -14,28 +14,29 @@ public class UsersClient {
 
   private final WebClient webClient;
 
-  public UsersClient(WebClient.Builder builder,
-                     @Value("${clients.users.url}") String usersBaseUrl) {
+  public UsersClient(
+      WebClient.Builder builder, @Value("${clients.users.url}") String usersBaseUrl) {
     this.webClient = builder.baseUrl(usersBaseUrl).build();
   }
 
   public JsonNode getUserById(Long id) {
     return this.webClient
-      .get()
-      .uri("/users/{id}", id)
-      .retrieve()
-      .bodyToMono(JsonNode.class)
-      .block();
+        .get()
+        .uri("/users/{id}", id)
+        .retrieve()
+        .bodyToMono(JsonNode.class)
+        .block();
   }
 
   public JsonNode createNewUser(JsonNode payload) {
-    ClientResponse clientResponse = this.webClient
-      .post()
-      .uri("/users")
-      .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-      .bodyValue(payload)
-      .exchange()
-      .block();
+    ClientResponse clientResponse =
+        this.webClient
+            .post()
+            .uri("/users")
+            .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+            .bodyValue(payload)
+            .exchange()
+            .block();
 
     if (clientResponse.statusCode().equals(HttpStatus.CREATED)) {
       return clientResponse.bodyToMono(JsonNode.class).block();

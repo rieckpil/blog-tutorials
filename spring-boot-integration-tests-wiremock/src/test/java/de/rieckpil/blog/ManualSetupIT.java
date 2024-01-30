@@ -1,10 +1,19 @@
 package de.rieckpil.blog;
 
+import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
+import static com.github.tomakehurst.wiremock.client.WireMock.exactly;
+import static com.github.tomakehurst.wiremock.client.WireMock.getRequestedFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
 import com.github.tomakehurst.wiremock.stubbing.ServeEvent;
 import com.github.tomakehurst.wiremock.verification.LoggedRequest;
+import java.util.List;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,22 +28,11 @@ import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
-import java.util.List;
-
-import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
-import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
-import static com.github.tomakehurst.wiremock.client.WireMock.exactly;
-import static com.github.tomakehurst.wiremock.client.WireMock.getRequestedFor;
-import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class ManualSetupIT {
 
-  @Autowired
-  private WebTestClient webTestClient;
+  @Autowired private WebTestClient webTestClient;
 
   private static WireMockServer wireMockServer;
 
@@ -45,8 +43,7 @@ class ManualSetupIT {
 
   @BeforeAll
   static void startWireMock() {
-    wireMockServer = new WireMockServer(WireMockConfiguration.wireMockConfig()
-      .dynamicPort());
+    wireMockServer = new WireMockServer(WireMockConfiguration.wireMockConfig().dynamicPort());
 
     wireMockServer.start();
   }
@@ -73,83 +70,89 @@ class ManualSetupIT {
   @Order(1)
   void basicWireMockExample() {
     wireMockServer.stubFor(
-      WireMock.get("/todos")
-        .willReturn(aResponse()
-          .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
-          .withBody("[]"))
-    );
+        WireMock.get("/todos")
+            .willReturn(
+                aResponse()
+                    .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
+                    .withBody("[]")));
 
     this.webTestClient
-      .get()
-      .uri("/api/todos")
-      .exchange()
-      .expectStatus().isOk()
-      .expectBody().jsonPath("$.length()").isEqualTo(0);
+        .get()
+        .uri("/api/todos")
+        .exchange()
+        .expectStatus()
+        .isOk()
+        .expectBody()
+        .jsonPath("$.length()")
+        .isEqualTo(0);
   }
 
   @Test
   @Order(2)
   void wireMockRequestMatching() {
     wireMockServer.stubFor(
-      WireMock.get(WireMock.urlEqualTo("/users"))
-        .willReturn(aResponse()
-          .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
-          .withBody("[]"))
-    );
+        WireMock.get(WireMock.urlEqualTo("/users"))
+            .willReturn(
+                aResponse()
+                    .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
+                    .withBody("[]")));
 
-    this.webTestClient
-      .get()
-      .uri("/api/todos")
-      .exchange()
-      .expectStatus().is5xxServerError();
+    this.webTestClient.get().uri("/api/todos").exchange().expectStatus().is5xxServerError();
   }
 
   @Test
   void wireMockRequestMatchingPriority() {
     wireMockServer.stubFor(
-      WireMock.get(WireMock.urlEqualTo("/todos"))
-        .atPriority(1)
-        .willReturn(aResponse()
-          .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
-          .withBody("[]"))
-    );
+        WireMock.get(WireMock.urlEqualTo("/todos"))
+            .atPriority(1)
+            .willReturn(
+                aResponse()
+                    .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
+                    .withBody("[]")));
 
     wireMockServer.stubFor(
-      WireMock.get(WireMock.urlEqualTo("/todos"))
-        .atPriority(10)
-        .willReturn(aResponse()
-          .withStatus(500))
-    );
+        WireMock.get(WireMock.urlEqualTo("/todos"))
+            .atPriority(10)
+            .willReturn(aResponse().withStatus(500)));
 
     this.webTestClient
-      .get()
-      .uri("/api/todos")
-      .exchange()
-      .expectStatus().isOk()
-      .expectBody().jsonPath("$.length()").isEqualTo(0);
+        .get()
+        .uri("/api/todos")
+        .exchange()
+        .expectStatus()
+        .isOk()
+        .expectBody()
+        .jsonPath("$.length()")
+        .isEqualTo(0);
   }
 
   @Test
   void wireMockRequestMatchingWithData() {
     wireMockServer.stubFor(
-      WireMock.get(WireMock.urlEqualTo("/todos"))
-        .willReturn(aResponse()
-          .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
-          .withBodyFile("todo-api/response-200.json")
-          .withFixedDelay(1_000))
-    );
+        WireMock.get(WireMock.urlEqualTo("/todos"))
+            .willReturn(
+                aResponse()
+                    .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
+                    .withBodyFile("todo-api/response-200.json")
+                    .withFixedDelay(1_000)));
 
     this.webTestClient
-      .get()
-      .uri("/api/todos")
-      .exchange()
-      .expectStatus().isOk()
-      .expectBody().jsonPath("$.length()").isEqualTo(3)
-      .jsonPath("$[0].title").isEqualTo("delectus aut autem");
+        .get()
+        .uri("/api/todos")
+        .exchange()
+        .expectStatus()
+        .isOk()
+        .expectBody()
+        .jsonPath("$.length()")
+        .isEqualTo(3)
+        .jsonPath("$[0].title")
+        .isEqualTo("delectus aut autem");
 
-    wireMockServer.verify(exactly(1), getRequestedFor(urlEqualTo("/todos"))
-      .withHeader("Accept", equalTo("application/json"))
-      .withHeader("X-Auth", equalTo("duke")));
+    wireMockServer.verify(
+        exactly(1),
+        getRequestedFor(urlEqualTo("/todos"))
+            .withHeader("Accept", equalTo("application/json"))
+            .withHeader("X-Auth", equalTo("duke")));
 
     List<ServeEvent> events = wireMockServer.getAllServeEvents();
 

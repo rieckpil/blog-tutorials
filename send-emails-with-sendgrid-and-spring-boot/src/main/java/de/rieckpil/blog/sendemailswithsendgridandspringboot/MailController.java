@@ -7,19 +7,17 @@ import com.sendgrid.SendGrid;
 import com.sendgrid.helpers.mail.Mail;
 import com.sendgrid.helpers.mail.objects.Content;
 import com.sendgrid.helpers.mail.objects.Email;
+import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
-
 @RestController
 public class MailController {
 
-  @Autowired
-  private SendGrid sendGrid;
+  @Autowired private SendGrid sendGrid;
 
   @Value("${templateId}")
   private String EMAIL_TEMPLATE_ID;
@@ -30,7 +28,8 @@ public class MailController {
     Email from = new Email("yourname@yourhostname.de");
     String subject = "Hello World!";
     Email to = new Email("yourname@yourhostname.de");
-    Content content = new Content("text/html", "I'm replacing the <strong>body tag</strong>" + message);
+    Content content =
+        new Content("text/html", "I'm replacing the <strong>body tag</strong>" + message);
 
     Mail mail = new Mail(from, subject, to, content);
 

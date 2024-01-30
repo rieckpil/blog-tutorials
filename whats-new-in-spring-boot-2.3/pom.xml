@@ -4,21 +4,16 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.3.0.RELEASE</version>
-    <relativePath/> <!-- lookup parent from repository -->
+    <groupId>de.rieckpil.blog</groupId>
+    <artifactId>blog-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <groupId>de.rieckpil.blog</groupId>
   <artifactId>whats-new-in-spring-boot-2-3</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>whats-new-in-spring-boot-2-3</name>
   <description>Updates with Spring Boot 2.3</description>
-
-  <properties>
-    <java.version>14</java.version>
-  </properties>
 
   <dependencies>
     <dependency>
@@ -64,7 +59,7 @@
           <image>
             <name>myregistry.com/rieckpil/${project.artifactId}</name>
             <env>
-              <BP_JVM_VERSION>14.0.1</BP_JVM_VERSION>
+              <BP_JVM_VERSION>21.0.1</BP_JVM_VERSION>
             </env>
           </image>
         </configuration>
@@ -75,24 +70,6 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <compilerArgs>
-            --enable-preview
-          </compilerArgs>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <configuration>
-          <argLine>
-            --enable-preview
-          </argLine>
-        </configuration>
       </plugin>
     </plugins>
   </build>

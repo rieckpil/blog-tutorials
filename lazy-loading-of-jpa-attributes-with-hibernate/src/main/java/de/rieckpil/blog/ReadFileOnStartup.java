@@ -1,21 +1,19 @@
 package de.rieckpil.blog;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 
 @Component
 @Order(2)
 @Slf4j
 public class ReadFileOnStartup implements CommandLineRunner {
 
-  @PersistenceContext
-  private EntityManager entityManager;
+  @PersistenceContext private EntityManager entityManager;
 
   @Transactional
   @Override
@@ -32,6 +30,5 @@ public class ReadFileOnStartup implements CommandLineRunner {
     byte[] content = allFileUploads.getFileContent();
 
     log.info("--- the file has: " + content.length + " bytes");
-
   }
 }

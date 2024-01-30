@@ -1,14 +1,11 @@
 package de.rieckpil.tutorials;
 
-import java.time.Instant;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 import com.querydsl.core.annotations.QueryEntity;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import java.time.Instant;
 import lombok.Data;
 
 @Data
@@ -16,15 +13,15 @@ import lombok.Data;
 @QueryEntity
 public class Person {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-	private String firstname;
+  private String firstname;
 
-	private String lastname;
+  private String lastname;
 
-	private Instant dob;
+  private Instant dob;
 
-	private Integer budget;
+  private Integer budget;
 }

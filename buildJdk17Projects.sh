@@ -4,14 +4,9 @@ set -e
 set -o pipefail
 
 declare -a arr=(
- "testing-spring-rest-template"
-
  "serverless-java-aws-examples/java-aws-lambda-custom-image"
-
  "launchdarkly-java-development-testing-hints"
-
  "random-data-in-java-using-java-faker"
-
  "testcontainers-introduction"
  "maven-junit-paralellize-tests"
 )

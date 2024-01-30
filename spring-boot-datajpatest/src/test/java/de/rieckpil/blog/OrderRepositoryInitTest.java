@@ -1,30 +1,35 @@
 package de.rieckpil.blog;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-@DataJpaTest(properties = {
-  "spring.test.database.replace=NONE",
-  "spring.datasource.url=jdbc:tc:postgresql:12:///springboot"
-})
+@DataJpaTest(
+    properties = {
+      "spring.test.database.replace=NONE",
+      "spring.datasource.url=jdbc:tc:postgresql:12:///springboot"
+    })
 class OrderRepositoryInitTest {
 
-  @Autowired
-  private OrderRepository orderRepository;
+  @Autowired private OrderRepository orderRepository;
 
   @BeforeEach
   void initData() {
-    orderRepository.save(createOrder("42", """
+    orderRepository.save(
+        createOrder(
+            "42",
+            """
          [{"name": "MacBook Pro", "amount" : 42}, {"name": "iPhone Pro", "amount" : 42}]
       """));
 
-    orderRepository.save(createOrder("43", """
+    orderRepository.save(
+        createOrder(
+            "43",
+            """
          [{"name": "Kindle", "amount" : 13}, {"name": "MacBook Pro", "amount" : 10}]
       """));
 

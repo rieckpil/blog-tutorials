@@ -1,21 +1,17 @@
 package de.rieckpil.blog;
 
-import org.hibernate.annotations.NaturalId;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import org.hibernate.annotations.NaturalId;
 
 @Entity
 public class Book {
 
-  @Id
-  @GeneratedValue
-  private Long id;
+  @Id @GeneratedValue private Long id;
 
-  @NaturalId
-  private String isbn;
+  @NaturalId private String isbn;
 
   @Column(nullable = false)
   private String title;

@@ -14,8 +14,6 @@ public class Message {
 
   @Override
   public String toString() {
-    return "Message{" +
-      "message='" + message + '\'' +
-      '}';
+    return "Message{" + "message='" + message + '\'' + '}';
   }
 }

@@ -1,6 +1,6 @@
 package de.rieckpil.blog;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -12,8 +12,7 @@ public class Order {
   private Long customerId;
   private LocalDateTime orderAt;
 
-  public Order() {
-  }
+  public Order() {}
 
   public Order(String id, Set<String> tags, Long customerId, LocalDateTime orderAt) {
     this.id = id;

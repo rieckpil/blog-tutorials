@@ -9,7 +9,5 @@ import org.springframework.test.context.ContextConfiguration;
 class ApplicationTests {
 
   @Test
-  void contextLoads() {
-  }
-
+  void contextLoads() {}
 }

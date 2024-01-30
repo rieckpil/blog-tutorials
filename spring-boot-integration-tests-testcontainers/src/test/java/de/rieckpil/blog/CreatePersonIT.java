@@ -1,20 +1,19 @@
 package de.rieckpil.blog;
 
-import org.junit.jupiter.api.Test;
-import org.testcontainers.containers.PostgreSQLContainer;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 // JUnit 5 example with Spring Boot >= 2.2.6
 @Testcontainers
@@ -22,15 +21,12 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 public class CreatePersonIT {
 
   @Container
-  public static PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer()
-    .withPassword("inmemory")
-    .withUsername("inmemory");
+  public static PostgreSQLContainer postgreSQLContainer =
+      new PostgreSQLContainer("postgres:16.1").withPassword("inmemory").withUsername("inmemory");
 
-  @Autowired
-  private PersonRepository personRepository;
+  @Autowired private PersonRepository personRepository;
 
-  @Autowired
-  public TestRestTemplate testRestTemplate;
+  @Autowired public TestRestTemplate testRestTemplate;
 
   @DynamicPropertySource
   static void postgresqlProperties(DynamicPropertyRegistry registry) {
@@ -47,7 +43,8 @@ public class CreatePersonIT {
 
     assertEquals(0, personRepository.findAll().size());
 
-    ResponseEntity<Person> result = testRestTemplate.postForEntity("/api/persons", requestBody, Person.class);
+    ResponseEntity<Person> result =
+        testRestTemplate.postForEntity("/api/persons", requestBody, Person.class);
 
     assertNotNull(result);
     assertNotNull(result.getBody().getId());
@@ -55,5 +52,4 @@ public class CreatePersonIT {
     assertEquals(1, personRepository.findAll().size());
     assertEquals("rieckpil", personRepository.findAll().get(0).getName());
   }
-
 }

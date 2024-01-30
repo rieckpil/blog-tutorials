@@ -1,11 +1,10 @@
 package de.rieckpil.blog;
 
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public class ApplicationUserInitializer implements CommandLineRunner {
@@ -20,11 +19,10 @@ public class ApplicationUserInitializer implements CommandLineRunner {
   @Override
   public void run(String... args) throws Exception {
     applicationUserRepository.saveAll(
-      List.of(
-        new ApplicationUser("duke"),
-        new ApplicationUser("github"),
-        new ApplicationUser("actions")
-      ));
+        List.of(
+            new ApplicationUser("duke"),
+            new ApplicationUser("github"),
+            new ApplicationUser("actions")));
     logger.info("Successfully initialized default application user");
   }
 }

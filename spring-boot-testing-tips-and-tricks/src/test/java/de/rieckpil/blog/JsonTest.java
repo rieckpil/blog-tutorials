@@ -1,11 +1,11 @@
 package de.rieckpil.blog;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import com.jayway.jsonpath.JsonPath;
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class JsonTest {
 

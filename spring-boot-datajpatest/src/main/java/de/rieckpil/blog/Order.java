@@ -1,8 +1,7 @@
 package de.rieckpil.blog;
 
-import org.hibernate.annotations.JdbcTypeCode;
-
 import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
 @Entity
@@ -22,8 +21,7 @@ public class Order {
   @Column(columnDefinition = "jsonb")
   private String items;
 
-  public Order() {
-  }
+  public Order() {}
 
   public Long getId() {
     return id;
@@ -51,10 +49,15 @@ public class Order {
 
   @Override
   public String toString() {
-    return "Order{" +
-      "id=" + id +
-      ", trackingNumber='" + trackingNumber + '\'' +
-      ", items='" + items + '\'' +
-      '}';
+    return "Order{"
+        + "id="
+        + id
+        + ", trackingNumber='"
+        + trackingNumber
+        + '\''
+        + ", items='"
+        + items
+        + '\''
+        + '}';
   }
 }

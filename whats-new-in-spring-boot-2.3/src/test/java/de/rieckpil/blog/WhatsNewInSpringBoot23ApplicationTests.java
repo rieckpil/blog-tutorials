@@ -7,7 +7,5 @@ import org.springframework.boot.test.context.SpringBootTest;
 class WhatsNewInSpringBoot23ApplicationTests {
 
   @Test
-  void contextLoads() {
-  }
-
+  void contextLoads() {}
 }

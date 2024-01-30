@@ -1,48 +1,50 @@
 package de.rieckpil.learning;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
 public class User {
 
-	@Id
-	@GeneratedValue
-	private Long id;
-	private String name;
-	private String userId;
+  @Id private Long id;
 
-	public User() {
-	}
+  private String name;
+  private String userId;
 
-	public User(String name, String userId) {
-		this.name = name;
-		this.userId = userId;
-	}
+  public User() {}
 
-	public Long getId() {
-		return id;
-	}
+  public User(Long id, String name, String userId) {
+    this.id = id;
+    this.name = name;
+    this.userId = userId;
+  }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+  public User(String name, String userId) {
+    this.name = name;
+    this.userId = userId;
+  }
 
-	public String getName() {
-		return name;
-	}
+  public Long getId() {
+    return id;
+  }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-	public String getUserId() {
-		return userId;
-	}
+  public String getName() {
+    return name;
+  }
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+  public void setName(String name) {
+    this.name = name;
+  }
 
+  public String getUserId() {
+    return userId;
+  }
+
+  public void setUserId(String userId) {
+    this.userId = userId;
+  }
 }

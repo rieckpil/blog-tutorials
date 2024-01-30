@@ -10,14 +10,13 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 @WebMvcTest(value = RootController.class, properties = "welcome.message=Inline Hello World!")
 class RootControllerInlineTest {
 
-  @Autowired
-  private MockMvc mockMvc;
+  @Autowired private MockMvc mockMvc;
 
   @Test
   void shouldReturnDefaultWelcomeMessage() throws Exception {
     this.mockMvc
-      .perform(MockMvcRequestBuilders.get("/"))
-      .andExpect(MockMvcResultMatchers.status().isOk())
-      .andExpect(MockMvcResultMatchers.content().string("Inline Hello World!"));
+        .perform(MockMvcRequestBuilders.get("/"))
+        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.content().string("Inline Hello World!"));
   }
 }

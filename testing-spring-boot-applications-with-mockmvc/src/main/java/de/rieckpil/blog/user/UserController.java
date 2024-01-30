@@ -1,12 +1,11 @@
 package de.rieckpil.blog.user;
 
+import jakarta.validation.Valid;
+import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
-
-import javax.validation.Valid;
-import java.util.List;
 
 @Validated
 @RestController
@@ -31,10 +30,11 @@ public class UserController {
   }
 
   @PostMapping
-  public ResponseEntity<Void> createNewUser(@RequestBody @Valid User user, UriComponentsBuilder uriComponentsBuilder) {
+  public ResponseEntity<Void> createNewUser(
+      @RequestBody @Valid User user, UriComponentsBuilder uriComponentsBuilder) {
     this.userService.storeNewUser(user);
-    return ResponseEntity
-      .created(uriComponentsBuilder.path("/api/users/{username}").build(user.getUsername()))
-      .build();
+    return ResponseEntity.created(
+            uriComponentsBuilder.path("/api/users/{username}").build(user.getUsername()))
+        .build();
   }
 }

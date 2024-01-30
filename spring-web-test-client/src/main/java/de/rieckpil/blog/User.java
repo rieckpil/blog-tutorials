@@ -1,21 +1,18 @@
 package de.rieckpil.blog;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
 import java.util.Set;
 
 class User {
 
-  @NotNull
-  private Long id;
+  @NotNull private Long id;
 
-  @NotEmpty
-  private String name;
+  @NotEmpty private String name;
   private Set<String> tags;
 
-  public User() {
-  }
+  public User() {}
 
   public User(Long id, String name, Set<String> tags) {
     this.name = name;
@@ -52,9 +49,9 @@ class User {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     User user = (User) o;
-    return Objects.equals(id, user.id) &&
-      Objects.equals(name, user.name) &&
-      Objects.equals(tags, user.tags);
+    return Objects.equals(id, user.id)
+        && Objects.equals(name, user.name)
+        && Objects.equals(tags, user.tags);
   }
 
   @Override

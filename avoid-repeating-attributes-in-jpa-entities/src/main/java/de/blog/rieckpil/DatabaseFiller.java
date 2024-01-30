@@ -9,7 +9,8 @@ public class DatabaseFiller implements CommandLineRunner {
   private final CustomerRepository customerRepository;
   private final ProductRepository productRepository;
 
-  public DatabaseFiller(CustomerRepository customerRepository, ProductRepository productRepository) {
+  public DatabaseFiller(
+      CustomerRepository customerRepository, ProductRepository productRepository) {
     this.customerRepository = customerRepository;
     this.productRepository = productRepository;
   }

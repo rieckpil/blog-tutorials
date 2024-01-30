@@ -1,10 +1,9 @@
 package de.rieckpil.blog;
 
-import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+import org.springframework.stereotype.Service;
 
 @Service
 public class BookService {
@@ -34,10 +33,10 @@ public class BookService {
   }
 
   public Book getBookById(Long id) {
-    return this.bookStore
-      .stream()
-      .filter(book -> book.getId().equals(id))
-      .findFirst()
-      .orElseThrow(() -> new BookNotFoundException(String.format("Book with id: '%s' not found", id)));
+    return this.bookStore.stream()
+        .filter(book -> book.getId().equals(id))
+        .findFirst()
+        .orElseThrow(
+            () -> new BookNotFoundException(String.format("Book with id: '%s' not found", id)));
   }
 }

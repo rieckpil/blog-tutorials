@@ -1,10 +1,9 @@
 package de.rieckpil.blog;
 
-import org.springframework.stereotype.Component;
-
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 import java.math.BigDecimal;
 import java.util.concurrent.ThreadLocalRandom;
+import org.springframework.stereotype.Component;
 
 @Component
 public class ExpensiveRealtimeStockApiClient {

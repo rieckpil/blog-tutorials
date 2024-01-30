@@ -6,8 +6,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.math.BigDecimal;
-
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
@@ -18,7 +16,6 @@ public class Application implements CommandLineRunner {
     this.usersClient = usersClient;
     this.objectMapper = objectMapper;
   }
-
 
   public static void main(String[] args) {
     SpringApplication.run(Application.class, args);
@@ -31,10 +28,9 @@ public class Application implements CommandLineRunner {
     ObjectNode objectNode = objectMapper.createObjectNode();
     objectNode.put("name", "duke");
     objectNode.put("email", "duke@java.io");
-    objectNode.set("address",
-      objectMapper.createObjectNode()
-        .put("street", "main")
-        .put("postalCode", "91074"));
+    objectNode.set(
+        "address",
+        objectMapper.createObjectNode().put("street", "main").put("postalCode", "91074"));
     objectNode.set("hobbies", objectMapper.createArrayNode().add("sports").add("bowling"));
 
     System.out.println(usersClient.createNewUser(objectNode));

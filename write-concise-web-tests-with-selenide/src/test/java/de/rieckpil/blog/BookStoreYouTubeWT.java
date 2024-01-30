@@ -1,5 +1,8 @@
 package de.rieckpil.blog;
 
+import static com.codeborne.selenide.Selenide.*;
+import static org.testcontainers.Testcontainers.exposeHostPorts;
+
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
@@ -12,30 +15,32 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.core.env.Environment;
 import org.testcontainers.containers.BrowserWebDriverContainer;
 import org.testcontainers.junit.jupiter.Testcontainers;
-
-import static com.codeborne.selenide.Selenide.*;
-import static org.testcontainers.Testcontainers.exposeHostPorts;
+import org.testcontainers.utility.DockerImageName;
 
 @Testcontainers(disabledWithoutDocker = true)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class BookStoreYouTubeWT {
 
-  @LocalServerPort
-  private Integer port;
+  @LocalServerPort private Integer port;
 
-  static BrowserWebDriverContainer<?> webDriverContainer =
-    new BrowserWebDriverContainer<>()
-      .withCapabilities(new ChromeOptions()
-        .addArguments("--no-sandbox")
-        .addArguments("--disable-dev-shm-usage"));
+  public static BrowserWebDriverContainer<?> webDriverContainer =
+      new BrowserWebDriverContainer<>(
+              System.getProperty("os.arch").equals("aarch64")
+                  ? DockerImageName.parse("seleniarm/standalone-chromium")
+                      .asCompatibleSubstituteFor("selenium/standalone-chrome")
+                  : DockerImageName.parse("selenium/standalone-chrome"))
+          .withCapabilities(
+              new ChromeOptions()
+                  .addArguments("--no-sandbox")
+                  .addArguments("--disable-dev-shm-usage"));
 
   @RegisterExtension
   static ScreenShooterExtension screenShooterExtension =
-    new ScreenShooterExtension().to("target/selenide");
+      new ScreenShooterExtension().to("target/selenide");
 
   @BeforeAll
   static void beforeAll(@Autowired Environment environment) {

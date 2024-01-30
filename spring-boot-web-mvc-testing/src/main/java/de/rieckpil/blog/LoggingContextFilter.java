@@ -1,4 +1,3 @@
 package de.rieckpil.blog;
 
-public class LoggingContextFilter {
-}
+public class LoggingContextFilter {}

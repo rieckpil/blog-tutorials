@@ -1,15 +1,13 @@
 package de.rieckpil.blog;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 public class NotificationRequest {
 
-  @Email
-  private String email;
+  @Email private String email;
 
-  @NotBlank
-  private String content;
+  @NotBlank private String content;
 
   public String getEmail() {
     return email;

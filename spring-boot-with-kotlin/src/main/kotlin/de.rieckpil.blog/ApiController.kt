@@ -11,16 +11,16 @@ import org.springframework.web.reactive.function.client.WebClient
 @RequestMapping("/api")
 class ApiController(
   val jsonPlaceHolderWebClient: WebClient,
-  val personRepository: PersonRepository
+  val personRepository: PersonRepository,
 ) {
-
   @GetMapping(value = ["/todos"], produces = [MediaType.APPLICATION_JSON_VALUE])
-  fun getAllTodos() = jsonPlaceHolderWebClient
-    .get()
-    .uri("/todos")
-    .retrieve()
-    .bodyToMono(ArrayNode::class.java)
-    .block()
+  fun getAllTodos() =
+    jsonPlaceHolderWebClient
+      .get()
+      .uri("/todos")
+      .retrieve()
+      .bodyToMono(ArrayNode::class.java)
+      .block()
 
   @GetMapping(value = ["/persons"], produces = [MediaType.APPLICATION_JSON_VALUE])
   fun getAllPersons(): List<Person> = personRepository.findAll()

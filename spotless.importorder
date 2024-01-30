@@ -1,0 +1,7 @@
+# Organize Import Order
+# See https://github.com/diffplug/spotless/issues/522#issuecomment-661921466
+# Last refers to static imports
+0=java
+1=javax
+2=
+3=\#

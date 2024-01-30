@@ -1,5 +1,9 @@
 package de.rieckpil.blog;
 
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
@@ -12,36 +16,31 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.core.env.Environment;
 import org.testcontainers.Testcontainers;
 import org.testcontainers.containers.BrowserWebDriverContainer;
 import org.testcontainers.utility.DockerImageName;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 class BookStoreTestcontainersWT {
 
   public static BrowserWebDriverContainer<?> webDriverContainer =
-    new BrowserWebDriverContainer<>(
-      System.getProperty("os.arch").equals("aarch64") ?
-        DockerImageName.parse("seleniarm/standalone-chromium")
-          .asCompatibleSubstituteFor("selenium/standalone-chrome")
-        : DockerImageName.parse("selenium/standalone-chrome:4.3.0-20220726")
-    )
-      .withCapabilities(new ChromeOptions()
-        .addArguments("--no-sandbox")
-        .addArguments("--disable-dev-shm-usage"));
+      new BrowserWebDriverContainer<>(
+              System.getProperty("os.arch").equals("aarch64")
+                  ? DockerImageName.parse("seleniarm/standalone-chromium")
+                      .asCompatibleSubstituteFor("selenium/standalone-chrome")
+                  : DockerImageName.parse("selenium/standalone-chrome"))
+          .withCapabilities(
+              new ChromeOptions()
+                  .addArguments("--no-sandbox")
+                  .addArguments("--disable-dev-shm-usage"));
 
   @RegisterExtension
   static ScreenShooterExtension screenShooterExtension =
-    new ScreenShooterExtension().to("target/selenide");
+      new ScreenShooterExtension().to("target/selenide");
 
-  @LocalServerPort
-  private Integer port;
+  @LocalServerPort private Integer port;
 
   @BeforeAll
   static void beforeAll(@Autowired Environment environment) {

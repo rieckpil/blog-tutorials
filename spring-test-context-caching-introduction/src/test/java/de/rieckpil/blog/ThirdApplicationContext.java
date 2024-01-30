@@ -1,5 +1,9 @@
 package de.rieckpil.blog;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -7,26 +11,19 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.TestPropertySource;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
-
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @TestPropertySource(properties = "secret_value=foo")
 public class ThirdApplicationContext {
 
-  @Autowired
-  private TestRestTemplate testRestTemplate;
+  @Autowired private TestRestTemplate testRestTemplate;
 
-  @MockBean
-  private PersonService personService;
+  @MockBean private PersonService personService;
 
   @Test
   public void testPublicEndpoint() {
     when(personService.getPerson()).thenReturn("testPerson");
 
-    String result = this.testRestTemplate
-      .getForObject("/", String.class);
+    String result = this.testRestTemplate.getForObject("/", String.class);
 
     assertEquals("testPerson", result);
   }

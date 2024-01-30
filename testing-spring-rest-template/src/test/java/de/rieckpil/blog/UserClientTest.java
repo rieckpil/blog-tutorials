@@ -1,5 +1,9 @@
 package de.rieckpil.blog;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
+import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,26 +14,20 @@ import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.test.web.client.response.MockRestResponseCreators;
 import org.springframework.web.client.HttpClientErrorException;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
-import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
-
 @RestClientTest(UserClient.class)
 class UserClientTest {
 
-  @Autowired
-  private UserClient userClient;
+  @Autowired private UserClient userClient;
 
-  @Autowired
-  private ObjectMapper objectMapper;
+  @Autowired private ObjectMapper objectMapper;
 
-  @Autowired
-  private MockRestServiceServer mockRestServiceServer;
+  @Autowired private MockRestServiceServer mockRestServiceServer;
 
   @Test
   void userClientSuccessfullyReturnsUser() {
 
-    String json = """
+    String json =
+        """
       {
           "data": {
               "id": 1,
@@ -42,8 +40,8 @@ class UserClientTest {
        """;
 
     this.mockRestServiceServer
-      .expect(requestTo("/api/users/1"))
-      .andRespond(withSuccess(json, MediaType.APPLICATION_JSON));
+        .expect(requestTo("/api/users/1"))
+        .andRespond(withSuccess(json, MediaType.APPLICATION_JSON));
 
     User result = userClient.getSingleUser(1L);
 
@@ -53,12 +51,13 @@ class UserClientTest {
   @Test
   void userClientSuccessfullyReturnsUserDuke() throws Exception {
 
-    String json = this.objectMapper
-      .writeValueAsString(new User(new UserData(42L, "duke@java.org", "duke", "duke", "duke")));
+    String json =
+        this.objectMapper.writeValueAsString(
+            new User(new UserData(42L, "duke@java.org", "duke", "duke", "duke")));
 
     this.mockRestServiceServer
-      .expect(requestTo("/api/users/42"))
-      .andRespond(withSuccess(json, MediaType.APPLICATION_JSON));
+        .expect(requestTo("/api/users/42"))
+        .andRespond(withSuccess(json, MediaType.APPLICATION_JSON));
 
     User result = userClient.getSingleUser(42L);
 
@@ -71,10 +70,10 @@ class UserClientTest {
 
   @Test
   void userClientThrowsExceptionWhenNoUserIsFound() {
-    this.mockRestServiceServer.expect(requestTo("/api/users/1"))
-      .andRespond(MockRestResponseCreators.withStatus(HttpStatus.NOT_FOUND));
+    this.mockRestServiceServer
+        .expect(requestTo("/api/users/1"))
+        .andRespond(MockRestResponseCreators.withStatus(HttpStatus.NOT_FOUND));
 
     assertThrows(HttpClientErrorException.class, () -> userClient.getSingleUser(1L));
   }
-
 }

@@ -9,11 +9,12 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 class ModuleContainerTest {
 
   @Container
-  static PostgreSQLContainer database = new PostgreSQLContainer<>("postgres:12")
-    .withUsername("duke")
-    .withPassword("secret")
-    .withInitScript("config/INIT.sql")
-    .withDatabaseName("tescontainers");
+  static PostgreSQLContainer database =
+      new PostgreSQLContainer<>("postgres:16.1")
+          .withUsername("duke")
+          .withPassword("secret")
+          .withInitScript("config/INIT.sql")
+          .withDatabaseName("tescontainers");
 
   @Test
   void testPostgreSQLModule() {

@@ -24,8 +24,7 @@ public class UserClient {
     HttpEntity<Void> requestEntity = new HttpEntity<>(headers);
 
     return this.restTemplate
-      .exchange("/api/users/{id}", HttpMethod.GET, requestEntity, User.class, id)
-      .getBody();
-
+        .exchange("/api/users/{id}", HttpMethod.GET, requestEntity, User.class, id)
+        .getBody();
   }
 }

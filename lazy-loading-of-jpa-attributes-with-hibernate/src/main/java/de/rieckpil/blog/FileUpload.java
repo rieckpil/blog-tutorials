@@ -1,10 +1,9 @@
 package de.rieckpil.blog;
 
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
-
-import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Data // Lombok annotation to generate constructor/getter/setter...
 @Entity

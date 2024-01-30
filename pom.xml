@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>3.2.2</version>
-    <relativePath/> <!-- lookup parent from repository -->
+    <relativePath></relativePath>
+    <!-- lookup parent from repository -->
   </parent>
 
   <groupId>de.rieckpil.blog</groupId>
   <artifactId>blog-parent</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
-
-  <properties>
-    <java.version>21</java.version>
-  </properties>
 
   <modules>
     <module>spring-boot-datajpatest</module>
@@ -32,7 +28,58 @@
     <module>spring-websocket-integration-tests</module>
     <module>spring-boot-test-mockmvc-webtestclient-testresttemplate</module>
     <module>spring-mockmvc-with-webtestclient</module>
+    <module>load-testing-your-application</module>
+    <module>whats-new-in-spring-boot-2.1</module>
+    <module>whats-new-in-spring-boot-2.2</module>
+    <module>whats-new-in-spring-boot-2.3</module>
+    <module>avoid-repeating-attributes-in-jpa-entities</module>
+    <module>lazy-loading-of-jpa-attributes-with-hibernate</module>
+    <module>send-emails-with-sendgrid-and-spring-boot</module>
+    <module>demo-crud-application</module>
+    <module>deploy-spring-boot-to-gke</module>
+    <module>spring-boot-hibernate-flyway-best-practices</module>
+    <module>spring-boot-with-kotlin</module>
+    <module>difference-between-mock-and-mockbean</module>
+    <module>spring-boot-override-test-properties</module>
+    <module>spring-boot-test-mail-sending</module>
+    <module>spring-boot-shedlock</module>
+    <module>spring-data-mongo-test-testcontainers</module>
+    <module>dynamic-sql-querying-with-pagination</module>
+    <module>spring-boot-integration-tests-testcontainers</module>
+    <module>remote-debugging-spring-boot-application</module>
+    <module>spring-web-client-demo</module>
+    <module>spring-boot-uploading-and-downloading-files-with-react</module>
+    <module>spring-web-client-oauth2-reactive-stack</module>
+    <module>spring-web-client-oauth2-servlet-stack</module>
+    <module>spring-web-test-client</module>
+    <module>spring-web-client-customizing</module>
+    <module>spring-web-client-testing-with-mockwebserver</module>
+    <module>spring-web-client-exchange-retrieve</module>
+    <module>maven-plugins-to-ensure-quality</module>
+    <module>github-actions-java-maven</module>
+    <module>spring-web-client-expose-metrics</module>
+    <module>spring-boot-selenium-integration-tests</module>
+    <module>testing-json-serialization-spring</module>
+    <module>spring-web-mvc-cheat-sheet</module>
+    <module>spring-boot-aws-ssm-parameter-resolving</module>
+    <module>spring-security-aws-cognito-thymeleaf</module>
+    <module>testcontainers-reuse-existing-containers</module>
+    <module>spring-test-context-caching-introduction</module>
+    <module>spring-boot-kotlin-testcontainers</module>
+    <module>testing-spring-boot-applications-with-mockmvc</module>
+    <module>write-concise-web-tests-with-selenide</module>
+    <module>spring-boot-test-spring-events</module>
+    <module>spring-boot-testing-tips-and-tricks</module>
+    <module>expose-git-information-actuator</module>
+    <module>dependency-version-update-plugin</module>
+    <module>testing-spring-rest-template</module>
   </modules>
+
+  <properties>
+    <java.version>21</java.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
 
   <dependencyManagement>
     <dependencies>
@@ -54,8 +101,19 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.2.5</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
-        <version>3.1.2</version>
+        <version>3.2.5</version>
+        <configuration>
+          <includes>
+            <include>**/*IT.java</include>
+            <include>**/*WT.java</include>
+          </includes>
+        </configuration>
         <executions>
           <execution>
             <goals>
@@ -65,7 +123,61 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <configuration>
+          <skip>true</skip>
+          <rules>
+            <!--            <dependencyConvergence/>-->
+          </rules>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>com.diffplug.spotless</groupId>
+        <artifactId>spotless-maven-plugin</artifactId>
+        <version>2.43.0</version>
+        <configuration>
+          <java>
+            <googleJavaFormat>
+              <version>1.17.0</version>
+              <style>GOOGLE</style>
+            </googleJavaFormat>
+            <!--            <importOrder>-->
+            <!--              <file>${project.parent}/spotless.importorder</file>-->
+            <!--            </importOrder>-->
+            <removeUnusedImports></removeUnusedImports>
+          </java>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>check</goal>
+            </goals>
+            <phase>validate</phase>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>com.github.ekryd.sortpom</groupId>
+        <artifactId>sortpom-maven-plugin</artifactId>
+        <version>3.3.0</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>verify</goal>
+            </goals>
+            <phase>validate</phase>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
-
 </project>

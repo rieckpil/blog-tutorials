@@ -1,15 +1,14 @@
 package de.rieckpil;
 
-import java.util.Map;
-
-import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import io.awspring.cloud.messaging.listener.annotation.SqsListener;
+import io.awspring.cloud.sqs.annotation.SqsListener;
+import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.messaging.handler.annotation.Headers;
 import org.springframework.messaging.handler.annotation.Payload;
-import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -24,12 +23,15 @@ public class OrderListener {
   }
 
   @SqsListener("${order-queue-name}")
-  public void processOrder(@Payload ObjectNode payload, @Headers Map<String, Object> payloadHeaders) {
-    LOG.info("Incoming order payload {} with headers {}", payload, payloadHeaders);
+  public void processOrder(@Payload String rawPayload, @Headers Map<String, Object> payloadHeaders)
+      throws JsonProcessingException {
+    LOG.info("Incoming order payload {} with headers {}", rawPayload, payloadHeaders);
+
+    ObjectNode payload = new ObjectMapper().readValue(rawPayload, ObjectNode.class);
 
     PurchaseOrder purchaseOrder = new PurchaseOrder();
-    purchaseOrder.setCustomer(payload.get("customer_name").asText());
-    purchaseOrder.setAmount(payload.get("order_amount").asLong());
+    purchaseOrder.setCustomer(payload.get("customerName").asText());
+    purchaseOrder.setAmount(payload.get("orderAmount").asLong());
     purchaseOrder.setDelivered(false);
 
     purchaseOrderRepository.save(purchaseOrder);

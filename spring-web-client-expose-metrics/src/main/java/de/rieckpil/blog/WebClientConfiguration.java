@@ -15,15 +15,18 @@ public class WebClientConfiguration {
 
   @Bean
   public WebClient webClient(WebClient.Builder webClientBuilder) {
-    HttpClient httpClient = HttpClient.create()
-      .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 4_000)
-      .doOnConnected(connection ->
-        connection.addHandlerLast(new ReadTimeoutHandler(4))
-          .addHandlerLast(new WriteTimeoutHandler(4)));
+    HttpClient httpClient =
+        HttpClient.create()
+            .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 4_000)
+            .doOnConnected(
+                connection ->
+                    connection
+                        .addHandlerLast(new ReadTimeoutHandler(4))
+                        .addHandlerLast(new WriteTimeoutHandler(4)));
 
     return webClientBuilder
-      .defaultHeader(HttpHeaders.USER_AGENT, "SAMPLE_APP")
-      .clientConnector(new ReactorClientHttpConnector(httpClient))
-      .build();
+        .defaultHeader(HttpHeaders.USER_AGENT, "SAMPLE_APP")
+        .clientConnector(new ReactorClientHttpConnector(httpClient))
+        .build();
   }
 }

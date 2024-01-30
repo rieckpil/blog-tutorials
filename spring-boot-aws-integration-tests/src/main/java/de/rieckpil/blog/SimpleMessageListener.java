@@ -22,9 +22,9 @@ public class SimpleMessageListener {
   private final String orderEventBucket;
 
   public SimpleMessageListener(
-    @Value("${event-processing.order-event-bucket}") String orderEventBucket,
-    S3Client amazonS3,
-    ObjectMapper objectMapper) {
+      @Value("${event-processing.order-event-bucket}") String orderEventBucket,
+      S3Client amazonS3,
+      ObjectMapper objectMapper) {
     this.amazonS3 = amazonS3;
     this.objectMapper = objectMapper;
     this.orderEventBucket = orderEventBucket;
@@ -34,7 +34,9 @@ public class SimpleMessageListener {
   public void processMessage(@Payload OrderEvent orderEvent) throws JsonProcessingException {
     LOG.info("Incoming order: '{}'", orderEvent);
 
-    amazonS3.putObject(PutObjectRequest.builder().bucket(orderEventBucket).key(orderEvent.getId()).build(), RequestBody.fromBytes(objectMapper.writeValueAsString(orderEvent).getBytes()));
+    amazonS3.putObject(
+        PutObjectRequest.builder().bucket(orderEventBucket).key(orderEvent.getId()).build(),
+        RequestBody.fromBytes(objectMapper.writeValueAsString(orderEvent).getBytes()));
     LOG.info("Successfully uploaded order to S3");
   }
 }

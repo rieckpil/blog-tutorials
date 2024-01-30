@@ -21,13 +21,16 @@ public class UserCreationEvent extends ApplicationEvent {
     return id;
   }
 
-
   @Override
   public String toString() {
-    return "UserCreationEvent{" +
-      "username='" + username + '\'' +
-      ", id=" + id +
-      ", timestamp=" + super.getTimestamp() +
-      '}';
+    return "UserCreationEvent{"
+        + "username='"
+        + username
+        + '\''
+        + ", id="
+        + id
+        + ", timestamp="
+        + super.getTimestamp()
+        + '}';
   }
 }

@@ -4,20 +4,18 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.4.0</version>
-    <relativePath/> <!-- lookup parent from repository -->
+    <groupId>de.rieckpil.blog</groupId>
+    <artifactId>blog-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <groupId>de.rieckpil.blog</groupId>
   <artifactId>spring-web-client-exchange-retrieve</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>spring-web-client-exchange-retrieve</name>
   <description>Spring WebClient exchange vs. retrieve</description>
 
   <properties>
-    <java.version>11</java.version>
     <wiremock.version>2.27.1</wiremock.version>
   </properties>
 
@@ -38,7 +36,7 @@
     </dependency>
     <dependency>
       <groupId>com.github.tomakehurst</groupId>
-      <artifactId>wiremock-jre8</artifactId>
+      <artifactId>wiremock-standalone</artifactId>
       <version>${wiremock.version}</version>
       <scope>test</scope>
     </dependency>

@@ -8,20 +8,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SpringBootHibernateFlywayBestPracticesApplication implements CommandLineRunner {
 
-	@Autowired
-	private BestReviewedBooksRepository bestReviewedBookRepository;
+  @Autowired private BestReviewedBooksRepository bestReviewedBookRepository;
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootHibernateFlywayBestPracticesApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(SpringBootHibernateFlywayBestPracticesApplication.class, args);
+  }
 
-	@Override
-	public void run(String... args) throws Exception {
+  @Override
+  public void run(String... args) throws Exception {
 
-		for (BestReviewedBooks reviewedBook : bestReviewedBookRepository.findAll()) {
-			System.out.println(reviewedBook);
-		}
-
-	}
-
+    for (BestReviewedBooks reviewedBook : bestReviewedBookRepository.findAll()) {
+      System.out.println(reviewedBook);
+    }
+  }
 }

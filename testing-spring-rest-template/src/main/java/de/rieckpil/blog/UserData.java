@@ -68,12 +68,21 @@ public class UserData {
 
   @Override
   public String toString() {
-    return "UserData{" +
-      "id=" + id +
-      ", email='" + email + '\'' +
-      ", avatar='" + avatar + '\'' +
-      ", firstName='" + firstName + '\'' +
-      ", lastName='" + lastName + '\'' +
-      '}';
+    return "UserData{"
+        + "id="
+        + id
+        + ", email='"
+        + email
+        + '\''
+        + ", avatar='"
+        + avatar
+        + '\''
+        + ", firstName='"
+        + firstName
+        + '\''
+        + ", lastName='"
+        + lastName
+        + '\''
+        + '}';
   }
 }

@@ -1,9 +1,8 @@
 package de.blog.rieckpil;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import lombok.Data;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
 
 @Data
 @Entity
@@ -13,5 +12,4 @@ public class Product extends BaseEnterpriseEntity {
   private String name;
 
   private int amount;
-
 }

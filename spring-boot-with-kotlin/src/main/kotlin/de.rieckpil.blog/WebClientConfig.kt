@@ -8,12 +8,12 @@ import org.springframework.web.reactive.function.client.WebClient
 
 @Configuration
 class WebClientConfig {
-
   @Bean
-  fun jsonPlaceHolderWebClient(builder: WebClient.Builder) = builder
-    .clone()
-    .baseUrl("https://jsonplaceholder.typicode.com")
-    .defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
-    .defaultHeader(HttpHeaders.USER_AGENT, "SpringBootKotlinApplication")
-    .build()
+  fun jsonPlaceHolderWebClient(builder: WebClient.Builder) =
+    builder
+      .clone()
+      .baseUrl("https://jsonplaceholder.typicode.com")
+      .defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
+      .defaultHeader(HttpHeaders.USER_AGENT, "SpringBootKotlinApplication")
+      .build()
 }

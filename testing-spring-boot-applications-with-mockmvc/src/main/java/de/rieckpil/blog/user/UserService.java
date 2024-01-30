@@ -1,10 +1,9 @@
 package de.rieckpil.blog.user;
 
-import org.springframework.stereotype.Service;
-
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
@@ -23,9 +22,9 @@ public class UserService {
 
   public User getUserByUsername(String username) {
     return inMemoryUserList.stream()
-      .filter(user -> user.getUsername().equals(username))
-      .findFirst()
-      .orElseThrow(() -> new UserNotFoundException("Can't find this user *sad smiley*"));
+        .filter(user -> user.getUsername().equals(username))
+        .findFirst()
+        .orElseThrow(() -> new UserNotFoundException("Can't find this user *sad smiley*"));
   }
 
   public void storeNewUser(User user) {
