@@ -14,7 +14,7 @@ class JUnit5ApplicationTest {
 
   @Container
   static PostgreSQLContainer<?> postgreSQLContainer =
-      new PostgreSQLContainer<>("postgres:12").withPassword("inmemory").withUsername("inmemory");
+      new PostgreSQLContainer<>("postgres:16.1").withPassword("inmemory").withUsername("inmemory");
 
   @DynamicPropertySource
   static void postgresqlProperties(DynamicPropertyRegistry registry) {

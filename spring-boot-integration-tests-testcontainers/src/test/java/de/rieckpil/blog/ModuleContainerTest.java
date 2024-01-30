@@ -10,7 +10,7 @@ class ModuleContainerTest {
 
   @Container
   static PostgreSQLContainer database =
-      new PostgreSQLContainer<>("postgres:12")
+      new PostgreSQLContainer<>("postgres:16.1")
           .withUsername("duke")
           .withPassword("secret")
           .withInitScript("config/INIT.sql")
