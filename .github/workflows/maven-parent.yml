@@ -19,4 +19,4 @@ jobs:
           cache: 'maven'
 
       - name: Build all projects with Maven
-        run: ./mvnw verify --fail-at-end -B -T 1C
+        run: ./mvnw verify --fail-at-end -B -T 1C -rf :spring-boot-integration-tests-testcontainers
