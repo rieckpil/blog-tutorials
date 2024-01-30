@@ -22,7 +22,7 @@ public class CreatePersonIT {
 
   @Container
   public static PostgreSQLContainer postgreSQLContainer =
-      new PostgreSQLContainer().withPassword("inmemory").withUsername("inmemory");
+      new PostgreSQLContainer("postgres:16.1").withPassword("inmemory").withUsername("inmemory");
 
   @Autowired private PersonRepository personRepository;
 

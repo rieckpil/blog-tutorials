@@ -17,7 +17,7 @@ public class ApplicationIT {
 
   @Container
   public static PostgreSQLContainer postgreSQLContainer =
-      new PostgreSQLContainer().withPassword("inmemory").withUsername("inmemory");
+      new PostgreSQLContainer("postgres:16.1").withPassword("inmemory").withUsername("inmemory");
 
   @DynamicPropertySource
   static void postgresqlProperties(DynamicPropertyRegistry registry) {
