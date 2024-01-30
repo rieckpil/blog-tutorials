@@ -20,4 +20,4 @@ jobs:
 
       - name: Build all projects with Maven
         working-directory: spring-boot-integration-tests-testcontainers
-        run: ./mvnw verify
+        run: mvnπ verify
