@@ -2,7 +2,6 @@ package de.rieckpil.blog;
 
 import java.io.IOException;
 import java.util.Map;
-
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.BindMode;
