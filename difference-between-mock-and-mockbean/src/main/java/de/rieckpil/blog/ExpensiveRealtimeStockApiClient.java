@@ -1,8 +1,8 @@
 package de.rieckpil.blog;
 
+import jakarta.annotation.PostConstruct;
 import java.math.BigDecimal;
 import java.util.concurrent.ThreadLocalRandom;
-import javax.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 
 @Component

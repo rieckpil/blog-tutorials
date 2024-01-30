@@ -2,7 +2,7 @@ package de.rieckpil.blog;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -24,13 +24,13 @@ public class RetrieveWebClient {
         .uri("/todos/{id}", id)
         .retrieve()
         .onStatus(
-            HttpStatus::is4xxClientError,
+            HttpStatusCode::is4xxClientError,
             response ->
-                response.rawStatusCode() == 418
+                response.statusCode().value() == 418
                     ? Mono.empty()
                     : Mono.error(new RuntimeException("Error")))
         .onStatus(
-            HttpStatus::is5xxServerError, response -> Mono.error(new RuntimeException("Error")))
+            HttpStatusCode::is5xxServerError, response -> Mono.error(new RuntimeException("Error")))
         .bodyToMono(JsonNode.class)
         .block();
   }

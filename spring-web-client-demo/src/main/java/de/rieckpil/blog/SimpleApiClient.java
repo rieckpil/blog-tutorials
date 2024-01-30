@@ -3,7 +3,7 @@ package de.rieckpil.blog;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.Duration;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -28,13 +28,13 @@ public class SimpleApiClient {
         .uri("/todos/1")
         .retrieve()
         .onStatus(
-            HttpStatus::is4xxClientError,
+            HttpStatusCode::is4xxClientError,
             response -> {
               System.out.println("4xx error");
               return Mono.error(new RuntimeException("4xx"));
             })
         .onStatus(
-            HttpStatus::is5xxServerError,
+            HttpStatusCode::is5xxServerError,
             response -> {
               System.out.println("5xx error");
               return Mono.error(new RuntimeException("5xx"));

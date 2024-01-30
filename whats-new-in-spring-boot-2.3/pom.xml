@@ -59,7 +59,7 @@
           <image>
             <name>myregistry.com/rieckpil/${project.artifactId}</name>
             <env>
-              <BP_JVM_VERSION>14.0.1</BP_JVM_VERSION>
+              <BP_JVM_VERSION>21.0.1</BP_JVM_VERSION>
             </env>
           </image>
         </configuration>
@@ -70,24 +70,6 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <compilerArgs>
-            --enable-preview
-          </compilerArgs>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <configuration>
-          <argLine>
-            --enable-preview
-          </argLine>
-        </configuration>
       </plugin>
     </plugins>
   </build>

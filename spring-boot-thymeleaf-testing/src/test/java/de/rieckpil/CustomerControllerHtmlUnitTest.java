@@ -58,7 +58,7 @@ class CustomerControllerHtmlUnitTest {
             .findFirst()
             .get();
 
-    assertThat(createdRow.getCell(0).asNormalizedText()).isEqualTo("1");
+    assertThat(createdRow.getCell(0).asNormalizedText()).isEqualTo("2");
     assertThat(createdRow.getCell(1).asNormalizedText()).isEqualTo("duke");
     assertThat(createdRow.getCell(2).asNormalizedText()).isEqualTo("C0123");
     assertThat(createdRow.getCell(3).asNormalizedText()).isEqualTo("duke@java.org");
