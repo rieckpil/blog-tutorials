@@ -1,17 +1,23 @@
 package de.rieckpil.learning;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity
 public class User {
 
-  @Id @GeneratedValue private Long id;
+  @Id private Long id;
+
   private String name;
   private String userId;
 
   public User() {}
+
+  public User(Long id, String name, String userId) {
+    this.id = id;
+    this.name = name;
+    this.userId = userId;
+  }
 
   public User(String name, String userId) {
     this.name = name;
