@@ -19,5 +19,4 @@ jobs:
           cache: 'maven'
 
       - name: Build all projects with Maven
-        working-directory: spring-boot-integration-tests-testcontainers
-        run: mvn verify
+        run: ./mvnw verify --fail-at-end -B -T 1C
