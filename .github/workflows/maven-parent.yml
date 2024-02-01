@@ -1,4 +1,4 @@
-name: Build All Maven Projects
+name: Build Spring Boot Projects
 on:
   push:
   schedule:

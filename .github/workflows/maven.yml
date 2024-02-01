@@ -1,4 +1,4 @@
-name: Build Maven Projects (Java 8, 11, 17)
+name: Build Non-Spring Boot Projects
 
 on:
   push:
