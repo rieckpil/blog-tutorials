@@ -1,8 +1,8 @@
 # Hands-On Code Examples for Tutorials on [rieckpil.de](https://rieckpil.de/)
 
-[![Build Spring Boot Parent](https://github.com/rieckpil/blog-tutorials/actions/workflows/maven-parent.yml/badge.svg)](https://github.com/rieckpil/blog-tutorials/actions/workflows/maven-parent.yml) [![Build Non-Spring Boot Projects](https://github.com/rieckpil/blog-tutorials/actions/workflows/maven.yml/badge.svg)](https://github.com/rieckpil/blog-tutorials/actions/workflows/maven.yml) [![Build Gradle Projects](https://github.com/rieckpil/blog-tutorials/actions/workflows/gradle.yml/badge.svg)](https://github.com/rieckpil/blog-tutorials/actions/workflows/gradle.yml) [![Check for broken links](https://github.com/rieckpil/blog-tutorials/actions/workflows/broken-links.yml/badge.svg)](https://github.com/rieckpil/blog-tutorials/actions/workflows/broken-links.yml)
+[![Build Spring Boot Parent](https://github.com/rieckpil/blog-tutorials/actions/workflows/maven-parent.yml/badge.svg)](https://github.com/rieckpil/blog-tutorials/actions/workflows/maven-parent.yml) [![Build Non-Spring Boot Projects](https://github.com/rieckpil/blog-tutorials/actions/workflows/maven.yml/badge.svg)](https://github.com/rieckpil/blog-tutorials/actions/workflows/maven.yml)
 
-If you find an issue or bug within the provided code examples, feel free to open an [issue](https://github.com/rieckpil/blog-tutorials/issues), and I will take a look.
+If you find an issue or bug within the provided code examples, feel free to open an [issue](https://github.com/rieckpil/blog-tutorials/issues), and we'll take a look.
 
 ## Cheat Sheets
 
