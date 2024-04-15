@@ -13,3 +13,7 @@ COPY --from=backend ${DEPENDENCY}/BOOT-INF/lib /app/lib
 COPY --from=backend ${DEPENDENCY}/META-INF /app/META-INF
 COPY --from=backend ${DEPENDENCY}/BOOT-INF/classes /app
 ENTRYPOINT ["java", "-cp", "app:app/lib/*", "de.rieckpil.Application"]
+
+### Commands to run Dockerfile ###
+# docker build -t application .
+# docker run -d -e BLOB_STORAGE_CONTAINER_NAME="" -e BLOB_STORAGE_CONNECTION_STRING="" application
