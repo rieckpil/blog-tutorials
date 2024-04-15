@@ -73,6 +73,7 @@
     <module>expose-git-information-actuator</module>
     <module>dependency-version-update-plugin</module>
     <module>testing-spring-rest-template</module>
+    <module>azure-blob-storage-azurite-testing</module>
   </modules>
 
   <properties>
