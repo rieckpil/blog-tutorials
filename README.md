@@ -84,6 +84,10 @@ If you find an issue or bug within the provided code examples, feel free to open
 * [Java AWS Lambda with Spring Cloud Function](https://rieckpil.de/java-aws-lambda-with-spring-cloud-function/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/serverless-java-aws-examples/spring-cloud-function-aws))
 * [Thymeleaf OAuth2 Login with Spring Security and AWS Cognito](https://rieckpil.de/thymeleaf-oauth2-login-with-spring-security-and-aws-cognito/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-security-aws-cognito-thymeleaf))
 
+## Articles about Azure
+
+* [Using Azurite to Test Azure Blob Storage Interactions in Spring Boot](https://rieckpil.de/using-azurite-to-test-azure-blob-storage-interactions-in-spring-boot) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/azure-blob-storage-azurite-testing))
+
 ## Articles about Kotlin
 
 * [Create Spring Boot applications with Maven and Kotlin](https://rieckpil.de/create-spring-boot-applications-with-maven-and-kotlin/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-with-kotlin))
