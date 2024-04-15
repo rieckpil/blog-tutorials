@@ -12,7 +12,7 @@ public class AzureBlobStorageInitializer implements BeforeAllCallback {
 
   private static final String AZURITE_IMAGE = "mcr.microsoft.com/azure-storage/azurite:3.29.0";
   private static final GenericContainer<?> AZURITE_CONTAINER =
-      new GenericContainer<>("mcr.microsoft.com/azure-storage/azurite")
+      new GenericContainer<>(AZURITE_IMAGE)
           .withCommand("azurite-blob", "--blobHost", "0.0.0.0")
           .withExposedPorts(10000);
 
