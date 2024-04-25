@@ -8,6 +8,8 @@ import de.rieckpil.utility.SortingHatUtility;
 import java.util.List;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,10 +19,12 @@ public class WizardService {
   private final WizardRepository wizardRepository;
   private final SortingHatUtility sortingHatUtility;
 
+  @Cacheable(value = "wizards")
   public List<WizardDto> retrieve() {
     return wizardRepository.findAll().stream().map(this::convert).toList();
   }
 
+  @CacheEvict(value = "wizards", allEntries = true)
   public void create(@NonNull final WizardCreationRequestDto wizardCreationRequest) {
     final var house = sortingHatUtility.sort();
     final var wizard = new Wizard();
