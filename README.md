@@ -54,6 +54,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 * [Testing your Spring RestTemplate with @RestClientTest](https://rieckpil.de/testing-your-spring-resttemplate-with-restclienttest/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/testing-spring-rest-template))
 * [Five JUnit 5 features you might not know yet](https://rieckpil.de/five-junit-5-features-you-might-not-know-yet/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/five-unknown-junit-5-features))
 * [Testing your JSON serialization with @JsonTest](https://rieckpil.de/testing-your-json-serialization-with-jsontest) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/testing-json-serialization-spring))
+* [Validating Caching Mechanism with Testcontainers in Spring Boot](https://rieckpil.de/validating-caching-mechanism-with-testcontainers-in-spring-boot) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/caching-validation-testcontainers))
 
 ## Articles about Spring Boot
 
