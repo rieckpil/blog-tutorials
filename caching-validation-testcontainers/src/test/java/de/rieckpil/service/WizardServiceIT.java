@@ -41,9 +41,9 @@ class WizardServiceIT {
 
     // Verify database interaction
     verify(wizardRepository, times(1)).findAll();
-    Mockito.clearInvocations(wizardRepository);
 
     // Verify subsequent reads are made from cache and database is not queried
+    Mockito.clearInvocations(wizardRepository);
     final var queryTimes = 100;
     for (int i = 1; i < queryTimes; i++) {
       wizards = wizardService.retrieve();
