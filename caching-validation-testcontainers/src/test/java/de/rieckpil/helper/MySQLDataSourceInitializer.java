@@ -1,5 +1,6 @@
 package de.rieckpil.helper;
 
+import java.util.concurrent.atomic.AtomicBoolean;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -10,15 +11,19 @@ import org.testcontainers.utility.DockerImageName;
 @Slf4j
 public class MySQLDataSourceInitializer implements BeforeAllCallback {
 
+  private static final AtomicBoolean INITIAL_INVOCATION = new AtomicBoolean(Boolean.TRUE);
+
   private final DockerImageName MYSQL_IMAGE = DockerImageName.parse("mysql:8");
   private final MySQLContainer<?> mySQLContainer = new MySQLContainer<>(MYSQL_IMAGE);
 
   @Override
   public void beforeAll(final ExtensionContext context) {
-    log.info("Creating datasource container : {}", MYSQL_IMAGE);
-    mySQLContainer.start();
-    addDataSourceProperties();
-    log.info("Successfully started datasource container : {}", MYSQL_IMAGE);
+    if (INITIAL_INVOCATION.getAndSet(Boolean.FALSE)) {
+      log.info("Creating datasource container : {}", MYSQL_IMAGE);
+      mySQLContainer.start();
+      addDataSourceProperties();
+      log.info("Successfully started datasource container : {}", MYSQL_IMAGE);
+    }
   }
 
   private void addDataSourceProperties() {

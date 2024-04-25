@@ -1,5 +1,6 @@
 package de.rieckpil.helper;
 
+import java.util.concurrent.atomic.AtomicBoolean;
 import lombok.extern.slf4j.Slf4j;
 import net.bytebuddy.utility.RandomString;
 import org.junit.jupiter.api.extension.BeforeAllCallback;
@@ -9,6 +10,8 @@ import org.testcontainers.utility.DockerImageName;
 
 @Slf4j
 public class RedisCacheInitializer implements BeforeAllCallback {
+
+  private static final AtomicBoolean INITIAL_INVOCATION = new AtomicBoolean(Boolean.TRUE);
 
   private final int REDIS_PORT = 6379;
   private final String REDIS_PASSWORD = RandomString.make(10);
@@ -21,10 +24,12 @@ public class RedisCacheInitializer implements BeforeAllCallback {
 
   @Override
   public void beforeAll(final ExtensionContext context) {
-    log.info("Creating cache container : {}", REDIS_IMAGE);
-    redisContainer.start();
-    addCacheProperties();
-    log.info("Successfully started cache container : {}", REDIS_IMAGE);
+    if (INITIAL_INVOCATION.getAndSet(Boolean.FALSE)) {
+      log.info("Creating cache container : {}", REDIS_IMAGE);
+      redisContainer.start();
+      addCacheProperties();
+      log.info("Successfully started cache container : {}", REDIS_IMAGE);
+    }
   }
 
   private void addCacheProperties() {
