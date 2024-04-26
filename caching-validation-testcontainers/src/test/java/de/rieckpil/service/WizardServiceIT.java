@@ -70,7 +70,13 @@ class WizardServiceIT {
 
     // Retrieve wizards post creation and verify database interaction
     Mockito.clearInvocations(wizardRepository);
-    wizardService.retrieve();
+    wizards = wizardService.retrieve();
     verify(wizardRepository, times(1)).findAll();
+
+    // assert the fetched response contains new wizard data
+    assertThat(wizards)
+        .anyMatch(
+            wizard ->
+                wizard.getName().contentEquals(name) && wizard.getWandType().contains(wandType));
   }
 }
