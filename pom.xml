@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.2.2</version>
+    <version>3.2.4</version>
     <relativePath></relativePath>
     <!-- lookup parent from repository -->
   </parent>
@@ -73,6 +73,7 @@
     <module>expose-git-information-actuator</module>
     <module>dependency-version-update-plugin</module>
     <module>testing-spring-rest-template</module>
+    <module>azure-blob-storage-azurite-testing</module>
   </modules>
 
   <properties>
