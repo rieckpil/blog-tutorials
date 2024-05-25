@@ -1,0 +1,6 @@
+de:
+  rieckpil:
+    azure:
+      blob-storage:
+        container-name: ${BLOB_STORAGE_CONTAINER_NAME}
+        connection-string: ${BLOB_STORAGE_CONNECTION_STRING}
