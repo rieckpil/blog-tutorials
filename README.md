@@ -86,7 +86,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 
 ## Articles about Azure
 
-* [Using Azurite to Test Azure Blob Storage Interactions in Spring Boot](https://rieckpil.de/using-azurite-to-test-azure-blob-storage-interactions-in-spring-boot) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/azure-blob-storage-azurite-testing))
+* [Using Azurite to Test Azure Blob Storage Interactions in Spring Boot](https://rieckpil.de/using-azurite-to-test-azure-blob-interactions-in-spring-boot) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/azure-blob-storage-azurite-testing))
 
 ## Articles about Kotlin
 
