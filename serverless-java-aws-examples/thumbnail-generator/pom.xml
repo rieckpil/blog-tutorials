@@ -12,7 +12,7 @@
     <maven.compiler.target>11</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <aws-lambda-java-events.version>3.11.0</aws-lambda-java-events.version>
-    <aws-lambda-java-core.version>1.2.1</aws-lambda-java-core.version>
+    <aws-lambda-java-core.version>1.2.3</aws-lambda-java-core.version>
     <aws.java.sdk.version>2.16.1</aws.java.sdk.version>
   </properties>
 
