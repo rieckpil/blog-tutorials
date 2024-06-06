@@ -15,7 +15,7 @@
   <description>Spring Boot integration tests with AWS services</description>
 
   <properties>
-    <awspring.version>3.1.0</awspring.version>
+    <awspring.version>3.1.1</awspring.version>
   </properties>
 
   <dependencyManagement>
