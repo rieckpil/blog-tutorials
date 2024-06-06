@@ -1,4 +1,4 @@
-### Codebase for the blog post [Using Azurite to Test Azure Blob Storage Interactions in Spring Boot](https://rieckpil.de/using-azurite-to-test-azure-blob-storage-interactions-in-spring-boot)
+### Codebase for the blog post [Using Azurite to Test Azure Blob Storage Interactions in Spring Boot](https://rieckpil.de/using-azurite-to-test-azure-blob-interactions-in-spring-boot/)
 
 Steps to run this project: 
 1. Clone this Git repository

@@ -2,8 +2,6 @@ package de.rieckpil.blog.customer;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class Order {
@@ -14,8 +12,7 @@ public class Order {
 
   private String paymentMethod;
 
-  public Order() {
-  }
+  public Order() {}
 
   public Order(List<Product> products, String paymentMethod) {
     this.products = products;
@@ -37,5 +34,4 @@ public class Order {
   public void setPaymentMethod(String paymentMethod) {
     this.paymentMethod = paymentMethod;
   }
-
 }

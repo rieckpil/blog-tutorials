@@ -1,10 +1,10 @@
 package de.rieckpil.blog.junit5;
+
 // tag::JUnitExampleTest[]
 
 import de.rieckpil.blog.registration.User;
-import org.junit.jupiter.api.*;
-
 import java.math.BigDecimal;
+import org.junit.jupiter.api.*;
 
 class JUnit5ExampleTest {
 
@@ -35,11 +35,13 @@ class JUnit5ExampleTest {
 
   @Test
   @Timeout(5)
-    // default time unit is seconds
+  // default time unit is seconds
   void shouldThrowException() {
-    Assertions.assertThrows(RuntimeException.class, () -> {
-      throw new RuntimeException("Error");
-    });
+    Assertions.assertThrows(
+        RuntimeException.class,
+        () -> {
+          throw new RuntimeException("Error");
+        });
   }
 
   @Test
@@ -69,15 +71,16 @@ class JUnit5ExampleTest {
 
     Assertions.assertNotNull(new BigDecimal("42"));
 
-    Assertions.assertThrows(ArithmeticException.class, () -> {
-      int result = 4 / 0;
-    });
+    Assertions.assertThrows(
+        ArithmeticException.class,
+        () -> {
+          int result = 4 / 0;
+        });
 
     // checks for equal object references using ==
     Assertions.assertSame(userOne, userTwo);
 
-    Assertions.assertArrayEquals(new int[]{42, 13, 7}, openInvoiceIds);
-
+    Assertions.assertArrayEquals(new int[] {42, 13, 7}, openInvoiceIds);
   }
 }
 // end::JUnitExampleTest[]

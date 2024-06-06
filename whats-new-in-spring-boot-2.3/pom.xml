@@ -51,7 +51,7 @@
         <artifactId>spring-boot-maven-plugin</artifactId>
         <configuration>
           <jvmArguments>
-            --enable-preview
+           --enable-preview
           </jvmArguments>
           <layers>
             <enabled>true</enabled>
@@ -59,7 +59,7 @@
           <image>
             <name>myregistry.com/rieckpil/${project.artifactId}</name>
             <env>
-              <BP_JVM_VERSION>21.0.1</BP_JVM_VERSION>
+              <BP_JVM_VERSION>${java.version}</BP_JVM_VERSION>
             </env>
           </image>
         </configuration>

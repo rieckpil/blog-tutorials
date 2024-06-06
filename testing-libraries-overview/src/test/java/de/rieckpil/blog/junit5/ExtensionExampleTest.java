@@ -1,9 +1,9 @@
 package de.rieckpil.blog.junit5;
 
+import static de.rieckpil.blog.junit5.RandomUUIDParameterResolver.*;
+
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.extension.ExtendWith;
-
-import static de.rieckpil.blog.junit5.RandomUUIDParameterResolver.*;
 
 @ExtendWith(RandomUUIDParameterResolver.class)
 public class ExtensionExampleTest {

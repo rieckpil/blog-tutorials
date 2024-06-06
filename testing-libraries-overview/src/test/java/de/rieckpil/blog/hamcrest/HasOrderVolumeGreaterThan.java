@@ -2,12 +2,11 @@ package de.rieckpil.blog.hamcrest;
 
 import de.rieckpil.blog.customer.Customer;
 import de.rieckpil.blog.customer.Order;
+import java.math.BigDecimal;
+import java.util.List;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
-
-import java.math.BigDecimal;
-import java.util.List;
 
 public class HasOrderVolumeGreaterThan extends TypeSafeMatcher<Customer> {
 
@@ -40,11 +39,10 @@ public class HasOrderVolumeGreaterThan extends TypeSafeMatcher<Customer> {
   }
 
   private BigDecimal calculateOrderVolume(List<Order> orders) {
-    return orders
-      .stream()
-      .map(Order::getProducts)
-      .flatMap(List::stream)
-      .map(product -> product.getPrice().multiply(BigDecimal.valueOf(product.getQuantity())))
-      .reduce(BigDecimal.ZERO, BigDecimal::add);
+    return orders.stream()
+        .map(Order::getProducts)
+        .flatMap(List::stream)
+        .map(product -> product.getPrice().multiply(BigDecimal.valueOf(product.getQuantity())))
+        .reduce(BigDecimal.ZERO, BigDecimal::add);
   }
 }

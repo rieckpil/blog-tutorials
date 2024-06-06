@@ -1,7 +1,5 @@
 package de.rieckpil.blog.customer;
 
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-
 import java.math.BigDecimal;
 
 public class Product {
@@ -10,8 +8,7 @@ public class Product {
   private BigDecimal price;
   private Long quantity;
 
-  public Product() {
-  }
+  public Product() {}
 
   public Product(String name, BigDecimal price, Long quantity) {
     this.name = name;

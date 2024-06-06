@@ -1,5 +1,7 @@
 package de.rieckpil.blog.selenide;
 
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
+
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
@@ -10,16 +12,13 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
-
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
+import org.springframework.boot.test.web.server.LocalServerPort;
 
 @Disabled("Showcase only")
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 class DashboardControllerWebTest {
 
-  @LocalServerPort
-  private Integer port;
+  @LocalServerPort private Integer port;
 
   @BeforeAll
   static void configure() {

@@ -3,11 +3,11 @@
 set -e
 set -o pipefail
 
-declare -a arr=("kotlin-javascript-transpiling-gradle")
+declare -a arr=("")
 
 for project in "${arr[@]}"
 do
   cd $project
-  ./gradlew build
+  
   cd ..
 done
