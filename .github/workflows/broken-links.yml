@@ -5,13 +5,13 @@ on:
     - cron: '0 5 * * SUN'
 jobs:
   broken-link-check:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     name: Check for broken links in README.md
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 12.x
+          node-version: 16
       - run: |
-          npm install -g markdown-link-check
+          npm install -g markdown-link-check@3.10.3
           find . -type f -name '*.md' | xargs -L1 npx markdown-link-check -c .broken-link-config.json --quiet
