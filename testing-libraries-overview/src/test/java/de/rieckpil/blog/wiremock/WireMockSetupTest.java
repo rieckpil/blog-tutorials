@@ -1,13 +1,13 @@
 package de.rieckpil.blog.wiremock;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class WireMockSetupTest {
 
@@ -29,5 +29,4 @@ public class WireMockSetupTest {
     assertNotNull(wireMockServer);
     assertTrue(wireMockServer.isRunning());
   }
-
 }

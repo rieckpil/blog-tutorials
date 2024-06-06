@@ -7,7 +7,5 @@ import org.junit.jupiter.api.Test;
 class RegistrationWebTest {
 
   @Test
-  void shouldRegisterANewUser() {
-
-  }
+  void shouldRegisterANewUser() {}
 }

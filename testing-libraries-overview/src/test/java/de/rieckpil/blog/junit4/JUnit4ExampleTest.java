@@ -1,10 +1,9 @@
 package de.rieckpil.blog.junit4;
 
 import de.rieckpil.blog.registration.User;
+import java.math.BigDecimal;
 import org.junit.*;
 import org.junit.experimental.categories.Category;
-
-import java.math.BigDecimal;
 
 public class JUnit4ExampleTest {
 
@@ -49,9 +48,7 @@ public class JUnit4ExampleTest {
 
   @Test
   @Category(DatabaseTests.class)
-  public void testDatabaseQuery() {
-
-  }
+  public void testDatabaseQuery() {}
 
   @Test
   public void assertionExamples() {
@@ -61,21 +58,22 @@ public class JUnit4ExampleTest {
 
     int[] openInvoiceIds = {42, 13, 7};
 
-  Assert.assertEquals("Message on failure", 42L, 40L + 2L);
-  Assert.assertNotEquals("duke", "gopher");
+    Assert.assertEquals("Message on failure", 42L, 40L + 2L);
+    Assert.assertNotEquals("duke", "gopher");
 
-  Assert.assertTrue("Message on failure", 4 % 2 == 0);
+    Assert.assertTrue("Message on failure", 4 % 2 == 0);
 
-  Assert.assertNotNull(new BigDecimal("42"));
+    Assert.assertNotNull(new BigDecimal("42"));
 
-  Assert.assertThrows(ArithmeticException.class, () -> {
-    int result = 4 / 0;
-  });
+    Assert.assertThrows(
+        ArithmeticException.class,
+        () -> {
+          int result = 4 / 0;
+        });
 
-  // checks for equal object references using ==
-  Assert.assertSame(userOne, userTwo);
+    // checks for equal object references using ==
+    Assert.assertSame(userOne, userTwo);
 
-  Assert.assertArrayEquals(new int[]{42, 13, 7}, openInvoiceIds);
-
+    Assert.assertArrayEquals(new int[] {42, 13, 7}, openInvoiceIds);
   }
 }

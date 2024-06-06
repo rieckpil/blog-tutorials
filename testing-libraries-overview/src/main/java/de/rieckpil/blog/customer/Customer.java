@@ -2,7 +2,6 @@ package de.rieckpil.blog.customer;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-
 import java.util.List;
 import java.util.Set;
 
@@ -21,10 +20,10 @@ public class Customer {
 
   private Address address;
 
-  public Customer() {
-  }
+  public Customer() {}
 
-  public Customer(String username, String id, Set<String> tags, List<Order> orders, Address address) {
+  public Customer(
+      String username, String id, Set<String> tags, List<Order> orders, Address address) {
     this.username = username;
     this.id = id;
     this.tags = tags;

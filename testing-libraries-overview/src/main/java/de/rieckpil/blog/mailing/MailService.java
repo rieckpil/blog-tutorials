@@ -1,19 +1,21 @@
 package de.rieckpil.blog.mailing;
 
+import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.util.Properties;
 
 public class MailService {
 
   private final Session session;
 
-  public MailService(String host, Integer smtpPort, Integer imapPort, String username, String password) {
+  public MailService(
+      String host, Integer smtpPort, Integer imapPort, String username, String password) {
     this.session = createSession(host, smtpPort, imapPort, username, password);
   }
 
-  private Session createSession(String host, Integer smtpPort, Integer imapPort, String username, String password) {
+  private Session createSession(
+      String host, Integer smtpPort, Integer imapPort, String username, String password) {
     Properties props = new Properties();
 
     props.put("mail.smtp.host", host);
@@ -26,12 +28,13 @@ public class MailService {
     props.put("mail.imap.auth", "true");
     props.put("mail.imap.starttls.enable", "true");
 
-    Authenticator authentication = new Authenticator() {
-      @Override
-      protected PasswordAuthentication getPasswordAuthentication() {
-        return new PasswordAuthentication(username, password);
-      }
-    };
+    Authenticator authentication =
+        new Authenticator() {
+          @Override
+          protected PasswordAuthentication getPasswordAuthentication() {
+            return new PasswordAuthentication(username, password);
+          }
+        };
 
     return Session.getInstance(props, authentication);
   }
@@ -47,7 +50,8 @@ public class MailService {
     Transport.send(mail);
   }
 
-  public String retrieveLatestMailForUser(String recipient, String recipientPassword) throws Exception {
+  public String retrieveLatestMailForUser(String recipient, String recipientPassword)
+      throws Exception {
     try (Store store = session.getStore("imap")) {
       store.connect(recipient, recipientPassword);
 

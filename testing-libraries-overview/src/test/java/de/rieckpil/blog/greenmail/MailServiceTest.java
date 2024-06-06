@@ -1,20 +1,19 @@
 package de.rieckpil.blog.greenmail;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import com.icegreen.greenmail.junit5.GreenMailExtension;
 import com.icegreen.greenmail.util.GreenMailUtil;
 import com.icegreen.greenmail.util.ServerSetupTest;
 import de.rieckpil.blog.mailing.MailService;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.RegisterExtension;
-
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
 
 class MailServiceTest {
 
@@ -28,12 +27,13 @@ class MailServiceTest {
 
     greenMail.setUser("admin@java.io", "my_secret");
 
-    this.cut = new MailService(
-      greenMail.getSmtp().getBindTo(),
-      greenMail.getSmtp().getPort(),
-      greenMail.getImap().getPort(),
-      "admin@java.io",
-      "my_secret");
+    this.cut =
+        new MailService(
+            greenMail.getSmtp().getBindTo(),
+            greenMail.getSmtp().getPort(),
+            greenMail.getImap().getPort(),
+            "admin@java.io",
+            "my_secret");
   }
 
   @Test
@@ -53,8 +53,7 @@ class MailServiceTest {
 
     Message msg = new MimeMessage(smtpSession);
     msg.setFrom(new InternetAddress("test@java.io"));
-    msg.addRecipient(Message.RecipientType.TO,
-      new InternetAddress("mike@java.io"));
+    msg.addRecipient(Message.RecipientType.TO, new InternetAddress("mike@java.io"));
     msg.setSubject("Test");
     msg.setText("Hello World from GreenMail!");
     Transport.send(msg);

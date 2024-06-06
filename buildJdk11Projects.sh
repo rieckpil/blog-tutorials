@@ -27,7 +27,6 @@ declare -a arr=(
   "serverless-java-aws-examples/spring-cloud-function-kotlin-aws"
   "five-unknown-junit-5-features"
   "mockito-tips-and-tricks"
-  "testing-libraries-overview"
   "testing-java-applications-with-maven"
   "open-rewrite-example"
  )

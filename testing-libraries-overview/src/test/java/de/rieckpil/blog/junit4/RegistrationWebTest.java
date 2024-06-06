@@ -7,7 +7,5 @@ import org.junit.experimental.categories.Category;
 public class RegistrationWebTest {
 
   @Test
-  public void shouldRegisterANewUser() {
-
-  }
+  public void shouldRegisterANewUser() {}
 }

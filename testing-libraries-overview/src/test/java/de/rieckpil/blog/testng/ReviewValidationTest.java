@@ -1,10 +1,9 @@
 package de.rieckpil.blog.testng;
 
 import de.rieckpil.blog.review.ReviewValidation;
+import java.lang.reflect.Method;
 import org.testng.Assert;
 import org.testng.annotations.*;
-
-import java.lang.reflect.Method;
 
 public class ReviewValidationTest {
 
@@ -52,7 +51,9 @@ public class ReviewValidationTest {
     Assert.assertTrue(result, "A title of high quality was rejected");
   }
 
-  @Test(groups = {"windows-only"}, enabled = false)
+  @Test(
+      groups = {"windows-only"},
+      enabled = false)
   public void shouldDetectWindows() {
     Assert.assertTrue(System.getProperty("os.name").contains("Windows"));
   }
@@ -66,10 +67,8 @@ public class ReviewValidationTest {
   @DataProvider(name = "shortTitles")
   public Object[][] createShortReviewTitles(Method method) {
     System.out.println("Generating test data for method " + method.getName());
-    return new Object[][]{
-      {"ABCD"},
-      {"Bad book"},
-      {":("},
+    return new Object[][] {
+      {"ABCD"}, {"Bad book"}, {":("},
     };
   }
 

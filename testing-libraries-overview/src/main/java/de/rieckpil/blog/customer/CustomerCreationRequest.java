@@ -14,8 +14,6 @@ public class CustomerCreationRequest {
 
   @Override
   public String toString() {
-    return "CustomerCreationRequest{" +
-      "username='" + username + '\'' +
-      '}';
+    return "CustomerCreationRequest{" + "username='" + username + '\'' + '}';
   }
 }

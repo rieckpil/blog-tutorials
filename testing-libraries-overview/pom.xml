@@ -4,64 +4,43 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.4.2</version>
-    <relativePath/> <!-- lookup parent from repository -->
+    <groupId>de.rieckpil.blog</groupId>
+    <artifactId>blog-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <groupId>de.rieckpil.blog</groupId>
   <artifactId>testing-libraries-overview</artifactId>
   <version>1.0.0</version>
   <name>testing-libraries-overview</name>
 
   <properties>
-    <java.version>11</java.version>
     <junit4.version>4.13.2</junit4.version>
-    <testcontainers.version>1.15.2</testcontainers.version>
-    <mockito.version>3.7.0</mockito.version>
+    <testcontainers.version>1.19.8</testcontainers.version>
+    <mockito.version>5.11.0</mockito.version>
     <testng.version>6.8</testng.version>
     <hamcrest.version>2.2</hamcrest.version>
-    <assertj.version>3.19.0</assertj.version>
+    <assertj.version>3.26.0</assertj.version>
     <json-path.version>2.5.0</json-path.version>
     <jsonassert.version>1.5.0</jsonassert.version>
     <powermock.version>2.0.9</powermock.version>
-    <wiremock.version>2.27.2</wiremock.version>
+    <wiremock.version>3.6.0</wiremock.version>
     <mockwebserver.version>4.9.0</mockwebserver.version>
     <okio.version>2.10.0</okio.version>
     <okhttp3.version>4.9.0</okhttp3.version>
     <xmlunit.version>2.8.2</xmlunit.version>
-    <selenide.version>5.19.0</selenide.version>
-    <selenium.version>3.141.59</selenium.version>
+    <selenide.version>7.3.2</selenide.version>
+    <selenium.version>4.16.1</selenium.version>
     <microshed-testing.version>0.9</microshed-testing.version>
     <awaitility.version>4.0.3</awaitility.version>
-    <rest-assured.version>4.3.3</rest-assured.version>
+    <rest-assured.version>5.4.0</rest-assured.version>
     <greenmail.version>1.6.0</greenmail.version>
-    <groovy.version>3.0.7</groovy.version>
+    <groovy.version>4.0.16</groovy.version>
     <citrus.version>2.8.0</citrus.version>
   </properties>
 
   <dependencyManagement>
     <dependencies>
-      <dependency>
-        <groupId>org.junit</groupId>
-        <artifactId>junit-bom</artifactId>
-        <version>5.7.0</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.testcontainers</groupId>
-        <artifactId>testcontainers-bom</artifactId>
-        <version>${testcontainers.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>com.squareup.okio</groupId>
-        <artifactId>okio</artifactId>
-        <version>${okio.version}</version>
-      </dependency>
       <dependency>
         <groupId>commons-io</groupId>
         <artifactId>commons-io</artifactId>
@@ -174,8 +153,8 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>com.github.tomakehurst</groupId>
-      <artifactId>wiremock-jre8</artifactId>
+      <groupId>org.wiremock</groupId>
+      <artifactId>wiremock-standalone</artifactId>
       <version>${wiremock.version}</version>
       <scope>test</scope>
     </dependency>
