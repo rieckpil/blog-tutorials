@@ -28,19 +28,3 @@ jobs:
         run: |
           chmod +x ./buildJdk${{ matrix.versions }}Projects.sh
           ./buildJdk${{ matrix.versions }}Projects.sh
-
-  build-gradle-projects:
-    runs-on: ubuntu-latest
-    name: Build Java 8 projects
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up JDK 8
-        uses: actions/setup-java@v4
-        with:
-          java-version: 8
-          distribution: adopt
-          cache: gradle
-
-      - name: Build JDK 8 projects
-        run: ./buildGradleJdk8Projects.sh
