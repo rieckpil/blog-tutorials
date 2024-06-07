@@ -18,7 +18,7 @@
     <microprofile.version>3.3</microprofile.version>
     <mockito-core.version>3.3.0</mockito-core.version>
     <junit-jupiter.version>5.6.0</junit-jupiter.version>
-    <microshed-testing.version>0.9</microshed-testing.version>
+    <microshed-testing.version>0.9.2</microshed-testing.version>
     <testcontainers.version>1.16.0</testcontainers.version>
     <mockserver-client-java.version>5.5.4</mockserver-client-java.version>
   </properties>
