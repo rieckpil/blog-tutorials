@@ -1,0 +1,72 @@
+openapi: 3.0.1
+
+info:
+  version: 1.0.0
+  title: Wizard Management System
+  description: Backend application integrating with Redis cache and MySQL database to expose API endpoints. 
+
+servers:
+- url: http://localhost:8080
+  description: Local Backend Server
+  
+paths:
+  /api/v1/wizards:
+    get:
+      tags:
+      - Wizard Record Management
+      summary: Retrieves all wizard records
+      description: Retrieves the list of available wizard records in the system
+      operationId: retrieve
+      responses:
+        "200":
+          description: Wizard records retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WizardDto'
+                  
+    post:
+      tags:
+      - Wizard Record Management
+      summary: Creates wizard record
+      description: Creates a new wizard record in the system corresponding to given details
+      operationId: create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WizardCreationRequestDto'
+        required: true
+
+      responses:
+        "200":
+          description: New wizard record created successfully.
+          
+components:
+  schemas:
+    WizardCreationRequestDto:
+      required:
+      - name
+      type: object
+      properties:
+        name:
+          maxLength: 50
+          minLength: 0
+          type: string
+        wandType:
+          pattern: ^(Dragon heartstring|Phoenix feather|Unicorn tail hair)$
+          type: string
+    WizardDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        house:
+          type: string
+        wandType:
+          type: string

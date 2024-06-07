@@ -74,6 +74,7 @@
     <module>dependency-version-update-plugin</module>
     <module>testing-spring-rest-template</module>
     <module>azure-blob-storage-azurite-testing</module>
+    <module>caching-validation-testcontainers</module>
     <module>testing-libraries-overview</module>
   </modules>
 
