@@ -15,7 +15,7 @@
   <name>spring-boot-test-mail-sending</name>
 
   <properties>
-    <greenmail.version>1.6.5</greenmail.version>
+    <greenmail.version>1.6.15</greenmail.version>
   </properties>
 
   <dependencies>
