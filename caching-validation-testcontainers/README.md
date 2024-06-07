@@ -1,4 +1,4 @@
-### Codebase for the blog post [Validating Caching Mechanism with Testcontainers in Spring Boot](https://rieckpil.de/validating-caching-mechanism-with-testcontainers-in-spring-boot)
+### Codebase for the blog post [Validating Caching Mechanism with Testcontainers in Spring Boot](https://rieckpil.de/testing-caching-mechanism-with-testcontainers-in-spring-boot/)
 
 Steps to run this project: 
 1. Clone this Git repository
