@@ -1,4 +1,4 @@
-FROM openjdk:11.0-jre
+FROM openjdk:11.0.16-jre
 
 RUN apt-get update && \
     apt-get upgrade -y && \
