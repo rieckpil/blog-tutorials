@@ -12,6 +12,7 @@ If you find an issue or bug within the provided code examples, feel free to open
 
 ## Articles about Testing
 
+* [Validating Caching Mechanism with Testcontainers in Spring Boot](https://rieckpil.de/testing-caching-mechanism-with-testcontainers-in-spring-boot/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/caching-validation-testcontainers))
 * [Parallelizing Only Java Unit Tests with JUnit 5 and Maven](https://rieckpil.de/parallelize-only-java-unit-tests-with-junit-5-and-maven/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/maven-junit-paralellize-tests))
 * [Test Thymeleaf Controller Endpoints with Spring Boot and MockMvc](https://rieckpil.de/test-thymeleaf-controller-endpoints-with-spring-boot-and-mockmvc/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-thymeleaf-testing))
 * [Spring Boot Testing: MockMvc vs. WebTestClient vs. TestRestTemplate](https://rieckpil.de/spring-boot-testing-mockmvc-vs-webtestclient-vs-testresttemplate/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-test-mockmvc-webtestclient-testresttemplate))
@@ -54,7 +55,6 @@ If you find an issue or bug within the provided code examples, feel free to open
 * [Testing your Spring RestTemplate with @RestClientTest](https://rieckpil.de/testing-your-spring-resttemplate-with-restclienttest/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/testing-spring-rest-template))
 * [Five JUnit 5 features you might not know yet](https://rieckpil.de/five-junit-5-features-you-might-not-know-yet/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/five-unknown-junit-5-features))
 * [Testing your JSON serialization with @JsonTest](https://rieckpil.de/testing-your-json-serialization-with-jsontest) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/testing-json-serialization-spring))
-* [Validating Caching Mechanism with Testcontainers in Spring Boot](https://rieckpil.de/validating-caching-mechanism-with-testcontainers-in-spring-boot) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/caching-validation-testcontainers))
 
 ## Articles about Spring Boot
 
