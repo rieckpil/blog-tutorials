@@ -10,7 +10,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        versions: [8, 11, 17]
+        versions: [8, 11]
     runs-on: ubuntu-latest
     name: Build Java ${{ matrix.versions }} projects
     steps:
