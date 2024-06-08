@@ -20,13 +20,12 @@ public class RootLogLevelUpdater {
     LOG.info("Going to register root log level updater");
 
     featureFlagClient.registerChangeListener(
-      "root-log-level",
-      "duke",
-      (oldValue, newValue) -> {
+        "root-log-level",
+        "duke",
+        (oldValue, newValue) -> {
+          LOG.info("Going to change the root log level from '{}' to '{}'", oldValue, newValue);
 
-        LOG.info("Going to change the root log level from '{}' to '{}'", oldValue, newValue);
-
-        Configurator.setRootLevel(Level.valueOf(newValue));
-      });
+          Configurator.setRootLevel(Level.valueOf(newValue));
+        });
   }
 }

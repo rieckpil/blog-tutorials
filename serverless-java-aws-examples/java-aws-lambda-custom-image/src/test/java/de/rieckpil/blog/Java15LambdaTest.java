@@ -1,8 +1,8 @@
 package de.rieckpil.blog;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
 
 class Java15LambdaTest {
 

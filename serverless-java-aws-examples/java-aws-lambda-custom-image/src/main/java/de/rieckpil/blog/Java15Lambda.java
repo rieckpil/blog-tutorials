@@ -8,7 +8,8 @@ public class Java15Lambda implements RequestHandler<Void, String> {
   @Override
   public String handleRequest(Void input, Context context) {
 
-    var message = """
+    var message =
+        """
       Hello World!
 
       I'm using one of the latest language feature's of Java.
@@ -17,7 +18,6 @@ public class Java15Lambda implements RequestHandler<Void, String> {
       Kind regards,
       Duke
       """;
-
 
     return message;
   }

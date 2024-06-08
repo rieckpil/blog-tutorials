@@ -4,7 +4,6 @@ import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,8 +25,8 @@ public class InMemoryFeatureFlagStoreTest {
     try {
       JSONObject featureFlagState = new JSONObject().put("flagValues", new JSONObject());
       Files.write(
-        featureFlagStateFile.toPath(),
-        featureFlagState.toString().getBytes(StandardCharsets.UTF_8));
+          featureFlagStateFile.toPath(),
+          featureFlagState.toString().getBytes(StandardCharsets.UTF_8));
     } catch (Exception exception) {
       LOG.error("Failed to initialize empty in-memory feature flag state", exception);
     }
@@ -36,12 +35,12 @@ public class InMemoryFeatureFlagStoreTest {
   public void updateFeature(String featureFlagKey, Object featureFlagValue) {
     try {
       JSONObject featureFlagState =
-        new JSONObject()
-          .put("flagValues", new JSONObject().put(featureFlagKey, featureFlagValue));
+          new JSONObject()
+              .put("flagValues", new JSONObject().put(featureFlagKey, featureFlagValue));
 
       Files.write(
-        featureFlagStateFile.toPath(),
-        featureFlagState.toString().getBytes(StandardCharsets.UTF_8));
+          featureFlagStateFile.toPath(),
+          featureFlagState.toString().getBytes(StandardCharsets.UTF_8));
     } catch (Exception exception) {
       LOG.error("Failed to update in-memory feature flag state", exception);
     }
@@ -51,4 +50,3 @@ public class InMemoryFeatureFlagStoreTest {
     return featureFlagStateFile.toPath();
   }
 }
-

@@ -1,7 +1,7 @@
 package de.rieckpil.blog;
 
-import java.io.IOException;
-import java.time.Duration;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.awaitility.Awaitility.await;
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.grpc.GrpcTransportChannel;
@@ -25,6 +25,8 @@ import com.google.pubsub.v1.PushConfig;
 import com.google.pubsub.v1.TopicName;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import java.io.IOException;
+import java.time.Duration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.PubSubEmulatorContainer;
@@ -32,16 +34,13 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.awaitility.Awaitility.await;
-
 @Testcontainers
 class PubSubExampleTest {
 
   @Container
   static PubSubEmulatorContainer emulator =
-    new PubSubEmulatorContainer(
-      DockerImageName.parse("gcr.io/google.com/cloudsdktool/cloud-sdk:372.0.0-emulators"));
+      new PubSubEmulatorContainer(
+          DockerImageName.parse("gcr.io/google.com/cloudsdktool/cloud-sdk:372.0.0-emulators"));
 
   static final String PROJECT_ID = "test-project";
   static final String TOPIC_ID = "sample-topic";
@@ -49,67 +48,81 @@ class PubSubExampleTest {
 
   @BeforeAll
   static void setupEmulator() throws Exception {
-    ManagedChannel channel = ManagedChannelBuilder.forTarget(emulator.getEmulatorEndpoint()).usePlaintext().build();
+    ManagedChannel channel =
+        ManagedChannelBuilder.forTarget(emulator.getEmulatorEndpoint()).usePlaintext().build();
     TransportChannelProvider channelProvider =
-      FixedTransportChannelProvider.create(GrpcTransportChannel.create(channel));
+        FixedTransportChannelProvider.create(GrpcTransportChannel.create(channel));
     NoCredentialsProvider credentialsProvider = NoCredentialsProvider.create();
 
     createTopic(TOPIC_ID, channelProvider, credentialsProvider);
     createSubscription(SUBSCRIPTION_ID, TOPIC_ID, channelProvider, credentialsProvider);
-
   }
 
   @Test
   void shouldPublishAndConsumeMessage() throws Exception {
 
     Publisher publisher =
-      Publisher.newBuilder(TopicName.of(PROJECT_ID, TOPIC_ID))
-        .setChannelProvider(FixedTransportChannelProvider.create(GrpcTransportChannel.create(ManagedChannelBuilder.forTarget(emulator.getEmulatorEndpoint()).usePlaintext().build())))
-        .setCredentialsProvider(NoCredentialsProvider.create())
-        .build();
+        Publisher.newBuilder(TopicName.of(PROJECT_ID, TOPIC_ID))
+            .setChannelProvider(
+                FixedTransportChannelProvider.create(
+                    GrpcTransportChannel.create(
+                        ManagedChannelBuilder.forTarget(emulator.getEmulatorEndpoint())
+                            .usePlaintext()
+                            .build())))
+            .setCredentialsProvider(NoCredentialsProvider.create())
+            .build();
 
-    publisher
-      .publish(PubsubMessage.newBuilder().setData(ByteString.copyFromUtf8("Hello World!"))
-        .build());
+    publisher.publish(
+        PubsubMessage.newBuilder().setData(ByteString.copyFromUtf8("Hello World!")).build());
 
     SubscriberStubSettings subscriberStubSettings =
-      SubscriberStubSettings.newBuilder()
-        .setTransportChannelProvider(FixedTransportChannelProvider.create(GrpcTransportChannel.create(ManagedChannelBuilder.forTarget(emulator.getEmulatorEndpoint()).usePlaintext().build())))
-        .setCredentialsProvider(NoCredentialsProvider.create())
-        .build();
+        SubscriberStubSettings.newBuilder()
+            .setTransportChannelProvider(
+                FixedTransportChannelProvider.create(
+                    GrpcTransportChannel.create(
+                        ManagedChannelBuilder.forTarget(emulator.getEmulatorEndpoint())
+                            .usePlaintext()
+                            .build())))
+            .setCredentialsProvider(NoCredentialsProvider.create())
+            .build();
 
-    SubscriberStub subscriber = GrpcSubscriberStub
-      .create(subscriberStubSettings);
+    SubscriberStub subscriber = GrpcSubscriberStub.create(subscriberStubSettings);
 
     PullRequest pullRequest =
-      PullRequest.newBuilder()
-        .setMaxMessages(1)
-        .setSubscription(ProjectSubscriptionName.format(PROJECT_ID, SUBSCRIPTION_ID))
-        .build();
+        PullRequest.newBuilder()
+            .setMaxMessages(1)
+            .setSubscription(ProjectSubscriptionName.format(PROJECT_ID, SUBSCRIPTION_ID))
+            .build();
 
     await()
-      .atMost(Duration.ofSeconds(3))
-      .untilAsserted(() -> {
-        PullResponse pullResponse = subscriber.pullCallable().call(pullRequest);
+        .atMost(Duration.ofSeconds(3))
+        .untilAsserted(
+            () -> {
+              PullResponse pullResponse = subscriber.pullCallable().call(pullRequest);
 
-        assertThat(pullResponse.getReceivedMessagesList())
-          .hasSize(1);
+              assertThat(pullResponse.getReceivedMessagesList()).hasSize(1);
 
-        assertThat(pullResponse.getReceivedMessagesList().get(0).getMessage().getData().toStringUtf8())
-          .isEqualTo("Hello World!");
-      });
+              assertThat(
+                      pullResponse
+                          .getReceivedMessagesList()
+                          .get(0)
+                          .getMessage()
+                          .getData()
+                          .toStringUtf8())
+                  .isEqualTo("Hello World!");
+            });
   }
 
   private static void createTopic(
-    String topicId,
-    TransportChannelProvider channelProvider,
-    NoCredentialsProvider credentialsProvider)
-    throws IOException {
+      String topicId,
+      TransportChannelProvider channelProvider,
+      NoCredentialsProvider credentialsProvider)
+      throws IOException {
     TopicAdminSettings topicAdminSettings =
-      TopicAdminSettings.newBuilder()
-        .setTransportChannelProvider(channelProvider)
-        .setCredentialsProvider(credentialsProvider)
-        .build();
+        TopicAdminSettings.newBuilder()
+            .setTransportChannelProvider(channelProvider)
+            .setCredentialsProvider(credentialsProvider)
+            .build();
     try (TopicAdminClient topicAdminClient = TopicAdminClient.create(topicAdminSettings)) {
       TopicName topicName = TopicName.of(PROJECT_ID, topicId);
       topicAdminClient.createTopic(topicName);
@@ -119,28 +132,27 @@ class PubSubExampleTest {
   }
 
   private static void createSubscription(
-    String subscriptionId,
-    String topicId,
-    TransportChannelProvider channelProvider,
-    NoCredentialsProvider credentialsProvider)
-    throws IOException {
+      String subscriptionId,
+      String topicId,
+      TransportChannelProvider channelProvider,
+      NoCredentialsProvider credentialsProvider)
+      throws IOException {
     SubscriptionAdminSettings subscriptionAdminSettings =
-      SubscriptionAdminSettings.newBuilder()
-        .setTransportChannelProvider(channelProvider)
-        .setCredentialsProvider(credentialsProvider)
-        .build();
+        SubscriptionAdminSettings.newBuilder()
+            .setTransportChannelProvider(channelProvider)
+            .setCredentialsProvider(credentialsProvider)
+            .build();
     SubscriptionAdminClient subscriptionAdminClient =
-      SubscriptionAdminClient.create(subscriptionAdminSettings);
+        SubscriptionAdminClient.create(subscriptionAdminSettings);
 
     ProjectSubscriptionName subscriptionName =
-      ProjectSubscriptionName.of(PROJECT_ID, subscriptionId);
+        ProjectSubscriptionName.of(PROJECT_ID, subscriptionId);
 
     try {
       subscriptionAdminClient.createSubscription(
-        subscriptionName, TopicName.of(PROJECT_ID, topicId), PushConfig.getDefaultInstance(), 10);
+          subscriptionName, TopicName.of(PROJECT_ID, topicId), PushConfig.getDefaultInstance(), 10);
     } catch (AlreadyExistsException e) {
       // The subscription already exists -- OK
     }
   }
-
 }
