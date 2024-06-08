@@ -1,15 +1,14 @@
 package de.rieckpil.blog;
 
-import java.util.concurrent.TimeUnit;
+import static org.awaitility.Awaitility.await;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.awaitility.Awaitility.await;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class RootLogLevelUpdaterTest {
 
@@ -31,7 +30,7 @@ class RootLogLevelUpdaterTest {
     testDataFeatureFlagClient.updateFeatureFlag("root-log-level", "TRACE");
 
     await()
-      .atMost(2, TimeUnit.SECONDS)
-      .untilAsserted(() -> assertEquals(Level.TRACE, LogManager.getRootLogger().getLevel()));
+        .atMost(2, TimeUnit.SECONDS)
+        .untilAsserted(() -> assertEquals(Level.TRACE, LogManager.getRootLogger().getLevel()));
   }
 }

@@ -1,9 +1,13 @@
 package de.rieckpil.blog;
 
-import java.io.File;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.screenshot;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
+import java.io.File;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -12,21 +16,18 @@ import org.testcontainers.containers.BrowserWebDriverContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.screenshot;
-import static org.assertj.core.api.Assertions.assertThat;
-
 @Testcontainers
 class SeleniumExampleTest {
 
   @Container
   static BrowserWebDriverContainer<?> webDriverContainer =
-    new BrowserWebDriverContainer<>()
-      .withRecordingMode(BrowserWebDriverContainer.VncRecordingMode.RECORD_ALL, new File("./target"))
-      .withCapabilities(new ChromeOptions()
-        .addArguments("--no-sandbox")
-        .addArguments("--disable-dev-shm-usage"));
+      new BrowserWebDriverContainer<>()
+          .withRecordingMode(
+              BrowserWebDriverContainer.VncRecordingMode.RECORD_ALL, new File("./target"))
+          .withCapabilities(
+              new ChromeOptions()
+                  .addArguments("--no-sandbox")
+                  .addArguments("--disable-dev-shm-usage"));
 
   @Test
   void shouldAccessHomePage() {
@@ -43,7 +44,6 @@ class SeleniumExampleTest {
 
     String h1Text = $(By.tagName("h1")).text();
 
-    assertThat(h1Text)
-      .isNotNull();
+    assertThat(h1Text).isNotNull();
   }
 }

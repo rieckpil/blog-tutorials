@@ -11,7 +11,7 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-    <artifactId>whats-new-in-spring-boot.2.2</artifactId>
+    <artifactId>whats-new-in-spring-boot-2.2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>whats-new-in-spring-boot-2.2</name>
     <description>What's new in Spring Boot 2.2</description>

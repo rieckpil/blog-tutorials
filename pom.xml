@@ -76,6 +76,11 @@
     <module>azure-blob-storage-azurite-testing</module>
     <module>caching-validation-testcontainers</module>
     <module>testing-libraries-overview</module>
+    <module>testcontainers-introduction</module>
+    <module>random-data-in-java-using-java-faker</module>
+    <module>launchdarkly-java-development-testing-hints</module>
+    <module>maven-junit-paralellize-tests</module>
+    <module>serverless-java-aws-examples/java-aws-lambda-custom-image</module>
   </modules>
 
   <properties>

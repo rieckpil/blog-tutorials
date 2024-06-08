@@ -13,13 +13,21 @@ public class LaunchDarklyFeatureFlagClient implements FeatureFlagClient {
 
   @Override
   public String getCurrentValue(String featureFlagKey, String username) {
-    return ldClient.stringVariation(featureFlagKey, new LDUser.Builder(username).build(), "unknown");
+    return ldClient.stringVariation(
+        featureFlagKey, new LDUser.Builder(username).build(), "unknown");
   }
 
   @Override
-  public void registerChangeListener(String featureFlagKey, String username, FeatureFlagValueChangeHandler changeHandler) {
+  public void registerChangeListener(
+      String featureFlagKey, String username, FeatureFlagValueChangeHandler changeHandler) {
     ldClient
-      .getFlagTracker()
-      .addFlagValueChangeListener(featureFlagKey, new LDUser.Builder(username).build(), (changeEvent) -> changeHandler.handle(changeEvent.getOldValue().stringValue(), changeEvent.getNewValue().stringValue()));
+        .getFlagTracker()
+        .addFlagValueChangeListener(
+            featureFlagKey,
+            new LDUser.Builder(username).build(),
+            (changeEvent) ->
+                changeHandler.handle(
+                    changeEvent.getOldValue().stringValue(),
+                    changeEvent.getNewValue().stringValue()));
   }
 }

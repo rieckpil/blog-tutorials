@@ -14,21 +14,30 @@ public class TestDataFeatureFlagClient implements FeatureFlagClient {
 
   public TestDataFeatureFlagClient() {
     this.testData = TestData.dataSource();
-    this.ldClient = new LDClient(
-      "ignored-access-key",
-      new LDConfig.Builder().dataSource(testData).events(Components.noEvents()).build());
+    this.ldClient =
+        new LDClient(
+            "ignored-access-key",
+            new LDConfig.Builder().dataSource(testData).events(Components.noEvents()).build());
   }
 
   @Override
   public String getCurrentValue(String featureFlagKey, String username) {
-    return ldClient.stringVariation(featureFlagKey, new LDUser.Builder(username).build(), "unknown");
+    return ldClient.stringVariation(
+        featureFlagKey, new LDUser.Builder(username).build(), "unknown");
   }
 
   @Override
-  public void registerChangeListener(String featureFlagKey, String username, FeatureFlagValueChangeHandler changeHandler) {
+  public void registerChangeListener(
+      String featureFlagKey, String username, FeatureFlagValueChangeHandler changeHandler) {
     ldClient
-      .getFlagTracker()
-      .addFlagValueChangeListener(featureFlagKey, new LDUser.Builder(username).build(), (changeEvent) -> changeHandler.handle(changeEvent.getOldValue().stringValue(), changeEvent.getNewValue().stringValue()));
+        .getFlagTracker()
+        .addFlagValueChangeListener(
+            featureFlagKey,
+            new LDUser.Builder(username).build(),
+            (changeEvent) ->
+                changeHandler.handle(
+                    changeEvent.getOldValue().stringValue(),
+                    changeEvent.getNewValue().stringValue()));
   }
 
   public void updateFeatureFlag(String featureFlag, String newValue) {
