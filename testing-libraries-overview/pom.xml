@@ -34,7 +34,7 @@
     <microshed-testing.version>0.9</microshed-testing.version>
     <awaitility.version>4.0.3</awaitility.version>
     <rest-assured.version>5.4.0</rest-assured.version>
-    <greenmail.version>1.6.0</greenmail.version>
+    <greenmail.version>1.6.15</greenmail.version>
     <groovy.version>4.0.16</groovy.version>
     <citrus.version>2.8.0</citrus.version>
   </properties>
