@@ -15,7 +15,7 @@
   <description>Integration Tests with Spring Boot and WireMock</description>
 
   <properties>
-    <wiremock.version>2.35.1</wiremock.version>
+    <wiremock.version>2.35.2</wiremock.version>
   </properties>
 
   <dependencies>
