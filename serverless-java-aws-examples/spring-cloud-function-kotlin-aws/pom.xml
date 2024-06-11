@@ -22,7 +22,7 @@
 		<spring-cloud-function.version>3.2.0-M2</spring-cloud-function.version>
     <aws-lambda-java-core.version>1.2.3</aws-lambda-java-core.version>
     <wrapper.version>1.0.27.RELEASE</wrapper.version>
-    <aws-lambda-java-events.version>3.10.0</aws-lambda-java-events.version>
+    <aws-lambda-java-events.version>3.11.5</aws-lambda-java-events.version>
     <mockwebserver.version>4.7.2</mockwebserver.version>
     <okhttp3.version>4.7.2</okhttp3.version>
   </properties>
