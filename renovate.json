@@ -3,7 +3,7 @@
   "enabledManagers": ["gradle", "maven", "dockerfile"],
   "packageRules": [
     {
-      "managers": ["npm", "yarn"],
+      "managers": ["npm"],
       "enabled": false
     }
   ]
