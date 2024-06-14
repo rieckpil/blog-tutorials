@@ -76,6 +76,7 @@
     <module>azure-blob-storage-azurite-testing</module>
     <module>caching-validation-testcontainers</module>
     <module>testing-libraries-overview</module>
+    <module>reducing-testcontainers-execution-time</module>
   </modules>
 
   <properties>
