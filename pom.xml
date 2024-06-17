@@ -77,6 +77,7 @@
     <module>caching-validation-testcontainers</module>
     <module>testing-libraries-overview</module>
     <module>reducing-testcontainers-execution-time</module>
+    <module>generating-test-data-with-instancio</module>
   </modules>
 
   <properties>
