@@ -30,7 +30,7 @@
 
   <properties>
     <java.version>21</java.version>
-    <instancio.version>4.8.0</instancio.version>
+    <instancio.version>5.0.0</instancio.version>
   </properties>
 
   <dependencies>
