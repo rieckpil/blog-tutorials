@@ -1,4 +1,4 @@
-### Codebase for the blog post [Generating Test Data in Java Using Instancio](https://rieckpil.de/)
+### Codebase for the blog post [Generating Java Test Data With Instancio](https://rieckpil.de/generating-java-test-data-with-instancio/)
 
 Steps to run this project: 
 1. Clone this Git repository
