@@ -42,7 +42,7 @@
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>7.0</version>
+			<version>7.0.32-LTS</version>
 		</dependency>
 		<dependency>
 			<groupId>org.primefaces.themes</groupId>
