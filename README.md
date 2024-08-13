@@ -12,6 +12,8 @@ If you find an issue or bug within the provided code examples, feel free to open
 
 ## Articles about Testing
 
+* [Generating Java Test Data With Instancio](https://rieckpil.de/generating-java-test-data-with-instancio/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/generating-test-data-with-instancio))
+* [Reducing Testcontainers Execution Time with JUnit 5 Callbacks](https://rieckpil.de/reducing-testcontainers-execution-time-with-junit-5-callbacks/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/reducing-testcontainers-execution-time))
 * [Validating Caching Mechanism with Testcontainers in Spring Boot](https://rieckpil.de/testing-caching-mechanism-with-testcontainers-in-spring-boot/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/caching-validation-testcontainers))
 * [Parallelizing Only Java Unit Tests with JUnit 5 and Maven](https://rieckpil.de/parallelize-only-java-unit-tests-with-junit-5-and-maven/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/maven-junit-paralellize-tests))
 * [Test Thymeleaf Controller Endpoints with Spring Boot and MockMvc](https://rieckpil.de/test-thymeleaf-controller-endpoints-with-spring-boot-and-mockmvc/) ([Sources](https://github.com/rieckpil/blog-tutorials/tree/master/spring-boot-thymeleaf-testing))

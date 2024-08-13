@@ -1,4 +1,4 @@
-### Codebase for the blog post [Reducing Testcontainers Execution Time and Boilerplate Code Using JUnit 5's Lifecycle Callbacks](https://rieckpil.de/)
+### Codebase for the blog post [Reducing Testcontainers Execution Time with JUnit 5 Callbacks](https://rieckpil.de/reducing-testcontainers-execution-time-with-junit-5-callbacks/)
 
 Steps to run this project: 
 1. Clone this Git repository
