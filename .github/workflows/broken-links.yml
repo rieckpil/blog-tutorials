@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
       - run: |
           npm install -g markdown-link-check@3.10.3
           find . -type f -name '*.md' | xargs -L1 npx markdown-link-check -c .broken-link-config.json --quiet
