@@ -30,7 +30,7 @@
 
   <properties>
     <java.version>21</java.version>
-    <azure.blobstore.version>12.25.3</azure.blobstore.version>
+    <azure.blobstore.version>12.29.0</azure.blobstore.version>
   </properties>
 
   <dependencies>
