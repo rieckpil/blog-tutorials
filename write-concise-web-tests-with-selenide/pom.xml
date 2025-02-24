@@ -16,7 +16,7 @@
   <description>Concise Web Tests with Selenide</description>
 
   <properties>
-    <selenide.version>7.0.4</selenide.version>
+    <selenide.version>7.7.3</selenide.version>
     <selenium.version>4.16.1</selenium.version>
   </properties>
 
