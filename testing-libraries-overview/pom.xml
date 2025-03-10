@@ -29,7 +29,7 @@
     <okio.version>2.10.0</okio.version>
     <okhttp3.version>4.9.0</okhttp3.version>
     <xmlunit.version>2.10.0</xmlunit.version>
-    <selenide.version>7.3.2</selenide.version>
+    <selenide.version>7.7.3</selenide.version>
     <selenium.version>4.16.1</selenium.version>
     <microshed-testing.version>0.9</microshed-testing.version>
     <awaitility.version>4.0.3</awaitility.version>
