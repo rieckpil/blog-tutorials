@@ -7,7 +7,6 @@ version = "1.0.0"
 
 repositories {
   mavenCentral()
-  jcenter()
 }
 
 java {
@@ -18,7 +17,7 @@ java {
 dependencies {
   implementation(kotlin("stdlib-js"))
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-js:1.3.3")
-  implementation("org.jetbrains.kotlinx:kotlinx-html-js:0.7.1")
+  implementation("org.jetbrains.kotlinx:kotlinx-html-js:0.7.3")
   testImplementation(kotlin("test-js"))
 }
 
