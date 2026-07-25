@@ -18,7 +18,9 @@ public class DockerComposeTest {
           .withExposedService(
               "keycloak-1",
               8080,
-              Wait.forHttp("/auth").forStatusCode(200).withStartupTimeout(Duration.ofSeconds(30)));
+              Wait.forHttp("/realms/master")
+                  .forStatusCode(200)
+                  .withStartupTimeout(Duration.ofMinutes(2)));
 
   @Test
   void dockerComposeTest() {
