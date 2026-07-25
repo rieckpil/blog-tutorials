@@ -14,4 +14,4 @@ jobs:
           node-version: 20
       - run: |
           npm install -g markdown-link-check@3.10.3
-          find . -type f -name '*.md' | xargs -L1 npx markdown-link-check -c .broken-link-config.json --quiet
+          find . -type f -name '*.md' -not -path '*/node_modules/*' -not -path '*/build/*' -not -path '*/target/*' | xargs -L1 npx markdown-link-check -c .broken-link-config.json --quiet
