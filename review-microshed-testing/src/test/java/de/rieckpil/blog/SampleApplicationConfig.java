@@ -5,6 +5,7 @@ import org.microshed.testing.testcontainers.ApplicationContainer;
 import org.testcontainers.containers.MockServerContainer;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.utility.DockerImageName;
 
 public class SampleApplicationConfig implements SharedContainerConfiguration {
 
@@ -16,8 +17,13 @@ public class SampleApplicationConfig implements SharedContainerConfiguration {
             .withPassword("duke42")
             .withDatabaseName("users");
 
+    // Pin the maintained mockserver/mockserver image instead of the deprecated
+    // jamesdbloom/mockserver namespace that the no-arg constructor defaults to.
+    // Kept at 5.5.4 to stay aligned with the mockserver-client-java dependency.
     @Container
-    public static MockServerContainer mockServer = new MockServerContainer()
+    public static MockServerContainer mockServer = new MockServerContainer(
+            DockerImageName.parse("mockserver/mockserver:mockserver-5.5.4")
+                    .asCompatibleSubstituteFor("jamesdbloom/mockserver"))
             .withNetworkAliases("mockserver");
 
     @Container
