@@ -16,7 +16,7 @@
   <description>Spring WebClient exchange vs. retrieve</description>
 
   <properties>
-    <wiremock.version>2.27.2</wiremock.version>
+    <wiremock.version>3.0.1</wiremock.version>
   </properties>
 
   <dependencies>
